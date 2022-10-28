@@ -10,3 +10,4 @@ void initializeDependency() {
   injector.registerFactory(() => BlocInitial.bloc);
   injector.registerFactory(() => Preferences());
 }
+

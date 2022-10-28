@@ -22,5 +22,4 @@ class AppRouter {
   static final Map<String, RouteBuilder> routes = {
 
   };
-
 }
