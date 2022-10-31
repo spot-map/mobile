@@ -1,20 +1,14 @@
 import 'package:flutter/material.dart';
+import 'package:ride_map/domain/api/service/map_service.dart';
 
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: const <Widget>[
-            Text(
-              'Ride Map',
-            ),
-          ],
-        ),
+        child: Text('Ride map'),
       ),
     );
   }

@@ -1,6 +1,7 @@
 import 'dart:io';
 
 import 'package:dio/dio.dart';
+import 'package:ride_map/untils/api/api_constants.dart';
 
 class DioManager {
   static DioManager? _instance;
@@ -9,7 +10,7 @@ class DioManager {
 
   DioManager._()
       : dio = Dio(BaseOptions(
-      baseUrl: '',
+      baseUrl: ApiConstants.BASE_URL,
       connectTimeout: 5000,
       receiveTimeout: 3000,
       responseType: ResponseType.json,
