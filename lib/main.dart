@@ -4,9 +4,11 @@ import 'package:ride_map/untils/preferences/preferences.dart';
 import 'internal/app.dart';
 import 'package:hydrated_bloc/hydrated_bloc.dart';
 import 'package:path_provider/path_provider.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'internal/di/inject.dart';
 
 void main() async {
+  await dotenv.load(fileName: "assets/.env");
   WidgetsFlutterBinding.ensureInitialized();
 
   final storage = await HydratedStorage.build(
