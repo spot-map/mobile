@@ -1,5 +1,8 @@
+import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+@injectable
+@singleton
 class Preferences {
   String selectedThemeValue = 'selected Value';
   String authToken = 'Token is ';

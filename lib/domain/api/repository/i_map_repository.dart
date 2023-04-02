@@ -1,5 +1,8 @@
-import 'package:ride_map/data/model/spot/spot_model.dart';
+import 'package:injectable/injectable.dart';
+import 'package:ride_map/data/spot_model/spot_model.dart';
+
 
 abstract class IMapRepository{
+  @module
   Future<SpotModel> getSpot();
 }

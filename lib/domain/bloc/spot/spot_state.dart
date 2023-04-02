@@ -1,27 +1,32 @@
 part of 'spot_bloc.dart';
 
-abstract class SpotState extends Equatable {
-  const SpotState();
 
-  @override
-  List<Object> get props => [];
+enum RequestStatus{
+  loaded,
+  failure,
+  loading,
 }
 
-class SpotInitial extends SpotState {}
-
-class SpotLoading extends SpotState {}
-
-class SpotLoaded extends SpotState {
+ class SpotState extends Equatable {
+  SpotState({
+    required this.spot,
+    this.status = RequestStatus.loading,
+    this.message = ''
+  });
   final SpotModel spot;
-
- const SpotLoaded(this.spot);
-
+  final String message;
+  final RequestStatus status;
+  SpotState copyWith({
+    SpotModel? spot,
+    RequestStatus? status,
+    String? message
+  }) {
+    return SpotState(spot: spot ?? this.spot,
+        message: message ?? this.message,
+        status: status ?? this.status);
+  }
   @override
-  List<Object> get props => [spot];
+  List<Object?> get props => [spot,status];
 }
 
-class SpotError extends SpotState{
-  final String? message;
 
-  const SpotError(this.message);
-}

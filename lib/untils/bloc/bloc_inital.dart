@@ -14,8 +14,8 @@ class BlocInitial {
 
   static final List<BlocListener> listener = [
     BlocListener<SpotBloc, SpotState>(listener: (context, state) {
-      if (state is SpotError) {
-        snackBar(state.message!, context);
+      if (state.status == RequestStatus.loaded) {
+        snackBar(state.message, context);
       }
     }),
 

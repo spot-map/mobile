@@ -1,13 +1,9 @@
 import 'package:get_it/get_it.dart';
-import 'package:ride_map/untils/bloc/bloc_inital.dart';
-import 'package:ride_map/untils/dio/dio_manager.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
+import 'package:injectable/injectable.dart';
+import 'package:ride_map/internal/di/inject.config.dart';
 
-GetIt injector = GetIt.instance;
+final getIt = GetIt.instance;
 
-void initializeDependency() {
-  injector.registerFactory(() => DioManager());
-  injector.registerFactory(() => BlocInitial.bloc);
-  injector.registerFactory(() => Preferences());
-}
+@InjectableInit()
+void setup() => getIt.init();
 

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:location_repository/location_repository.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:flutter_dotenv/flutter_dotenv.dart';
-import 'package:ride_map/presentation/ui/widget/map/zoom_in_out_widget.dart';
 
 class MapWidget extends StatefulWidget {
   const MapWidget({
