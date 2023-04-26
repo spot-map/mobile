@@ -32,13 +32,12 @@ dependencies:
   flutter_bloc: ^8.1.1
   equatable: 2.0.3
   json_annotation: ^4.7.0
-  mapbox_gl: ^0.15.0
   location: ^4.3.0
   animated_snack_bar: ^0.2.2
-  flutter_map: ^1.1.1
+  mapbox_gl: ^0.16.0
   dio: ^4.0.6
   latlong2: ^0.8.1
-  flutter_dotenv: ^5.0.2
+  yandex_mapkit: ^3.2.0
   hydrated_bloc: ^8.1.0
   injectable: ^2.1.0
   path_provider: ^2.0.11
@@ -81,6 +80,7 @@ flutter:
   assets:
     - assets/.env
     - assets/i.png
+    - assets/user_location.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

@@ -5,7 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location/location.dart';
 import 'package:location_repository/location_repository.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
-import 'package:ride_map/data/model/spot/spot_model.dart';
+// import 'package:ride_map/data/model/spot/spot_model.dart';
 import 'package:ride_map/domain/api/service/map_service.dart';
 import 'package:ride_map/untils/dev.dart';
 import 'package:ride_map/untils/enum/location_enum.dart';
