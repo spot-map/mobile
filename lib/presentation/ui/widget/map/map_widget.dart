@@ -24,8 +24,8 @@ class _MapWidgetState extends State<MapWidget> {
     mapObjects.add(PlacemarkMapObject(
         mapId: MapObjectId('user location'),
         point: Point(
-          latitude:  widget.currentUserLocation.latitude, // real geoLocation _geolocation!.latitude.toDouble()  44.507340
-          longitude: widget.currentUserLocation.longitude, // real _geolocation!.longitude.toDouble()   33.598426
+          latitude:  widget.currentUserLocation.latitude,
+          longitude: widget.currentUserLocation.longitude,
         ),
         icon: PlacemarkIcon.single(PlacemarkIconStyle(
             image: BitmapDescriptor.fromAssetImage(
