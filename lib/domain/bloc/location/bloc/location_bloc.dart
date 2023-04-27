@@ -43,7 +43,6 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
               image: BitmapDescriptor.fromAssetImage(
                   'assets/user_location.png'), scale: 0.2))));
 
-      print('BLOC Object ${mapObjects.length} $mapObjects');
 
       emit(
         state.copyWith(
