@@ -20,6 +20,7 @@ class MapLayout extends StatelessWidget {
           if (state.status.isSuccess) {
             return MapWidget(
               currentUserLocation: state.currentUserLocation,
+              mapObjects: state.mapObjects!,
             );
           }
           if (state.status.isError) {

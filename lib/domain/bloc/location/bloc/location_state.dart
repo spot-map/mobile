@@ -9,11 +9,12 @@ extension LocationStateStatusX on LocationStateStatus {
 }
 
 class LocationState extends Equatable {
-  const LocationState({
+  const LocationState( {
     this.status = LocationStateStatus.initial,
     LatLng? initLocation,
     CurrentUserLocationEntity? currentUserLocation,
     String? errorMessage,
+     this.mapObjects
     // SpotModel? spot
   })  : currentUserLocation =
       currentUserLocation ?? CurrentUserLocationEntity.empty,
@@ -22,6 +23,7 @@ class LocationState extends Equatable {
 
   final LocationStateStatus status;
   final CurrentUserLocationEntity currentUserLocation;
+  final List<MapObject>? mapObjects;
   final LatLng initLocation;
   final String errorMessage;
 
@@ -31,6 +33,7 @@ class LocationState extends Equatable {
     currentUserLocation,
     initLocation,
     errorMessage,
+    mapObjects
   ];
 
   LocationState copyWith({
@@ -39,12 +42,14 @@ class LocationState extends Equatable {
     LatLng? initLocation,
     Location? location,
     String? errorMessage,
+    List<MapObject>? mapObjects
   }) {
     return LocationState(
       status: status ?? this.status,
       currentUserLocation: currentUserLocation ?? this.currentUserLocation,
       initLocation: initLocation ?? this.initLocation,
       errorMessage: errorMessage ?? this.errorMessage,
+      mapObjects:  mapObjects ?? this.mapObjects
     );
   }
 }
