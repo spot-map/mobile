@@ -12,17 +12,16 @@ class App extends StatelessWidget {
     return MultiBlocProvider(
         providers: BlocInitial.bloc,
         child: MaterialApp(
-              navigatorKey: AppRouter.key,
-              onGenerateRoute: (settings) {
-                final builder = AppRouter.routes[settings.name];
-                if (builder != null) {
-                  return MaterialPageRoute(
-                      settings: settings,
-                      builder: (context) =>
-                          builder(context, settings.arguments));
-                }
-                return null;
-              },
+          navigatorKey: AppRouter.key,
+          onGenerateRoute: (settings) {
+            final builder = AppRouter.routes[settings.name];
+            if (builder != null) {
+              return MaterialPageRoute(
+                  settings: settings,
+                  builder: (context) => builder(context, settings.arguments));
+            }
+            return null;
+          },
               debugShowCheckedModeBanner: false,
               theme: ThemeData(
                 primarySwatch: Colors.blue,
