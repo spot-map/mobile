@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
-import 'package:ride_map/data/spot_model/spot_model.dart';
+import 'package:ride_map/data/map_model/map_model.dart';
 import 'package:ride_map/domain/api/repository/i_map_repository.dart';
 import 'package:ride_map/untils/api/api_constants.dart';
 import 'package:ride_map/untils/dev.dart';
@@ -9,7 +9,7 @@ import 'package:ride_map/untils/dio/dio_manager.dart';
 @Injectable(as: IMapRepository)
 class MapService extends IMapRepository {
   @override
-  Future<SpotModel> getSpot() {
+  Future<MapModel> getSpot() {
     // TODO: implement getSpot
     throw UnimplementedError();
   }

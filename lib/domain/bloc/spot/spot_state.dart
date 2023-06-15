@@ -13,11 +13,11 @@ enum RequestStatus{
     this.status = RequestStatus.loading,
     this.message = ''
   });
-  final SpotModel spot;
+  final MapModel spot;
   final String message;
   final RequestStatus status;
   SpotState copyWith({
-    SpotModel? spot,
+    MapModel? spot,
     RequestStatus? status,
     String? message
   }) {

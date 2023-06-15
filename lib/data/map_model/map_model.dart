@@ -4,15 +4,15 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 
 
 // @freezed
-// class SpotModel with $_SpotModel{
+// class MapModel with $_MapModel{
 //   const factory SpotModel({
 //
 // }) = $_SpotModel;
 //
-// factory SpotModel.fromJson(Map<String, Object?> json) =>
-// _$SpotModelFromJson(json);
+// factory MapModel.fromJson(Map<String, Object?> json) =>
+// _$MapModelFromJson(json);
 // }
 
-class SpotModel{
+class MapModel{
 
 }

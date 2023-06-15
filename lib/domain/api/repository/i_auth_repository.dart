@@ -4,3 +4,5 @@ abstract class IAuthRepository {
   @module
   Future<void> auth(String email, String password);
 }
+
+
