@@ -38,6 +38,7 @@ dependencies:
   dio: ^4.0.6
   latlong2: ^0.8.1
   yandex_mapkit: ^3.2.0
+  curved_navigation_bar: ^1.0.3
   hydrated_bloc: ^8.1.0
   injectable: ^2.1.0
   path_provider: ^2.0.11

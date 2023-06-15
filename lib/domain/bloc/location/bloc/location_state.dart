@@ -18,7 +18,7 @@ class LocationState extends Equatable {
     // SpotModel? spot
   })  : currentUserLocation =
       currentUserLocation ?? CurrentUserLocationEntity.empty,
-        initLocation = initLocation ?? const LatLng(40.4167, -3.70325),
+        initLocation = initLocation ?? const LatLng(40.4167, 3.70325),
         errorMessage = errorMessage ?? '';
 
   final LocationStateStatus status;

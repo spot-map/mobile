@@ -1,12 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/spot/spot_bloc.dart';
-import 'package:ride_map/presentation/ui/screen/authorization/login_screen.dart';
-import 'package:ride_map/presentation/ui/screen/home_screen.dart';
 import 'package:ride_map/untils/bloc/bloc_inital.dart';
 import 'package:ride_map/untils/config/app_router.dart';
-
-import '../presentation/ui/screen/map/map_screen.dart';
+import '../presentation/ui/screen/navigation/root_screen.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -32,7 +28,7 @@ class App extends StatelessWidget {
                 primarySwatch: Colors.blue,
               ),
               //theme: state.theme.themeData,
-              home: const MapScreen(),
+              home: const RootScreen(),
             )
          );
   }
