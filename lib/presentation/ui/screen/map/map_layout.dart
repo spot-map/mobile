@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/domain/bloc/location/bloc/location_bloc.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/map/map_widget.dart';
+import 'package:ride_map/untils/dev.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../../widget/bottom_sheet/bottom_sheet.dart';
@@ -24,9 +25,21 @@ class MapLayout extends StatelessWidget {
             current.status.isSuccess,
         builder: (context, state) {
           if (state.status.isSuccess) {
+            Dev.log('SPOTS ${state.spot!.data.length}');
+            state.spot!.data.forEach((element) {
+              mapObjects.add(PlacemarkMapObject(
+                  mapId:  MapObjectId('spot ${element.id}'),
+                  onTap: (PlacemarkMapObject self, Point point) =>  bottomSheet(context, point.toString()),
+                  point: Point(
+                    latitude:  element.latitude!,
+                    longitude: element.longitude!,
+                  ),
+                  icon: PlacemarkIcon.single(PlacemarkIconStyle(
+                      image: BitmapDescriptor.fromAssetImage(
+                          'assets/user_location.png'), scale: 0.2))));
+            });
             mapObjects.add(PlacemarkMapObject(
                 mapId: const MapObjectId('user location'),
-                onTap: (PlacemarkMapObject self, Point point) =>  bottomSheet(context, point.toString()),
                 point: Point(
                   latitude:  state.currentUserLocation.latitude,
                   longitude: state.currentUserLocation.longitude,

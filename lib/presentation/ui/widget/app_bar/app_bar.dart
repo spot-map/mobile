@@ -23,7 +23,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             onTap: (){
               AppRouter.pushNamed(AddSpotScreen.id);
             },
-            child:  Icon(Icons.add, size: 20, color:Colors.black),
+            child:  const Icon(Icons.add, size: 20, color:Colors.black),
           ),
         ),
         Padding(
@@ -32,11 +32,11 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
             onTap: (){
              AppRouter.pushNamed(SettingsScreen.id);
             },
-            child:  Icon(Icons.settings, size: 20, color:Colors.black),
+            child:  const Icon(Icons.settings, size: 20, color:Colors.black),
           ),
         )
       ],
-      title: Text(title,style: TextStyle(color: Colors.black)),
+      title: Text(title,style: const TextStyle(color: Colors.black)),
     );
   }
 }

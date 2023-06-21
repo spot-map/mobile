@@ -1,6 +1,6 @@
 import 'package:injectable/injectable.dart';
+import 'package:ride_map/data/map_page_models/map_model.dart';
 import 'package:ride_map/domain/api/service/map_service.dart';
-import '../../../data/map_model/map_model.dart';
 
 
 @Injectable()
