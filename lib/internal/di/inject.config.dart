@@ -21,7 +21,7 @@ import 'package:ride_map/domain/api/repository/i_registration_repository.dart'
 import 'package:ride_map/domain/api/service/auth_service.dart' as _i4;
 import 'package:ride_map/domain/api/service/map_service.dart' as _i6;
 import 'package:ride_map/domain/api/service/registration_service.dart' as _i8;
-import 'package:ride_map/domain/bloc/location/bloc/location_bloc.dart' as _i9;
+import 'package:ride_map/domain/bloc/location/location_bloc.dart' as _i9;
 import 'package:ride_map/untils/preferences/preferences.dart' as _i13;
 
 extension GetItInjectableX on _i1.GetIt {

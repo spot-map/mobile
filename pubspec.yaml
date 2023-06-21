@@ -84,6 +84,7 @@ flutter:
   assets:
     - assets/.env
     - assets/i.png
+    - assets/spot_location.png
     - assets/user_location.png
   #   - images/a_dot_ham.jpeg
 

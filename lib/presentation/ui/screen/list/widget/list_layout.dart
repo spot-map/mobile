@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/location/bloc/location_bloc.dart';
+import 'package:ride_map/domain/bloc/location/location_bloc.dart';
 import 'package:ride_map/domain/bloc/spot/spot_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/list/widget/list_widget.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';

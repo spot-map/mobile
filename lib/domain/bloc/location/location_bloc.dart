@@ -8,7 +8,7 @@ import 'package:ride_map/domain/api/provider/map_provider.dart';
 import 'package:ride_map/untils/enum/location_enum.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
-import '../../../../data/map_page_models/map_model.dart';
+import '../../../data/map_page_models/map_model.dart';
 
 part 'location_event.dart';
 

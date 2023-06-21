@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/location/bloc/location_bloc.dart';
+import 'package:ride_map/domain/bloc/location/location_bloc.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/map/map_widget.dart';
 import 'package:ride_map/untils/dev.dart';
@@ -26,6 +26,7 @@ class MapLayout extends StatelessWidget {
         builder: (context, state) {
           if (state.status.isSuccess) {
             Dev.log('SPOTS ${state.spot!.data.length}');
+
             state.spot!.data.forEach((element) {
               mapObjects.add(PlacemarkMapObject(
                   mapId:  MapObjectId('spot ${element.id}'),
@@ -36,8 +37,9 @@ class MapLayout extends StatelessWidget {
                   ),
                   icon: PlacemarkIcon.single(PlacemarkIconStyle(
                       image: BitmapDescriptor.fromAssetImage(
-                          'assets/user_location.png'), scale: 0.2))));
+                          'assets/spot_location.png'), scale: 0.2))));
             });
+
             mapObjects.add(PlacemarkMapObject(
                 mapId: const MapObjectId('user location'),
                 point: Point(
