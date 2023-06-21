@@ -13,18 +13,17 @@ class LocationState extends Equatable {
     this.status = LocationStateStatus.initial,
     LatLng? initLocation,
     CurrentUserLocationEntity? currentUserLocation,
+    this.spot,
     String? errorMessage,
-     this.mapObjects
-    // SpotModel? spot
   })  : currentUserLocation =
       currentUserLocation ?? CurrentUserLocationEntity.empty,
-        initLocation = initLocation ?? const LatLng(40.4167, -3.70325),
+        initLocation = initLocation ?? const LatLng(40.4167, 3.70325),
         errorMessage = errorMessage ?? '';
 
   final LocationStateStatus status;
   final CurrentUserLocationEntity currentUserLocation;
-  final List<MapObject>? mapObjects;
   final LatLng initLocation;
+  final MapModel? spot;
   final String errorMessage;
 
   @override
@@ -33,7 +32,7 @@ class LocationState extends Equatable {
     currentUserLocation,
     initLocation,
     errorMessage,
-    mapObjects
+    spot
   ];
 
   LocationState copyWith({
@@ -42,14 +41,14 @@ class LocationState extends Equatable {
     LatLng? initLocation,
     Location? location,
     String? errorMessage,
-    List<MapObject>? mapObjects
+    MapModel? spot
   }) {
     return LocationState(
       status: status ?? this.status,
       currentUserLocation: currentUserLocation ?? this.currentUserLocation,
       initLocation: initLocation ?? this.initLocation,
       errorMessage: errorMessage ?? this.errorMessage,
-      mapObjects:  mapObjects ?? this.mapObjects
+      spot: spot ?? this.spot,
     );
   }
 }

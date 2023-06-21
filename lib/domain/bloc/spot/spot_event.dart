@@ -7,4 +7,5 @@ abstract class SpotEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class GetSpots extends SpotEvent{}
+class GetSpotList extends SpotEvent{}
+

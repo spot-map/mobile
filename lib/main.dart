@@ -9,13 +9,14 @@ import 'internal/di/inject.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
-  final storage = await HydratedStorage.build(
-      storageDirectory: await getTemporaryDirectory());
-
-  HydratedBlocOverrides.runZoned(() => runApp(const App()),
-      blocObserver: AppBlocObservable(), storage: storage);
+  // final storage = await HydratedStorage.build(
+  //     storageDirectory: await getTemporaryDirectory());
+  //
+  // HydratedBlocOverrides.runZoned(() => ,
+  //     blocObserver: AppBlocObservable(), storage: storage);
   setup();
   await init();
+  runApp(const App());
 }
 
 Future<void> init() async {

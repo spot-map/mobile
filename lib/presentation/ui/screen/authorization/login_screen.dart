@@ -11,7 +11,7 @@ class LoginScreen extends StatelessWidget {
         child: AppBar(
           elevation: 0,
           backgroundColor: Colors.transparent,
-          title: const Text('Авторизация',
+          title: const Text('Вход',
               style: TextStyle(fontSize: 20, color: Colors.black)),
         ),
       ),
