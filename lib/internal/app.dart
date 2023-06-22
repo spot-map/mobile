@@ -22,39 +22,12 @@ class App extends StatelessWidget {
             }
             return null;
           },
-              debugShowCheckedModeBanner: false,
-              theme: ThemeData(
-                primarySwatch: Colors.blue,
-              ),
-              //theme: state.theme.themeData,
-              home: const RootScreen(),
-            )
-         );
+          debugShowCheckedModeBanner: false,
+          theme: ThemeData(
+            primarySwatch: Colors.blue,
+          ),
+          //theme: state.theme.themeData,
+          home: const RootScreen(),
+        ));
   }
 }
-
-// class App extends StatelessWidget {
-//   const App({Key? key}) : super(key: key);
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return MaterialApp(
-//       navigatorKey: AppRouter.key,
-//       onGenerateRoute: (settings) {
-//         final builder = AppRouter.routes[settings.name];
-//         if (builder != null) {
-//           return MaterialPageRoute(
-//               settings: settings,
-//               builder: (context) => builder(context, settings.arguments));
-//         }
-//         return null;
-//       },
-//       debugShowCheckedModeBanner: false,
-//       theme: ThemeData(
-//         primarySwatch: Colors.blue,
-//       ),
-//       //theme: state.theme.themeData,
-//       home: const LoginScreen(),
-//     );
-//   }
-// }

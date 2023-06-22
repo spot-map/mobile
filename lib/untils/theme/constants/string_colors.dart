@@ -1,5 +1,4 @@
-
-class StringColors{
+class StringColors {
   StringColors._();
 
   static const String selectedItemColor = '#3364E0';
@@ -13,4 +12,6 @@ class StringColors{
   static const String containerColor = '#D8D8D8';
 
   static const String favoriteButtonColor = '#ff0000';
+
+  static const String deleteColor = "#F44336FF";
 }

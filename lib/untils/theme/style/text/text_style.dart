@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 
 TextStyle myTextStyleFontUbuntu(
-    {double? fontSize,
-      Color? textColor,
-      FontWeight? newFontWeight,
-      required BuildContext? context}) =>
+        {double? fontSize,
+        Color? textColor,
+        FontWeight? newFontWeight,
+        required BuildContext? context}) =>
     TextStyle(
       color: textColor,
       fontFamily: 'Ubuntu',

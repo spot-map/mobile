@@ -13,8 +13,13 @@ class BlocInitial {
 
   static final List<BlocProvider> bloc = [
     BlocProvider<NavigationCubit>(create: (_) => NavigationCubit()),
-    BlocProvider<LocationBloc>(create: (context) => LocationBloc(locationRepository: context.read<LocationRepository>(), spot: MapModel())..add(GetLocation())),
-    BlocProvider<SpotBloc>(create: (context) => SpotBloc(spot: MapModel())..add(GetSpotList()))
+    BlocProvider<LocationBloc>(
+        create: (context) => LocationBloc(
+            locationRepository: context.read<LocationRepository>(),
+            spot: MapModel())
+          ..add(GetLocation())),
+    BlocProvider<SpotBloc>(
+        create: (context) => SpotBloc(spot: MapModel())..add(GetSpotList()))
   ];
 
   static final List<BlocListener> listener = [
@@ -23,7 +28,7 @@ class BlocInitial {
         snackBar(state.errorMessage, context);
       }
     }),
-    BlocListener<SpotBloc,SpotState>(listener: (context,state){
+    BlocListener<SpotBloc, SpotState>(listener: (context, state) {
       if (state.status == LocationStateStatus.error) {
         snackBar(state.errorMessage, context);
       }

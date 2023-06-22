@@ -11,10 +11,12 @@ class AppColor implements IAppColor {
   AppColor._();
 
   @override
-  final Color selectedItemColor = HexColor.fromHex(StringColors.selectedItemColor);
+  final Color selectedItemColor =
+      HexColor.fromHex(StringColors.selectedItemColor);
 
   @override
-  Color get unselectedItemColor => HexColor.fromHex(StringColors.unselectedItemColor);
+  Color get unselectedItemColor =>
+      HexColor.fromHex(StringColors.unselectedItemColor);
 
   @override
   Color get textColor => HexColor.fromHex(StringColors.textColor);
@@ -23,9 +25,12 @@ class AppColor implements IAppColor {
   Color get backButtonColor => HexColor.fromHex(StringColors.backButtonColor);
 
   @override
-  Color get containerColor =>  HexColor.fromHex(StringColors.containerColor);
+  Color get containerColor => HexColor.fromHex(StringColors.containerColor);
 
   @override
-  Color get favoriteButtonColor => HexColor.fromHex(StringColors.favoriteButtonColor);
+  Color get favoriteButtonColor =>
+      HexColor.fromHex(StringColors.favoriteButtonColor);
 
+  @override
+  Color get deleteColor => HexColor.fromHex(StringColors.deleteColor);
 }

@@ -15,9 +15,9 @@ class MapScreen extends StatelessWidget {
       create: (context) => LocationRepository(),
       child: BlocProvider<LocationBloc>(
         create: (context) => LocationBloc(
-          locationRepository: context.read<LocationRepository>(),
-          spot: MapModel()
-        )..add(GetLocation()),
+            locationRepository: context.read<LocationRepository>(),
+            spot: MapModel())
+          ..add(GetLocation()),
         child: const MapLayout(),
       ),
     );

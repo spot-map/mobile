@@ -8,9 +8,7 @@ part 'map_model.g.dart';
 
 @freezed
 class MapModel with _$MapModel {
-  const factory MapModel({
-    @Default([]) List<Spots> data
-  }) = _MapModel;
+  const factory MapModel({@Default([]) List<Spots> data}) = _MapModel;
 
   factory MapModel.fromJson(Map<String, Object?> json) =>
       _$MapModelFromJson(json);
@@ -27,8 +25,5 @@ class Spots with _$Spots {
     double? longitude,
   }) = _Spots;
 
-  factory Spots.fromJson(Map<String, Object?> json) =>
-      _$SpotsFromJson(json);
+  factory Spots.fromJson(Map<String, Object?> json) => _$SpotsFromJson(json);
 }
-
-

@@ -6,4 +6,3 @@ final getIt = GetIt.instance;
 
 @InjectableInit()
 void setup() => getIt.init();
-

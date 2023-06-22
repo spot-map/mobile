@@ -6,8 +6,10 @@ import 'package:ride_map/presentation/ui/widget/map/map_widget.dart';
 import 'package:ride_map/untils/dev.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
+import '../../../../untils/config/app_router.dart';
 import '../../widget/bottom_sheet/bottom_sheet.dart';
 import '../../widget/map/location_error/location_error_widget.dart';
+import '../add_spot/add_spot_screen.dart';
 
 class MapLayout extends StatelessWidget {
   const MapLayout({Key? key}) : super(key: key);
@@ -16,7 +18,20 @@ class MapLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     List<MapObject> mapObjects = [];
     return Scaffold(
-      appBar: const MyAppBar(title: 'Главная',),
+      appBar: MyAppBar(
+        title: 'Главная',
+        widgetRight: [
+          Padding(
+            padding: const EdgeInsets.only(right: 10.0),
+            child: GestureDetector(
+              onTap: () {
+                AppRouter.pushNamed(AddSpotScreen.id);
+              },
+              child: const Icon(Icons.add, size: 20, color: Colors.black),
+            ),
+          ),
+        ],
+      ),
       extendBodyBehindAppBar: true,
       body: BlocBuilder<LocationBloc, LocationState>(
         buildWhen: (previous, current) =>
@@ -29,26 +44,29 @@ class MapLayout extends StatelessWidget {
 
             state.spot!.data.forEach((element) {
               mapObjects.add(PlacemarkMapObject(
-                  mapId:  MapObjectId('spot ${element.id}'),
-                  onTap: (PlacemarkMapObject self, Point point) =>  bottomSheet(context, point.toString()),
+                  mapId: MapObjectId('spot ${element.id}'),
+                  onTap: (PlacemarkMapObject self, Point point) =>
+                      bottomSheet(context, point.toString()),
                   point: Point(
-                    latitude:  element.latitude!,
+                    latitude: element.latitude!,
                     longitude: element.longitude!,
                   ),
                   icon: PlacemarkIcon.single(PlacemarkIconStyle(
                       image: BitmapDescriptor.fromAssetImage(
-                          'assets/spot_location.png'), scale: 0.2))));
+                          'assets/spot_location.png'),
+                      scale: 0.2))));
             });
 
             mapObjects.add(PlacemarkMapObject(
                 mapId: const MapObjectId('user location'),
                 point: Point(
-                  latitude:  state.currentUserLocation.latitude,
+                  latitude: state.currentUserLocation.latitude,
                   longitude: state.currentUserLocation.longitude,
                 ),
                 icon: PlacemarkIcon.single(PlacemarkIconStyle(
                     image: BitmapDescriptor.fromAssetImage(
-                        'assets/user_location.png'), scale: 0.2))));
+                        'assets/user_location.png'),
+                    scale: 0.2))));
             return MapWidget(
               currentUserLocation: state.currentUserLocation,
               mapObjects: mapObjects,

@@ -10,15 +10,15 @@ class DioManager {
 
   DioManager._()
       : dio = Dio(BaseOptions(
-      baseUrl: ApiConstants.BASE_URL,
-      connectTimeout: 5000,
-      receiveTimeout: 3000,
-      responseType: ResponseType.json,
-      headers: {
-       // 'Authorization': 'Bearer ${Preferences().getToken}',
-        HttpHeaders.contentTypeHeader: 'application/json; charset=UTF8',
-        HttpHeaders.acceptHeader: 'application/json',
-      }));
+            baseUrl: ApiConstants.BASE_URL,
+            connectTimeout: 5000,
+            receiveTimeout: 3000,
+            responseType: ResponseType.json,
+            headers: {
+              // 'Authorization': 'Bearer ${Preferences().getToken}',
+              HttpHeaders.contentTypeHeader: 'application/json; charset=UTF8',
+              HttpHeaders.acceptHeader: 'application/json',
+            }));
 
   late final Dio dio;
 }

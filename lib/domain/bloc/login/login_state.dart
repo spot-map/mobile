@@ -1,10 +1,26 @@
 part of 'login_bloc.dart';
 
-abstract class LoginState extends Equatable {
-  const LoginState();
-}
+class LoginState extends Equatable {
+  const LoginState({
+    this.status = LocationStateStatus.initial,
+    String? errorMessage,
+  }) : errorMessage = errorMessage ?? '';
 
-class LoginInitial extends LoginState {
+  final LocationStateStatus status;
+  final String? errorMessage;
+
   @override
-  List<Object> get props => [];
+  List<Object?> get props => [
+        errorMessage,
+      ];
+
+  LoginState copyWith({
+    LocationStateStatus? status,
+    String? errorMessage,
+  }) {
+    return LoginState(
+      errorMessage: errorMessage ?? this.errorMessage,
+      status: status ?? this.status,
+    );
+  }
 }

@@ -23,6 +23,4 @@ class MapService extends IMapRepository {
       throw Exception('Failed to load API data');
     }
   }
-
-
 }
