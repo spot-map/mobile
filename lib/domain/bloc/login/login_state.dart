@@ -2,11 +2,11 @@ part of 'login_bloc.dart';
 
 class LoginState extends Equatable {
   const LoginState({
-    this.status = LocationStateStatus.initial,
+    this.status = LoginStatus.initial,
     String? errorMessage,
   }) : errorMessage = errorMessage ?? '';
 
-  final LocationStateStatus status;
+  final LoginStatus status;
   final String? errorMessage;
 
   @override
@@ -15,7 +15,7 @@ class LoginState extends Equatable {
       ];
 
   LoginState copyWith({
-    LocationStateStatus? status,
+    LoginStatus? status,
     String? errorMessage,
   }) {
     return LoginState(

@@ -19,6 +19,7 @@ class MapLayout extends StatelessWidget {
     List<MapObject> mapObjects = [];
     return Scaffold(
       appBar: MyAppBar(
+        size: 50,
         title: 'Главная',
         widgetRight: [
           Padding(

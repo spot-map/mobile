@@ -33,4 +33,7 @@ class AppColor implements IAppColor {
 
   @override
   Color get deleteColor => HexColor.fromHex(StringColors.deleteColor);
+
+  @override
+  Color get textFieldColor => HexColor.fromHex(StringColors.textFieldColor);
 }

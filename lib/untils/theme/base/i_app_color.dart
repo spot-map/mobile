@@ -8,6 +8,7 @@ class IAppColor {
   final Color containerColor;
   final Color favoriteButtonColor;
   final Color deleteColor;
+  final Color textFieldColor;
 
   IAppColor(
       this.textColor,
@@ -16,5 +17,5 @@ class IAppColor {
       this.backButtonColor,
       this.containerColor,
       this.favoriteButtonColor,
-      this.deleteColor);
+      this.deleteColor, this.textFieldColor);
 }

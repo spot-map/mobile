@@ -13,5 +13,7 @@ class StringColors {
 
   static const String favoriteButtonColor = '#ff0000';
 
-  static const String deleteColor = "#F44336FF";
+  static const String deleteColor = "#FF0000";
+
+  static const String textFieldColor = "#F1F4FA";
 }

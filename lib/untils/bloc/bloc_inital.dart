@@ -2,6 +2,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:location_repository/location_repository.dart';
 import 'package:ride_map/data/map_page_models/map_model.dart';
 import 'package:ride_map/domain/bloc/location/location_bloc.dart';
+import 'package:ride_map/domain/bloc/login/login_bloc.dart';
 import 'package:ride_map/domain/bloc/navigation/navigation_cubit.dart';
 import 'package:ride_map/domain/bloc/spot/spot_bloc.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
@@ -19,7 +20,8 @@ class BlocInitial {
             spot: MapModel())
           ..add(GetLocation())),
     BlocProvider<SpotBloc>(
-        create: (context) => SpotBloc(spot: MapModel())..add(GetSpotList()))
+        create: (context) => SpotBloc(spot: MapModel())..add(GetSpotList())),
+    BlocProvider<LoginBloc>(create: (context) =>  LoginBloc())
   ];
 
   static final List<BlocListener> listener = [

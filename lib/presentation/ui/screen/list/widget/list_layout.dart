@@ -15,6 +15,7 @@ class ListLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppBar(
+        size: 50,
         title: 'Список спотов',
       ),
       extendBodyBehindAppBar: true,

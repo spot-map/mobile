@@ -10,7 +10,7 @@ class DioManager {
 
   DioManager._()
       : dio = Dio(BaseOptions(
-            baseUrl: ApiConstants.BASE_URL,
+            baseUrl: ApiConstants.BASE_URL_LOCAL_SMOL,
             connectTimeout: 5000,
             receiveTimeout: 3000,
             responseType: ResponseType.json,

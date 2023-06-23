@@ -25,7 +25,7 @@ class _SettingsScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const MyAppBar(title: 'Настройки'),
+        appBar: const MyAppBar( size: 50, title: 'Настройки'),
         body: Column(
           children: [
             const Expanded(child: MenuList()),
