@@ -8,7 +8,9 @@ part 'map_by_id_model.g.dart';
 
 @freezed
 class MapByIdModel with _$MapByIdModel {
-  const factory MapByIdModel({@Default([]) List<Spots> data}) = _MapByIdModel;
+  const factory MapByIdModel({
+    Spots? data
+  }) = _MapByIdModel;
 
   factory MapByIdModel.fromJson(Map<String, Object?> json) =>
       _$MapByIdModelFromJson(json);

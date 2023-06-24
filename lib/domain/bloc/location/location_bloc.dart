@@ -1,3 +1,4 @@
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:injectable/injectable.dart';
@@ -22,7 +23,8 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
 
   MapModel spot;
 
-  LocationBloc({required this.locationRepository, required this.spot}) : super(LocationState()) {
+  LocationBloc({required this.locationRepository, required this.spot})
+      : super(LocationState()) {
     on<GetLocation>(_getLocationEvent);
   }
 
@@ -32,7 +34,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     try {
       emit(state.copyWith(status: LocationStateStatus.loading));
       var _currentLocation = await locationRepository.getCurrentLocation();
-      final spots = await _provider.getMap();
+      final spots = await _provider.getSpot();
       emit(
         state.copyWith(
           currentUserLocation: _currentLocation,
@@ -49,6 +51,14 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
       );
       addError(e);
     } on NetworkError catch (e) {
+      emit(
+        state.copyWith(
+          status: LocationStateStatus.error,
+          errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    } on DioError catch (e) {
       emit(
         state.copyWith(
           status: LocationStateStatus.error,

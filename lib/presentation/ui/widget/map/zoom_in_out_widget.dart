@@ -9,6 +9,7 @@ class ZoomInOutWidget extends StatelessWidget {
 
   final VoidCallback zoomInCallback;
   final VoidCallback zoomOutCallback;
+
   @override
   Widget build(BuildContext context) {
     return Column(

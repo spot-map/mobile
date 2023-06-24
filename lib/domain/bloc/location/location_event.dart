@@ -7,4 +7,4 @@ abstract class LocationEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class GetLocation extends LocationEvent{}
+class GetLocation extends LocationEvent {}

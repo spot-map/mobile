@@ -27,10 +27,13 @@ class Preferences {
 
   String? get getToken => sharedPrefs?.getString(authToken);
 
-  set tokenString(String value) {
-    sharedPrefs?.setString(authToken, value);
-  }
-
+  // set setToken(String value) {
+  //   sharedPrefs?.setString(authToken, value);
+  // }
 
   Future<bool>? get deleteToken => sharedPrefs?.remove(authToken);
+
+  void setToken(String value) {
+    sharedPrefs?.setString(authToken, value);
+  }
 }

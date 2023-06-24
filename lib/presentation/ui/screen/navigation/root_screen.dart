@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/domain/bloc/navigation/constants/constants.dart';
 import 'package:ride_map/domain/bloc/navigation/navigation_cubit.dart';
+import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login_screen.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
-import 'package:ride_map/presentation/ui/screen/list/list_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
+import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
+import 'package:ride_map/untils/preferences/preferences.dart';
 import 'package:ride_map/untils/theme/appColors.dart';
 
 import '../account/account_screen.dart';
@@ -30,14 +32,19 @@ class RootScreen extends StatelessWidget {
                   label: 'Главная'),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.favorite),
-                  activeIcon:
-                      Icon(Icons.favorite, color: AppColor().favoriteButtonColor),
+                  activeIcon: Icon(Icons.favorite,
+                      color: AppColor().favoriteButtonColor),
                   label: 'Избранное'),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.person),
                   activeIcon:
                       Icon(Icons.person, color: AppColor().selectedItemColor),
                   label: 'Аккаунт'),
+              BottomNavigationBarItem(
+                  icon: const Icon(Icons.settings),
+                  activeIcon:
+                      Icon(Icons.settings, color: AppColor().selectedItemColor),
+                  label: 'Настройки')
             ],
             onTap: (index) {
               switch (index) {
@@ -53,6 +60,9 @@ class RootScreen extends StatelessWidget {
                   BlocProvider.of<NavigationCubit>(context)
                       .getNavBarItem(NavBarItem.account);
                   break;
+                case 3:
+                  BlocProvider.of<NavigationCubit>(context)
+                      .getNavBarItem(NavBarItem.settings);
               }
             },
           );
@@ -63,9 +73,11 @@ class RootScreen extends StatelessWidget {
           if (state.item == NavBarItem.home) {
             return const MapScreen();
           } else if (state.item == NavBarItem.favorite) {
-            return const FavoriteScreen();
-          }else if (state.item == NavBarItem.account) {
+            return  Preferences().getToken == null ? const LoginScreen() : const FavoriteScreen();
+          } else if (state.item == NavBarItem.account) {
             return const AccountScreen();
+          } else if (state.item == NavBarItem.settings) {
+            return const SettingsScreen();
           }
           return Container();
         },

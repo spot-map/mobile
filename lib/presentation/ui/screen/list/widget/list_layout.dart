@@ -14,11 +14,16 @@ class ListLayout extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const MyAppBar(title: 'Список спотов',),
+      appBar: const MyAppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: false,
+        size: 50,
+        title: 'Список спотов',
+      ),
       extendBodyBehindAppBar: true,
       body: BlocBuilder<SpotBloc, SpotState>(
         buildWhen: (previous, current) =>
-        current.status.isLoading ||
+            current.status.isLoading ||
             current.status.isError ||
             current.status.isSuccess,
         builder: (context, state) {
@@ -40,4 +45,3 @@ class ListLayout extends StatelessWidget {
     );
   }
 }
-
