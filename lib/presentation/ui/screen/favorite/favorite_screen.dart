@@ -13,6 +13,8 @@ class FavoriteScreen extends StatelessWidget {
           ? MyAppBar(
               title: 'Избранное',
               size: 50,
+        centerTitle: false,
+              automaticallyImplyLeading: false,
               widgetRight: [
                 GestureDetector(
                   child: Icon(Icons.exit_to_app,
@@ -20,7 +22,7 @@ class FavoriteScreen extends StatelessWidget {
                 )
               ],
             )
-          : MyAppBar(title: '', size: 50),
+          : MyAppBar(title: '', size: 50, automaticallyImplyLeading: false,),
       body: Center(
         child: Text('FavoriteScreen'),
       ),

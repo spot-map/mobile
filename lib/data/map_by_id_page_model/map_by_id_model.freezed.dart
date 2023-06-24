@@ -20,7 +20,7 @@ MapByIdModel _$MapByIdModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$MapByIdModel {
-  List<Spots> get data => throw _privateConstructorUsedError;
+  Spots? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,9 @@ abstract class $MapByIdModelCopyWith<$Res> {
           MapByIdModel value, $Res Function(MapByIdModel) then) =
       _$MapByIdModelCopyWithImpl<$Res, MapByIdModel>;
   @useResult
-  $Res call({List<Spots> data});
+  $Res call({Spots? data});
+
+  $SpotsCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -50,14 +52,26 @@ class _$MapByIdModelCopyWithImpl<$Res, $Val extends MapByIdModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_value.copyWith(
-      data: null == data
+      data: freezed == data
           ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Spots>,
+              as Spots?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $SpotsCopyWith<$Res>? get data {
+    if (_value.data == null) {
+      return null;
+    }
+
+    return $SpotsCopyWith<$Res>(_value.data!, (value) {
+      return _then(_value.copyWith(data: value) as $Val);
+    });
   }
 }
 
@@ -69,7 +83,10 @@ abstract class _$$_MapByIdModelCopyWith<$Res>
       __$$_MapByIdModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<Spots> data});
+  $Res call({Spots? data});
+
+  @override
+  $SpotsCopyWith<$Res>? get data;
 }
 
 /// @nodoc
@@ -83,13 +100,13 @@ class __$$_MapByIdModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? data = null,
+    Object? data = freezed,
   }) {
     return _then(_$_MapByIdModel(
-      data: null == data
-          ? _value._data
+      data: freezed == data
+          ? _value.data
           : data // ignore: cast_nullable_to_non_nullable
-              as List<Spots>,
+              as Spots?,
     ));
   }
 }
@@ -97,19 +114,13 @@ class __$$_MapByIdModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_MapByIdModel implements _MapByIdModel {
-  const _$_MapByIdModel({final List<Spots> data = const []}) : _data = data;
+  const _$_MapByIdModel({this.data});
 
   factory _$_MapByIdModel.fromJson(Map<String, dynamic> json) =>
       _$$_MapByIdModelFromJson(json);
 
-  final List<Spots> _data;
   @override
-  @JsonKey()
-  List<Spots> get data {
-    if (_data is EqualUnmodifiableListView) return _data;
-    // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_data);
-  }
+  final Spots? data;
 
   @override
   String toString() {
@@ -121,13 +132,12 @@ class _$_MapByIdModel implements _MapByIdModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_MapByIdModel &&
-            const DeepCollectionEquality().equals(other._data, _data));
+            (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode => Object.hash(runtimeType, data);
 
   @JsonKey(ignore: true)
   @override
@@ -144,13 +154,13 @@ class _$_MapByIdModel implements _MapByIdModel {
 }
 
 abstract class _MapByIdModel implements MapByIdModel {
-  const factory _MapByIdModel({final List<Spots> data}) = _$_MapByIdModel;
+  const factory _MapByIdModel({final Spots? data}) = _$_MapByIdModel;
 
   factory _MapByIdModel.fromJson(Map<String, dynamic> json) =
       _$_MapByIdModel.fromJson;
 
   @override
-  List<Spots> get data;
+  Spots? get data;
   @override
   @JsonKey(ignore: true)
   _$$_MapByIdModelCopyWith<_$_MapByIdModel> get copyWith =>

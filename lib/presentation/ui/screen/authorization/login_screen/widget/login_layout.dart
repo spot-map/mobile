@@ -6,7 +6,6 @@ import 'package:ride_map/presentation/ui/screen/authorization/registration_scree
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/untils/theme/appColors.dart';
-import 'package:ride_map/untils/theme/style/text/text_style.dart';
 
 import '../../../../widget/map/location_error/location_error_widget.dart';
 import 'login_widget.dart';
@@ -27,7 +26,7 @@ class LoginLayout extends StatelessWidget {
       builder: (context, state) {
         if (state.status == LoginStatus.auth) {
           return Scaffold(
-            appBar: MyAppBar(title: 'Избранное ', size: 50, widgetRight: [
+            appBar: MyAppBar(title: 'Избранное ', size: 50,  centerTitle: false, automaticallyImplyLeading: false, widgetRight: [
               GestureDetector(
                 child:
                     Icon(Icons.exit_to_app, color: AppColor().backButtonColor),
@@ -45,6 +44,8 @@ class LoginLayout extends StatelessWidget {
             length: 2,
             child: Scaffold(
               appBar: MyAppBar(
+                automaticallyImplyLeading: false,
+                centerTitle: false,
                 title: 'Авторизация',
                 size: 100,
                 bottomWidget: TabBar(

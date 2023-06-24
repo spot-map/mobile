@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login_screen.dart';
 import 'package:ride_map/untils/bloc/bloc_inital.dart';
 import 'package:ride_map/untils/config/app_router.dart';
 import '../presentation/ui/screen/navigation/root_screen.dart';

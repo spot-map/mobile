@@ -22,6 +22,7 @@ class BlocInitial {
     BlocProvider<SpotBloc>(
         create: (context) => SpotBloc(spot: MapModel())..add(GetSpotList())),
     BlocProvider<LoginBloc>(create: (context) =>  LoginBloc())
+
   ];
 
   static final List<BlocListener> listener = [

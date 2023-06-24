@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
@@ -8,7 +6,6 @@ import 'package:ride_map/domain/api/provider/login_provider.dart';
 import 'package:ride_map/domain/bloc/login/constants/login_status.dart';
 import 'package:ride_map/untils/dev.dart';
 
-import '../../../untils/enum/location_enum.dart';
 
 part 'login_event.dart';
 

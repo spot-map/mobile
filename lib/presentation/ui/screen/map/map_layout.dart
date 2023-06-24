@@ -19,6 +19,8 @@ class MapLayout extends StatelessWidget {
     List<MapObject> mapObjects = [];
     return Scaffold(
       appBar: MyAppBar(
+        automaticallyImplyLeading: false,
+        centerTitle: false,
         size: 50,
         title: 'Главная',
         widgetRight: [
@@ -47,7 +49,7 @@ class MapLayout extends StatelessWidget {
               mapObjects.add(PlacemarkMapObject(
                   mapId: MapObjectId('spot ${element.id}'),
                   onTap: (PlacemarkMapObject self, Point point) =>
-                      bottomSheet(context, point.toString()),
+                      bottomSheet(context, element.id!),
                   point: Point(
                     latitude: element.latitude!,
                     longitude: element.longitude!,

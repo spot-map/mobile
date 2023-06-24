@@ -8,10 +8,9 @@ part of 'map_by_id_model.dart';
 
 _$_MapByIdModel _$$_MapByIdModelFromJson(Map<String, dynamic> json) =>
     _$_MapByIdModel(
-      data: (json['data'] as List<dynamic>?)
-              ?.map((e) => Spots.fromJson(e as Map<String, dynamic>))
-              .toList() ??
-          const [],
+      data: json['data'] == null
+          ? null
+          : Spots.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_MapByIdModelToJson(_$_MapByIdModel instance) =>

@@ -1,34 +1,31 @@
+
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
-import 'package:injectable/injectable.dart';
-import 'package:ride_map/data/map_page_models/map_model.dart';
+import 'package:ride_map/data/map_by_id_page_model/map_by_id_model.dart';
 import 'package:ride_map/domain/api/provider/map_provider.dart';
 import 'package:ride_map/untils/enum/location_enum.dart';
 
-part 'spot_event.dart';
-
-part 'spot_state.dart';
+part 'spot_by_id_event.dart';
+part 'spot_by_id_state.dart';
 
 final MapProvider _provider = MapProvider();
 
-@injectable
-class SpotBloc extends Bloc<SpotEvent, SpotState> {
-  MapModel? spot;
+class SpotByIdBloc extends Bloc<SpotByIdEvent, SpotByIdState> {
+  MapByIdModel spotByIdModel;
 
-
-  SpotBloc({required this.spot}) : super(SpotState()) {
-    on<GetSpotList>(_onGetSpotList);
+  SpotByIdBloc({required this.spotByIdModel}) : super(SpotByIdState()) {
+    on<GetSpotById>(_onGetSpotById);
   }
 
-  void _onGetSpotList(GetSpotList event, Emitter<SpotState> emit) async {
+  void _onGetSpotById(GetSpotById event, Emitter<SpotByIdState> emit)async {
     try {
       emit(state.copyWith(status: LocationStateStatus.loading));
-      final spots = await _provider.getSpot();
+      final spotById = await _provider.getSpotById(event.id);
       emit(
         state.copyWith(
           status: LocationStateStatus.success,
-          spot: spots,
+          spotById: spotById,
         ),
       );
     } on NetworkError catch (e) {
