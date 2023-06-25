@@ -14,5 +14,13 @@ class GetSpotById extends SpotByIdEvent{
 
   @override
   List<Object?> get props => [id];
+}
 
+class AddSpotToFavoriteEvent extends SpotByIdEvent{
+  final int id;
+
+ const AddSpotToFavoriteEvent(this.id);
+
+  @override
+  List<Object?> get props => [id];
 }

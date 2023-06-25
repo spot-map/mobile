@@ -45,6 +45,7 @@ class _MapWidgetState extends State<MapWidget> {
         ),
         body: YandexMap(
           key: mapKey,
+          mapType: MapType.map,
           mapObjects: widget.mapObjects,
           onMapCreated: _onMapCreated,
           zoomGesturesEnabled: true,

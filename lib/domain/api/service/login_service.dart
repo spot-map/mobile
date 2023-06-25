@@ -21,8 +21,8 @@ class AuthService implements IAuthRepository {
 
     if (response.statusCode == 200) {
       Dev.log('AUTH ${response.data}', name: 'USER AUTH');
-      Preferences().setToken(jsonEncode(response.data['data']['token']));
-      Dev.log('SAVED ${Preferences().getToken}', name: 'PREFS');
+      Prefs.setString('token', jsonEncode(response.data['data']['token']));
+      Dev.log('SAVED ${Prefs.getString('token')}', name: 'PREFS');
     }
   }
 

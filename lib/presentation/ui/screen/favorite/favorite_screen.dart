@@ -9,7 +9,7 @@ class FavoriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Preferences().getToken != null
+      appBar:Prefs.getString('token') != null
           ? MyAppBar(
               title: 'Избранное',
               size: 50,

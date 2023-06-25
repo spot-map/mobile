@@ -9,7 +9,7 @@ part 'map_by_id_model.g.dart';
 @freezed
 class MapByIdModel with _$MapByIdModel {
   const factory MapByIdModel({
-    Spots? data
+    Spot? data
   }) = _MapByIdModel;
 
   factory MapByIdModel.fromJson(Map<String, Object?> json) =>
@@ -17,8 +17,8 @@ class MapByIdModel with _$MapByIdModel {
 }
 
 @freezed
-class Spots with _$Spots {
-  const factory Spots(
+class Spot with _$Spot {
+  const factory Spot(
       {int? id,
       String? name,
       String? address,
@@ -26,9 +26,9 @@ class Spots with _$Spots {
       double? latitude,
       double? longitude,
       @Default([]) List<Images>? images,
-      @Default([]) List<Reactions>? reactions}) = _Spots;
+      @Default([]) List<Reactions>? reactions}) = _Spot;
 
-  factory Spots.fromJson(Map<String, Object?> json) => _$SpotsFromJson(json);
+  factory Spot.fromJson(Map<String, Object?> json) => _$SpotFromJson(json);
 }
 
 @freezed

@@ -42,6 +42,7 @@ dependencies:
   injectable: ^2.1.0
 #  vibration: ^1.8.1
   path_provider: ^2.0.11
+  http: any
   shared_preferences: ^2.0.15
   freezed: ^2.3.2
   json_serializable: ^6.5.4

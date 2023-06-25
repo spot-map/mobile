@@ -15,7 +15,7 @@ final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
 FavoriteModel _$FavoriteModelFromJson(Map<String, dynamic> json) {
-  return FavoriteModel.fromJson(json);
+  return _FavoriteModel.fromJson(json);
 }
 
 /// @nodoc
@@ -62,22 +62,22 @@ class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel>
 }
 
 /// @nodoc
-abstract class _$$FavoriteModelCopyWith<$Res>
+abstract class _$$_FavoriteModelCopyWith<$Res>
     implements $FavoriteModelCopyWith<$Res> {
-  factory _$$FavoriteModelCopyWith(
-          _$FavoriteModel value, $Res Function(_$FavoriteModel) then) =
-      __$$FavoriteModelCopyWithImpl<$Res>;
+  factory _$$_FavoriteModelCopyWith(
+          _$_FavoriteModel value, $Res Function(_$_FavoriteModel) then) =
+      __$$_FavoriteModelCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<FavoriteList> favorite});
 }
 
 /// @nodoc
-class __$$FavoriteModelCopyWithImpl<$Res>
-    extends _$FavoriteModelCopyWithImpl<$Res, _$FavoriteModel>
-    implements _$$FavoriteModelCopyWith<$Res> {
-  __$$FavoriteModelCopyWithImpl(
-      _$FavoriteModel _value, $Res Function(_$FavoriteModel) _then)
+class __$$_FavoriteModelCopyWithImpl<$Res>
+    extends _$FavoriteModelCopyWithImpl<$Res, _$_FavoriteModel>
+    implements _$$_FavoriteModelCopyWith<$Res> {
+  __$$_FavoriteModelCopyWithImpl(
+      _$_FavoriteModel _value, $Res Function(_$_FavoriteModel) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -85,7 +85,7 @@ class __$$FavoriteModelCopyWithImpl<$Res>
   $Res call({
     Object? favorite = null,
   }) {
-    return _then(_$FavoriteModel(
+    return _then(_$_FavoriteModel(
       favorite: null == favorite
           ? _value._favorite
           : favorite // ignore: cast_nullable_to_non_nullable
@@ -96,12 +96,12 @@ class __$$FavoriteModelCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FavoriteModel implements FavoriteModel {
-  const _$FavoriteModel({final List<FavoriteList> favorite = const []})
+class _$_FavoriteModel implements _FavoriteModel {
+  const _$_FavoriteModel({final List<FavoriteList> favorite = const []})
       : _favorite = favorite;
 
-  factory _$FavoriteModel.fromJson(Map<String, dynamic> json) =>
-      _$$FavoriteModelFromJson(json);
+  factory _$_FavoriteModel.fromJson(Map<String, dynamic> json) =>
+      _$$_FavoriteModelFromJson(json);
 
   final List<FavoriteList> _favorite;
   @override
@@ -121,7 +121,7 @@ class _$FavoriteModel implements FavoriteModel {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FavoriteModel &&
+            other is _$_FavoriteModel &&
             const DeepCollectionEquality().equals(other._favorite, _favorite));
   }
 
@@ -133,34 +133,34 @@ class _$FavoriteModel implements FavoriteModel {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FavoriteModelCopyWith<_$FavoriteModel> get copyWith =>
-      __$$FavoriteModelCopyWithImpl<_$FavoriteModel>(this, _$identity);
+  _$$_FavoriteModelCopyWith<_$_FavoriteModel> get copyWith =>
+      __$$_FavoriteModelCopyWithImpl<_$_FavoriteModel>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FavoriteModelToJson(
+    return _$$_FavoriteModelToJson(
       this,
     );
   }
 }
 
-abstract class FavoriteModel implements FavoriteModel {
-  const factory FavoriteModel({final List<FavoriteList> favorite}) =
-      _$FavoriteModel;
+abstract class _FavoriteModel implements FavoriteModel {
+  const factory _FavoriteModel({final List<FavoriteList> favorite}) =
+      _$_FavoriteModel;
 
-  factory FavoriteModel.fromJson(Map<String, dynamic> json) =
-      _$FavoriteModel.fromJson;
+  factory _FavoriteModel.fromJson(Map<String, dynamic> json) =
+      _$_FavoriteModel.fromJson;
 
   @override
   List<FavoriteList> get favorite;
   @override
   @JsonKey(ignore: true)
-  _$$FavoriteModelCopyWith<_$FavoriteModel> get copyWith =>
+  _$$_FavoriteModelCopyWith<_$_FavoriteModel> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
 FavoriteList _$FavoriteListFromJson(Map<String, dynamic> json) {
-  return FavoriteList.fromJson(json);
+  return _FavoriteList.fromJson(json);
 }
 
 /// @nodoc
@@ -227,11 +227,11 @@ class _$FavoriteListCopyWithImpl<$Res, $Val extends FavoriteList>
 }
 
 /// @nodoc
-abstract class _$$FavoriteListCopyWith<$Res>
+abstract class _$$_FavoriteListCopyWith<$Res>
     implements $FavoriteListCopyWith<$Res> {
-  factory _$$FavoriteListCopyWith(
-          _$FavoriteList value, $Res Function(_$FavoriteList) then) =
-      __$$FavoriteListCopyWithImpl<$Res>;
+  factory _$$_FavoriteListCopyWith(
+          _$_FavoriteList value, $Res Function(_$_FavoriteList) then) =
+      __$$_FavoriteListCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? id, Spot? spot});
@@ -241,11 +241,11 @@ abstract class _$$FavoriteListCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$FavoriteListCopyWithImpl<$Res>
-    extends _$FavoriteListCopyWithImpl<$Res, _$FavoriteList>
-    implements _$$FavoriteListCopyWith<$Res> {
-  __$$FavoriteListCopyWithImpl(
-      _$FavoriteList _value, $Res Function(_$FavoriteList) _then)
+class __$$_FavoriteListCopyWithImpl<$Res>
+    extends _$FavoriteListCopyWithImpl<$Res, _$_FavoriteList>
+    implements _$$_FavoriteListCopyWith<$Res> {
+  __$$_FavoriteListCopyWithImpl(
+      _$_FavoriteList _value, $Res Function(_$_FavoriteList) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -254,7 +254,7 @@ class __$$FavoriteListCopyWithImpl<$Res>
     Object? id = freezed,
     Object? spot = freezed,
   }) {
-    return _then(_$FavoriteList(
+    return _then(_$_FavoriteList(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -269,11 +269,11 @@ class __$$FavoriteListCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$FavoriteList implements FavoriteList {
-  const _$FavoriteList({this.id, this.spot});
+class _$_FavoriteList implements _FavoriteList {
+  const _$_FavoriteList({this.id, this.spot});
 
-  factory _$FavoriteList.fromJson(Map<String, dynamic> json) =>
-      _$$FavoriteListFromJson(json);
+  factory _$_FavoriteList.fromJson(Map<String, dynamic> json) =>
+      _$$_FavoriteListFromJson(json);
 
   @override
   final int? id;
@@ -289,7 +289,7 @@ class _$FavoriteList implements FavoriteList {
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$FavoriteList &&
+            other is _$_FavoriteList &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.spot, spot) || other.spot == spot));
   }
@@ -301,23 +301,23 @@ class _$FavoriteList implements FavoriteList {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$FavoriteListCopyWith<_$FavoriteList> get copyWith =>
-      __$$FavoriteListCopyWithImpl<_$FavoriteList>(this, _$identity);
+  _$$_FavoriteListCopyWith<_$_FavoriteList> get copyWith =>
+      __$$_FavoriteListCopyWithImpl<_$_FavoriteList>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$FavoriteListToJson(
+    return _$$_FavoriteListToJson(
       this,
     );
   }
 }
 
-abstract class FavoriteList implements FavoriteList {
-  const factory FavoriteList({final int? id, final Spot? spot}) =
-      _$FavoriteList;
+abstract class _FavoriteList implements FavoriteList {
+  const factory _FavoriteList({final int? id, final Spot? spot}) =
+      _$_FavoriteList;
 
-  factory FavoriteList.fromJson(Map<String, dynamic> json) =
-      _$FavoriteList.fromJson;
+  factory _FavoriteList.fromJson(Map<String, dynamic> json) =
+      _$_FavoriteList.fromJson;
 
   @override
   int? get id;
@@ -325,6 +325,6 @@ abstract class FavoriteList implements FavoriteList {
   Spot? get spot;
   @override
   @JsonKey(ignore: true)
-  _$$FavoriteListCopyWith<_$FavoriteList> get copyWith =>
+  _$$_FavoriteListCopyWith<_$_FavoriteList> get copyWith =>
       throw _privateConstructorUsedError;
 }

@@ -5,9 +5,14 @@ import 'package:ride_map/presentation/ui/widget/bottom_sheet/widget/by_id_layout
 Future bottomSheet(BuildContext context, int id) {
   return showModalBottomSheet(
       context: context,
-      builder: (BuildContext context) {
-        return Scaffold(
-          body: ByIdLayout(id: id),
-        );
-      });
+      shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.vertical(top: Radius.circular(30))),
+      isScrollControlled: true,
+      builder: (context) => DraggableScrollableSheet(
+        maxChildSize: 0.9,
+        initialChildSize: 0.4,
+        minChildSize: 0.32,
+          expand: false,
+          builder: (context, scrollController) => ByIdLayout(id: id),
+              ));
 }

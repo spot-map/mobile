@@ -10,7 +10,11 @@ class ApiConstants {
 
   static const String REGISTRATION = '$BASE_URL_LOCAL_SMOL/auth/registration';
 
-  static const MAP = '$BASE_URL_LOCAL_SMOL/spot';
+  static const MAP = '$BASE_URL_LOCAL_SMOL/spot/index';
+
+  static const SPOT_BY_ID = '$BASE_URL_LOCAL_SMOL/spot/show';
+
+  static const FAVORITE = '$BASE_URL_LOCAL_SMOL/favorite';
 
   static final CURRENT_LOCATION = LatLng(51.5090214, -0.1982948);
 }

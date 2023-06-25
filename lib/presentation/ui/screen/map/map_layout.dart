@@ -13,7 +13,6 @@ import '../add_spot/add_spot_screen.dart';
 
 class MapLayout extends StatelessWidget {
   const MapLayout({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
     List<MapObject> mapObjects = [];

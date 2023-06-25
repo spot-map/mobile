@@ -10,7 +10,7 @@ _$_MapByIdModel _$$_MapByIdModelFromJson(Map<String, dynamic> json) =>
     _$_MapByIdModel(
       data: json['data'] == null
           ? null
-          : Spots.fromJson(json['data'] as Map<String, dynamic>),
+          : Spot.fromJson(json['data'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_MapByIdModelToJson(_$_MapByIdModel instance) =>
@@ -18,7 +18,7 @@ Map<String, dynamic> _$$_MapByIdModelToJson(_$_MapByIdModel instance) =>
       'data': instance.data,
     };
 
-_$_Spots _$$_SpotsFromJson(Map<String, dynamic> json) => _$_Spots(
+_$_Spot _$$_SpotFromJson(Map<String, dynamic> json) => _$_Spot(
       id: json['id'] as int?,
       name: json['name'] as String?,
       address: json['address'] as String?,
@@ -35,7 +35,7 @@ _$_Spots _$$_SpotsFromJson(Map<String, dynamic> json) => _$_Spots(
           const [],
     );
 
-Map<String, dynamic> _$$_SpotsToJson(_$_Spots instance) => <String, dynamic>{
+Map<String, dynamic> _$$_SpotToJson(_$_Spot instance) => <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'address': instance.address,

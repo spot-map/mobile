@@ -3,6 +3,8 @@ import 'dart:io';
 import 'package:dio/dio.dart';
 import 'package:ride_map/untils/api/api_constants.dart';
 
+import '../preferences/preferences.dart';
+
 class DioManager {
   static DioManager? _instance;
 

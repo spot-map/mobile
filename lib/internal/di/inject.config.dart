@@ -46,7 +46,7 @@ extension GetItInjectableX on _i1.GetIt {
     gh.factory<_i11.LoginBloc>(() => _i11.LoginBloc());
     gh.factory<_i12.MapProvider>(() => _i12.MapProvider());
     gh.factory<_i13.NavigationCubit>(() => _i13.NavigationCubit());
-    gh.factory<_i14.Preferences>(() => _i14.Preferences());
+    gh.singleton<_i14.Prefs>(_i14.Prefs());
     gh.factory<_i15.SpotBloc>(() => _i15.SpotBloc(spot: gh<_i10.MapModel>()));
     return this;
   }

@@ -73,7 +73,7 @@ class RootScreen extends StatelessWidget {
           if (state.item == NavBarItem.home) {
             return const MapScreen();
           } else if (state.item == NavBarItem.favorite) {
-            return  Preferences().getToken == null ? const LoginScreen() : const FavoriteScreen();
+            return  Prefs.getString('token') == null ? const LoginScreen() : const FavoriteScreen();
           } else if (state.item == NavBarItem.account) {
             return const AccountScreen();
           } else if (state.item == NavBarItem.settings) {

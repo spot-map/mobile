@@ -28,12 +28,12 @@ class BlocInitial {
   static final List<BlocListener> listener = [
     BlocListener<LocationBloc, LocationState>(listener: (context, state) {
       if (state.status == LocationStateStatus.error) {
-        snackBar(state.errorMessage, context);
+        snackBar(state.errorMessage, context, true);
       }
     }),
     BlocListener<SpotBloc, SpotState>(listener: (context, state) {
       if (state.status == LocationStateStatus.error) {
-        snackBar(state.errorMessage, context);
+        snackBar(state.errorMessage, context, true);
       }
     })
   ];

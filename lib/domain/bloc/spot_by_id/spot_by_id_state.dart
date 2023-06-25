@@ -3,11 +3,11 @@ part of 'spot_by_id_bloc.dart';
 class SpotByIdState extends Equatable {
   const SpotByIdState({
     this.spotById,
-    this.status = LocationStateStatus.initial,
+    this.status = ByIdStatus.initial,
     String? errorMessage,
   }) : errorMessage = errorMessage ?? '';
 
-  final LocationStateStatus status;
+  final ByIdStatus status;
   final MapByIdModel? spotById;
   final String errorMessage;
 
@@ -15,7 +15,7 @@ class SpotByIdState extends Equatable {
   List<Object?> get props => [errorMessage, spotById];
 
   SpotByIdState copyWith(
-      {LocationStateStatus? status, String? errorMessage, MapByIdModel? spotById}) {
+      {ByIdStatus? status, String? errorMessage, MapByIdModel? spotById}) {
     return SpotByIdState(
       errorMessage: errorMessage ?? this.errorMessage,
       spotById: spotById ?? this.spotById,

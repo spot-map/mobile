@@ -1,39 +1,27 @@
 import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@injectable
 @singleton
-class Preferences {
-  String selectedThemeValue = 'selected Value';
-  String authToken = 'Token is ';
+@injectable
+class Prefs {
+  static SharedPreferences? _prefs;
 
-  static Preferences? _instance;
-
-  factory Preferences() => _instance ??= Preferences._();
-
-  Preferences._();
-
-  SharedPreferences? sharedPrefs;
-
-  Future<void> init() async {
-    sharedPrefs = await SharedPreferences.getInstance();
+  static Future<SharedPreferences> init() async {
+    _prefs = await SharedPreferences.getInstance();
+    return _prefs!;
   }
 
-  bool? get value => sharedPrefs?.getBool(selectedThemeValue);
+  static Future<bool> setInt(String key, int value) async =>
+      await _prefs!.setInt(key, value);
 
-  set themeBool(bool value) {
-    sharedPrefs?.setBool(selectedThemeValue, value);
-  }
+  static Future<bool> setString(String key, String value) async =>
+      await _prefs!.setString(key, value);
 
-  String? get getToken => sharedPrefs?.getString(authToken);
+  static int? getInt(String key) => _prefs!.getInt(key);
 
-  // set setToken(String value) {
-  //   sharedPrefs?.setString(authToken, value);
-  // }
+  static String? getString(String key) => _prefs!.getString(key);
 
-  Future<bool>? get deleteToken => sharedPrefs?.remove(authToken);
+  static Future<bool> remove(String key) async => await _prefs!.remove(key);
 
-  void setToken(String value) {
-    sharedPrefs?.setString(authToken, value);
-  }
+  static Future<bool> clear() async => await _prefs!.clear();
 }
