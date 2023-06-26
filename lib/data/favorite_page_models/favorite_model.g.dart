@@ -8,7 +8,7 @@ part of 'favorite_model.dart';
 
 _$_FavoriteModel _$$_FavoriteModelFromJson(Map<String, dynamic> json) =>
     _$_FavoriteModel(
-      favorite: (json['favorite'] as List<dynamic>?)
+      data: (json['data'] as List<dynamic>?)
               ?.map((e) => FavoriteList.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
@@ -16,7 +16,7 @@ _$_FavoriteModel _$$_FavoriteModelFromJson(Map<String, dynamic> json) =>
 
 Map<String, dynamic> _$$_FavoriteModelToJson(_$_FavoriteModel instance) =>
     <String, dynamic>{
-      'favorite': instance.favorite,
+      'data': instance.data,
     };
 
 _$_FavoriteList _$$_FavoriteListFromJson(Map<String, dynamic> json) =>

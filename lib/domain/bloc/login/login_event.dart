@@ -29,3 +29,5 @@ class RegistrationEvent extends LoginEvent{
   List<Object?> get props => [name,email,password];
 
 }
+
+class LogoutEvent extends LoginEvent {}

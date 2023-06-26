@@ -1,6 +1,7 @@
 part of 'login_bloc.dart';
 
 class LoginState extends Equatable {
+
   const LoginState({
     this.status = LoginStatus.initial,
     String? errorMessage,

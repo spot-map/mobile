@@ -10,8 +10,10 @@ import 'package:ride_map/untils/preferences/preferences.dart';
 
 @Injectable(as: IAuthRepository)
 class AuthService implements IAuthRepository {
+
+  final Dio _dio = Dio();
   @override
-  Future<void> auth(String email, String password) async {
+  Future<void> login(String email, String password) async {
     var authObject = {"email": email, "password": password};
 
     Response response =
@@ -34,8 +36,6 @@ class AuthService implements IAuthRepository {
       "password": password
     };
 
-    Dev.log('${registrationObject.values}');
-    Dev.log('${registrationObject.entries}');
     Dev.log('$email $name $password');
     Response response = await DioManager()
         .dio
@@ -50,6 +50,20 @@ class AuthService implements IAuthRepository {
           name: 'USER REGISTRATION SUCCESS');
       return response.data;
 
+    }
+  }
+
+  @override
+  Future<void> logout() async{
+    _dio.options.headers = {
+      'Authorization': 'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
+    };
+
+    Response response = await _dio.post(ApiConstants.LOGOUT);
+    Dev.log('LOGOUT ${response.statusCode}',
+        name: 'USER LOGOUT');
+    if(response.statusCode == 200){
+      Prefs.remove('token');
     }
   }
 }

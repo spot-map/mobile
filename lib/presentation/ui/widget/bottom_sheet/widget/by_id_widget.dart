@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
+import 'package:ride_map/domain/bloc/favorite/favorite_bloc.dart';
 import 'package:ride_map/domain/bloc/spot_by_id/spot_by_id_bloc.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
@@ -17,7 +18,7 @@ Widget byIdWidget(BuildContext context, MapByIdModel model) {
         centerTitle: false,
         widgetRight: [
           IconButton(onPressed: (){
-            BlocProvider.of<SpotByIdBloc>(context).add(AddSpotToFavoriteEvent(model.data!.id!));
+            BlocProvider.of<FavoriteBloc>(context).add(AddSpotToFavoriteEvent(model.data!.id!));
             snackBar('Спот добавлен в избранное', context, false);
           }, icon: Icon(Icons.favorite), color: AppColor().deleteColor,)
         ],

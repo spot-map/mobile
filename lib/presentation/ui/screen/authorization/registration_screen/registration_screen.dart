@@ -11,78 +11,96 @@ class RegistrationScreen extends StatelessWidget {
     final TextEditingController _nameCotroller = TextEditingController();
     final TextEditingController _emailCotroller = TextEditingController();
     final TextEditingController _passwordCotroller = TextEditingController();
-    return Scaffold(
-      body: Column(
+    return  Scaffold(
+      backgroundColor: Colors.transparent,
+      body: Stack(
         children: [
-          Padding(
-              padding: const EdgeInsets.only(left: 5, right: 5, top: 50),
-              child: TextField(
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(color: Color(0xff4777ef)),
+          SingleChildScrollView(
+            child: Container(
+              padding: EdgeInsets.only(
+                  top: 20),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(left: 35, right: 35),
+                    child: Column(
+                      children: [
+                        TextField(
+                          style: TextStyle(color: Colors.black),
+                          controller: _nameCotroller,
+                          decoration: InputDecoration(
+                              fillColor: Colors.grey.shade100,
+                              filled: true,
+                              hintText: "Имя",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        TextField(
+                          style: TextStyle(color: Colors.black),
+                          controller: _emailCotroller,
+                          decoration: InputDecoration(
+                              fillColor: Colors.grey.shade100,
+                              filled: true,
+                              hintText: "Email",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                        ),
+                        SizedBox(
+                          height: 30,
+                        ),
+                        TextField(
+                          controller: _passwordCotroller,
+                          style: TextStyle(),
+                          obscureText: true,
+                          decoration: InputDecoration(
+                              fillColor: Colors.grey.shade100,
+                              filled: true,
+                              hintText: "Пароль",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                        ),
+                        SizedBox(
+                          height: 40,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Text(
+                              'Регистрация',
+                              style: TextStyle(
+                                  fontSize: 27, fontWeight: FontWeight.w700),
+                            ),
+                            CircleAvatar(
+                              radius: 30,
+                              backgroundColor: Color(0xff4c505b),
+                              child: IconButton(
+                                  color: Colors.white,
+                                  onPressed: () {
+                                    BlocProvider.of<LoginBloc>(context).add(RegistrationEvent(
+                                        name: _nameCotroller.text,
+                                        email: _emailCotroller.text,
+                                        password: _passwordCotroller.text));
+                                  },
+                                  icon: Icon(
+                                    Icons.arrow_forward,
+                                  )),
+                            )
+                          ],
+                        ),
+                      ],
                     ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.grey),
-                    ),
-                    hintText: 'Имя',
-                  ),
-                  keyboardType: TextInputType.name,
-                  controller: _nameCotroller)),
-          const SizedBox(
-            height: 30,
-          ),
-
-          Padding(
-              padding: const EdgeInsets.only(left: 5, right: 5),
-              child: TextField(
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8),
-                      borderSide: BorderSide(color: Color(0xff4777ef)),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.grey),
-                    ),
-                    hintText: 'Email',
-                  ),
-                  keyboardType: TextInputType.emailAddress,
-                  controller: _emailCotroller)),
-          const SizedBox(
-            height: 30,
-          ),
-          Padding(
-              padding: const EdgeInsets.only(left: 5, right: 5),
-              child: TextField(
-                  decoration: InputDecoration(
-                    focusedBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(20),
-                      borderSide: BorderSide(color: Color(0xff4777ef)),
-                    ),
-                    enabledBorder: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10),
-                      borderSide: const BorderSide(color: Colors.grey),
-                    ),
-                    hintText: 'Пароль',
-                  ),
-                  keyboardType: TextInputType.text,
-                  controller: _passwordCotroller)),
-          SizedBox(
-            width: 327,
-            child: ElevatedButton(
-              onPressed: () {
-                Dev.log('WORK');
-                Dev.log('${ _nameCotroller.text} ${ _emailCotroller.text} ${_passwordCotroller.text}');
-                BlocProvider.of<LoginBloc>(context).add(RegistrationEvent(
-                   name: _nameCotroller.text,
-                   email: _emailCotroller.text,
-                   password: _passwordCotroller.text));
-              },
-              child: const Text('Регистрация'),
+                  )
+                ],
+              ),
             ),
-          )
+          ),
         ],
       ),
     );

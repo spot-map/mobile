@@ -9,6 +9,5 @@ abstract class IMapRepository {
   @module
   Future<MapByIdModel> getSpotById(int id);
 
-  @module
-  Future<void> addSpotToFavorite(int id);
+
 }

@@ -7,13 +7,18 @@ class AuthProvider implements IAuthRepository {
   final _service = AuthService();
 
   @override
-  Future<void> auth(String email, String password) async {
-    return _service.auth(email, password);
+  Future<void> login(String email, String password) async {
+    return _service.login(email, password);
   }
 
   @override
   Future<void> registration(String email, String password, String name) {
     return _service.registration(email, password, name);
+  }
+
+  @override
+  Future<void> logout() {
+    return _service.logout();
   }
 }
 

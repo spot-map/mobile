@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/location/location_bloc.dart';
+import 'package:ride_map/domain/bloc/spot/constants/spot_status.dart';
 import 'package:ride_map/domain/bloc/spot/spot_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/list/widget/list_widget.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
@@ -22,16 +22,13 @@ class ListLayout extends StatelessWidget {
       ),
       extendBodyBehindAppBar: true,
       body: BlocBuilder<SpotBloc, SpotState>(
-        buildWhen: (previous, current) =>
-            current.status.isLoading ||
-            current.status.isError ||
-            current.status.isSuccess,
+
         builder: (context, state) {
-          if (state.status.isSuccess) {
+          if (state.status == SpotStatus.success) {
             Dev.log('SPOTS ${state.spot!.data.length}');
             return listWidget(context, state.spot!);
           }
-          if (state.status.isError) {
+          if (state.status == SpotStatus.error) {
             return LocationErrorWidget(
               errorMessage: state.errorMessage,
             );

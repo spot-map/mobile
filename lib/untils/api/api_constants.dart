@@ -10,6 +10,8 @@ class ApiConstants {
 
   static const String REGISTRATION = '$BASE_URL_LOCAL_SMOL/auth/registration';
 
+  static const String LOGOUT = '$BASE_URL_LOCAL_SMOL/auth/logout';
+
   static const MAP = '$BASE_URL_LOCAL_SMOL/spot/index';
 
   static const SPOT_BY_ID = '$BASE_URL_LOCAL_SMOL/spot/show';

@@ -18,10 +18,7 @@ class MapProvider implements IMapRepository {
     return _mapService.getSpotById(id);
   }
 
-  @override
-  Future<void> addSpotToFavorite(int id) {
-   return _mapService.addSpotToFavorite(id);
-  }
+
 }
 
 class NetworkError extends Error {}

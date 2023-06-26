@@ -20,7 +20,7 @@ FavoriteModel _$FavoriteModelFromJson(Map<String, dynamic> json) {
 
 /// @nodoc
 mixin _$FavoriteModel {
-  List<FavoriteList> get favorite => throw _privateConstructorUsedError;
+  List<FavoriteList> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -34,7 +34,7 @@ abstract class $FavoriteModelCopyWith<$Res> {
           FavoriteModel value, $Res Function(FavoriteModel) then) =
       _$FavoriteModelCopyWithImpl<$Res, FavoriteModel>;
   @useResult
-  $Res call({List<FavoriteList> favorite});
+  $Res call({List<FavoriteList> data});
 }
 
 /// @nodoc
@@ -50,12 +50,12 @@ class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? favorite = null,
+    Object? data = null,
   }) {
     return _then(_value.copyWith(
-      favorite: null == favorite
-          ? _value.favorite
-          : favorite // ignore: cast_nullable_to_non_nullable
+      data: null == data
+          ? _value.data
+          : data // ignore: cast_nullable_to_non_nullable
               as List<FavoriteList>,
     ) as $Val);
   }
@@ -69,7 +69,7 @@ abstract class _$$_FavoriteModelCopyWith<$Res>
       __$$_FavoriteModelCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({List<FavoriteList> favorite});
+  $Res call({List<FavoriteList> data});
 }
 
 /// @nodoc
@@ -83,12 +83,12 @@ class __$$_FavoriteModelCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? favorite = null,
+    Object? data = null,
   }) {
     return _then(_$_FavoriteModel(
-      favorite: null == favorite
-          ? _value._favorite
-          : favorite // ignore: cast_nullable_to_non_nullable
+      data: null == data
+          ? _value._data
+          : data // ignore: cast_nullable_to_non_nullable
               as List<FavoriteList>,
     ));
   }
@@ -97,24 +97,24 @@ class __$$_FavoriteModelCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_FavoriteModel implements _FavoriteModel {
-  const _$_FavoriteModel({final List<FavoriteList> favorite = const []})
-      : _favorite = favorite;
+  const _$_FavoriteModel({final List<FavoriteList> data = const []})
+      : _data = data;
 
   factory _$_FavoriteModel.fromJson(Map<String, dynamic> json) =>
       _$$_FavoriteModelFromJson(json);
 
-  final List<FavoriteList> _favorite;
+  final List<FavoriteList> _data;
   @override
   @JsonKey()
-  List<FavoriteList> get favorite {
-    if (_favorite is EqualUnmodifiableListView) return _favorite;
+  List<FavoriteList> get data {
+    if (_data is EqualUnmodifiableListView) return _data;
     // ignore: implicit_dynamic_type
-    return EqualUnmodifiableListView(_favorite);
+    return EqualUnmodifiableListView(_data);
   }
 
   @override
   String toString() {
-    return 'FavoriteModel(favorite: $favorite)';
+    return 'FavoriteModel(data: $data)';
   }
 
   @override
@@ -122,13 +122,13 @@ class _$_FavoriteModel implements _FavoriteModel {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$_FavoriteModel &&
-            const DeepCollectionEquality().equals(other._favorite, _favorite));
+            const DeepCollectionEquality().equals(other._data, _data));
   }
 
   @JsonKey(ignore: true)
   @override
   int get hashCode =>
-      Object.hash(runtimeType, const DeepCollectionEquality().hash(_favorite));
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -145,14 +145,14 @@ class _$_FavoriteModel implements _FavoriteModel {
 }
 
 abstract class _FavoriteModel implements FavoriteModel {
-  const factory _FavoriteModel({final List<FavoriteList> favorite}) =
+  const factory _FavoriteModel({final List<FavoriteList> data}) =
       _$_FavoriteModel;
 
   factory _FavoriteModel.fromJson(Map<String, dynamic> json) =
       _$_FavoriteModel.fromJson;
 
   @override
-  List<FavoriteList> get favorite;
+  List<FavoriteList> get data;
   @override
   @JsonKey(ignore: true)
   _$$_FavoriteModelCopyWith<_$_FavoriteModel> get copyWith =>

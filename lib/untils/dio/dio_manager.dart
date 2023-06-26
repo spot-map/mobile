@@ -17,7 +17,6 @@ class DioManager {
             receiveTimeout: 3000,
             responseType: ResponseType.json,
             headers: {
-              // 'Authorization': 'Bearer ${Preferences().getToken}',
               HttpHeaders.contentTypeHeader: 'application/json; charset=UTF8',
               HttpHeaders.acceptHeader: 'application/json',
             }));

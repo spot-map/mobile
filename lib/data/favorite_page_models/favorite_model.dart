@@ -11,7 +11,7 @@ part 'favorite_model.g.dart';
 @freezed
 class FavoriteModel with _$FavoriteModel {
   const factory FavoriteModel({
-   @Default([]) List<FavoriteList> favorite
+   @Default([]) List<FavoriteList> data
   }) = _FavoriteModel;
 
   factory FavoriteModel.fromJson(Map<String, Object?> json) =>

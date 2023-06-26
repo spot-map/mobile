@@ -6,18 +6,19 @@ import 'package:location/location.dart';
 import 'package:mapbox_gl/mapbox_gl.dart';
 import 'package:location_repository/location_repository.dart';
 import 'package:ride_map/domain/api/provider/map_provider.dart';
-import 'package:ride_map/untils/enum/location_enum.dart';
+import 'package:ride_map/internal/di/inject.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 import '../../../data/map_page_models/map_model.dart';
+import 'constants/location_enum.dart';
 
 part 'location_event.dart';
 
 part 'location_state.dart';
 
-final MapProvider _provider = MapProvider();
+final MapProvider _provider = getIt.get<MapProvider>();
 
-@Injectable()
+@injectable
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
   List<MapObject> mapObjects = [];
 
