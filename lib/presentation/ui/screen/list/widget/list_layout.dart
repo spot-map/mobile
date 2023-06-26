@@ -15,7 +15,7 @@ class ListLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const MyAppBar(
-        automaticallyImplyLeading: false,
+        automaticallyImplyLeading: true,
         centerTitle: false,
         size: 50,
         title: 'Список спотов',

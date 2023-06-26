@@ -1,15 +1,12 @@
-
-
-import 'dart:io';
-
 import 'package:dio/dio.dart';
+import 'package:injectable/injectable.dart';
 import 'package:ride_map/data/favorite_page_models/favorite_model.dart';
 import 'package:ride_map/domain/api/repository/i_favorite_repository.dart';
 import 'package:ride_map/untils/api/api_constants.dart';
 import 'package:ride_map/untils/dev.dart';
-import 'package:ride_map/untils/dio/dio_manager.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
 
+@injectable
 class FavoriteService implements IFavoriteRepository{
   final Dio _dio = Dio();
   @override
