@@ -9,4 +9,7 @@ abstract class IAuthRepository {
 
   @module
   Future<void> logout();
+
+  @module
+  Future<void> refreshToken();
 }

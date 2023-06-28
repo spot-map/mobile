@@ -34,6 +34,7 @@ class BlocInitial {
     BlocProvider<FavoriteBloc>(create: (context) =>  FavoriteBloc(model: FavoriteModel())..add(GetFavoriteSpotsEvent())),
   ];
 
+
   static final List<BlocListener> listener = [
     BlocListener<LocationBloc, LocationState>(listener: (context, state) {
       if (state.status == LocationStateStatus.error) {

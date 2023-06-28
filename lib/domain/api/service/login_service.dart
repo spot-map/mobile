@@ -8,7 +8,8 @@ import 'package:ride_map/untils/dev.dart';
 import 'package:ride_map/untils/dio/dio_manager.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
 
-@Injectable(as: IAuthRepository)
+
+@injectable
 class AuthService implements IAuthRepository {
 
   final Dio _dio = Dio();
@@ -23,7 +24,7 @@ class AuthService implements IAuthRepository {
 
     if (response.statusCode == 200) {
       Dev.log('AUTH ${response.data}', name: 'USER AUTH');
-      Prefs.setString('token', jsonEncode(response.data['data']['token']));
+      Prefs.setString('token', jsonEncode(response.data['data']['token']).replaceAll('"', ''));
       Dev.log('SAVED ${Prefs.getString('token')}', name: 'PREFS');
     }
   }
@@ -56,7 +57,7 @@ class AuthService implements IAuthRepository {
   @override
   Future<void> logout() async{
     _dio.options.headers = {
-      'Authorization': 'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
+      'Authorization': 'Bearer ${Prefs.getString('token')}',
     };
 
     Response response = await _dio.post(ApiConstants.LOGOUT);
@@ -64,6 +65,20 @@ class AuthService implements IAuthRepository {
         name: 'USER LOGOUT');
     if(response.statusCode == 200){
       Prefs.remove('token');
+    }
+  }
+
+  @override
+  Future<void> refreshToken() async{
+    _dio.options.headers = {
+      'Authorization': 'Bearer ${Prefs.getString('token')}',
+    };
+
+    Response response = await _dio.post(ApiConstants.REFRESH);
+    Dev.log('REFRESH ${response.statusCode}',
+        name: 'USER REFRESH');
+    if(response.statusCode == 200){
+      Prefs.setString('token', jsonEncode(response.data['data']['token']));
     }
   }
 }

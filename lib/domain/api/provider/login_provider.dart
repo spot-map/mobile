@@ -1,10 +1,11 @@
 import 'package:injectable/injectable.dart';
 import 'package:ride_map/domain/api/repository/i_auth_repository.dart';
 import 'package:ride_map/domain/api/service/login_service.dart';
+import 'package:ride_map/internal/di/inject.dart';
 
 @injectable
 class AuthProvider implements IAuthRepository {
-  final _service = AuthService();
+  final _service = getIt.get<AuthService>();
 
   @override
   Future<void> login(String email, String password) async {
@@ -19,6 +20,11 @@ class AuthProvider implements IAuthRepository {
   @override
   Future<void> logout() {
     return _service.logout();
+  }
+
+  @override
+  Future<void> refreshToken() {
+    return _service.refreshToken();
   }
 }
 
