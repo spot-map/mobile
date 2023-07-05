@@ -2,18 +2,16 @@ import 'package:injectable/injectable.dart';
 import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
 import 'package:ride_map/data/map_page_models/map_model.dart';
 import 'package:ride_map/domain/api/repository/i_map_repository.dart';
-import 'package:ride_map/domain/api/service/map_service.dart';
+import 'package:ride_map/internal/di/inject.dart';
 
 @injectable
-class MapProvider implements IMapRepository {
-  final _mapService = MapService();
+class MapProvider  {
+  final _mapService = getIt.get<IMapRepository>();
 
-  @override
   Future<MapModel> getSpot() async {
     return _mapService.getSpot();
   }
 
-  @override
   Future<MapByIdModel> getSpotById(int id) {
     return _mapService.getSpotById(id);
   }

@@ -13,31 +13,25 @@ class ListLayout extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: const MyAppBar(
-        automaticallyImplyLeading: true,
-        centerTitle: false,
-        size: 50,
-        title: 'Список спотов',
-      ),
+    return  Scaffold(
       extendBodyBehindAppBar: true,
       body: BlocBuilder<SpotBloc, SpotState>(
 
-        builder: (context, state) {
-          if (state.status == SpotStatus.success) {
-            Dev.log('SPOTS ${state.spot!.data.length}');
-            return listWidget(context, state.spot!);
-          }
-          if (state.status == SpotStatus.error) {
-            return LocationErrorWidget(
-              errorMessage: state.errorMessage,
-            );
-          }
+          builder: (context, state) {
+            if (state.status == SpotStatus.success) {
+              Dev.log('SPOTS ${state.spot!.data.length}');
+              return listWidget(context, state.spot!);
+            }
+            if (state.status == SpotStatus.error) {
+              return LocationErrorWidget(
+                errorMessage: state.errorMessage,
+              );
+            }
 
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
-        },
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
+          },
       ),
     );
   }

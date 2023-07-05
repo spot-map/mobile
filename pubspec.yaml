@@ -37,19 +37,19 @@ dependencies:
   dio: ^4.0.6
   latlong2: ^0.8.1
   yandex_mapkit: ^3.2.0
-  curved_navigation_bar: ^1.0.3
   hydrated_bloc: ^8.1.0
   injectable: ^2.1.0
   vibration: ^1.8.1
   path_provider: ^2.0.11
-  http: any
   shared_preferences: ^2.0.15
   freezed: ^2.3.2
   json_serializable: ^6.5.4
+  liquid_pull_to_refresh: any
   freezed_annotation: ^2.2.0
   json_annotation: ^4.7.0
   build_runner: ^2.3.3
   get_it: ^7.2.0
+  skeleton_text: any
   location_repository:
     path: packages/location_repository
 
@@ -67,9 +67,7 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
-  json_serializable: ^6.3.1
   injectable_generator: ^2.1.4
-  build_runner: ^2.2.0
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

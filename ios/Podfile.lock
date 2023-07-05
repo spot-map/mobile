@@ -23,8 +23,8 @@ PODS:
     - Flutter
   - yandex_mapkit (0.0.1):
     - Flutter
-    - YandexMapsMobile (= 4.2.2-full)
-  - YandexMapsMobile (4.2.2-full)
+    - YandexMapsMobile (= 4.3.2-full)
+  - YandexMapsMobile (4.3.2-full)
 
 DEPENDENCIES:
   - device_info_plus (from `.symlinks/plugins/device_info_plus/ios`)
@@ -70,10 +70,10 @@ SPEC CHECKSUMS:
   MapboxAnnotationExtension: 4eee6c26349ef6d909f1a23a7eae2d0f7ca5fa7d
   MapboxMobileEvents: 5a172cc9bbf8ac0e45ba86095cbee685ede248cc
   path_provider_foundation: eaf5b3e458fc0e5fbb9940fb09980e853fe058b8
-  shared_preferences_foundation: e2dae3258e06f44cc55f49d42024fd8dd03c590c
+  shared_preferences_foundation: 5b919d13b803cadd15ed2dc053125c68730e5126
   vibration: 7d883d141656a1c1a6d8d238616b2042a51a1241
-  yandex_mapkit: 3431f8997d36bc0df753407ef282565c09163766
-  YandexMapsMobile: 1fd5f86bc368ad6ba528b199f9477e4a26796567
+  yandex_mapkit: 352801c3b9fe72c0010207d9b01f8838a54b1c5a
+  YandexMapsMobile: c73c71ec041b215284efbe8a0ebd7cdb77aad8d7
 
 PODFILE CHECKSUM: 48d10163ef1d62881250611878f99285d1240ae3
 

@@ -8,7 +8,7 @@ import 'package:ride_map/untils/api/api_constants.dart';
 import 'package:ride_map/untils/dev.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
 
-@injectable
+@Injectable(as: IFavoriteRepository)
 class FavoriteService implements IFavoriteRepository {
   final Dio _dio = Dio();
   final AuthProvider _provider = getIt.get<AuthProvider>();
@@ -16,10 +16,11 @@ class FavoriteService implements IFavoriteRepository {
   @override
   Future<void> addSpotToFavorite(int id) async {
     try {
+      Dev.log('PREFS ${Prefs.getString('token')}', name: 'PREFS');
       var spotObject = {'spot_id': id};
       _dio.options.headers = {
         'Authorization':
-            'Bearer ${Prefs.getString('token')}',
+            'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
       };
 
       Response response = await _dio.post(
@@ -49,7 +50,7 @@ class FavoriteService implements IFavoriteRepository {
     try {
       _dio.options.headers = {
         'Authorization':
-            'Bearer ${Prefs.getString('token')}',
+            'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
       };
       print(Prefs.getString('token'));
       Response response = await _dio.get(
@@ -62,6 +63,9 @@ class FavoriteService implements IFavoriteRepository {
       if (response.statusCode == 200) {
         Dev.log('FAVORITE ${response.data}', name: 'FAVORITE LIST');
         return FavoriteModel.fromJson(response.data);
+      } else if (response.statusCode == 401 || response.statusCode == 500){
+        await _provider.refreshToken();
+        return getFavoriteList();
       } else {
         Dev.log('Error ${response.statusCode}',
             name: 'FAVORITE LIST API ERROR, ${response.statusCode}');

@@ -3,15 +3,15 @@ import 'dart:convert';
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:ride_map/domain/api/repository/i_auth_repository.dart';
+import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/untils/api/api_constants.dart';
 import 'package:ride_map/untils/dev.dart';
 import 'package:ride_map/untils/dio/dio_manager.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
 
 
-@injectable
+@Injectable(as: IAuthRepository)
 class AuthService implements IAuthRepository {
-
   final Dio _dio = Dio();
   @override
   Future<void> login(String email, String password) async {
@@ -24,7 +24,7 @@ class AuthService implements IAuthRepository {
 
     if (response.statusCode == 200) {
       Dev.log('AUTH ${response.data}', name: 'USER AUTH');
-      Prefs.setString('token', jsonEncode(response.data['data']['token']).replaceAll('"', ''));
+      Prefs.setString('token', jsonEncode(response.data['data']['token']));
       Dev.log('SAVED ${Prefs.getString('token')}', name: 'PREFS');
     }
   }
@@ -57,7 +57,7 @@ class AuthService implements IAuthRepository {
   @override
   Future<void> logout() async{
     _dio.options.headers = {
-      'Authorization': 'Bearer ${Prefs.getString('token')}',
+      'Authorization': 'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
     };
 
     Response response = await _dio.post(ApiConstants.LOGOUT);
@@ -71,14 +71,16 @@ class AuthService implements IAuthRepository {
   @override
   Future<void> refreshToken() async{
     _dio.options.headers = {
-      'Authorization': 'Bearer ${Prefs.getString('token')}',
+      'Authorization': 'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
     };
 
     Response response = await _dio.post(ApiConstants.REFRESH);
     Dev.log('REFRESH ${response.statusCode}',
         name: 'USER REFRESH');
     if(response.statusCode == 200){
+      Dev.log('REFRESH ${response.data}', name:'${response.statusCode} REFRESH');
       Prefs.setString('token', jsonEncode(response.data['data']['token']));
+      Dev.log('PREFS ${Prefs.getString('token')}', name:'REFRESH PREFS');
     }
   }
 }

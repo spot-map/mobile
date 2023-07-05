@@ -24,9 +24,15 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<LoginUserEvent>(_onLoginEvent);
     on<RegistrationEvent>(_onRegistrationEvent);
     on<LogoutEvent>(_onLogoutEvent);
+    on<RefreshEvent>(_onRefreshEvent);
   }
 
-  Future<void> _onLoginEvent(
+  void _onRefreshEvent( RefreshEvent event, Emitter<LoginState> emit) async{
+    await _provider.refreshToken();
+    emit(state.copyWith(status: LoginStatus.auth));
+  }
+
+  void  _onLoginEvent(
       LoginUserEvent event, Emitter<LoginState> emit) async {
     try {
       await _provider.login(event.email, event.password);

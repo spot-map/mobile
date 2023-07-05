@@ -31,7 +31,7 @@ class FavoriteScreen extends StatelessWidget {
                 )
               ],
             )
-          : const MyAppBar(title: '', size: 50, automaticallyImplyLeading: false,),
+          : const MyAppBar(title: '', size: 50, automaticallyImplyLeading: false),
       body: Prefs.getString('token')!.isEmpty ? LoginScreen() : FavoriteLayout(),
     );
   }

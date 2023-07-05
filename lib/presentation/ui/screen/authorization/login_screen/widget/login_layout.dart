@@ -23,17 +23,11 @@ class LoginLayout extends StatelessWidget {
 
     List<Widget> views = [const LoginWidget(), const RegistrationScreen()];
 
-    Future<String> delayedString() async {
-      await Future.delayed(const Duration(seconds: 2));
-      return Prefs.getString('token')!;
-    }
-
     return BlocBuilder<LoginBloc, LoginState>(
       builder: (context, state) {
-        if (state.status == LoginStatus.auth || state.status == LoginStatus.registered)  {
-           return const Scaffold(
-             body: FavoriteScreen()
-           );
+        if (state.status == LoginStatus.auth ||
+            state.status == LoginStatus.registered) {
+          return const Scaffold(body: FavoriteScreen());
         }
         if (state.status == LoginStatus.error) {
           return LocationErrorWidget(
