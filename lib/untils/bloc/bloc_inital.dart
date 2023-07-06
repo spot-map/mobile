@@ -13,6 +13,7 @@ import 'package:ride_map/domain/bloc/navigation/navigation_cubit.dart';
 import 'package:ride_map/domain/bloc/spot/constants/spot_status.dart';
 import 'package:ride_map/domain/bloc/spot/spot_bloc.dart';
 import 'package:ride_map/domain/bloc/spot_by_id/spot_by_id_bloc.dart';
+import 'package:ride_map/domain/bloc/theme/theme_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login_screen.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
 
@@ -22,6 +23,7 @@ class BlocInitial {
 
   static final List<BlocProvider> bloc = [
     BlocProvider<NavigationCubit>(create: (_) => NavigationCubit()),
+    BlocProvider<ThemeBloc>(create: (_) => ThemeBloc()),
     BlocProvider<LocationBloc>(
         create: (context) => LocationBloc(
             locationRepository: context.read<LocationRepository>(),

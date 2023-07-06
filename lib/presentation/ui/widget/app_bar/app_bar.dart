@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ride_map/untils/theme/appColors.dart';
+import 'package:ride_map/untils/theme/app_colors_light.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar(
@@ -25,7 +25,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       iconTheme: IconThemeData(
-        color: AppColor().backButtonColor,
+        color: AppColorLight().backButtonColor,
       ),
       automaticallyImplyLeading: automaticallyImplyLeading!,
       centerTitle: centerTitle,
@@ -33,7 +33,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       actions: widgetRight,
-      title: Text(title, style: TextStyle(color: AppColor().textColor)),
+      title: Text(title, style: TextStyle(color: AppColorLight().textColor)),
     );
   }
 }

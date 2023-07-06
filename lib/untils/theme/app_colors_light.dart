@@ -1,14 +1,15 @@
 import 'dart:ui';
+import 'package:flutter/material.dart';
 import 'package:ride_map/untils/theme/base/i_app_color.dart';
 import 'package:ride_map/untils/theme/constants/string_colors.dart';
 import 'package:ride_map/untils/theme/to_hex.dart';
 
-class AppColor implements IAppColor {
-  static AppColor? _instance;
+class AppColorLight implements IAppColor {
+  static AppColorLight? _instance;
 
-  factory AppColor() => _instance ??= AppColor._();
+  factory AppColorLight() => _instance ??= AppColorLight._();
 
-  AppColor._();
+  AppColorLight._();
 
   @override
   final Color selectedItemColor =
@@ -36,4 +37,10 @@ class AppColor implements IAppColor {
 
   @override
   Color get textFieldColor => HexColor.fromHex(StringColors.textFieldColor);
+
+  @override
+  final ThemeData themeData = ThemeData(
+      brightness: Brightness.light,
+      backgroundColor: Colors.white
+  );
 }

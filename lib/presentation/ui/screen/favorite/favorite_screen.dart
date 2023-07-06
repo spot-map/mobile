@@ -6,7 +6,7 @@ import 'package:ride_map/presentation/ui/screen/favorite/widget/favorite_layout.
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/untils/dev.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/theme/appColors.dart';
+import 'package:ride_map/untils/theme/app_colors_light.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
@@ -27,7 +27,7 @@ class FavoriteScreen extends StatelessWidget {
                     BlocProvider.of<LoginBloc>(context).add(LogoutEvent());
                   },
                   child: Icon(Icons.exit_to_app,
-                      color: AppColor().backButtonColor),
+                      color: AppColorLight().backButtonColor),
                 )
               ],
             )

@@ -7,7 +7,7 @@ import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
 import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/theme/appColors.dart';
+import 'package:ride_map/untils/theme/app_colors_light.dart';
 
 import '../account/account_screen.dart';
 
@@ -21,29 +21,29 @@ class RootScreen extends StatelessWidget {
         builder: (context, state) {
           return BottomNavigationBar(
             currentIndex: state.index,
-            selectedItemColor: AppColor().selectedItemColor,
-            unselectedItemColor: AppColor().unselectedItemColor,
+            selectedItemColor: AppColorLight().selectedItemColor,
+            unselectedItemColor: AppColorLight().unselectedItemColor,
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
                   icon: const Icon(Icons.home),
                   activeIcon:
-                      Icon(Icons.home, color: AppColor().selectedItemColor),
+                      Icon(Icons.home, color: AppColorLight().selectedItemColor),
                   label: 'Главная'),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.favorite),
                   activeIcon: Icon(Icons.favorite,
-                      color: AppColor().favoriteButtonColor),
+                      color: AppColorLight().favoriteButtonColor),
                   label: 'Избранное'),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.person),
                   activeIcon:
-                      Icon(Icons.person, color: AppColor().selectedItemColor),
+                      Icon(Icons.person, color: AppColorLight().selectedItemColor),
                   label: 'Аккаунт'),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.settings),
                   activeIcon:
-                      Icon(Icons.settings, color: AppColor().selectedItemColor),
+                      Icon(Icons.settings, color: AppColorLight().selectedItemColor),
                   label: 'Настройки')
             ],
             onTap: (index) {

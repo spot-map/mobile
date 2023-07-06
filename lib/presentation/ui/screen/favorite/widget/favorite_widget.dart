@@ -4,7 +4,7 @@ import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:ride_map/data/favorite_page_models/favorite_model.dart';
 import 'package:ride_map/domain/bloc/favorite/favorite_bloc.dart';
 import 'package:ride_map/presentation/ui/widget/bottom_sheet/bottom_sheet.dart';
-import 'package:ride_map/untils/theme/appColors.dart';
+import 'package:ride_map/untils/theme/app_colors_light.dart';
 
 Widget favoriteWidget(BuildContext context, FavoriteModel model) {
 
@@ -21,7 +21,7 @@ Widget favoriteWidget(BuildContext context, FavoriteModel model) {
             padding: const EdgeInsets.only(left: 5, right: 5),
             child: Card(
                 elevation: 15,
-                shadowColor: AppColor().backButtonColor,
+                shadowColor: AppColorLight().backButtonColor,
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(15),
                 ),

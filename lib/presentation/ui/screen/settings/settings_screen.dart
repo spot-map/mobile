@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ride_map/presentation/ui/screen/settings/widget/menu_list.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/page/material_page_without_border.dart';
-import 'package:ride_map/untils/theme/appColors.dart';
+import 'package:ride_map/untils/theme/app_colors_light.dart';
 import 'package:ride_map/untils/theme/style/text/text_style.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -54,7 +54,7 @@ _columnWithInfoText({required BuildContext context}) {
             "Удалить аккаунт",
             style: myTextStyleFontUbuntu(
               fontSize: 14,
-              textColor: AppColor().deleteColor,
+              textColor: AppColorLight().deleteColor,
               newFontWeight: FontWeight.w300,
               context: context,
             ).copyWith(
