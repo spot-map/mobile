@@ -7,7 +7,8 @@ import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
 import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/theme/app_colors_light.dart';
+import 'package:ride_map/untils/theme/dark/app_colors_dark.dart';
+import 'package:ride_map/untils/theme/light/app_colors_light.dart';
 
 import '../account/account_screen.dart';
 
@@ -21,14 +22,17 @@ class RootScreen extends StatelessWidget {
         builder: (context, state) {
           return BottomNavigationBar(
             currentIndex: state.index,
-            selectedItemColor: AppColorLight().selectedItemColor,
             unselectedItemColor: AppColorLight().unselectedItemColor,
             type: BottomNavigationBarType.fixed,
             items: [
               BottomNavigationBarItem(
                   icon: const Icon(Icons.home),
-                  activeIcon:
-                      Icon(Icons.home, color: AppColorLight().selectedItemColor),
+                  activeIcon: Icon(
+                    Icons.home,
+                    color: Prefs.getBool('theme')!
+                        ? AppColorDark().selectedItemColor
+                        : AppColorLight().selectedItemColor,
+                  ),
                   label: 'Главная'),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.favorite),
@@ -37,13 +41,21 @@ class RootScreen extends StatelessWidget {
                   label: 'Избранное'),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.person),
-                  activeIcon:
-                      Icon(Icons.person, color: AppColorLight().selectedItemColor),
+                  activeIcon: Icon(
+                    Icons.person,
+                    color: Prefs.getBool('theme')!
+                        ? AppColorDark().selectedItemColor
+                        : AppColorLight().selectedItemColor,
+                  ),
                   label: 'Аккаунт'),
               BottomNavigationBarItem(
                   icon: const Icon(Icons.settings),
-                  activeIcon:
-                      Icon(Icons.settings, color: AppColorLight().selectedItemColor),
+                  activeIcon: Icon(
+                    Icons.settings,
+                    color: Prefs.getBool('theme')!
+                        ? AppColorDark().selectedItemColor
+                        : AppColorLight().selectedItemColor,
+                  ),
                   label: 'Настройки')
             ],
             onTap: (index) {
@@ -73,7 +85,9 @@ class RootScreen extends StatelessWidget {
           if (state.item == NavBarItem.home) {
             return const MapScreen();
           } else if (state.item == NavBarItem.favorite) {
-            return  Prefs.getString('token') == null ? const LoginScreen() : const FavoriteScreen();
+            return Prefs.getString('token') == null
+                ? const LoginScreen()
+                : const FavoriteScreen();
           } else if (state.item == NavBarItem.account) {
             return const AccountScreen();
           } else if (state.item == NavBarItem.settings) {

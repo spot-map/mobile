@@ -6,7 +6,7 @@ import 'package:ride_map/presentation/ui/screen/authorization/registration_scree
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/theme/app_colors_light.dart';
+import 'package:ride_map/untils/theme/light/app_colors_light.dart';
 
 import '../../../../widget/map/location_error/location_error_widget.dart';
 import 'login_widget.dart';

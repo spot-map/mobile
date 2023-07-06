@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:ride_map/untils/theme/base/i_app_color.dart';
-import 'package:ride_map/untils/theme/constants/string_colors.dart';
+import 'package:ride_map/untils/theme/light/constants/string_colors.dart';
 import 'package:ride_map/untils/theme/to_hex.dart';
 
 class AppColorLight implements IAppColor {
@@ -13,30 +13,30 @@ class AppColorLight implements IAppColor {
 
   @override
   final Color selectedItemColor =
-      HexColor.fromHex(StringColors.selectedItemColor);
+      HexColor.fromHex(StringLightColors.selectedItemColor);
 
   @override
   Color get unselectedItemColor =>
-      HexColor.fromHex(StringColors.unselectedItemColor);
+      HexColor.fromHex(StringLightColors.unselectedItemColor);
 
   @override
-  Color get textColor => HexColor.fromHex(StringColors.textColor);
+  Color get textColor => HexColor.fromHex(StringLightColors.textColor);
 
   @override
-  Color get backButtonColor => HexColor.fromHex(StringColors.backButtonColor);
+  Color get backButtonColor => HexColor.fromHex(StringLightColors.backButtonColor);
 
   @override
-  Color get containerColor => HexColor.fromHex(StringColors.containerColor);
+  Color get containerColor => HexColor.fromHex(StringLightColors.containerColor);
 
   @override
   Color get favoriteButtonColor =>
-      HexColor.fromHex(StringColors.favoriteButtonColor);
+      HexColor.fromHex(StringLightColors.favoriteButtonColor);
 
   @override
-  Color get deleteColor => HexColor.fromHex(StringColors.deleteColor);
+  Color get deleteColor => HexColor.fromHex(StringLightColors.deleteColor);
 
   @override
-  Color get textFieldColor => HexColor.fromHex(StringColors.textFieldColor);
+  Color get textFieldColor => HexColor.fromHex(StringLightColors.textFieldColor);
 
   @override
   final ThemeData themeData = ThemeData(

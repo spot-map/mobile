@@ -1,13 +1,13 @@
-class StringColors {
-  StringColors._();
+class StringDarkColors {
+  StringDarkColors._();
 
-  static const String selectedItemColor = '#3364E0';
+  static const String selectedItemColor = '#FFFFFF';
 
   static const String unselectedItemColor = '#A5A9B2';
 
-  static const String textColor = '#000000';
+  static const String textColor = '#FFFFFF';
 
-  static const String backButtonColor = '#000000';
+  static const String backButtonColor = '#FFFFFF';
 
   static const String containerColor = '#D8D8D8';
 

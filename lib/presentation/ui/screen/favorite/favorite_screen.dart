@@ -6,7 +6,8 @@ import 'package:ride_map/presentation/ui/screen/favorite/widget/favorite_layout.
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/untils/dev.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/theme/app_colors_light.dart';
+import 'package:ride_map/untils/theme/dark/app_colors_dark.dart';
+import 'package:ride_map/untils/theme/light/app_colors_light.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
@@ -14,25 +15,29 @@ class FavoriteScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar:Prefs.getString('token') != null
+      appBar: Prefs.getString('token') != null
           ? MyAppBar(
               title: 'Избранное',
               size: 50,
-        centerTitle: false,
+              centerTitle: false,
               automaticallyImplyLeading: false,
               widgetRight: [
                 GestureDetector(
-                  onTap: (){
+                  onTap: () {
                     Dev.log('TAP');
                     BlocProvider.of<LoginBloc>(context).add(LogoutEvent());
                   },
                   child: Icon(Icons.exit_to_app,
-                      color: AppColorLight().backButtonColor),
+                      color: Prefs.getBool('theme')!
+                          ? AppColorDark().backButtonColor
+                          : AppColorLight().backButtonColor),
                 )
               ],
             )
-          : const MyAppBar(title: '', size: 50, automaticallyImplyLeading: false),
-      body: Prefs.getString('token')!.isEmpty ? LoginScreen() : FavoriteLayout(),
+          : const MyAppBar(
+              title: '', size: 50, automaticallyImplyLeading: false),
+      body:
+          Prefs.getString('token')!.isEmpty ? LoginScreen() : FavoriteLayout(),
     );
   }
 }
