@@ -4,6 +4,10 @@ A new Flutter project.
 
 ## Getting Started
 
+For generate model and DI config: 
+
+- [Build Runner Package (Injectable generator)] flutter pub run build_runner build --delete-conflicting-outputs
+
 This project is a starting point for a Flutter application.
 
 A few resources to get you started if this is your first Flutter project:
