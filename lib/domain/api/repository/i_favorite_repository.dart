@@ -7,4 +7,7 @@ abstract class IFavoriteRepository{
 
   @module
   Future<FavoriteModel> getFavoriteList();
+
+  @module
+  Future<void> deleteSpotFromFavorite(int id);
 }

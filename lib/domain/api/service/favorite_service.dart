@@ -63,7 +63,7 @@ class FavoriteService implements IFavoriteRepository {
       if (response.statusCode == 200) {
         Dev.log('FAVORITE ${response.data}', name: 'FAVORITE LIST');
         return FavoriteModel.fromJson(response.data);
-      } else if (response.statusCode == 401 || response.statusCode == 500){
+      } else if (response.statusCode == 401 || response.statusCode == 500) {
         await _provider.refreshToken();
         return getFavoriteList();
       } else {
@@ -72,7 +72,37 @@ class FavoriteService implements IFavoriteRepository {
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
-       throw Exception(e.toString());
+      throw Exception(e.toString());
+    } catch (e) {
+      throw Exception(e.toString());
+    }
+  }
+
+  @override
+  Future<void> deleteSpotFromFavorite(int id) async {
+    try {
+      _dio.options.headers = {
+        'Authorization':
+            'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
+      };
+      print(Prefs.getString('token'));
+      Response response = await _dio.delete(
+        '${ApiConstants.FAVORITE}/$id',
+        options: Options(
+          followRedirects: false,
+          validateStatus: (status) => true,
+        ),
+      );
+      if (response.statusCode == 200) {
+        Dev.log('FAVORITE DELETED ${response.data}', name: 'FAVORITE DELETED');
+        return response.data;
+      } else {
+        Dev.log('Error ${response.statusCode}',
+            name: 'FAVORITE DELETED ERROR, ${response.statusCode}');
+        throw Exception('${response.data}');
+      }
+    } on DioError catch (e) {
+      throw Exception(e.toString());
     } catch (e) {
       throw Exception(e.toString());
     }

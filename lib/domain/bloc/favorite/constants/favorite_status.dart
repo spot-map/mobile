@@ -3,5 +3,6 @@ enum FavoriteStatus{
   loading,
   loaded,
   added,
+  deleted,
   error
 }

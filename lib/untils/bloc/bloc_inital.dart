@@ -17,7 +17,6 @@ import 'package:ride_map/domain/bloc/theme/theme_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login_screen.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
 
-
 class BlocInitial {
   BlocInitial._();
 
@@ -31,11 +30,13 @@ class BlocInitial {
           ..add(GetLocation())),
     BlocProvider<SpotBloc>(
         create: (context) => SpotBloc(spot: MapModel())..add(GetSpotList())),
-    BlocProvider<LoginBloc>(create: (context) =>  LoginBloc()),
-    BlocProvider<SpotByIdBloc>(create: (context) => SpotByIdBloc(spotByIdModel: MapByIdModel())),
-    BlocProvider<FavoriteBloc>(create: (context) =>  FavoriteBloc(model: FavoriteModel())..add(GetFavoriteSpotsEvent())),
+    BlocProvider<LoginBloc>(create: (context) => LoginBloc()),
+    BlocProvider<SpotByIdBloc>(
+        create: (context) => SpotByIdBloc(spotByIdModel: MapByIdModel())),
+    BlocProvider<FavoriteBloc>(
+        create: (context) =>
+            FavoriteBloc(model: FavoriteModel())..add(GetFavoriteSpotsEvent())),
   ];
-
 
   static final List<BlocListener> listener = [
     BlocListener<LocationBloc, LocationState>(listener: (context, state) {
@@ -48,15 +49,17 @@ class BlocInitial {
         snackBar(state.errorMessage, context, true);
       }
     }),
-
-    BlocListener<FavoriteBloc, FavoriteState>(listener: (context, state){
+    BlocListener<FavoriteBloc, FavoriteState>(listener: (context, state) {
       if (state.status == FavoriteStatus.error) {
         snackBar(state.errorMessage, context, true);
       }
+      if (state.status == FavoriteStatus.added) {
+        snackBar('Спот добавлен в избранное', context, false);
+      }
     }),
-    BlocListener<LoginBloc, LoginState>(listener: (context, state){
-      if(state.status == LoginStatus.logout){
-         LoginScreen();
+    BlocListener<LoginBloc, LoginState>(listener: (context, state) {
+      if (state.status == LoginStatus.logout) {
+        LoginScreen();
       }
     })
   ];

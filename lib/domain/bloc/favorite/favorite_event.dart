@@ -18,3 +18,12 @@ class AddSpotToFavoriteEvent extends FavoriteEvent{
   @override
   List<Object?> get props => [id];
 }
+
+class DeleteSpotFromFavoriteEvent extends FavoriteEvent{
+  final int id;
+
+  const DeleteSpotFromFavoriteEvent(this.id);
+
+  @override
+  List<Object?> get props => [id];
+}

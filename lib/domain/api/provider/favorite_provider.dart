@@ -15,7 +15,10 @@ class FavoriteProvider {
   Future<FavoriteModel> getFavoriteList() {
     return _favoriteService.getFavoriteList();
   }
-  
+
+  Future<void> deleteSpotFromFavorite(int id){
+    return _favoriteService.deleteSpotFromFavorite(id);
+  }
 }
 
 class NetworkError extends Error {}
