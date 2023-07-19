@@ -9,22 +9,22 @@ import 'package:ride_map/data/favorite_page_models/favorite_model.dart';
 import 'package:ride_map/domain/api/provider/favorite_provider.dart';
 import 'package:ride_map/domain/bloc/favorite/constants/favorite_status.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:vibration/vibration.dart';
 
 part 'favorite_event.dart';
 
 part 'favorite_state.dart';
 
-final FavoriteProvider _provider = getIt.get<FavoriteProvider>();
 
 @injectable
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   FavoriteModel model;
-
   FavoriteBloc({required this.model}) : super(FavoriteState()) {
     on<GetFavoriteSpotsEvent>(_onGetFavoriteSpotsEvent);
     on<AddSpotToFavoriteEvent>(_onAddSpotToFavoriteEvent);
   }
+
+  final FavoriteProvider _provider = getIt.get<FavoriteProvider>();
+
 
   void _onGetFavoriteSpotsEvent(
       GetFavoriteSpotsEvent event, Emitter<FavoriteState> emit) async {

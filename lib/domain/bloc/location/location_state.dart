@@ -19,18 +19,16 @@ class LocationState extends Equatable {
     String? errorMessage,
   })  : currentUserLocation =
             currentUserLocation ?? CurrentUserLocationEntity.empty,
-        initLocation = initLocation ?? const LatLng(40.4167, 3.70325),
         errorMessage = errorMessage ?? '';
 
   final LocationStateStatus status;
   final CurrentUserLocationEntity currentUserLocation;
-  final LatLng initLocation;
   final MapModel? spot;
   final String errorMessage;
 
   @override
   List<Object?> get props =>
-      [status, currentUserLocation, initLocation, errorMessage, spot];
+      [status, currentUserLocation, errorMessage, spot];
 
   LocationState copyWith(
       {LocationStateStatus? status,
@@ -42,7 +40,7 @@ class LocationState extends Equatable {
     return LocationState(
       status: status ?? this.status,
       currentUserLocation: currentUserLocation ?? this.currentUserLocation,
-      initLocation: initLocation ?? this.initLocation,
+      initLocation: initLocation,
       errorMessage: errorMessage ?? this.errorMessage,
       spot: spot ?? this.spot,
     );

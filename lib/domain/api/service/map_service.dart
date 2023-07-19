@@ -8,7 +8,7 @@ import 'package:ride_map/untils/dev.dart';
 import 'package:ride_map/untils/dio/dio_manager.dart';
 
 @Injectable(as: IMapRepository)
-class MapService extends IMapRepository {
+class MapService implements IMapRepository {
 
   @override
   Future<MapModel> getSpot() async {
@@ -46,5 +46,11 @@ class MapService extends IMapRepository {
     } on DioError catch (e) {
       throw Exception(e.toString());
     }
+  }
+
+  @override
+  Future<void> addReactions(String text, int score, int spotId) {
+    // TODO: implement addReactions
+    throw UnimplementedError();
   }
 }

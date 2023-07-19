@@ -64,6 +64,9 @@ _$_Reactions _$$_ReactionsFromJson(Map<String, dynamic> json) => _$_Reactions(
       id: json['id'] as int?,
       text: json['text'] as String?,
       score: json['score'] as int?,
+      users: json['users'] == null
+          ? null
+          : Users.fromJson(json['users'] as Map<String, dynamic>),
     );
 
 Map<String, dynamic> _$$_ReactionsToJson(_$_Reactions instance) =>
@@ -71,4 +74,17 @@ Map<String, dynamic> _$$_ReactionsToJson(_$_Reactions instance) =>
       'id': instance.id,
       'text': instance.text,
       'score': instance.score,
+      'users': instance.users,
+    };
+
+_$_Users _$$_UsersFromJson(Map<String, dynamic> json) => _$_Users(
+      id: json['id'] as int?,
+      name: json['name'] as String?,
+      image: json['image'] as String?,
+    );
+
+Map<String, dynamic> _$$_UsersToJson(_$_Users instance) => <String, dynamic>{
+      'id': instance.id,
+      'name': instance.name,
+      'image': instance.image,
     };

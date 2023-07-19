@@ -15,8 +15,6 @@ class MapProvider  {
   Future<MapByIdModel> getSpotById(int id) {
     return _mapService.getSpotById(id);
   }
-
-
 }
 
 class NetworkError extends Error {}

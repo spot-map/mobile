@@ -662,6 +662,7 @@ mixin _$Reactions {
   int? get id => throw _privateConstructorUsedError;
   String? get text => throw _privateConstructorUsedError;
   int? get score => throw _privateConstructorUsedError;
+  Users? get users => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -674,7 +675,9 @@ abstract class $ReactionsCopyWith<$Res> {
   factory $ReactionsCopyWith(Reactions value, $Res Function(Reactions) then) =
       _$ReactionsCopyWithImpl<$Res, Reactions>;
   @useResult
-  $Res call({int? id, String? text, int? score});
+  $Res call({int? id, String? text, int? score, Users? users});
+
+  $UsersCopyWith<$Res>? get users;
 }
 
 /// @nodoc
@@ -693,6 +696,7 @@ class _$ReactionsCopyWithImpl<$Res, $Val extends Reactions>
     Object? id = freezed,
     Object? text = freezed,
     Object? score = freezed,
+    Object? users = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -707,7 +711,23 @@ class _$ReactionsCopyWithImpl<$Res, $Val extends Reactions>
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int?,
+      users: freezed == users
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as Users?,
     ) as $Val);
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $UsersCopyWith<$Res>? get users {
+    if (_value.users == null) {
+      return null;
+    }
+
+    return $UsersCopyWith<$Res>(_value.users!, (value) {
+      return _then(_value.copyWith(users: value) as $Val);
+    });
   }
 }
 
@@ -718,7 +738,10 @@ abstract class _$$_ReactionsCopyWith<$Res> implements $ReactionsCopyWith<$Res> {
       __$$_ReactionsCopyWithImpl<$Res>;
   @override
   @useResult
-  $Res call({int? id, String? text, int? score});
+  $Res call({int? id, String? text, int? score, Users? users});
+
+  @override
+  $UsersCopyWith<$Res>? get users;
 }
 
 /// @nodoc
@@ -735,6 +758,7 @@ class __$$_ReactionsCopyWithImpl<$Res>
     Object? id = freezed,
     Object? text = freezed,
     Object? score = freezed,
+    Object? users = freezed,
   }) {
     return _then(_$_Reactions(
       id: freezed == id
@@ -749,6 +773,10 @@ class __$$_ReactionsCopyWithImpl<$Res>
           ? _value.score
           : score // ignore: cast_nullable_to_non_nullable
               as int?,
+      users: freezed == users
+          ? _value.users
+          : users // ignore: cast_nullable_to_non_nullable
+              as Users?,
     ));
   }
 }
@@ -756,7 +784,7 @@ class __$$_ReactionsCopyWithImpl<$Res>
 /// @nodoc
 @JsonSerializable()
 class _$_Reactions implements _Reactions {
-  const _$_Reactions({this.id, this.text, this.score});
+  const _$_Reactions({this.id, this.text, this.score, this.users});
 
   factory _$_Reactions.fromJson(Map<String, dynamic> json) =>
       _$$_ReactionsFromJson(json);
@@ -767,10 +795,12 @@ class _$_Reactions implements _Reactions {
   final String? text;
   @override
   final int? score;
+  @override
+  final Users? users;
 
   @override
   String toString() {
-    return 'Reactions(id: $id, text: $text, score: $score)';
+    return 'Reactions(id: $id, text: $text, score: $score, users: $users)';
   }
 
   @override
@@ -780,12 +810,13 @@ class _$_Reactions implements _Reactions {
             other is _$_Reactions &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.text, text) || other.text == text) &&
-            (identical(other.score, score) || other.score == score));
+            (identical(other.score, score) || other.score == score) &&
+            (identical(other.users, users) || other.users == users));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, text, score);
+  int get hashCode => Object.hash(runtimeType, id, text, score, users);
 
   @JsonKey(ignore: true)
   @override
@@ -803,7 +834,10 @@ class _$_Reactions implements _Reactions {
 
 abstract class _Reactions implements Reactions {
   const factory _Reactions(
-      {final int? id, final String? text, final int? score}) = _$_Reactions;
+      {final int? id,
+      final String? text,
+      final int? score,
+      final Users? users}) = _$_Reactions;
 
   factory _Reactions.fromJson(Map<String, dynamic> json) =
       _$_Reactions.fromJson;
@@ -815,7 +849,171 @@ abstract class _Reactions implements Reactions {
   @override
   int? get score;
   @override
+  Users? get users;
+  @override
   @JsonKey(ignore: true)
   _$$_ReactionsCopyWith<_$_Reactions> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+Users _$UsersFromJson(Map<String, dynamic> json) {
+  return _Users.fromJson(json);
+}
+
+/// @nodoc
+mixin _$Users {
+  int? get id => throw _privateConstructorUsedError;
+  String? get name => throw _privateConstructorUsedError;
+  String? get image => throw _privateConstructorUsedError;
+
+  Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+  @JsonKey(ignore: true)
+  $UsersCopyWith<Users> get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class $UsersCopyWith<$Res> {
+  factory $UsersCopyWith(Users value, $Res Function(Users) then) =
+      _$UsersCopyWithImpl<$Res, Users>;
+  @useResult
+  $Res call({int? id, String? name, String? image});
+}
+
+/// @nodoc
+class _$UsersCopyWithImpl<$Res, $Val extends Users>
+    implements $UsersCopyWith<$Res> {
+  _$UsersCopyWithImpl(this._value, this._then);
+
+  // ignore: unused_field
+  final $Val _value;
+  // ignore: unused_field
+  final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
+  }) {
+    return _then(_value.copyWith(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ) as $Val);
+  }
+}
+
+/// @nodoc
+abstract class _$$_UsersCopyWith<$Res> implements $UsersCopyWith<$Res> {
+  factory _$$_UsersCopyWith(_$_Users value, $Res Function(_$_Users) then) =
+      __$$_UsersCopyWithImpl<$Res>;
+  @override
+  @useResult
+  $Res call({int? id, String? name, String? image});
+}
+
+/// @nodoc
+class __$$_UsersCopyWithImpl<$Res> extends _$UsersCopyWithImpl<$Res, _$_Users>
+    implements _$$_UsersCopyWith<$Res> {
+  __$$_UsersCopyWithImpl(_$_Users _value, $Res Function(_$_Users) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? id = freezed,
+    Object? name = freezed,
+    Object? image = freezed,
+  }) {
+    return _then(_$_Users(
+      id: freezed == id
+          ? _value.id
+          : id // ignore: cast_nullable_to_non_nullable
+              as int?,
+      name: freezed == name
+          ? _value.name
+          : name // ignore: cast_nullable_to_non_nullable
+              as String?,
+      image: freezed == image
+          ? _value.image
+          : image // ignore: cast_nullable_to_non_nullable
+              as String?,
+    ));
+  }
+}
+
+/// @nodoc
+@JsonSerializable()
+class _$_Users implements _Users {
+  const _$_Users({this.id, this.name, this.image});
+
+  factory _$_Users.fromJson(Map<String, dynamic> json) =>
+      _$$_UsersFromJson(json);
+
+  @override
+  final int? id;
+  @override
+  final String? name;
+  @override
+  final String? image;
+
+  @override
+  String toString() {
+    return 'Users(id: $id, name: $name, image: $image)';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$_Users &&
+            (identical(other.id, id) || other.id == id) &&
+            (identical(other.name, name) || other.name == name) &&
+            (identical(other.image, image) || other.image == image));
+  }
+
+  @JsonKey(ignore: true)
+  @override
+  int get hashCode => Object.hash(runtimeType, id, name, image);
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$_UsersCopyWith<_$_Users> get copyWith =>
+      __$$_UsersCopyWithImpl<_$_Users>(this, _$identity);
+
+  @override
+  Map<String, dynamic> toJson() {
+    return _$$_UsersToJson(
+      this,
+    );
+  }
+}
+
+abstract class _Users implements Users {
+  const factory _Users(
+      {final int? id, final String? name, final String? image}) = _$_Users;
+
+  factory _Users.fromJson(Map<String, dynamic> json) = _$_Users.fromJson;
+
+  @override
+  int? get id;
+  @override
+  String? get name;
+  @override
+  String? get image;
+  @override
+  @JsonKey(ignore: true)
+  _$$_UsersCopyWith<_$_Users> get copyWith =>
       throw _privateConstructorUsedError;
 }

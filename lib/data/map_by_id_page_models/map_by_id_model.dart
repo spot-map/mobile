@@ -49,8 +49,22 @@ class Reactions with _$Reactions {
     int? id,
     String? text,
     int? score,
+    Users? users
   }) = _Reactions;
 
   factory Reactions.fromJson(Map<String, Object?> json) =>
       _$ReactionsFromJson(json);
 }
+
+@freezed
+class Users with _$Users {
+  const factory Users({
+    int? id,
+    String? name,
+    String? image,
+  }) = _Users;
+
+  factory Users.fromJson(Map<String, Object?> json) =>
+      _$UsersFromJson(json);
+}
+

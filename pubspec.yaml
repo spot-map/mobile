@@ -33,10 +33,10 @@ dependencies:
   equatable: 2.0.3
   location: ^4.3.0
   animated_snack_bar: ^0.2.2
-  mapbox_gl: ^0.16.0
   dio: ^4.0.6
   latlong2: ^0.8.1
   yandex_mapkit: ^3.2.0
+  geolocator: ^9.0.2
   hydrated_bloc: ^8.1.0
   injectable: ^2.1.0
   vibration: ^1.8.1

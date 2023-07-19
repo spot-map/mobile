@@ -1,10 +1,8 @@
-import 'package:latlong2/latlong.dart';
 
 class ApiConstants {
   ApiConstants._();
 
-   static const BASE_URL_LOCAL = 'http://192.168.0.12/api/v1';
-  // static const BASE_URL_LOCAL = 'http://192.168.1.235/api/v1';
+   static const BASE_URL_LOCAL = 'http://88.210.10.87/api/v1';
 
   static const String LOGIN = '$BASE_URL_LOCAL/auth/login';
 
@@ -20,5 +18,4 @@ class ApiConstants {
 
   static const String FAVORITE = '$BASE_URL_LOCAL/favorite';
 
-  static final CURRENT_LOCATION = LatLng(51.5090214, -0.1982948);
 }

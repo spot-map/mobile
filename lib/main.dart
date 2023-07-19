@@ -14,4 +14,5 @@ void main() async {
 
 Future<void> init() async {
   await Prefs.init();
+
 }
