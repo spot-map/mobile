@@ -38,7 +38,7 @@ Widget byIdWidget(BuildContext context, MapByIdModel model) {
                     itemCount: model.data!.images!.length,
                     itemBuilder: (context, index) {
                       return Image.network(
-                          '${ApiConstants.BASE_URL_LOCAL}/${model.data!.images![index].path!}');
+                          '${ApiConstants.BASE_URL_DEV}/${model.data!.images![index].path!}');
                     })
             )
           ],

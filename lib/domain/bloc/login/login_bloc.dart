@@ -6,11 +6,6 @@ import 'package:ride_map/domain/api/provider/login_provider.dart';
 import 'package:ride_map/domain/bloc/login/constants/login_status.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/untils/dev.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
-
-import '../../../untils/preferences/preferences.dart';
-import '../../../untils/preferences/preferences.dart';
 
 part 'login_event.dart';
 
@@ -27,13 +22,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     on<RefreshEvent>(_onRefreshEvent);
   }
 
-  void _onRefreshEvent( RefreshEvent event, Emitter<LoginState> emit) async{
+  void _onRefreshEvent(RefreshEvent event, Emitter<LoginState> emit) async {
     await _provider.refreshToken();
     emit(state.copyWith(status: LoginStatus.auth));
   }
 
-  void  _onLoginEvent(
-      LoginUserEvent event, Emitter<LoginState> emit) async {
+  void _onLoginEvent(LoginUserEvent event, Emitter<LoginState> emit) async {
     try {
       await _provider.login(event.email, event.password);
       emit(state.copyWith(status: LoginStatus.auth));
@@ -56,11 +50,12 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
     }
   }
 
-  void _onRegistrationEvent(RegistrationEvent event, Emitter<LoginState> emit) async {
+  void _onRegistrationEvent(
+      RegistrationEvent event, Emitter<LoginState> emit) async {
     try {
       Dev.log(
           'REGISTRATION BLOC ${event.name} ${event.email} ${event.password}');
-     await _provider.registration(event.name, event.email, event.password);
+      await _provider.registration(event.name, event.email, event.password);
       emit(state.copyWith(status: LoginStatus.registered));
     } on NetworkError catch (e) {
       emit(

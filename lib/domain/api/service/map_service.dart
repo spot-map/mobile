@@ -5,16 +5,18 @@ import 'package:injectable/injectable.dart';
 import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
 import 'package:ride_map/data/map_page_models/map_model.dart';
 import 'package:ride_map/domain/api/repository/i_map_repository.dart';
+import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/untils/api/api_constants.dart';
 import 'package:ride_map/untils/dev.dart';
-import 'package:ride_map/untils/dio/dio_manager.dart';
+import 'package:ride_map/untils/dio/dio_client.dart';
 
 @Injectable(as: IMapRepository)
 class MapService implements IMapRepository {
+  final dioClient = getIt.get<DioClient>();
   @override
   Future<MapModel> getSpot() async {
     try {
-      Response response = await DioManager()
+      Response response = await dioClient
           .dio
           .get(ApiConstants.MAP, options: Options(method: 'GET'));
 
@@ -37,7 +39,7 @@ class MapService implements IMapRepository {
       Dev.log('GET SPOT BY ID $id', name: 'GET SPOT BY ID');
       Dev.log('RESPONSE TO ${ApiConstants.SPOT_BY_ID}/$id', name: 'RESPONSE');
       Response response =
-          await DioManager().dio.get('${ApiConstants.SPOT_BY_ID}/$id');
+          await dioClient.dio.get('${ApiConstants.SPOT_BY_ID}/$id');
       if (response.statusCode == 200) {
         Dev.log('SPOT ${response.data}', name: 'GET SPOT BY ID');
         return MapByIdModel.fromJson(response.data);

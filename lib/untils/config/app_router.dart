@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:ride_map/presentation/ui/screen/add_spot/add_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/list/list_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/navigation/root_screen.dart';
@@ -26,7 +27,6 @@ class AppRouter {
   static final Map<String, RouteBuilder> routes = {
     RootScreen.id: (_,__) => const RootScreen(),
     SettingsScreen.id: (_, __) => const SettingsScreen(),
-    AddSpotScreen.id: (_, __) => const AddSpotScreen(),
     ListSpotScreen.id: (_, __) => const ListSpotScreen(),
   };
 }

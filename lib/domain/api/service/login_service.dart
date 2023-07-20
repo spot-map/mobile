@@ -6,19 +6,21 @@ import 'package:ride_map/domain/api/repository/i_auth_repository.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/untils/api/api_constants.dart';
 import 'package:ride_map/untils/dev.dart';
-import 'package:ride_map/untils/dio/dio_manager.dart';
+import 'package:ride_map/untils/dio/dio_client.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
 
 
 @Injectable(as: IAuthRepository)
 class AuthService implements IAuthRepository {
-  final Dio _dio = Dio();
+
+  final dioClient = getIt.get<DioClient>();
+
   @override
   Future<void> login(String email, String password) async {
     var authObject = {"email": email, "password": password};
 
     Response response =
-        await DioManager().dio.post(ApiConstants.LOGIN, data: authObject);
+        await dioClient.dio.post(ApiConstants.LOGIN, data: authObject);
     Dev.log('AUTH CODE ${response.statusCode}', name: 'USER AUTH');
     Dev.log('AUTH OBJECT $authObject', name: 'USER AUTH');
 
@@ -38,7 +40,7 @@ class AuthService implements IAuthRepository {
     };
 
     Dev.log('$email $name $password');
-    Response response = await DioManager()
+    Response response = await dioClient
         .dio
         .post(ApiConstants.REGISTRATION, data: registrationObject);
     Dev.log('REGISTRATION CODE ${response.statusCode}',
@@ -49,6 +51,7 @@ class AuthService implements IAuthRepository {
     if (response.statusCode == 200) {
       Dev.log('REGISTRATION ${response.data}',
           name: 'USER REGISTRATION SUCCESS');
+      Prefs.setString('token', jsonEncode(response.data['data']['token']));
       return response.data;
 
     }
@@ -56,11 +59,11 @@ class AuthService implements IAuthRepository {
 
   @override
   Future<void> logout() async{
-    _dio.options.headers = {
+    dioClient.dio.options.headers = {
       'Authorization': 'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
     };
 
-    Response response = await _dio.post(ApiConstants.LOGOUT);
+    Response response = await dioClient.dio.post(ApiConstants.LOGOUT);
     Dev.log('LOGOUT ${response.statusCode}',
         name: 'USER LOGOUT');
     if(response.statusCode == 200){
@@ -70,11 +73,11 @@ class AuthService implements IAuthRepository {
 
   @override
   Future<void> refreshToken() async{
-    _dio.options.headers = {
+    dioClient.dio.options.headers = {
       'Authorization': 'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
     };
 
-    Response response = await _dio.post(ApiConstants.REFRESH);
+    Response response = await dioClient.dio.post(ApiConstants.REFRESH);
     Dev.log('REFRESH ${response.statusCode}',
         name: 'USER REFRESH');
     if(response.statusCode == 200){

@@ -20,23 +20,7 @@ class MapLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     List<MapObject> mapObjects = [];
     return Scaffold(
-      appBar: MyAppBar(
-        automaticallyImplyLeading: false,
-        centerTitle: false,
-        size: 50,
-        title: 'Главная',
-        widgetRight: [
-          Padding(
-            padding: const EdgeInsets.only(right: 10.0),
-            child: GestureDetector(
-              onTap: () {
-                AppRouter.pushNamed(AddSpotScreen.id);
-              },
-              child: Icon(Icons.add, size: 20, color: Prefs.getBool('theme')! ? AppColorDark().backButtonColor : AppColorLight().backButtonColor),
-            ),
-          ),
-        ],
-      ),
+
       extendBodyBehindAppBar: true,
       body: BlocBuilder<LocationBloc, LocationState>(
         buildWhen: (previous, current) =>
