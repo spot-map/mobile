@@ -52,7 +52,7 @@ class FavoriteService implements IFavoriteRepository {
         'Authorization':
             'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
       };
-      print(Prefs.getString('token'));
+      Dev.log('${Prefs.getString('token')}', name:'TOKEN');
       Response response = await _dio.get(
         ApiConstants.FAVORITE,
         options: Options(
@@ -85,7 +85,7 @@ class FavoriteService implements IFavoriteRepository {
         'Authorization':
             'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
       };
-      print(Prefs.getString('token'));
+      Dev.log('${Prefs.getString('token')}', name:'TOKEN');
       Response response = await _dio.delete(
         '${ApiConstants.FAVORITE}/$id',
         options: Options(

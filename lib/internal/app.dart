@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/domain/bloc/theme/theme_bloc.dart';
+import 'package:ride_map/presentation/ui/screen/splash/splash_screen.dart';
 import 'package:ride_map/untils/bloc/bloc_inital.dart';
 import 'package:ride_map/untils/config/app_router.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
@@ -29,7 +30,7 @@ class App extends StatelessWidget {
             },
             debugShowCheckedModeBanner: false,
             theme: state.theme.themeData,
-            home: const RootScreen(),
+            home: const SplashScreen(),
           );
         },
       ),

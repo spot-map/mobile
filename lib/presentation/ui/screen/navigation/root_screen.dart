@@ -15,6 +15,8 @@ import '../account/account_screen.dart';
 class RootScreen extends StatelessWidget {
   const RootScreen({Key? key}) : super(key: key);
 
+  static const id = '/root';
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(

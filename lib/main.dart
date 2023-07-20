@@ -14,5 +14,7 @@ void main() async {
 
 Future<void> init() async {
   await Prefs.init();
-
+  if(Prefs.getBool('theme') == null){
+    Prefs.setBool('theme', false);
+  }
 }

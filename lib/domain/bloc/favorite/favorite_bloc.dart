@@ -1,5 +1,3 @@
-import 'dart:async';
-
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
@@ -10,24 +8,20 @@ import 'package:ride_map/domain/api/provider/favorite_provider.dart';
 import 'package:ride_map/domain/bloc/favorite/constants/favorite_status.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
-import '../../../presentation/ui/widget/snack/snack_bar.dart';
-
 part 'favorite_event.dart';
 
 part 'favorite_state.dart';
 
-
 @injectable
 class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
   FavoriteModel model;
+  final FavoriteProvider _provider = getIt.get<FavoriteProvider>();
+
   FavoriteBloc({required this.model}) : super(FavoriteState()) {
     on<GetFavoriteSpotsEvent>(_onGetFavoriteSpotsEvent);
     on<AddSpotToFavoriteEvent>(_onAddSpotToFavoriteEvent);
     on<DeleteSpotFromFavoriteEvent>(_onDeleteSpotFromFavoriteEvent);
   }
-
-  final FavoriteProvider _provider = getIt.get<FavoriteProvider>();
-
 
   void _onGetFavoriteSpotsEvent(
       GetFavoriteSpotsEvent event, Emitter<FavoriteState> emit) async {
@@ -84,7 +78,8 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
     }
   }
 
-  void _onDeleteSpotFromFavoriteEvent(DeleteSpotFromFavoriteEvent event, Emitter<FavoriteState> emit) async{
+  void _onDeleteSpotFromFavoriteEvent(
+      DeleteSpotFromFavoriteEvent event, Emitter<FavoriteState> emit) async {
     try {
       _provider.deleteSpotFromFavorite(event.id);
       final favorite = await _provider.getFavoriteList();

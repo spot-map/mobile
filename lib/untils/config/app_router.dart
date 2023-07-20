@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ride_map/presentation/ui/screen/add_spot/add_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/list/list_spot_screen.dart';
+import 'package:ride_map/presentation/ui/screen/navigation/root_screen.dart';
 import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
 
 typedef RouteBuilder = Widget Function(BuildContext context, dynamic arguments);
@@ -23,6 +24,7 @@ class AppRouter {
       key.currentState!.pop<T>(result);
 
   static final Map<String, RouteBuilder> routes = {
+    RootScreen.id: (_,__) => const RootScreen(),
     SettingsScreen.id: (_, __) => const SettingsScreen(),
     AddSpotScreen.id: (_, __) => const AddSpotScreen(),
     ListSpotScreen.id: (_, __) => const ListSpotScreen(),
