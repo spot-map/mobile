@@ -15,6 +15,15 @@ class MapProvider  {
   Future<MapByIdModel> getSpotById(int id) {
     return _mapService.getSpotById(id);
   }
+
+  Future<void> addReactions(String text, int score, int spotId){
+    return _mapService.addReactions(text, score, spotId);
+  }
+
+  Future<void> addSpot(String name, String address, String description, double latitude, double longitude){
+    return _mapService.addSpot(name, address, description, latitude, longitude);
+  }
+
 }
 
 class NetworkError extends Error {}

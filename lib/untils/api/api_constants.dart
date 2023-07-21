@@ -18,4 +18,7 @@ class ApiConstants {
 
   static const String FAVORITE = '$BASE_URL_DEV/favorite';
 
+  static const String REACTIONS = "$BASE_URL_DEV/reaction";
+
+  static const String ADD_SPOT = "$BASE_URL_DEV/spot/create";
 }

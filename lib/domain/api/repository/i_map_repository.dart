@@ -7,7 +7,11 @@ abstract class IMapRepository {
   Future<MapModel> getSpot();
 
   @module
+  Future<void> addSpot(String name, String address, String description, double latitude, double longitude);
+
+  @module
   Future<MapByIdModel> getSpotById(int id);
 
-
+  @module
+  Future<void> addReactions(String text, int score, int spotId);
 }

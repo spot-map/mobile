@@ -10,13 +10,36 @@ part 'spot_by_id_event.dart';
 
 part 'spot_by_id_state.dart';
 
-final MapProvider _provider = getIt.get<MapProvider>();
-
 class SpotByIdBloc extends Bloc<SpotByIdEvent, SpotByIdState> {
   MapByIdModel spotByIdModel;
+  final MapProvider _provider = getIt.get<MapProvider>();
 
   SpotByIdBloc({required this.spotByIdModel}) : super(SpotByIdState()) {
     on<GetSpotById>(_onGetSpotById);
+    on<AddReactions>(_onAddReactions);
+  }
+
+  void _onAddReactions(AddReactions event, Emitter<SpotByIdState> emit) {
+    try {
+      _provider.addReactions(event.text, event.score, event.spotId);
+      emit(state.copyWith(status: ByIdStatus.added));
+    } on NetworkError catch (e) {
+      emit(
+        state.copyWith(
+          status: ByIdStatus.error,
+          errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    } on DioError catch (e) {
+      emit(
+        state.copyWith(
+          status: ByIdStatus.error,
+          errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    }
   }
 
   void _onGetSpotById(GetSpotById event, Emitter<SpotByIdState> emit) async {

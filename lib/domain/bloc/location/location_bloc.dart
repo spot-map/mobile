@@ -16,12 +16,9 @@ part 'location_event.dart';
 
 part 'location_state.dart';
 
-final MapProvider _provider = getIt.get<MapProvider>();
-
 @injectable
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
-  List<MapObject> mapObjects = [];
-
+  final MapProvider _provider = getIt.get<MapProvider>();
   MapModel spot;
 
   LocationBloc({required this.locationRepository, required this.spot})

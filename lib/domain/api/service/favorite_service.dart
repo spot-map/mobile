@@ -6,11 +6,12 @@ import 'package:ride_map/domain/api/repository/i_favorite_repository.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/untils/api/api_constants.dart';
 import 'package:ride_map/untils/dev.dart';
+import 'package:ride_map/untils/dio/dio_client.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
 
 @Injectable(as: IFavoriteRepository)
 class FavoriteService implements IFavoriteRepository {
-  final Dio _dio = Dio();
+  final dioClient = getIt.get<DioClient>();
   final AuthProvider _provider = getIt.get<AuthProvider>();
 
   @override
@@ -18,12 +19,12 @@ class FavoriteService implements IFavoriteRepository {
     try {
       Dev.log('PREFS ${Prefs.getString('token')}', name: 'PREFS');
       var spotObject = {'spot_id': id};
-      _dio.options.headers = {
+      dioClient.dio.options.headers = {
         'Authorization':
             'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
       };
 
-      Response response = await _dio.post(
+      Response response = await dioClient.dio.post(
         ApiConstants.FAVORITE,
         data: spotObject,
         options: Options(
@@ -48,12 +49,12 @@ class FavoriteService implements IFavoriteRepository {
   @override
   Future<FavoriteModel> getFavoriteList() async {
     try {
-      _dio.options.headers = {
+      dioClient.dio.options.headers = {
         'Authorization':
             'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
       };
       Dev.log('${Prefs.getString('token')}', name:'TOKEN');
-      Response response = await _dio.get(
+      Response response = await dioClient.dio.get(
         ApiConstants.FAVORITE,
         options: Options(
           followRedirects: false,
@@ -81,12 +82,12 @@ class FavoriteService implements IFavoriteRepository {
   @override
   Future<void> deleteSpotFromFavorite(int id) async {
     try {
-      _dio.options.headers = {
+      dioClient.dio.options.headers = {
         'Authorization':
             'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
       };
       Dev.log('${Prefs.getString('token')}', name:'TOKEN');
-      Response response = await _dio.delete(
+      Response response = await dioClient.dio.delete(
         '${ApiConstants.FAVORITE}/$id',
         options: Options(
           followRedirects: false,

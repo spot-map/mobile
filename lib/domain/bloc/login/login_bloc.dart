@@ -11,10 +11,11 @@ part 'login_event.dart';
 
 part 'login_state.dart';
 
-final AuthProvider _provider = getIt.get<AuthProvider>();
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
+  final AuthProvider _provider = getIt.get<AuthProvider>();
+
   LoginBloc() : super(LoginState()) {
     on<LoginUserEvent>(_onLoginEvent);
     on<RegistrationEvent>(_onRegistrationEvent);

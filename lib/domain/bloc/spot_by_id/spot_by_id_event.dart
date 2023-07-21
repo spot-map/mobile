@@ -7,7 +7,7 @@ abstract class SpotByIdEvent extends Equatable {
   List<Object?> get props => [];
 }
 
-class GetSpotById extends SpotByIdEvent{
+class GetSpotById extends SpotByIdEvent {
   final int id;
 
   const GetSpotById(this.id);
@@ -16,3 +16,13 @@ class GetSpotById extends SpotByIdEvent{
   List<Object?> get props => [id];
 }
 
+class AddReactions extends SpotByIdEvent {
+  final String text;
+  final int score;
+  final int spotId;
+
+  const AddReactions(this.text, this.score, this.spotId);
+
+  @override
+  List<Object?> get props => [text, score, spotId];
+}

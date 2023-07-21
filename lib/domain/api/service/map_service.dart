@@ -9,15 +9,16 @@ import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/untils/api/api_constants.dart';
 import 'package:ride_map/untils/dev.dart';
 import 'package:ride_map/untils/dio/dio_client.dart';
+import 'package:ride_map/untils/preferences/preferences.dart';
 
 @Injectable(as: IMapRepository)
 class MapService implements IMapRepository {
   final dioClient = getIt.get<DioClient>();
+
   @override
   Future<MapModel> getSpot() async {
     try {
-      Response response = await dioClient
-          .dio
+      Response response = await dioClient.dio
           .get(ApiConstants.MAP, options: Options(method: 'GET'));
 
       if (response.statusCode == 200) {
@@ -54,8 +55,72 @@ class MapService implements IMapRepository {
   }
 
   @override
-  Future<void> addReactions(String text, int score, int spotId) {
-    // TODO: implement addReactions
-    throw UnimplementedError();
+  Future<void> addReactions(String text, int score, int spotId) async {
+    var reactionsObject = {"text": text, "score": score, "spotId": spotId};
+    try {
+      dioClient.dio.options.headers = {
+        'Authorization':
+            'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
+      };
+      Dev.log('${Prefs.getString('token')}', name: 'TOKEN');
+      Response response = await dioClient.dio.post(
+        ApiConstants.REACTIONS,
+        data: reactionsObject,
+        options: Options(
+          followRedirects: false,
+          validateStatus: (status) => true,
+        ),
+      );
+      if (response.statusCode == 200) {
+        Dev.log('ADD REACTIONS ${response.data}', name: 'REACTIONS');
+        return response.data;
+      } else {
+        Dev.log('Error ${response.statusCode}',
+            name: 'ADD REACTIONS, ${response.statusCode}');
+        throw Exception('${response.data}');
+      }
+    } on DioError catch (e) {
+      throw Exception(e.message);
+    }
+  }
+
+  @override
+  Future<void> addSpot(String name, String address, String description,
+      double latitude, double longitude) async {
+    var spotObject = {
+      "name": name,
+      "address": address,
+      "description": description,
+      "latitude": latitude,
+      "longitude": longitude
+    };
+
+    Dev.log('Object $spotObject', name: 'Spot Object');
+
+    try {
+      dioClient.dio.options.headers = {
+        'Authorization':
+            'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
+      };
+      Response response = await dioClient.dio.post(
+        ApiConstants.ADD_SPOT,
+        data: spotObject,
+        options: Options(
+          followRedirects: false,
+          validateStatus: (status) => true,
+        )
+      );
+
+      if (response.statusCode == 201) {
+        Dev.log('ADD SPOT ${response.data}', name: 'SPOT');
+        return response.data;
+      } else {
+        Dev.log('Error ${response.statusCode}',
+            name: 'ADD SPOT, ${response.statusCode}');
+        throw Exception('${response.data}');
+      }
+    } on DioError catch (e) {
+      throw Exception(e.message);
+    }
   }
 }
