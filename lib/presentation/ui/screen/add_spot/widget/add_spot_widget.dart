@@ -11,6 +11,7 @@ Widget addSpotWidget(
   final TextEditingController _name = TextEditingController();
   final TextEditingController _address = TextEditingController();
   final TextEditingController _description = TextEditingController();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   return SingleChildScrollView(
     child: Container(
@@ -22,60 +23,89 @@ Widget addSpotWidget(
             margin: const EdgeInsets.only(left: 35, right: 35),
             child: Column(
               children: [
-                TextField(
-                  style: const TextStyle(color: Colors.black),
-                  controller: _name,
-                  decoration: InputDecoration(
-                      fillColor: Colors.grey.shade100,
-                      filled: true,
-                      hintText: "Название",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      )),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                TextField(
-                  style: const TextStyle(color: Colors.black),
-                  controller: _address,
-                  decoration: InputDecoration(
-                      fillColor: Colors.grey.shade100,
-                      filled: true,
-                      hintText: "Адрес",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      )),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
-                TextField(
-                  style: const TextStyle(color: Colors.black),
-                  controller: _description,
-                  decoration: InputDecoration(
-                      fillColor: Colors.grey.shade100,
-                      filled: true,
-                      hintText: "Описание",
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(10),
-                      )),
-                ),
-                const SizedBox(
-                  height: 30,
-                ),
+                Form(
+                    key: _formKey,
+                    child: Column(
+                      children: [
+                        TextFormField(
+                          style: const TextStyle(color: Colors.black),
+                          controller: _name,
+                          key: const Key('addName'),
+                          validator: (value) {
+                            if (value == '') {
+                              return 'Укажите название спота';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              fillColor: Colors.grey.shade100,
+                              filled: true,
+                              hintText: "Название",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        TextFormField(
+                          style: const TextStyle(color: Colors.black),
+                          controller: _address,
+                          key: const Key('addAddress'),
+                          validator: (value) {
+                            if (value == '') {
+                              return 'Укажите адрес спота';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              fillColor: Colors.grey.shade100,
+                              filled: true,
+                              hintText: "Адрес",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        TextFormField(
+                          style: const TextStyle(color: Colors.black),
+                          controller: _description,
+                          key: const Key('addDescription'),
+                          validator: (value) {
+                            if (value == '') {
+                              return 'Укажите описание спота';
+                            }
+                            return null;
+                          },
+                          decoration: InputDecoration(
+                              fillColor: Colors.grey.shade100,
+                              filled: true,
+                              hintText: "Описание",
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              )),
+                        ),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                      ],
+                    ))
               ],
             ),
           ),
           ElevatedButton(
               onPressed: () {
                 if (Prefs.getString('token') != null) {
-                  BlocProvider.of<SpotBloc>(context).add(AddSpotEvent(
-                      _name.text,
-                      _address.text,
-                      _description.text,
-                      currentUserLocation!.latitude,
-                      currentUserLocation.longitude));
+                  if (_formKey.currentState!.validate()) {
+                    BlocProvider.of<SpotBloc>(context).add(AddSpotEvent(
+                        _name.text,
+                        _address.text,
+                        _description.text,
+                        currentUserLocation!.latitude,
+                        currentUserLocation.longitude));
+                  }
                 } else {
                   snackBar('Для необходимо авторизироваться', context, true);
                 }
