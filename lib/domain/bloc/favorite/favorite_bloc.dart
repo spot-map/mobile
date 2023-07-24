@@ -50,6 +50,14 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         ),
       );
       addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: FavoriteStatus.error,
+          errorMessage: 'Ошибка',
+        ),
+      );
+      addError(e);
     }
   }
 
@@ -75,6 +83,14 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         ),
       );
       addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: FavoriteStatus.error,
+          errorMessage: 'Ошибка',
+        ),
+      );
+      addError(e);
     }
   }
 
@@ -97,6 +113,14 @@ class FavoriteBloc extends Bloc<FavoriteEvent, FavoriteState> {
         state.copyWith(
           status: FavoriteStatus.error,
           errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: FavoriteStatus.error,
+          errorMessage: 'Ошибка',
         ),
       );
       addError(e);
