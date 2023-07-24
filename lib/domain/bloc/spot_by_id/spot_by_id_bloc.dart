@@ -12,7 +12,7 @@ part 'spot_by_id_state.dart';
 
 class SpotByIdBloc extends Bloc<SpotByIdEvent, SpotByIdState> {
   MapByIdModel spotByIdModel;
-  final MapProvider _provider = getIt.get<MapProvider>();
+  final _provider = getIt.get<MapProvider>();
 
   SpotByIdBloc({required this.spotByIdModel}) : super(SpotByIdState()) {
     on<GetSpotById>(_onGetSpotById);
@@ -36,6 +36,14 @@ class SpotByIdBloc extends Bloc<SpotByIdEvent, SpotByIdState> {
         state.copyWith(
           status: ByIdStatus.error,
           errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: ByIdStatus.error,
+          errorMessage: 'Ошибка',
         ),
       );
       addError(e);
@@ -65,6 +73,14 @@ class SpotByIdBloc extends Bloc<SpotByIdEvent, SpotByIdState> {
         state.copyWith(
           status: ByIdStatus.error,
           errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: ByIdStatus.error,
+          errorMessage: 'Ошибка',
         ),
       );
       addError(e);

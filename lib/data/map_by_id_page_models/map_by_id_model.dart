@@ -49,7 +49,7 @@ class Reactions with _$Reactions {
     int? id,
     String? text,
     int? score,
-    Users? users
+    User? user
   }) = _Reactions;
 
   factory Reactions.fromJson(Map<String, Object?> json) =>
@@ -57,14 +57,14 @@ class Reactions with _$Reactions {
 }
 
 @freezed
-class Users with _$Users {
-  const factory Users({
+class User with _$User {
+  const factory User({
     int? id,
     String? name,
     String? image,
-  }) = _Users;
+  }) = _User;
 
-  factory Users.fromJson(Map<String, Object?> json) =>
-      _$UsersFromJson(json);
+  factory User.fromJson(Map<String, Object?> json) =>
+      _$UserFromJson(json);
 }
 

@@ -1,13 +1,17 @@
 import 'package:flutter/material.dart';
+import 'package:ride_map/untils/preferences/preferences.dart';
 
 class AccountScreen extends StatelessWidget {
-  const AccountScreen({Key? key}) : super(key: key);
-
+  AccountScreen({Key? key}) : super(key: key);
+  final TextEditingController test = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    test.text = Prefs.getString('fcm')!;
+    return Scaffold(
       body: Center(
-        child: Text('SettingsScreen'),
+        child: TextField(
+          controller: test,
+        ),
       ),
     );
   }

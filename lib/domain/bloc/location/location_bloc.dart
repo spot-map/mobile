@@ -7,7 +7,7 @@ import 'package:location/location.dart';
 import 'package:location_repository/location_repository.dart';
 import 'package:ride_map/domain/api/provider/map_provider.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:yandex_mapkit/yandex_mapkit.dart';
+import 'package:ride_map/untils/dev.dart';
 
 import '../../../data/map_page_models/map_model.dart';
 import 'constants/location_enum.dart';
@@ -32,6 +32,7 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
     try {
       emit(state.copyWith(status: LocationStateStatus.loading));
       var _currentLocation = await locationRepository.getCurrentLocation();
+      Dev.log('USER LOCATION ${_currentLocation.longitude}, ${_currentLocation.latitude}', name: 'LOCATION');
       final spots = await _provider.getSpot();
       emit(
         state.copyWith(
@@ -61,6 +62,14 @@ class LocationBloc extends Bloc<LocationEvent, LocationState> {
         state.copyWith(
           status: LocationStateStatus.error,
           errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: LocationStateStatus.error,
+          errorMessage: 'Ошибка',
         ),
       );
       addError(e);

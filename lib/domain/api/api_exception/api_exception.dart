@@ -4,13 +4,13 @@ class ApiException extends Error {
   ApiException.fromDioError(DioError dioError) {
     switch (dioError.type) {
       case DioErrorType.cancel:
-        message = "Request to API server was cancelled";
+        message = "Запрос отменен";
         break;
       case DioErrorType.connectTimeout:
         message = "Connection timeout with API server";
         break;
       case DioErrorType.other:
-        message = "Connection to API server failed due to internet connection";
+        message = "Проверьте подключение к интренету";
         break;
       case DioErrorType.receiveTimeout:
         message = "Receive timeout in connection with API server";
@@ -22,7 +22,7 @@ class ApiException extends Error {
         message = "Send timeout in connection with API server";
         break;
       default:
-        message = "Something went wrong";
+        message = "Что-то пошло не так";
         break;
     }
   }
@@ -31,14 +31,16 @@ class ApiException extends Error {
 
   String _handleError(int? statusCode) {
     switch (statusCode) {
+      case 302:
+        return 'Непредвиденная ошибка';
       case 400:
-        return 'Bad request';
+        return 'Ошибка запроса';
       case 404:
-        return 'The requested resource was not found';
+        return 'Страница не найдена';
       case 500:
-        return 'Internal server error';
+        return 'Ошибка сервера';
       default:
-        return 'Oops something went wrong';
+        return 'Упс,что-то пошло не так';
     }
   }
 

@@ -1,7 +1,9 @@
 import 'package:bloc/bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
+import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
 import 'package:ride_map/data/map_page_models/map_model.dart';
 import 'package:ride_map/domain/api/provider/map_provider.dart';
 import 'package:ride_map/domain/bloc/spot/constants/spot_status.dart';
@@ -11,24 +13,34 @@ part 'spot_event.dart';
 
 part 'spot_state.dart';
 
-
 @injectable
 class SpotBloc extends Bloc<SpotEvent, SpotState> {
   MapModel? spot;
-  final MapProvider _provider = getIt.get<MapProvider>();
-
-
+  final _provider = getIt.get<MapProvider>();
 
   SpotBloc({required this.spot}) : super(SpotState()) {
     on<GetSpotList>(_onGetSpotList);
     on<AddSpotEvent>(_onAddSpotEvent);
+    on<SelectMultipleImageEvent>((_onSelectMultipleImages));
+    on<UnSelectMultipleImageEvent>((_onUnSelectMultipleImages));
   }
 
-  void _onAddSpotEvent(AddSpotEvent event, Emitter<SpotState> emit) async{
-    try{
-      await _provider.addSpot(event.name, event.address, event.description, event.latitude, event.longitude);
+  Future<void> _onSelectMultipleImages(
+      SelectMultipleImageEvent event, Emitter<SpotState> emit) async {
+    emit(state.copyWith(images: event.images));
+  }
+
+  Future<void> _onUnSelectMultipleImages(
+      UnSelectMultipleImageEvent event, Emitter<SpotState> emit) async {
+    emit(state.copyWith(images: []));
+  }
+
+  void _onAddSpotEvent(AddSpotEvent event, Emitter<SpotState> emit) async {
+    try {
+      await _provider.addSpot(event.name, event.address, event.description,
+          event.latitude, event.longitude);
       emit(state.copyWith(status: SpotStatus.added));
-    }on NetworkError catch (e) {
+    } on NetworkError catch (e) {
       emit(
         state.copyWith(
           status: SpotStatus.error,
@@ -41,6 +53,14 @@ class SpotBloc extends Bloc<SpotEvent, SpotState> {
         state.copyWith(
           status: SpotStatus.error,
           errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    } catch (e){
+      emit(
+        state.copyWith(
+          status: SpotStatus.error,
+          errorMessage: 'Ошибка',
         ),
       );
       addError(e);
@@ -70,6 +90,14 @@ class SpotBloc extends Bloc<SpotEvent, SpotState> {
         state.copyWith(
           status: SpotStatus.error,
           errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: SpotStatus.error,
+          errorMessage: 'Ошибка',
         ),
       );
       addError(e);

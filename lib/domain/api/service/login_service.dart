@@ -1,5 +1,3 @@
-import 'dart:convert';
-
 import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:ride_map/domain/api/repository/i_auth_repository.dart';
@@ -9,10 +7,8 @@ import 'package:ride_map/untils/dev.dart';
 import 'package:ride_map/untils/dio/dio_client.dart';
 import 'package:ride_map/untils/preferences/preferences.dart';
 
-
 @Injectable(as: IAuthRepository)
 class AuthService implements IAuthRepository {
-
   final dioClient = getIt.get<DioClient>();
 
   @override
@@ -26,22 +22,21 @@ class AuthService implements IAuthRepository {
 
     if (response.statusCode == 200) {
       Dev.log('AUTH ${response.data}', name: 'USER AUTH');
-      Prefs.setString('token', jsonEncode(response.data['data']['token']));
+      Prefs.setString('token', response.data['data']['token']);
       Dev.log('SAVED ${Prefs.getString('token')}', name: 'PREFS');
     }
   }
 
   @override
-  Future<void> registration(String name,String email, String password) async {
+  Future<void> registration(String name, String email, String password) async {
     var registrationObject = {
       "name": name,
       "email": email,
-      "password": password
+      "password": password,
     };
 
     Dev.log('$email $name $password');
-    Response response = await dioClient
-        .dio
+    Response response = await dioClient.dio
         .post(ApiConstants.REGISTRATION, data: registrationObject);
     Dev.log('REGISTRATION CODE ${response.statusCode}',
         name: 'USER REGISTRATION');
@@ -51,39 +46,39 @@ class AuthService implements IAuthRepository {
     if (response.statusCode == 200) {
       Dev.log('REGISTRATION ${response.data}',
           name: 'USER REGISTRATION SUCCESS');
-      Prefs.setString('token', jsonEncode(response.data['data']['token']));
+      Prefs.setString('token', response.data['data']['token']);
       return response.data;
-
     }
   }
 
   @override
-  Future<void> logout() async{
+  Future<void> logout() async {
     dioClient.dio.options.headers = {
-      'Authorization': 'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
+      'Authorization': 'Bearer ${Prefs.getString('token')}',
     };
 
     Response response = await dioClient.dio.post(ApiConstants.LOGOUT);
-    Dev.log('LOGOUT ${response.statusCode}',
-        name: 'USER LOGOUT');
-    if(response.statusCode == 200){
+    Dev.log('LOGOUT ${response.statusCode}', name: 'USER LOGOUT');
+    if (response.statusCode == 200) {
       Prefs.remove('token');
     }
   }
 
   @override
-  Future<void> refreshToken() async{
+  Future<void> refreshToken() async {
     dioClient.dio.options.headers = {
-      'Authorization': 'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
+      'Authorization': 'Bearer ${Prefs.getString('token')}',
     };
 
     Response response = await dioClient.dio.post(ApiConstants.REFRESH);
-    Dev.log('REFRESH ${response.statusCode}',
-        name: 'USER REFRESH');
-    if(response.statusCode == 200){
-      Dev.log('REFRESH ${response.data}', name:'${response.statusCode} REFRESH');
-      Prefs.setString('token', jsonEncode(response.data['data']['token']));
-      Dev.log('PREFS ${Prefs.getString('token')}', name:'REFRESH PREFS');
+    Dev.log('REFRESH ${response.statusCode}', name: 'USER REFRESH');
+    if (response.statusCode == 200) {
+      Dev.log('REFRESH ${response.data}',
+          name: '${response.statusCode} REFRESH');
+      Prefs.setString('token', response.data['data']['token']);
+      Dev.log('PREFS ${Prefs.getString('token')}', name: 'REFRESH PREFS');
     }
   }
+
+
 }

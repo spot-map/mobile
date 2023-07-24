@@ -22,3 +22,19 @@ class AddSpotEvent extends SpotEvent {
   @override
   List<Object?> get props => [name, address, description, latitude, longitude];
 }
+
+class SelectMultipleImageEvent extends SpotEvent {
+  final List<XFile> images;
+
+ const SelectMultipleImageEvent(this.images);
+
+  @override
+  List<Object?> get props => [images];
+}
+
+class UnSelectMultipleImageEvent extends SpotEvent {
+  @override
+  List<Object?> get props => [];
+}
+
+

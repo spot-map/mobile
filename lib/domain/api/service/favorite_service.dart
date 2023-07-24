@@ -12,18 +12,19 @@ import 'package:ride_map/untils/preferences/preferences.dart';
 @Injectable(as: IFavoriteRepository)
 class FavoriteService implements IFavoriteRepository {
   final dioClient = getIt.get<DioClient>();
-  final AuthProvider _provider = getIt.get<AuthProvider>();
+  final _provider = getIt.get<AuthProvider>();
+
 
   @override
   Future<void> addSpotToFavorite(int id) async {
     try {
       Dev.log('PREFS ${Prefs.getString('token')}', name: 'PREFS');
       var spotObject = {'spot_id': id};
+
       dioClient.dio.options.headers = {
         'Authorization':
-            'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
+        'Bearer ${Prefs.getString('token')}',
       };
-
       Response response = await dioClient.dio.post(
         ApiConstants.FAVORITE,
         data: spotObject,
@@ -51,9 +52,9 @@ class FavoriteService implements IFavoriteRepository {
     try {
       dioClient.dio.options.headers = {
         'Authorization':
-            'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
+            'Bearer ${Prefs.getString('token')}',
       };
-      Dev.log('${Prefs.getString('token')}', name:'TOKEN');
+      Dev.log('${Prefs.getString('token')}', name: 'TOKEN');
       Response response = await dioClient.dio.get(
         ApiConstants.FAVORITE,
         options: Options(
@@ -86,7 +87,7 @@ class FavoriteService implements IFavoriteRepository {
         'Authorization':
             'Bearer ${Prefs.getString('token')!.replaceAll('"', '')}',
       };
-      Dev.log('${Prefs.getString('token')}', name:'TOKEN');
+      Dev.log('${Prefs.getString('token')}', name: 'TOKEN');
       Response response = await dioClient.dio.delete(
         '${ApiConstants.FAVORITE}/$id',
         options: Options(

@@ -14,7 +14,7 @@ part 'login_state.dart';
 
 @injectable
 class LoginBloc extends Bloc<LoginEvent, LoginState> {
-  final AuthProvider _provider = getIt.get<AuthProvider>();
+  final _provider = getIt.get<AuthProvider>();
 
   LoginBloc() : super(LoginState()) {
     on<LoginUserEvent>(_onLoginEvent);
@@ -48,6 +48,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         ),
       );
       addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: LoginStatus.error,
+          errorMessage: 'Ошибка',
+        ),
+      );
+      addError(e);
     }
   }
 
@@ -74,6 +82,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         ),
       );
       addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: LoginStatus.error,
+          errorMessage: 'Ошибка',
+        ),
+      );
+      addError(e);
     }
   }
 
@@ -94,6 +110,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
         state.copyWith(
           status: LoginStatus.error,
           errorMessage: e.stackTrace.toString(),
+        ),
+      );
+      addError(e);
+    }catch (e){
+      emit(
+        state.copyWith(
+          status: LoginStatus.error,
+          errorMessage: 'Ошибка',
         ),
       );
       addError(e);

@@ -43,7 +43,8 @@ class _MapWidgetState extends State<MapWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      extendBodyBehindAppBar: true,
+        extendBodyBehindAppBar: true,
+        resizeToAvoidBottomInset: false,
         appBar: MyAppBar(
           automaticallyImplyLeading: false,
           centerTitle: false,
@@ -54,9 +55,18 @@ class _MapWidgetState extends State<MapWidget> {
               padding: const EdgeInsets.only(right: 10.0),
               child: GestureDetector(
                 onTap: () {
-                  Navigator.push(context, MaterialPageRoute(builder: (context) => AddSpotScreen(currentUserLocation: widget.currentUserLocation,)));
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => AddSpotScreen(
+                                currentUserLocation: widget.currentUserLocation,
+                              )));
                 },
-                child: Icon(Icons.add, size: 20, color: Prefs.getBool('theme')! ? AppColorDark().backButtonColor : AppColorLight().backButtonColor),
+                child: Icon(Icons.add,
+                    size: 20,
+                    color: Prefs.getBool('theme')!
+                        ? AppColorDark().backButtonColor
+                        : AppColorLight().backButtonColor),
               ),
             ),
           ],

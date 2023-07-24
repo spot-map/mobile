@@ -20,7 +20,7 @@ class MapLayout extends StatelessWidget {
   Widget build(BuildContext context) {
     List<MapObject> mapObjects = [];
     return Scaffold(
-
+      resizeToAvoidBottomInset: false,
       extendBodyBehindAppBar: true,
       body: BlocBuilder<LocationBloc, LocationState>(
         buildWhen: (previous, current) =>
@@ -31,7 +31,7 @@ class MapLayout extends StatelessWidget {
           if (state.status.isSuccess) {
             Dev.log('SPOTS ${state.spot!.data.length}');
 
-            state.spot!.data.forEach((element) {
+            for (var element in state.spot!.data) {
               mapObjects.add(PlacemarkMapObject(
                   mapId: MapObjectId('spot ${element.id}'),
                   onTap: (PlacemarkMapObject self, Point point) =>
@@ -44,7 +44,7 @@ class MapLayout extends StatelessWidget {
                       image: BitmapDescriptor.fromAssetImage(
                           'assets/spot_location.png'),
                       scale: 0.2))));
-            });
+            }
 
             mapObjects.add(PlacemarkMapObject(
                 mapId: const MapObjectId('user location'),

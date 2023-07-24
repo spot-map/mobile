@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:location_repository/location_repository.dart';
-import 'package:ride_map/presentation/ui/screen/add_spot/widget/add_spot_layout.dart';
+import 'package:ride_map/presentation/ui/screen/add_spot/widget/add_spot_widget.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 
 class AddSpotScreen extends StatelessWidget {
@@ -19,6 +19,6 @@ class AddSpotScreen extends StatelessWidget {
           automaticallyImplyLeading: true,
           centerTitle: false,
         ),
-        body: SpotLayout(currentUserLocation: currentUserLocation));
+        body: addSpotWidget(context, currentUserLocation: currentUserLocation));
   }
 }

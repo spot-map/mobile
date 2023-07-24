@@ -91,7 +91,7 @@ class RootScreen extends StatelessWidget {
                 ? const LoginScreen()
                 : const FavoriteScreen();
           } else if (state.item == NavBarItem.account) {
-            return const AccountScreen();
+            return AccountScreen();
           } else if (state.item == NavBarItem.settings) {
             return const SettingsScreen();
           }
