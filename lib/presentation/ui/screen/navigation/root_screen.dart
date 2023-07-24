@@ -20,65 +20,78 @@ class RootScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       bottomNavigationBar: BlocBuilder<NavigationCubit, NavigationState>(
         builder: (context, state) {
-          return BottomNavigationBar(
-            currentIndex: state.index,
-            unselectedItemColor: AppColorLight().unselectedItemColor,
-            type: BottomNavigationBarType.fixed,
-            items: [
-              BottomNavigationBarItem(
-                  icon: const Icon(Icons.home),
-                  activeIcon: Icon(
-                    Icons.home,
-                    color: Prefs.getBool('theme')!
-                        ? AppColorDark().selectedItemColor
-                        : AppColorLight().selectedItemColor,
-                  ),
-                  label: 'Главная'),
-              BottomNavigationBarItem(
-                  icon: const Icon(Icons.favorite),
-                  activeIcon: Icon(Icons.favorite,
-                      color: AppColorLight().favoriteButtonColor),
-                  label: 'Избранное'),
-              BottomNavigationBarItem(
-                  icon: const Icon(Icons.person),
-                  activeIcon: Icon(
-                    Icons.person,
-                    color: Prefs.getBool('theme')!
-                        ? AppColorDark().selectedItemColor
-                        : AppColorLight().selectedItemColor,
-                  ),
-                  label: 'Аккаунт'),
-              BottomNavigationBarItem(
-                  icon: const Icon(Icons.settings),
-                  activeIcon: Icon(
-                    Icons.settings,
-                    color: Prefs.getBool('theme')!
-                        ? AppColorDark().selectedItemColor
-                        : AppColorLight().selectedItemColor,
-                  ),
-                  label: 'Настройки')
-            ],
-            onTap: (index) {
-              switch (index) {
-                case 0:
-                  BlocProvider.of<NavigationCubit>(context)
-                      .getNavBarItem(NavBarItem.home);
-                  break;
-                case 1:
-                  BlocProvider.of<NavigationCubit>(context)
-                      .getNavBarItem(NavBarItem.favorite);
-                  break;
-                case 2:
-                  BlocProvider.of<NavigationCubit>(context)
-                      .getNavBarItem(NavBarItem.account);
-                  break;
-                case 3:
-                  BlocProvider.of<NavigationCubit>(context)
-                      .getNavBarItem(NavBarItem.settings);
-              }
-            },
+          return Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.only(
+                  topRight: Radius.circular(30), topLeft: Radius.circular(30)),
+              boxShadow: [
+                BoxShadow(color: Colors.black38, spreadRadius: 0, blurRadius: 10),
+              ],
+            ),
+            child: ClipRRect(
+              borderRadius: const BorderRadius.all(Radius.circular(30)),
+              child: BottomNavigationBar(
+                currentIndex: state.index,
+                unselectedItemColor: AppColorLight().unselectedItemColor,
+                type: BottomNavigationBarType.fixed,
+                items: [
+                  BottomNavigationBarItem(
+                      icon: const Icon(Icons.home),
+                      activeIcon: Icon(
+                        Icons.home,
+                        color: Prefs.getBool('theme')!
+                            ? AppColorDark().selectedItemColor
+                            : AppColorLight().selectedItemColor,
+                      ),
+                      label: 'Главная'),
+                  BottomNavigationBarItem(
+                      icon: const Icon(Icons.favorite),
+                      activeIcon: Icon(Icons.favorite,
+                          color: AppColorLight().favoriteButtonColor),
+                      label: 'Избранное'),
+                  BottomNavigationBarItem(
+                      icon: const Icon(Icons.person),
+                      activeIcon: Icon(
+                        Icons.person,
+                        color: Prefs.getBool('theme')!
+                            ? AppColorDark().selectedItemColor
+                            : AppColorLight().selectedItemColor,
+                      ),
+                      label: 'Аккаунт'),
+                  BottomNavigationBarItem(
+                      icon: const Icon(Icons.settings),
+                      activeIcon: Icon(
+                        Icons.settings,
+                        color: Prefs.getBool('theme')!
+                            ? AppColorDark().selectedItemColor
+                            : AppColorLight().selectedItemColor,
+                      ),
+                      label: 'Настройки')
+                ],
+                onTap: (index) {
+                  switch (index) {
+                    case 0:
+                      BlocProvider.of<NavigationCubit>(context)
+                          .getNavBarItem(NavBarItem.home);
+                      break;
+                    case 1:
+                      BlocProvider.of<NavigationCubit>(context)
+                          .getNavBarItem(NavBarItem.favorite);
+                      break;
+                    case 2:
+                      BlocProvider.of<NavigationCubit>(context)
+                          .getNavBarItem(NavBarItem.account);
+                      break;
+                    case 3:
+                      BlocProvider.of<NavigationCubit>(context)
+                          .getNavBarItem(NavBarItem.settings);
+                  }
+                },
+              ),
+            ),
           );
         },
       ),

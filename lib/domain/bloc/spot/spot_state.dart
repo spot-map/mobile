@@ -4,30 +4,30 @@ class SpotState extends Equatable {
   const SpotState({
     this.spot,
     this.status = SpotStatus.initial,
-    this.mapById,
+    this.spotById,
     this.images,
     String? errorMessage,
   }) : errorMessage = errorMessage ?? '';
 
   final SpotStatus status;
   final MapModel? spot;
-  final MapByIdModel? mapById;
+  final MapByIdModel? spotById;
   final String errorMessage;
   final List<XFile>? images;
 
   @override
-  List<Object?> get props => [errorMessage, spot, images];
+  List<Object?> get props => [spot, spotById, images];
 
   SpotState copyWith(
       {SpotStatus? status,
       String? errorMessage,
       MapModel? spot,
-      MapByIdModel? mapById,
+      MapByIdModel? spotById,
       List<XFile>? images}) {
     return SpotState(
         errorMessage: errorMessage ?? this.errorMessage,
         spot: spot ?? this.spot,
-        mapById: mapById ?? this.mapById,
+        spotById: spotById ?? this.spotById,
         status: status ?? this.status,
         images: images ?? this.images);
   }

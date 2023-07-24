@@ -16,10 +16,10 @@ class SpotByIdBloc extends Bloc<SpotByIdEvent, SpotByIdState> {
 
   SpotByIdBloc({required this.spotByIdModel}) : super(SpotByIdState()) {
     on<GetSpotById>(_onGetSpotById);
-    on<AddReactions>(_onAddReactions);
+    on<SendReactions>(_onSendReactions);
   }
 
-  void _onAddReactions(AddReactions event, Emitter<SpotByIdState> emit) {
+  void _onSendReactions(SendReactions event, Emitter<SpotByIdState> emit) {
     try {
       _provider.addReactions(event.text, event.score, event.spotId);
       emit(state.copyWith(status: ByIdStatus.added));

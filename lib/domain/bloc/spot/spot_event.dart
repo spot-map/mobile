@@ -23,6 +23,15 @@ class AddSpotEvent extends SpotEvent {
   List<Object?> get props => [name, address, description, latitude, longitude];
 }
 
+class GetSpotById extends SpotEvent {
+  final int id;
+
+  const GetSpotById(this.id);
+
+  @override
+  List<Object?> get props => [id];
+}
+
 class SelectMultipleImageEvent extends SpotEvent {
   final List<XFile> images;
 

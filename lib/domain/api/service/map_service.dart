@@ -54,8 +54,9 @@ class MapService implements IMapRepository {
   }
 
   @override
-  Future<void> addReactions(String text, int score, int spotId) async {
+  Future<void> addReactions(String text, double score, int spotId) async {
     var reactionsObject = {"text": text, "score": score, "spotId": spotId};
+    Dev.log('Object $reactionsObject',name: 'Reactions Object');
     try {
       dioClient.dio.options.headers = {
         'Authorization': 'Bearer ${Prefs.getString('token')}',

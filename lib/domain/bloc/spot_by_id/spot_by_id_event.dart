@@ -16,12 +16,12 @@ class GetSpotById extends SpotByIdEvent {
   List<Object?> get props => [id];
 }
 
-class AddReactions extends SpotByIdEvent {
+class SendReactions extends SpotByIdEvent {
   final String text;
-  final int score;
+  final double score;
   final int spotId;
 
-  const AddReactions(this.text, this.score, this.spotId);
+  const SendReactions(this.text, this.score, this.spotId);
 
   @override
   List<Object?> get props => [text, score, spotId];
