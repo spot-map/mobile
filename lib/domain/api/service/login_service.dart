@@ -79,6 +79,4 @@ class AuthService implements IAuthRepository {
       Dev.log('PREFS ${Prefs.getString('token')}', name: 'REFRESH PREFS');
     }
   }
-
-
 }

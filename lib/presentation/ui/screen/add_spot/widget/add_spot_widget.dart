@@ -6,6 +6,7 @@ import 'package:ride_map/domain/bloc/spot/constants/spot_status.dart';
 import 'dart:io';
 import '../../../../../domain/bloc/spot/spot_bloc.dart';
 import '../../../../../untils/preferences/preferences.dart';
+import '../../../widget/full_screen_image/full_screen_image.dart';
 import '../../../widget/snack/snack_bar.dart';
 
 Widget addSpotWidget(BuildContext context,
@@ -136,19 +137,32 @@ Widget addSpotWidget(BuildContext context,
                               scrollDirection: Axis.horizontal,
                               padding: const EdgeInsets.symmetric(vertical: 5),
                               itemCount: state.images!.length,
-                              itemBuilder: (_, i) => Container(
-                                    height: 100,
-                                    width: 120,
-                                    margin: const EdgeInsets.only(
-                                        left: 3.0, right: 3.0),
-                                    decoration: BoxDecoration(
-                                        borderRadius:
-                                            BorderRadius.circular(12.0),
-                                        image: DecorationImage(
-                                          image: FileImage(
-                                              File(state.images![i].path)),
-                                          fit: BoxFit.cover,
-                                        )),
+                              itemBuilder: (_, index) => GestureDetector(
+                                    onTap: () {
+                                      Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  FullScreenPage(
+                                                    path: state
+                                                        .images![index].path, dark: Prefs.getBool('theme')!,
+
+                                                  )));
+                                    },
+                                    child: Container(
+                                      height: 100,
+                                      width: 120,
+                                      margin: const EdgeInsets.only(
+                                          left: 3.0, right: 3.0),
+                                      decoration: BoxDecoration(
+                                          borderRadius:
+                                              BorderRadius.circular(12.0),
+                                          image: DecorationImage(
+                                            image: FileImage(
+                                                File(state.images![index].path)),
+                                            fit: BoxFit.cover,
+                                          )),
+                                    ),
                                   ))
                           : const Icon(
                               Icons.photo_camera,

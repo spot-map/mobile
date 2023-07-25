@@ -18,7 +18,7 @@ class GetSpotById extends SpotByIdEvent {
 
 class SendReactions extends SpotByIdEvent {
   final String text;
-  final double score;
+  final int score;
   final int spotId;
 
   const SendReactions(this.text, this.score, this.spotId);

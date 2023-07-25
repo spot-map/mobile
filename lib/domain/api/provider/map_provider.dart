@@ -16,7 +16,7 @@ class MapProvider  {
     return _mapService.getSpotById(id);
   }
 
-  Future<void> addReactions(String text, double score, int spotId){
+  Future<void> addReactions(String text, int score, int spotId){
     return _mapService.addReactions(text, score, spotId);
   }
 

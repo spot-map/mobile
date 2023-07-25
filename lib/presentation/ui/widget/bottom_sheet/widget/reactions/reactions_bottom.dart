@@ -60,15 +60,6 @@ Widget _reactions(BuildContext context, MapByIdModel model) {
                 padding: const EdgeInsets.only(left: 8.0, right: 8.0),
                 child: TextFormField(
                   key: const Key('sendReaction'),
-                  // validator: (message) {
-                  //   messageController.text = message!;
-                  //   if (messageController.text!.isEmpty) {
-                  //     messageValid = false;
-                  //   } else {
-                  //     messageValid = true;
-                  //     return null;
-                  //   }
-                  // },
                   controller: messageController,
                   decoration: InputDecoration(
                     filled: true,
@@ -127,7 +118,7 @@ Future<void> _showDialog(BuildContext context, String message, int id) async {
               ),
               onRatingUpdate: (rating) {
                 BlocProvider.of<SpotByIdBloc>(context)
-                    .add(SendReactions(message, rating, id));
+                    .add(SendReactions(message, rating.toInt(), id));
                 Navigator.pop(context);
               },
             ),

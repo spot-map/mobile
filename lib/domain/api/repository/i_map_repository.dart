@@ -13,5 +13,5 @@ abstract class IMapRepository {
   Future<MapByIdModel> getSpotById(int id);
 
   @module
-  Future<void> addReactions(String text, double score, int spotId);
+  Future<void> addReactions(String text, int score, int spotId);
 }
