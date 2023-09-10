@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
-import 'package:injectable/injectable.dart';
 import 'package:ride_map/domain/api/provider/login_provider.dart';
 import 'package:ride_map/domain/bloc/login/constants/login_status.dart';
 import 'package:ride_map/internal/di/inject.dart';

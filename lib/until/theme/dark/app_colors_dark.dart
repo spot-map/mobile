@@ -1,5 +1,4 @@
-import 'dart:ui';
-import 'package:flutter/src/material/theme_data.dart';
+import 'package:flutter/material.dart';
 import 'package:ride_map/until/theme/base/i_app_color.dart';
 import 'package:ride_map/until/theme/dark/constants/string_colors.dart';
 import 'package:ride_map/until/theme/to_hex.dart';

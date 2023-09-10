@@ -26,16 +26,16 @@ class BlocInitial {
     BlocProvider<LocationBloc>(
         create: (context) => LocationBloc(
             locationRepository: context.read<LocationRepository>(),
-            spot: MapModel())
+            spot: const MapModel())
           ..add(GetLocation())),
     BlocProvider<SpotBloc>(
-        create: (context) => SpotBloc(spot: MapModel())),
+        create: (context) => SpotBloc(spot: const MapModel())),
     BlocProvider<LoginBloc>(create: (context) => LoginBloc()),
     BlocProvider<SpotByIdBloc>(
-        create: (context) => SpotByIdBloc(spotByIdModel: MapByIdModel())),
+        create: (context) => SpotByIdBloc(spotByIdModel: const MapByIdModel())),
     BlocProvider<FavoriteBloc>(
         create: (context) =>
-            FavoriteBloc(model: FavoriteModel())..add(GetFavoriteSpotsEvent())),
+            FavoriteBloc(model: const FavoriteModel())..add(GetFavoriteSpotsEvent())),
   ];
 
   static final List<BlocListener> listener = [
@@ -59,7 +59,7 @@ class BlocInitial {
     }),
     BlocListener<LoginBloc, LoginState>(listener: (context, state) {
       if (state.status == LoginStatus.logout) {
-        LoginScreen();
+        const LoginScreen();
       }
     })
   ];

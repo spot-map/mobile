@@ -1,4 +1,3 @@
-import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:ride_map/until/theme/base/i_app_color.dart';
 import 'package:ride_map/until/theme/light/constants/string_colors.dart';

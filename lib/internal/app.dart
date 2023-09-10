@@ -5,7 +5,6 @@ import 'package:ride_map/presentation/ui/screen/splash/splash_screen.dart';
 import 'package:ride_map/until/bloc/bloc_inital.dart';
 import 'package:ride_map/until/config/app_router.dart';
 import 'package:ride_map/until/preferences/preferences.dart';
-import '../presentation/ui/screen/navigation/root_screen.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:latlong2/latlong.dart';
-import 'package:ride_map/presentation/ui/screen/add_spot/add_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/screen/list/list_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/navigation/root_screen.dart';
