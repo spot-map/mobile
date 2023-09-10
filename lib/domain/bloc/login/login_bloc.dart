@@ -23,11 +23,14 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
   void _onLoginEvent(LoginUserEvent event, Emitter<LoginState> emit) async {
     try {
       await _provider.login(event.email, event.password);
-      emit(state.copyWith(status: LoginStatus.auth));
+      Dev.log('${Prefs.getString('token')}', name: 'TOKEN');
+      if(Prefs.getString('token')!.isNotEmpty){
+        emit(state.copyWith(status: LoginStatus.auth));
+      }
       if(Prefs.getString('token') == 'false'){
         emit(
           state.copyWith(
-            status: LoginStatus.loginError,
+            status: LoginStatus.error,
             errorMessage: 'Неверный логин или пароль',
           ),
         );

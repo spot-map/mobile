@@ -38,7 +38,7 @@ class FavoriteService implements IFavoriteRepository{
       if (response.statusCode == 201) {
         Dev.log('SPOT ${response.data}', name: 'ADD SPOT TO FAVORITE');
         return response.data;
-      } else if (response.statusCode == 401 || response.statusCode == 500) {
+      } else if (response.statusCode == 401) {
         await _provider.refreshToken();
         return addSpotToFavorite(id);
       } else {

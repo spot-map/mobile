@@ -29,7 +29,7 @@ class BlocInitial {
             spot: const MapModel())
           ..add(GetLocation())),
     BlocProvider<SpotBloc>(
-        create: (context) => SpotBloc(spot: const MapModel())),
+        create: (context) => SpotBloc(spot: const MapModel())..add(GetSpotList())),
     BlocProvider<LoginBloc>(create: (context) => LoginBloc()),
     BlocProvider<SpotByIdBloc>(
         create: (context) => SpotByIdBloc(spotByIdModel: const MapByIdModel())),

@@ -14,15 +14,23 @@ class AuthService implements IAuthRepository {
   @override
   Future<void> login(String email, String password) async {
     var authObject = {"email": email, "password": password};
-    Response response =
-        await dioClient.dio.post(ApiConstants.LOGIN, data: authObject);
-    Dev.log('AUTH CODE ${response.statusCode}', name: 'USER AUTH');
-    Dev.log('AUTH OBJECT $authObject', name: 'USER AUTH');
+    try {
+      Response response =
+          await dioClient.dio.post(ApiConstants.LOGIN, data: authObject);
+      Dev.log('AUTH CODE ${response.statusCode}', name: 'USER AUTH');
+      Dev.log('AUTH OBJECT $authObject', name: 'USER AUTH');
 
-    if (response.statusCode == 200) {
-      Dev.log('AUTH ${response.data}', name: 'USER AUTH');
-      Prefs.setString('token', response.data['data']['token']);
-      Dev.log('SAVED ${Prefs.getString('token')}', name: 'PREFS');
+      if (response.statusCode == 200) {
+        if (response.data['data']['success'] == false) {
+          throw Exception('Ошибка авторизации');
+        }else{
+          Dev.log('AUTH ${response.data}', name: 'USER AUTH');
+          Prefs.setString('token', response.data['data']['token']);
+          Dev.log('SAVED ${Prefs.getString('token')}', name: 'PREFS');
+        }
+      }
+    } on DioError catch (e) {
+      throw Exception(e.message);
     }
   }
 
