@@ -29,8 +29,8 @@ import 'package:ride_map/domain/bloc/location/location_bloc.dart' as _i14;
 import 'package:ride_map/domain/bloc/login/login_bloc.dart' as _i17;
 import 'package:ride_map/domain/bloc/navigation/navigation_cubit.dart' as _i19;
 import 'package:ride_map/domain/bloc/spot/spot_bloc.dart' as _i21;
-import 'package:ride_map/untils/dio/dio_client.dart' as _i4;
-import 'package:ride_map/untils/preferences/preferences.dart' as _i20;
+import 'package:ride_map/until/dio/dio_client.dart' as _i4;
+import 'package:ride_map/until/preferences/preferences.dart' as _i20;
 
 extension GetItInjectableX on _i1.GetIt {
   // initializes the registration of main-scope dependencies inside of GetIt

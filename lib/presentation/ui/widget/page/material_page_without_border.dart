@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:ride_map/domain/bloc/navigation/constants/constants.dart';
 
 // import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
-import 'package:ride_map/untils/theme/style/consts.dart';
+import 'package:ride_map/until/theme/style/consts.dart';
 
 class MyMaterialNewPageWithoutBorder extends StatelessWidget {
   const MyMaterialNewPageWithoutBorder({

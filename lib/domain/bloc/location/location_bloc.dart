@@ -7,7 +7,7 @@ import 'package:location/location.dart';
 import 'package:location_repository/location_repository.dart';
 import 'package:ride_map/domain/api/provider/map_provider.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/untils/dev.dart';
+import 'package:ride_map/until/dev.dart';
 
 import '../../../data/map_page_models/map_model.dart';
 import 'constants/location_enum.dart';
@@ -16,7 +16,6 @@ part 'location_event.dart';
 
 part 'location_state.dart';
 
-@injectable
 class LocationBloc extends Bloc<LocationEvent, LocationState> {
   final MapProvider _provider = getIt.get<MapProvider>();
   MapModel spot;

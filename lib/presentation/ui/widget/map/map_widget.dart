@@ -2,12 +2,12 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:location_repository/location_repository.dart';
-import 'package:ride_map/untils/config/app_router.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
+import 'package:ride_map/until/config/app_router.dart';
+import 'package:ride_map/until/preferences/preferences.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
-import '../../../../untils/theme/dark/app_colors_dark.dart';
-import '../../../../untils/theme/light/app_colors_light.dart';
+import '../../../../until/theme/dark/app_colors_dark.dart';
+import '../../../../until/theme/light/app_colors_light.dart';
 import '../../screen/add_spot/add_spot_screen.dart';
 import '../app_bar/app_bar.dart';
 

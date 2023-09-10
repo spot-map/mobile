@@ -166,6 +166,7 @@ mixin _$Spots {
   String? get description => throw _privateConstructorUsedError;
   double? get latitude => throw _privateConstructorUsedError;
   double? get longitude => throw _privateConstructorUsedError;
+  bool? get isInFavorite => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
@@ -183,7 +184,8 @@ abstract class $SpotsCopyWith<$Res> {
       String? address,
       String? description,
       double? latitude,
-      double? longitude});
+      double? longitude,
+      bool? isInFavorite});
 }
 
 /// @nodoc
@@ -205,6 +207,7 @@ class _$SpotsCopyWithImpl<$Res, $Val extends Spots>
     Object? description = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? isInFavorite = freezed,
   }) {
     return _then(_value.copyWith(
       id: freezed == id
@@ -231,6 +234,10 @@ class _$SpotsCopyWithImpl<$Res, $Val extends Spots>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
+      isInFavorite: freezed == isInFavorite
+          ? _value.isInFavorite
+          : isInFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ) as $Val);
   }
 }
@@ -247,7 +254,8 @@ abstract class _$$_SpotsCopyWith<$Res> implements $SpotsCopyWith<$Res> {
       String? address,
       String? description,
       double? latitude,
-      double? longitude});
+      double? longitude,
+      bool? isInFavorite});
 }
 
 /// @nodoc
@@ -265,6 +273,7 @@ class __$$_SpotsCopyWithImpl<$Res> extends _$SpotsCopyWithImpl<$Res, _$_Spots>
     Object? description = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? isInFavorite = freezed,
   }) {
     return _then(_$_Spots(
       id: freezed == id
@@ -291,6 +300,10 @@ class __$$_SpotsCopyWithImpl<$Res> extends _$SpotsCopyWithImpl<$Res, _$_Spots>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
+      isInFavorite: freezed == isInFavorite
+          ? _value.isInFavorite
+          : isInFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
     ));
   }
 }
@@ -304,7 +317,8 @@ class _$_Spots implements _Spots {
       this.address,
       this.description,
       this.latitude,
-      this.longitude});
+      this.longitude,
+      this.isInFavorite});
 
   factory _$_Spots.fromJson(Map<String, dynamic> json) =>
       _$$_SpotsFromJson(json);
@@ -321,10 +335,12 @@ class _$_Spots implements _Spots {
   final double? latitude;
   @override
   final double? longitude;
+  @override
+  final bool? isInFavorite;
 
   @override
   String toString() {
-    return 'Spots(id: $id, name: $name, address: $address, description: $description, latitude: $latitude, longitude: $longitude)';
+    return 'Spots(id: $id, name: $name, address: $address, description: $description, latitude: $latitude, longitude: $longitude, isInFavorite: $isInFavorite)';
   }
 
   @override
@@ -340,13 +356,15 @@ class _$_Spots implements _Spots {
             (identical(other.latitude, latitude) ||
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
-                other.longitude == longitude));
+                other.longitude == longitude) &&
+            (identical(other.isInFavorite, isInFavorite) ||
+                other.isInFavorite == isInFavorite));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType, id, name, address, description, latitude, longitude);
+  int get hashCode => Object.hash(runtimeType, id, name, address, description,
+      latitude, longitude, isInFavorite);
 
   @JsonKey(ignore: true)
   @override
@@ -369,7 +387,8 @@ abstract class _Spots implements Spots {
       final String? address,
       final String? description,
       final double? latitude,
-      final double? longitude}) = _$_Spots;
+      final double? longitude,
+      final bool? isInFavorite}) = _$_Spots;
 
   factory _Spots.fromJson(Map<String, dynamic> json) = _$_Spots.fromJson;
 
@@ -385,6 +404,8 @@ abstract class _Spots implements Spots {
   double? get latitude;
   @override
   double? get longitude;
+  @override
+  bool? get isInFavorite;
   @override
   @JsonKey(ignore: true)
   _$$_SpotsCopyWith<_$_Spots> get copyWith =>

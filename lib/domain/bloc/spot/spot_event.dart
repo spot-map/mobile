@@ -9,6 +9,16 @@ abstract class SpotEvent extends Equatable {
 
 class GetSpotList extends SpotEvent {}
 
+class SearchSpot extends SpotEvent{
+  final String name;
+
+  const SearchSpot(this.name);
+
+  @override
+  List<Object?> get props => [name];
+}
+
+
 class AddSpotEvent extends SpotEvent {
   final String name;
   final String address;

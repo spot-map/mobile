@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:ride_map/presentation/ui/screen/add_spot/add_spot_screen.dart';
+import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/screen/list/list_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/navigation/root_screen.dart';
 import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
@@ -28,5 +29,6 @@ class AppRouter {
     RootScreen.id: (_,__) => const RootScreen(),
     SettingsScreen.id: (_, __) => const SettingsScreen(),
     ListSpotScreen.id: (_, __) => const ListSpotScreen(),
+    FavoriteScreen.id: (_, __) => const FavoriteScreen()
   };
 }

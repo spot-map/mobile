@@ -4,6 +4,7 @@ import 'dart:io';
 
 class FullScreenPage extends StatefulWidget {
   FullScreenPage({
+    super.key,
     required this.path,
     required this.dark,
   });
@@ -12,16 +13,17 @@ class FullScreenPage extends StatefulWidget {
   final bool dark;
 
   @override
-  _FullScreenPageState createState() => _FullScreenPageState();
+  FullScreenPageState createState() => FullScreenPageState();
 }
 
-class _FullScreenPageState extends State<FullScreenPage> {
+class FullScreenPageState extends State<FullScreenPage> {
   @override
   void initState() {
     var brightness = widget.dark ? Brightness.light : Brightness.dark;
     var color = widget.dark ? Colors.black12 : Colors.white70;
 
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: [SystemUiOverlay.top]);
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: [SystemUiOverlay.top]);
     SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
       systemNavigationBarColor: color,
       statusBarColor: color,
@@ -35,9 +37,9 @@ class _FullScreenPageState extends State<FullScreenPage> {
 
   @override
   void dispose() {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual, overlays: SystemUiOverlay.values);
-    SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
-    ));
+    SystemChrome.setEnabledSystemUIMode(SystemUiMode.manual,
+        overlays: SystemUiOverlay.values);
+    SystemChrome.setSystemUIOverlayStyle(const SystemUiOverlayStyle());
     super.dispose();
   }
 
@@ -50,7 +52,7 @@ class _FullScreenPageState extends State<FullScreenPage> {
           Stack(
             children: [
               AnimatedPositioned(
-                duration: Duration(milliseconds: 333),
+                duration: const Duration(milliseconds: 333),
                 curve: Curves.fastOutSlowIn,
                 top: 0,
                 bottom: 0,
@@ -71,11 +73,6 @@ class _FullScreenPageState extends State<FullScreenPage> {
               child: MaterialButton(
                 padding: const EdgeInsets.all(15),
                 elevation: 0,
-                child: Icon(
-                  Icons.arrow_back,
-                  color: widget.dark ? Colors.white : Colors.black,
-                  size: 25,
-                ),
                 color: widget.dark ? Colors.black12 : Colors.white70,
                 highlightElevation: 0,
                 minWidth: double.minPositive,
@@ -84,6 +81,11 @@ class _FullScreenPageState extends State<FullScreenPage> {
                   borderRadius: BorderRadius.circular(100),
                 ),
                 onPressed: () => Navigator.of(context).pop(),
+                child: Icon(
+                  Icons.arrow_back,
+                  color: widget.dark ? Colors.white : Colors.black,
+                  size: 25,
+                ),
               ),
             ),
           ),

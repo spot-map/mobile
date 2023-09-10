@@ -9,6 +9,7 @@ import 'package:ride_map/presentation/ui/widget/bottom_sheet/widget/by_id_widget
 import 'package:ride_map/presentation/ui/widget/map/location_error/location_error_widget.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
 
+
 class ByIdLayout extends StatelessWidget {
   ByIdLayout({Key? key, this.id}) : super(key: key);
   int? id;
@@ -29,7 +30,7 @@ class ByIdLayout extends StatelessWidget {
             );
           }
 
-          if(FavoriteState().status == FavoriteStatus.added){
+          if(const FavoriteState().status == FavoriteStatus.added){
             snackBar('Спот добавлен в избранное', context, false);
           }
 

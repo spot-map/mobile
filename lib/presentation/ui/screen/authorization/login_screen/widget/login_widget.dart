@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/domain/bloc/login/login_bloc.dart';
-import 'package:ride_map/untils/validator/email_validator.dart';
+import 'package:ride_map/until/validator/email_validator.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({Key? key}) : super(key: key);

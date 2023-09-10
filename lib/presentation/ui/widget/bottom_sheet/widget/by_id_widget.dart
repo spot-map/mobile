@@ -5,8 +5,8 @@ import 'package:ride_map/domain/bloc/favorite/favorite_bloc.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/bottom_sheet/widget/reactions/reactions_bottom.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
-import 'package:ride_map/untils/api/api_constants.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
+import 'package:ride_map/until/api/api_constants.dart';
+import 'package:ride_map/until/preferences/preferences.dart';
 
 Widget byIdWidget(BuildContext context, MapByIdModel model) {
   return ClipRRect(
@@ -47,7 +47,7 @@ Widget byIdWidget(BuildContext context, MapByIdModel model) {
                         itemCount: model.data!.images!.length,
                         itemBuilder: (context, index) {
                           return Image.network(
-                              '${ApiConstants.BASE_URL_DEV}/${model.data!.images![index].path!}');
+                              '${ApiConstants.BASE_URL}/${model.data!.images![index].path!}');
                         }))
           ],
         ),

@@ -4,5 +4,6 @@ enum FavoriteStatus{
   loaded,
   added,
   deleted,
+  logout,
   error
 }

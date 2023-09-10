@@ -2,10 +2,10 @@ import 'package:injectable/injectable.dart';
 import 'package:dio/dio.dart';
 import 'package:ride_map/domain/api/repository/i_auth_repository.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/untils/api/api_constants.dart';
-import 'package:ride_map/untils/dev.dart';
-import 'package:ride_map/untils/dio/dio_client.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
+import 'package:ride_map/until/api/api_constants.dart';
+import 'package:ride_map/until/dev.dart';
+import 'package:ride_map/until/dio/dio_client.dart';
+import 'package:ride_map/until/preferences/preferences.dart';
 
 @Injectable(as: IAuthRepository)
 class AuthService implements IAuthRepository {
@@ -14,7 +14,6 @@ class AuthService implements IAuthRepository {
   @override
   Future<void> login(String email, String password) async {
     var authObject = {"email": email, "password": password};
-
     Response response =
         await dioClient.dio.post(ApiConstants.LOGIN, data: authObject);
     Dev.log('AUTH CODE ${response.statusCode}', name: 'USER AUTH');
@@ -34,7 +33,6 @@ class AuthService implements IAuthRepository {
       "email": email,
       "password": password,
     };
-
     Dev.log('$email $name $password');
     Response response = await dioClient.dio
         .post(ApiConstants.REGISTRATION, data: registrationObject);

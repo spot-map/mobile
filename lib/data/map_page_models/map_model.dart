@@ -23,6 +23,7 @@ class Spots with _$Spots {
     String? description,
     double? latitude,
     double? longitude,
+    bool? isInFavorite
   }) = _Spots;
 
   factory Spots.fromJson(Map<String, Object?> json) => _$SpotsFromJson(json);

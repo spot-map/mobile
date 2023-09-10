@@ -1,5 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 
+import '../image_models/images_model.dart';
+import '../reactions_models/reactions_model.dart';
+
 part 'map_by_id_model.freezed.dart';
 
 part 'map_by_id_model.g.dart';
@@ -8,9 +11,7 @@ part 'map_by_id_model.g.dart';
 
 @freezed
 class MapByIdModel with _$MapByIdModel {
-  const factory MapByIdModel({
-    Spot? data
-  }) = _MapByIdModel;
+  const factory MapByIdModel({Spot? data}) = _MapByIdModel;
 
   factory MapByIdModel.fromJson(Map<String, Object?> json) =>
       _$MapByIdModelFromJson(json);
@@ -30,41 +31,3 @@ class Spot with _$Spot {
 
   factory Spot.fromJson(Map<String, Object?> json) => _$SpotFromJson(json);
 }
-
-@freezed
-class Images with _$Images {
-  const factory Images({
-    int? id,
-    String? title,
-    String? description,
-    String? path,
-  }) = _Images;
-
-  factory Images.fromJson(Map<String, Object?> json) => _$ImagesFromJson(json);
-}
-
-@freezed
-class Reactions with _$Reactions {
-  const factory Reactions({
-    int? id,
-    String? text,
-    int? score,
-    User? user
-  }) = _Reactions;
-
-  factory Reactions.fromJson(Map<String, Object?> json) =>
-      _$ReactionsFromJson(json);
-}
-
-@freezed
-class User with _$User {
-  const factory User({
-    int? id,
-    String? name,
-    String? image,
-  }) = _User;
-
-  factory User.fromJson(Map<String, Object?> json) =>
-      _$UserFromJson(json);
-}
-

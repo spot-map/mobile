@@ -5,8 +5,9 @@ import 'package:ride_map/domain/bloc/login/login_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/authorization/registration_screen/registration_screen.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/theme/light/app_colors_light.dart';
+import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
+import 'package:ride_map/until/config/app_router.dart';
+
 
 import '../../../../widget/map/location_error/location_error_widget.dart';
 import 'login_widget.dart';
@@ -28,6 +29,9 @@ class LoginLayout extends StatelessWidget {
         if (state.status == LoginStatus.auth ||
             state.status == LoginStatus.registered) {
           return const Scaffold(body: FavoriteScreen());
+        }
+        if(state.status == LoginStatus.loginError){
+          snackBar('Ошибка авторизации', context, true);
         }
         if (state.status == LoginStatus.error) {
           return LocationErrorWidget(

@@ -6,9 +6,9 @@ import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
 import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/theme/dark/app_colors_dark.dart';
-import 'package:ride_map/untils/theme/light/app_colors_light.dart';
+import 'package:ride_map/until/preferences/preferences.dart';
+import 'package:ride_map/until/theme/dark/app_colors_dark.dart';
+import 'package:ride_map/until/theme/light/app_colors_light.dart';
 
 import '../account/account_screen.dart';
 

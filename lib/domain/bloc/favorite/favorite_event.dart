@@ -27,3 +27,5 @@ class DeleteSpotFromFavoriteEvent extends FavoriteEvent{
   @override
   List<Object?> get props => [id];
 }
+
+class LogoutEvent extends FavoriteEvent {}

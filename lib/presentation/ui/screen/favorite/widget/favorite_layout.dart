@@ -6,7 +6,9 @@ import 'package:ride_map/domain/bloc/favorite/favorite_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/widget/favorite_widget.dart';
 import 'package:ride_map/presentation/ui/widget/loading/skeleton_loading.dart';
 import 'package:ride_map/presentation/ui/widget/map/location_error/location_error_widget.dart';
-import 'package:ride_map/untils/dev.dart';
+import 'package:ride_map/until/dev.dart';
+
+import '../../authorization/login_screen/widget/login_layout.dart';
 
 class FavoriteLayout extends StatelessWidget {
   const FavoriteLayout({Key? key}) : super(key: key);
@@ -24,6 +26,12 @@ class FavoriteLayout extends StatelessWidget {
               Dev.log('SPOTS ${state.favoriteModel!.data.length}');
               return favoriteWidget(context, state.favoriteModel!);
             }
+
+            ///TODO refactor this shit :(
+            if(state.status == FavoriteStatus.logout){
+              return  const LoginLayout();
+            }
+
             if (state.status == FavoriteStatus.error) {
               return LocationErrorWidget(
                 errorMessage: state.errorMessage,

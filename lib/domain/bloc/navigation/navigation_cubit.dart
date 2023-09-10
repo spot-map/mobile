@@ -6,7 +6,6 @@ import 'constants/constants.dart';
 
 part 'navigation_state.dart';
 
-@injectable
 class NavigationCubit extends Cubit<NavigationState> {
   NavigationCubit() : super(const NavigationState(NavBarItem.home, 0));
 

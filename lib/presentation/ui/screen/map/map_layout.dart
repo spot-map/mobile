@@ -1,18 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/domain/bloc/location/location_bloc.dart';
-import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/map/map_widget.dart';
-import 'package:ride_map/untils/dev.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
+import 'package:ride_map/until/dev.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
-import '../../../../untils/config/app_router.dart';
-import '../../../../untils/theme/light/app_colors_light.dart';
-import '../../../../untils/theme/dark/app_colors_dark.dart';
+
 import '../../widget/bottom_sheet/bottom_sheet.dart';
 import '../../widget/map/location_error/location_error_widget.dart';
-import '../add_spot/add_spot_screen.dart';
 
 class MapLayout extends StatelessWidget {
   const MapLayout({Key? key}) : super(key: key);

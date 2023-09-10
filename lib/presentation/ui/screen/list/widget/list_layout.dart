@@ -3,8 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/domain/bloc/spot/constants/spot_status.dart';
 import 'package:ride_map/domain/bloc/spot/spot_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/list/widget/list_widget.dart';
-import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
-import 'package:ride_map/untils/dev.dart';
+import 'package:ride_map/until/dev.dart';
 
 import '../../../widget/map/location_error/location_error_widget.dart';
 

@@ -25,8 +25,6 @@ Future reactionsBottomSheet(BuildContext context, MapByIdModel model) {
 Widget _reactions(BuildContext context, MapByIdModel model) {
   ScrollController scrollController = ScrollController();
   TextEditingController messageController = TextEditingController();
-  bool messageValid = false;
-  final GlobalKey<FormState> _reactionKey = GlobalKey<FormState>();
 
   return ClipRRect(
     borderRadius: BorderRadius.circular(30),
@@ -63,7 +61,7 @@ Widget _reactions(BuildContext context, MapByIdModel model) {
                   controller: messageController,
                   decoration: InputDecoration(
                     filled: true,
-                    hintText: 'Введите текст',
+                    hintText: 'Ваш комментарий',
                     hintStyle: Theme.of(context).textTheme.bodyMedium,
                     border: OutlineInputBorder(
                       borderRadius: BorderRadius.circular(15.0),
@@ -78,14 +76,6 @@ Widget _reactions(BuildContext context, MapByIdModel model) {
                           FocusManager.instance.primaryFocus?.unfocus();
                           _showDialog(
                               context, messageController.text, model.data!.id!);
-
-                          scrollController.animateTo(
-                            scrollController.position.minScrollExtent,
-                            duration: const Duration(milliseconds: 300),
-                            curve: Curves.easeIn,
-                          );
-                        } else {
-                          null;
                         }
                       },
                     ),
@@ -113,10 +103,11 @@ Future<void> _showDialog(BuildContext context, String message, int id) async {
               itemCount: 5,
               itemPadding: const EdgeInsets.symmetric(horizontal: 4.0),
               itemBuilder: (context, _) => const Icon(
-                Icons.favorite,
-                color: Colors.red,
+                Icons.star,
+                color: Colors.yellow,
               ),
               onRatingUpdate: (rating) {
+                print(id);
                 BlocProvider.of<SpotByIdBloc>(context)
                     .add(SendReactions(message, rating.toInt(), id));
                 Navigator.pop(context);

@@ -1,8 +1,8 @@
 import 'dart:ui';
 import 'package:flutter/src/material/theme_data.dart';
-import 'package:ride_map/untils/theme/base/i_app_color.dart';
-import 'package:ride_map/untils/theme/dark/constants/string_colors.dart';
-import 'package:ride_map/untils/theme/to_hex.dart';
+import 'package:ride_map/until/theme/base/i_app_color.dart';
+import 'package:ride_map/until/theme/dark/constants/string_colors.dart';
+import 'package:ride_map/until/theme/to_hex.dart';
 
 class AppColorDark implements IAppColor {
   static AppColorDark? _instance;

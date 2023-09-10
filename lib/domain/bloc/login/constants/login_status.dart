@@ -4,5 +4,6 @@ enum LoginStatus{
   auth,
   registered,
   logout,
-  error
+  error,
+  loginError
 }

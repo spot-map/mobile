@@ -1,19 +1,21 @@
+import 'dart:async';
+
 import 'package:dio/dio.dart';
 import 'package:injectable/injectable.dart';
 import 'package:ride_map/data/favorite_page_models/favorite_model.dart';
 import 'package:ride_map/domain/api/provider/login_provider.dart';
 import 'package:ride_map/domain/api/repository/i_favorite_repository.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/untils/api/api_constants.dart';
-import 'package:ride_map/untils/dev.dart';
-import 'package:ride_map/untils/dio/dio_client.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
+import 'package:ride_map/until/api/api_constants.dart';
+import 'package:ride_map/until/dev.dart';
+
+import 'package:ride_map/until/dio/dio_client.dart';
+import 'package:ride_map/until/preferences/preferences.dart';
 
 @Injectable(as: IFavoriteRepository)
-class FavoriteService implements IFavoriteRepository {
+class FavoriteService implements IFavoriteRepository{
   final dioClient = getIt.get<DioClient>();
   final _provider = getIt.get<AuthProvider>();
-
 
   @override
   Future<void> addSpotToFavorite(int id) async {
@@ -22,8 +24,7 @@ class FavoriteService implements IFavoriteRepository {
       var spotObject = {'spot_id': id};
 
       dioClient.dio.options.headers = {
-        'Authorization':
-        'Bearer ${Prefs.getString('token')}',
+        'Authorization': 'Bearer ${Prefs.getString('token')}',
       };
       Response response = await dioClient.dio.post(
         ApiConstants.FAVORITE,
@@ -37,6 +38,9 @@ class FavoriteService implements IFavoriteRepository {
       if (response.statusCode == 201) {
         Dev.log('SPOT ${response.data}', name: 'ADD SPOT TO FAVORITE');
         return response.data;
+      } else if (response.statusCode == 401 || response.statusCode == 500) {
+        await _provider.refreshToken();
+        return addSpotToFavorite(id);
       } else {
         Dev.log('Error ${response.statusCode}',
             name: 'ADD SPOT TO FAVORITE, ${response.statusCode}');
@@ -51,8 +55,7 @@ class FavoriteService implements IFavoriteRepository {
   Future<FavoriteModel> getFavoriteList() async {
     try {
       dioClient.dio.options.headers = {
-        'Authorization':
-            'Bearer ${Prefs.getString('token')}',
+        'Authorization': 'Bearer ${Prefs.getString('token')}',
       };
       Dev.log('${Prefs.getString('token')}', name: 'TOKEN');
       Response response = await dioClient.dio.get(

@@ -25,6 +25,7 @@ _$_Spots _$$_SpotsFromJson(Map<String, dynamic> json) => _$_Spots(
       description: json['description'] as String?,
       latitude: (json['latitude'] as num?)?.toDouble(),
       longitude: (json['longitude'] as num?)?.toDouble(),
+      isInFavorite: json['isInFavorite'] as bool?,
     );
 
 Map<String, dynamic> _$$_SpotsToJson(_$_Spots instance) => <String, dynamic>{
@@ -34,4 +35,5 @@ Map<String, dynamic> _$$_SpotsToJson(_$_Spots instance) => <String, dynamic>{
       'description': instance.description,
       'latitude': instance.latitude,
       'longitude': instance.longitude,
+      'isInFavorite': instance.isInFavorite,
     };

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
+import 'package:ride_map/until/preferences/preferences.dart';
 
 class AccountScreen extends StatelessWidget {
   AccountScreen({Key? key}) : super(key: key);

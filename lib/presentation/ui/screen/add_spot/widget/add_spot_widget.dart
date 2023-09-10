@@ -5,7 +5,8 @@ import 'package:location_repository/location_repository.dart';
 import 'package:ride_map/domain/bloc/spot/constants/spot_status.dart';
 import 'dart:io';
 import '../../../../../domain/bloc/spot/spot_bloc.dart';
-import '../../../../../untils/preferences/preferences.dart';
+import '../../../../../until/dev.dart';
+import '../../../../../until/preferences/preferences.dart';
 import '../../../widget/full_screen_image/full_screen_image.dart';
 import '../../../widget/snack/snack_bar.dart';
 
@@ -22,10 +23,8 @@ Widget addSpotWidget(BuildContext context,
       body: BlocBuilder<SpotBloc, SpotState>(
         builder: (context, state) {
           if (state.status == SpotStatus.added) {
-            snackBar('Спот отправлен на модерацию', context, false);
-          }
-          if (state.status == SpotStatus.error) {
-            snackBar('Ошибка добавления спота', context, true);
+            snackBar(
+                'Спот отправлен на модерацию', context, false);
           }
           return SingleChildScrollView(
             child: Container(
@@ -58,7 +57,8 @@ Widget addSpotWidget(BuildContext context,
                                       filled: true,
                                       hintText: "Название",
                                       border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius:
+                                            BorderRadius.circular(10),
                                       )),
                                 ),
                                 const SizedBox(
@@ -81,7 +81,8 @@ Widget addSpotWidget(BuildContext context,
                                       filled: true,
                                       hintText: "Адрес",
                                       border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius:
+                                            BorderRadius.circular(10),
                                       )),
                                 ),
                                 const SizedBox(
@@ -96,6 +97,8 @@ Widget addSpotWidget(BuildContext context,
                                   validator: (value) {
                                     if (value == '') {
                                       return 'Введите описание спота';
+                                    } else if (value!.length < 10) {
+                                      return 'Описание не может быть меньше 10 символов';
                                     }
                                     return null;
                                   },
@@ -104,7 +107,8 @@ Widget addSpotWidget(BuildContext context,
                                       filled: true,
                                       hintText: "Описание",
                                       border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(10),
+                                        borderRadius:
+                                            BorderRadius.circular(10),
                                       )),
                                 ),
                                 const SizedBox(
@@ -118,7 +122,8 @@ Widget addSpotWidget(BuildContext context,
                   InkWell(
                     onTap: () async {
                       final ImagePicker picker = ImagePicker();
-                      final List<XFile>? images = await picker.pickMultiImage();
+                      final List<XFile>? images =
+                          await picker.pickMultiImage();
                       if (images != null) {
                         BlocProvider.of<SpotBloc>(context)
                             .add(SelectMultipleImageEvent(images));
@@ -135,7 +140,8 @@ Widget addSpotWidget(BuildContext context,
                       child: state.images != null
                           ? ListView.builder(
                               scrollDirection: Axis.horizontal,
-                              padding: const EdgeInsets.symmetric(vertical: 5),
+                              padding:
+                                  const EdgeInsets.symmetric(vertical: 5),
                               itemCount: state.images!.length,
                               itemBuilder: (_, index) => GestureDetector(
                                     onTap: () {
@@ -145,8 +151,9 @@ Widget addSpotWidget(BuildContext context,
                                               builder: (context) =>
                                                   FullScreenPage(
                                                     path: state
-                                                        .images![index].path, dark: Prefs.getBool('theme')!,
-
+                                                        .images![index].path,
+                                                    dark: Prefs.getBool(
+                                                        'theme')!,
                                                   )));
                                     },
                                     child: Container(
@@ -158,8 +165,8 @@ Widget addSpotWidget(BuildContext context,
                                           borderRadius:
                                               BorderRadius.circular(12.0),
                                           image: DecorationImage(
-                                            image: FileImage(
-                                                File(state.images![index].path)),
+                                            image: FileImage(File(
+                                                state.images![index].path)),
                                             fit: BoxFit.cover,
                                           )),
                                     ),
@@ -172,7 +179,7 @@ Widget addSpotWidget(BuildContext context,
                     ),
                   ),
                   const SizedBox(height: 20),
-                  MaterialButton(
+                 state.status == SpotStatus.loading ? CircularProgressIndicator() : MaterialButton(
                       minWidth: MediaQuery.of(context).size.width,
                       height: 50,
                       color: Colors.blue,
@@ -181,12 +188,15 @@ Widget addSpotWidget(BuildContext context,
                       onPressed: () {
                         if (Prefs.getString('token') != null) {
                           if (_formKey.currentState!.validate()) {
-                            BlocProvider.of<SpotBloc>(context).add(AddSpotEvent(
-                                _name.text,
-                                _address.text,
-                                _description.text,
-                                currentUserLocation!.latitude,
-                                currentUserLocation.longitude));
+                            Dev.log(state.status);
+                            BlocProvider.of<SpotBloc>(context)..add(
+                                AddSpotEvent(
+                                    _name.text,
+                                    _address.text,
+                                    _description.text,
+                                    currentUserLocation!.latitude,
+                                    currentUserLocation.longitude));
+                            Dev.log(state.status);
                           }
                         } else {
                           snackBar(

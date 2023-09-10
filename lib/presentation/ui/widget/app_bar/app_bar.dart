@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/theme/light/app_colors_light.dart';
-import 'package:ride_map/untils/theme/dark/app_colors_dark.dart';
+import 'package:ride_map/until/preferences/preferences.dart';
+import 'package:ride_map/until/theme/light/app_colors_light.dart';
+import 'package:ride_map/until/theme/dark/app_colors_dark.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar(

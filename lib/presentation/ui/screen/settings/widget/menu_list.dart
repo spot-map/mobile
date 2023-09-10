@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/domain/bloc/theme/theme_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/settings/widget/menu.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
+import 'package:ride_map/until/preferences/preferences.dart';
 
 class MenuList extends StatelessWidget {
   const MenuList({Key? key}) : super(key: key);
