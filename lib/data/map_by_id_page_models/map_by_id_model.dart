@@ -26,6 +26,7 @@ class Spot with _$Spot {
       String? description,
       double? latitude,
       double? longitude,
+      bool? isInFavorite,
       @Default([]) List<Images>? images,
       @Default([]) List<Reactions>? reactions}) = _Spot;
 

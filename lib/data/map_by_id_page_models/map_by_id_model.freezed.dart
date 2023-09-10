@@ -179,6 +179,7 @@ mixin _$Spot {
   String? get description => throw _privateConstructorUsedError;
   double? get latitude => throw _privateConstructorUsedError;
   double? get longitude => throw _privateConstructorUsedError;
+  bool? get isInFavorite => throw _privateConstructorUsedError;
   List<Images>? get images => throw _privateConstructorUsedError;
   List<Reactions>? get reactions => throw _privateConstructorUsedError;
 
@@ -199,6 +200,7 @@ abstract class $SpotCopyWith<$Res> {
       String? description,
       double? latitude,
       double? longitude,
+      bool? isInFavorite,
       List<Images>? images,
       List<Reactions>? reactions});
 }
@@ -222,6 +224,7 @@ class _$SpotCopyWithImpl<$Res, $Val extends Spot>
     Object? description = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? isInFavorite = freezed,
     Object? images = freezed,
     Object? reactions = freezed,
   }) {
@@ -250,6 +253,10 @@ class _$SpotCopyWithImpl<$Res, $Val extends Spot>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
+      isInFavorite: freezed == isInFavorite
+          ? _value.isInFavorite
+          : isInFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
       images: freezed == images
           ? _value.images
           : images // ignore: cast_nullable_to_non_nullable
@@ -275,6 +282,7 @@ abstract class _$$_SpotCopyWith<$Res> implements $SpotCopyWith<$Res> {
       String? description,
       double? latitude,
       double? longitude,
+      bool? isInFavorite,
       List<Images>? images,
       List<Reactions>? reactions});
 }
@@ -294,6 +302,7 @@ class __$$_SpotCopyWithImpl<$Res> extends _$SpotCopyWithImpl<$Res, _$_Spot>
     Object? description = freezed,
     Object? latitude = freezed,
     Object? longitude = freezed,
+    Object? isInFavorite = freezed,
     Object? images = freezed,
     Object? reactions = freezed,
   }) {
@@ -322,6 +331,10 @@ class __$$_SpotCopyWithImpl<$Res> extends _$SpotCopyWithImpl<$Res, _$_Spot>
           ? _value.longitude
           : longitude // ignore: cast_nullable_to_non_nullable
               as double?,
+      isInFavorite: freezed == isInFavorite
+          ? _value.isInFavorite
+          : isInFavorite // ignore: cast_nullable_to_non_nullable
+              as bool?,
       images: freezed == images
           ? _value._images
           : images // ignore: cast_nullable_to_non_nullable
@@ -344,6 +357,7 @@ class _$_Spot implements _Spot {
       this.description,
       this.latitude,
       this.longitude,
+      this.isInFavorite,
       final List<Images>? images = const [],
       final List<Reactions>? reactions = const []})
       : _images = images,
@@ -363,6 +377,8 @@ class _$_Spot implements _Spot {
   final double? latitude;
   @override
   final double? longitude;
+  @override
+  final bool? isInFavorite;
   final List<Images>? _images;
   @override
   @JsonKey()
@@ -387,7 +403,7 @@ class _$_Spot implements _Spot {
 
   @override
   String toString() {
-    return 'Spot(id: $id, name: $name, address: $address, description: $description, latitude: $latitude, longitude: $longitude, images: $images, reactions: $reactions)';
+    return 'Spot(id: $id, name: $name, address: $address, description: $description, latitude: $latitude, longitude: $longitude, isInFavorite: $isInFavorite, images: $images, reactions: $reactions)';
   }
 
   @override
@@ -404,6 +420,8 @@ class _$_Spot implements _Spot {
                 other.latitude == latitude) &&
             (identical(other.longitude, longitude) ||
                 other.longitude == longitude) &&
+            (identical(other.isInFavorite, isInFavorite) ||
+                other.isInFavorite == isInFavorite) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
             const DeepCollectionEquality()
                 .equals(other._reactions, _reactions));
@@ -419,6 +437,7 @@ class _$_Spot implements _Spot {
       description,
       latitude,
       longitude,
+      isInFavorite,
       const DeepCollectionEquality().hash(_images),
       const DeepCollectionEquality().hash(_reactions));
 
@@ -444,6 +463,7 @@ abstract class _Spot implements Spot {
       final String? description,
       final double? latitude,
       final double? longitude,
+      final bool? isInFavorite,
       final List<Images>? images,
       final List<Reactions>? reactions}) = _$_Spot;
 
@@ -461,6 +481,8 @@ abstract class _Spot implements Spot {
   double? get latitude;
   @override
   double? get longitude;
+  @override
+  bool? get isInFavorite;
   @override
   List<Images>? get images;
   @override

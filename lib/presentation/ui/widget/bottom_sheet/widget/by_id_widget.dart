@@ -29,10 +29,12 @@ Widget byIdWidget(BuildContext context, MapByIdModel model) {
                         .add(AddSpotToFavoriteEvent(model.data!.id!));
                   }
                 },
-                icon: const Icon(Icons.favorite, color: Colors.red)),
-            IconButton(onPressed: () {
-              reactionsBottomSheet(context, model);
-            }, icon: const Icon(Icons.message))
+                icon:  Icon(Icons.favorite, color: model.data!.isInFavorite! ? Colors.red : Colors.grey)),
+            IconButton(
+                onPressed: () {
+                  reactionsBottomSheet(context, model);
+                },
+                icon: const Icon(Icons.message))
           ],
         ),
         body: Column(
@@ -47,7 +49,7 @@ Widget byIdWidget(BuildContext context, MapByIdModel model) {
                         itemCount: model.data!.images!.length,
                         itemBuilder: (context, index) {
                           return Image.network(
-                              '${ApiConstants.BASE_URL}/${model.data!.images![index].path!}');
+                              model.data!.images![index].path!);
                         }))
           ],
         ),

@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:injectable/injectable.dart';
@@ -113,7 +115,8 @@ class MapService implements IMapRepository {
 
       if (response.statusCode == 201) {
         Dev.log('ADD SPOT ${response.data}', name: 'SPOT');
-        await addImage(response.data['id'], images);
+        Dev.log('ID ${response.data['data']['id']}', name: 'SPOT ID');
+        await addImage(response.data['data']['id'], images);
         return response.data;
       } else if (response.statusCode == 401 || response.statusCode == 500) {
         await _provider.refreshToken();
@@ -136,28 +139,29 @@ class MapService implements IMapRepository {
       'Accept': 'application/json'
     };
     try {
-      List uploadImage = [];
+      FormData formData = FormData.fromMap({
+        "title": 'Test',
+        "description": 'Test',
+      });
+
       for (final image in images!) {
-        uploadImage.add(image.path);
+        formData.files.addAll(
+            [MapEntry("files[]", await MultipartFile.fromFile(image.path))]);
       }
-
-      Dev.log(uploadImage, name: "IMAGES");
-
-      FormData data = FormData.fromMap({"file": uploadImage});
 
       Response response = await dioClient.dio.post(
           '${ApiConstants.ADD_IMAGE_TO_SPOT}/$id',
-          data: data,
+          data: formData,
           options: Options(
               followRedirects: false,
               validateStatus: (status) => status! < 500));
 
-      if (response.statusCode == 201) {
-        Dev.log('ADD SPOT ${response.data}', name: 'SPOT');
+      if (response.statusCode == 200) {
+        Dev.log('ADD IMAGE ${response.data}', name: 'SPOT IMAGE');
         return response.data;
       } else {
         Dev.log('Error ${response.statusCode}',
-            name: 'ADD SPOT, ${response.statusCode}');
+            name: 'ADD IMAGE, ${response.statusCode}');
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
