@@ -14,8 +14,8 @@ void main() async {
   setup();
   await init();
   initializeDefault();
-  BlocOverrides.runZoned(() => {runApp(const App())},
-      blocObserver: AppBlocObservable());
+  Bloc.observer = AppBlocObservable();
+  runApp(const App());
 }
 
 Future<void> init() async {
