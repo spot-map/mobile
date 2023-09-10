@@ -6,9 +6,6 @@ import 'package:ride_map/presentation/ui/screen/authorization/registration_scree
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
-import 'package:ride_map/until/config/app_router.dart';
-
-import '../../../../widget/map/location_error/location_error_widget.dart';
 import 'login_widget.dart';
 
 class LoginLayout extends StatelessWidget {
@@ -27,11 +24,11 @@ class LoginLayout extends StatelessWidget {
       builder: (context, state) {
         if (state.status == LoginStatus.error) {
           snackBar('Ошибка авторизации', context, true);
-          if (state.status == LoginStatus.auth ||
-              state.status == LoginStatus.registered) {
-            return const Scaffold(body: FavoriteScreen());
-          }
+        } else if (state.status == LoginStatus.auth ||
+            state.status == LoginStatus.registered) {
+          return const Scaffold(body: FavoriteScreen());
         }
+
         return DefaultTabController(
             length: 2,
             child: Scaffold(
