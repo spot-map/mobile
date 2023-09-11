@@ -7,6 +7,15 @@ abstract class SpotByIdEvent extends Equatable {
   List<Object?> get props => [];
 }
 
+class ShareSpot extends SpotByIdEvent{
+  final int id;
+
+  const ShareSpot(this.id);
+
+  @override
+  List<Object?> get props => [id];
+}
+
 class GetSpotById extends SpotByIdEvent {
   final int id;
 

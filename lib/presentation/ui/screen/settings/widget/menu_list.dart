@@ -38,6 +38,12 @@ class MenuList extends StatelessWidget {
                     action: FittedBox(
                       child: Radio(value: radioValue, groupValue: 2),
                     )),
+                GestureDetector(
+                  onTap: (){
+
+                  },
+                  child: menuListItem(icon: Icons.email, title: 'Сообщить об ошибке'),
+                )
               ],
             );
           },

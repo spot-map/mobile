@@ -4,5 +4,6 @@ enum ByIdStatus{
   loading,
   loaded,
   added,
+  shared,
   error
 }

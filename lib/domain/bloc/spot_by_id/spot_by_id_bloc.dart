@@ -5,6 +5,8 @@ import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
 import 'package:ride_map/domain/api/provider/map_provider.dart';
 import 'package:ride_map/domain/bloc/spot_by_id/constants/by_id_status.dart';
 import 'package:ride_map/internal/di/inject.dart';
+import 'package:ride_map/until/api/api_constants.dart';
+import 'package:share_plus/share_plus.dart';
 
 part 'spot_by_id_event.dart';
 
@@ -17,7 +19,14 @@ class SpotByIdBloc extends Bloc<SpotByIdEvent, SpotByIdState> {
   SpotByIdBloc({required this.spotByIdModel}) : super(SpotByIdState()) {
     on<GetSpotById>(_onGetSpotById);
     on<SendReactions>(_onSendReactions);
+    on<ShareSpot> (_onShareSpot);
   }
+
+  void _onShareSpot(ShareSpot event,  Emitter<SpotByIdState> emit) async{
+    await Share.share('Йоу! Зацени спот ${ApiConstants.SPOT_BY_ID}/${event.id}');
+    emit(state.copyWith(status: ByIdStatus.shared));
+  }
+
 
   void _onSendReactions(SendReactions event, Emitter<SpotByIdState> emit) {
     try {
