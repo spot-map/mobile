@@ -36,7 +36,7 @@ class MenuList extends StatelessWidget {
                     icon: Icons.map,
                     title: 'Отображение спотов',
                     action: FittedBox(
-                      child: Radio(value: radioValue, groupValue: 2),
+                      child: Radio(value: radioValue, groupValue: 2, onChanged: (Object? value) {  },),
                     )),
                 GestureDetector(
                   onTap: (){

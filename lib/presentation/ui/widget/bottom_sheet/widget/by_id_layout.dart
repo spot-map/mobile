@@ -22,7 +22,7 @@ class ByIdLayout extends StatelessWidget {
       child: BlocBuilder<SpotByIdBloc, SpotByIdState>(
         builder: (context, state) {
           if (state.status == ByIdStatus.loaded) {
-            return byIdWidget(context, state.spotById!);
+            return ByIdWidget(model: state.spotById!);
           }
           if (state.status == ByIdStatus.error) {
             return LocationErrorWidget(
