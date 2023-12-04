@@ -1,13 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
-import 'package:ride_map/domain/bloc/favorite/constants/favorite_status.dart';
-import 'package:ride_map/domain/bloc/favorite/favorite_bloc.dart';
 import 'package:ride_map/domain/bloc/spot_by_id/constants/by_id_status.dart';
 import 'package:ride_map/domain/bloc/spot_by_id/spot_by_id_bloc.dart';
 import 'package:ride_map/presentation/ui/widget/bottom_sheet/widget/by_id_widget.dart';
 import 'package:ride_map/presentation/ui/widget/map/location_error/location_error_widget.dart';
-import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
 
 
 class ByIdLayout extends StatelessWidget {
@@ -30,9 +27,6 @@ class ByIdLayout extends StatelessWidget {
             );
           }
 
-          if(const FavoriteState().status == FavoriteStatus.added){
-            snackBar('Спот добавлен в избранное', context, false);
-          }
 
           return const Center(
             child: CircularProgressIndicator(),

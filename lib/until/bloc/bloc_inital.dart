@@ -3,8 +3,7 @@ import 'package:location_repository/location_repository.dart';
 import 'package:ride_map/data/favorite_page_models/favorite_model.dart';
 import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
 import 'package:ride_map/data/map_page_models/map_model.dart';
-import 'package:ride_map/domain/bloc/favorite/constants/favorite_status.dart';
-import 'package:ride_map/domain/bloc/favorite/favorite_bloc.dart';
+import 'package:ride_map/domain/bloc/favorite/favorite_cubit.dart';
 import 'package:ride_map/domain/bloc/location/constants/location_enum.dart';
 import 'package:ride_map/domain/bloc/location/location_bloc.dart';
 import 'package:ride_map/domain/bloc/login/constants/login_status.dart';
@@ -22,6 +21,7 @@ class BlocInitial {
 
   static final List<BlocProvider> bloc = [
     BlocProvider<NavigationCubit>(create: (_) => NavigationCubit()),
+    BlocProvider<FavoriteCubit>(create: (_) => FavoriteCubit(model: const FavoriteModel())),
     BlocProvider<ThemeBloc>(create: (_) => ThemeBloc()),
     BlocProvider<LocationBloc>(
         create: (context) => LocationBloc(
@@ -33,9 +33,6 @@ class BlocInitial {
     BlocProvider<LoginBloc>(create: (context) => LoginBloc()),
     BlocProvider<SpotByIdBloc>(
         create: (context) => SpotByIdBloc(spotByIdModel: const MapByIdModel())),
-    BlocProvider<FavoriteBloc>(
-        create: (context) =>
-            FavoriteBloc(model: const FavoriteModel())..add(GetFavoriteSpotsEvent())),
   ];
 
   static final List<BlocListener> listener = [
@@ -49,14 +46,14 @@ class BlocInitial {
         snackBar(state.errorMessage, context, true);
       }
     }),
-    BlocListener<FavoriteBloc, FavoriteState>(listener: (context, state) {
-      if (state.status == FavoriteStatus.error) {
-        snackBar(state.errorMessage, context, true);
-      }
-      if (state.status == FavoriteStatus.added) {
-        snackBar('Спот добавлен в избранное', context, false);
-      }
-    }),
+    // BlocListener<FavoriteBloc, FavoriteState>(listener: (context, state) {
+    //   if (state.status == FavoriteStatus.error) {
+    //     snackBar(state.errorMessage, context, true);
+    //   }
+    //   if (state.status == FavoriteStatus.added) {
+    //     snackBar('Спот добавлен в избранное', context, false);
+    //   }
+    // }),
     BlocListener<LoginBloc, LoginState>(listener: (context, state) {
       if (state.status == LoginStatus.logout) {
         const LoginScreen();

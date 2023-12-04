@@ -1,25 +1,27 @@
-part of 'favorite_bloc.dart';
+part of 'favorite_cubit.dart';
 
 class FavoriteState extends Equatable {
-  const FavoriteState({
-    this.favoriteModel,
-    this.status = FavoriteStatus.initial,
-    String? errorMessage,
-  }) : errorMessage = errorMessage ?? '';
 
-  final FavoriteStatus status;
+  final bool isLoading;
   final FavoriteModel? favoriteModel;
   final String errorMessage;
 
+  const FavoriteState({
+    this.favoriteModel,
+    this.isLoading = true,
+    String? errorMessage,
+  }) : errorMessage = errorMessage ?? '';
+
+
   @override
-  List<Object?> get props => [errorMessage, favoriteModel];
+  List<Object?> get props => [isLoading, errorMessage, favoriteModel];
 
   FavoriteState copyWith(
-      {FavoriteStatus? status, String? errorMessage, FavoriteModel? favorite}) {
+      {bool? isLoading, String? errorMessage, FavoriteModel? favorite}) {
     return FavoriteState(
       errorMessage: errorMessage ?? this.errorMessage,
       favoriteModel: favorite ?? this.favoriteModel,
-      status: status ?? this.status,
+      isLoading: isLoading ?? this.isLoading,
     );
   }
 }
