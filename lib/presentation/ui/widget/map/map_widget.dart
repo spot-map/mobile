@@ -2,8 +2,6 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:location_repository/location_repository.dart';
-import 'package:ride_map/until/config/app_router.dart';
 import 'package:ride_map/until/preferences/preferences.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
@@ -129,7 +127,7 @@ class _MapWidgetState extends State<MapWidget> {
           ),
           floatingActionButton: FloatingActionButton(
             onPressed: () {
-              AppRouter.pushNamed('/listSpot');
+              // AppRouter.pushNamed('/listSpot');
             },
             child: const Icon(Icons.list),
           ),

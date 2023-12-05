@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:location_repository/location_repository.dart';
 import 'package:ride_map/presentation/ui/screen/add_spot/widget/add_spot_widget.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 
 class AddSpotScreen extends StatelessWidget {
-  AddSpotScreen({Key? key, required this.currentUserLocation})
+  const AddSpotScreen({Key? key, required this.currentUserLocation})
       : super(key: key);
 
   final LatLng currentUserLocation;
-  static const id = '/addSpotScreen';
+  static const path = 'addSpot';
 
   @override
   Widget build(BuildContext context) {

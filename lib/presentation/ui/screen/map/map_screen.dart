@@ -8,6 +8,8 @@ import 'package:ride_map/presentation/ui/screen/map/map_layout.dart';
 class MapScreen extends StatelessWidget {
   const MapScreen({Key? key}) : super(key: key);
 
+  static const path = 'map';
+
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(providers: [

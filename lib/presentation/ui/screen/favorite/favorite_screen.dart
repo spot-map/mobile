@@ -7,7 +7,7 @@ import 'package:ride_map/presentation/ui/widget/loading/skeleton_loading.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
-  static const id = '/favoriteSpot';
+  static const path = 'favorite';
 
   @override
   Widget build(BuildContext context) {

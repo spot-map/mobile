@@ -6,7 +6,7 @@ import 'package:ride_map/until/theme/light/app_colors_light.dart';
 import 'package:ride_map/until/theme/style/text/text_style.dart';
 
 class SettingsScreen extends StatelessWidget {
-  static const id = '/settings';
+  static const path = 'settings';
 
   const SettingsScreen({Key? key}) : super(key: key);
 
