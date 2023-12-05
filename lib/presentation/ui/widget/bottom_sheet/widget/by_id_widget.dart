@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
 import 'package:ride_map/domain/bloc/favorite/favorite_cubit.dart';
-import 'package:ride_map/domain/bloc/spot_by_id/spot_by_id_bloc.dart';
+import 'package:ride_map/domain/bloc/spot_by_id_cubit/spot_by_id_cubit.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/bottom_sheet/widget/reactions/reactions_bottom.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
@@ -45,8 +45,7 @@ class ByIdWidget extends StatelessWidget {
                   icon: const Icon(Icons.message)),
               IconButton(
                   onPressed: () {
-                    BlocProvider.of<SpotByIdBloc>(context)
-                        .add(ShareSpot(model.data!.id!));
+                    context.read<SpotByIdCubit>().onShareSpot(model.data!.id!);
                   },
                   icon: const Icon(Icons.ios_share))
             ],

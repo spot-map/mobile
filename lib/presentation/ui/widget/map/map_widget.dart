@@ -1,6 +1,7 @@
 import 'dart:async';
 
 import 'package:flutter/material.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:location_repository/location_repository.dart';
 import 'package:ride_map/until/config/app_router.dart';
 import 'package:ride_map/until/preferences/preferences.dart';
@@ -16,7 +17,7 @@ class MapWidget extends StatefulWidget {
       {Key? key, required this.currentUserLocation, required this.mapObjects})
       : super(key: key);
 
-  final CurrentUserLocationEntity currentUserLocation;
+  final LatLng currentUserLocation;
   List<MapObject> mapObjects;
 
   @override

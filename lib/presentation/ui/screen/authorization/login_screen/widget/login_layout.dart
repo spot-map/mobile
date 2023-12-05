@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/login/constants/login_status.dart';
-import 'package:ride_map/domain/bloc/login/login_bloc.dart';
+import 'package:ride_map/domain/bloc/auth_cubit/auth_cubit.dart';
 import 'package:ride_map/presentation/ui/screen/authorization/registration_screen/registration_screen.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
@@ -20,14 +19,14 @@ class LoginLayout extends StatelessWidget {
 
     List<Widget> views = [const LoginWidget(), const RegistrationScreen()];
 
-    return BlocBuilder<LoginBloc, LoginState>(
+    return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        if (state.status == LoginStatus.error) {
-          snackBar('Ошибка авторизации', context, true);
-        } else if (state.status == LoginStatus.auth ||
-            state.status == LoginStatus.registered) {
-          return const Scaffold(body: FavoriteScreen());
-        }
+        // if (state.status == LoginStatus.error) {
+        //   snackBar('Ошибка авторизации', context, true);
+        // } else if (state.status == LoginStatus.auth ||
+        //     state.status == LoginStatus.registered) {
+        //   return const Scaffold(body: FavoriteScreen());
+        // }
 
         return DefaultTabController(
             length: 2,

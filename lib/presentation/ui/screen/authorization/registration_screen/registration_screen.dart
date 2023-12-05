@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/login/login_bloc.dart';
+import 'package:ride_map/domain/bloc/auth_cubit/auth_cubit.dart';
 
 class RegistrationScreen extends StatelessWidget {
   const RegistrationScreen({Key? key}) : super(key: key);
@@ -10,19 +10,19 @@ class RegistrationScreen extends StatelessWidget {
     final TextEditingController _nameCotroller = TextEditingController();
     final TextEditingController _emailCotroller = TextEditingController();
     final TextEditingController _passwordCotroller = TextEditingController();
-    return  Scaffold(
+    return Scaffold(
       backgroundColor: Colors.transparent,
       body: Stack(
         children: [
           SingleChildScrollView(
             child: Container(
-              padding: EdgeInsets.only(
+              padding: const EdgeInsets.only(
                   top: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    margin: EdgeInsets.only(left: 35, right: 35),
+                    margin: const EdgeInsets.only(left: 35, right: 35),
                     child: Column(
                       children: [
                         TextField(
@@ -36,7 +36,7 @@ class RegistrationScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         TextField(
@@ -50,7 +50,7 @@ class RegistrationScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 30,
                         ),
                         TextField(
@@ -65,13 +65,13 @@ class RegistrationScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10),
                               )),
                         ),
-                        SizedBox(
+                        const SizedBox(
                           height: 40,
                         ),
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               'Регистрация',
                               style: TextStyle(
                                   fontSize: 27, fontWeight: FontWeight.w700),
@@ -82,13 +82,11 @@ class RegistrationScreen extends StatelessWidget {
                               child: IconButton(
                                   color: Colors.white,
                                   onPressed: () {
-                                    BlocProvider.of<LoginBloc>(context).add(RegistrationEvent(
-                                        name: _nameCotroller.text,
-                                        email: _emailCotroller.text,
-                                        password: _passwordCotroller.text));
+                                    context.read<AuthCubit>().onRegistration(
+                                        _emailCotroller.text, _passwordCotroller.text, _nameCotroller.text);
                                   },
-                                  icon: Icon(
-                                    Icons.arrow_forward,
+                                  icon: const Icon(
+                                     Icons.arrow_forward,
                                   )),
                             )
                           ],

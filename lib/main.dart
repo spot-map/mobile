@@ -16,8 +16,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setup();
   await initPreferences();
-  initDefault();
-  initCrashlytics();
+  // initDefault();
+  // initCrashlytics();
   initObserver();
   runApp(const App());
 }

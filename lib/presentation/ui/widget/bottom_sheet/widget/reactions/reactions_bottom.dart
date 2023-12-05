@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
-import 'package:ride_map/domain/bloc/spot_by_id/spot_by_id_bloc.dart';
+import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
+import 'package:ride_map/domain/bloc/spot_by_id_cubit/spot_by_id_cubit.dart';
+import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/bottom_sheet/widget/reactions/widget/reaction_list.dart';
 import 'package:ride_map/presentation/ui/widget/container/custom_container.dart';
-import '../../../../../../data/map_by_id_page_models/map_by_id_model.dart';
-import '../../../app_bar/app_bar.dart';
 
 Future reactionsBottomSheet(BuildContext context, MapByIdModel model) {
   return showModalBottomSheet(
@@ -108,8 +108,7 @@ Future<void> _showDialog(BuildContext context, String message, int id) async {
               ),
               onRatingUpdate: (rating) {
                 print(id);
-                BlocProvider.of<SpotByIdBloc>(context)
-                    .add(SendReactions(message, rating.toInt(), id));
+                context.read<SpotByIdCubit>().onSendReaction(message, rating.toInt(), id);
                 Navigator.pop(context);
               },
             ),

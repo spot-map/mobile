@@ -28,8 +28,7 @@ class MapService implements IMapRepository {
         Dev.log('SPOTS ${response.data}', name: 'GET SPOTS API REQUEST');
         return MapModel.fromJson(response.data);
       } else {
-        Dev.log('Error ${response.statusCode}',
-            name: 'SPOT API ERROR, ${response.statusCode}');
+        Dev.log('Error ${response.statusCode}', name: 'SPOT API ERROR, ${response.statusCode}');
         throw Exception('Failed to load API data');
       }
     } on DioError catch (e) {
@@ -41,14 +40,12 @@ class MapService implements IMapRepository {
   Future<MapByIdModel> getSpotById(int id) async {
     try {
       Dev.log('GET SPOT BY ID $id', name: 'GET SPOT BY ID');
-      Response response =
-          await dioClient.dio.get('${ApiConstants.SPOT_BY_ID}/$id');
+      Response response = await dioClient.dio.get('${ApiConstants.SPOT_BY_ID}/$id');
       if (response.statusCode == 200) {
         Dev.log('SPOT ${response.data}', name: 'GET SPOT BY ID');
         return MapByIdModel.fromJson(response.data);
       } else {
-        Dev.log('Error ${response.statusCode}',
-            name: 'SPOT BY ID API ERROR, ${response.statusCode}');
+        Dev.log('Error ${response.statusCode}', name: 'SPOT BY ID API ERROR, ${response.statusCode}');
         throw Exception('Failed to load API data');
       }
     } on DioError catch (e) {
@@ -79,8 +76,7 @@ class MapService implements IMapRepository {
         Dev.log('ADD REACTIONS ${response.data}', name: 'REACTIONS');
         return response.data;
       } else {
-        Dev.log('Error ${response.statusCode}',
-            name: 'ADD REACTIONS, ${response.statusCode}');
+        Dev.log('Error ${response.statusCode}', name: 'ADD REACTIONS, ${response.statusCode}');
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
@@ -89,18 +85,8 @@ class MapService implements IMapRepository {
   }
 
   @override
-  Future<void> addSpot(String name, String address, String description,
-      double latitude, double longitude, List<XFile>? images) async {
-    var spotObject = {
-      "name": name,
-      "address": address,
-      "description": description,
-      "latitude": latitude,
-      "longitude": longitude,
-    };
-
-    Dev.log('Object $spotObject', name: 'Spot Object');
-
+  Future<void> addSpot(
+      String name, String address, String description, double latitude, double longitude, List<XFile>? images) async {
     try {
       dioClient.dio.options.headers = {
         'Authorization': 'Bearer ${Prefs.getString('token')}',
@@ -108,10 +94,14 @@ class MapService implements IMapRepository {
         'Accept': 'application/json'
       };
       Response response = await dioClient.dio.post(ApiConstants.ADD_SPOT,
-          data: spotObject,
-          options: Options(
-              followRedirects: false,
-              validateStatus: (status) => status! < 500));
+          data: {
+            "name": name,
+            "address": address,
+            "description": description,
+            "latitude": latitude,
+            "longitude": longitude,
+          },
+          options: Options(followRedirects: false, validateStatus: (status) => status! < 500));
 
       if (response.statusCode == 201) {
         Dev.log('ADD SPOT ${response.data}', name: 'SPOT');
@@ -122,8 +112,7 @@ class MapService implements IMapRepository {
         await _provider.refreshToken();
         return addSpot(name, address, description, latitude, longitude, images);
       } else {
-        Dev.log('Error ${response.statusCode}',
-            name: 'ADD SPOT, ${response.statusCode}');
+        Dev.log('Error ${response.statusCode}', name: 'ADD SPOT, ${response.statusCode}');
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
@@ -145,23 +134,17 @@ class MapService implements IMapRepository {
       });
 
       for (final image in images!) {
-        formData.files.addAll(
-            [MapEntry("files[]", await MultipartFile.fromFile(image.path))]);
+        formData.files.addAll([MapEntry("files[]", await MultipartFile.fromFile(image.path))]);
       }
 
-      Response response = await dioClient.dio.post(
-          '${ApiConstants.ADD_IMAGE_TO_SPOT}/$id',
-          data: formData,
-          options: Options(
-              followRedirects: false,
-              validateStatus: (status) => status! < 500));
+      Response response = await dioClient.dio.post('${ApiConstants.ADD_IMAGE_TO_SPOT}/$id',
+          data: formData, options: Options(followRedirects: false, validateStatus: (status) => status! < 500));
 
       if (response.statusCode == 200) {
         Dev.log('ADD IMAGE ${response.data}', name: 'SPOT IMAGE');
         return response.data;
       } else {
-        Dev.log('Error ${response.statusCode}',
-            name: 'ADD IMAGE, ${response.statusCode}');
+        Dev.log('Error ${response.statusCode}', name: 'ADD IMAGE, ${response.statusCode}');
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
@@ -172,15 +155,13 @@ class MapService implements IMapRepository {
   @override
   Future<MapModel> searchSpot(String name) async {
     try {
-      Response response =
-          await dioClient.dio.get('${ApiConstants.SEARCH_SPOT}/$name');
+      Response response = await dioClient.dio.get('${ApiConstants.SEARCH_SPOT}/$name');
 
       if (response.statusCode == 200) {
         Dev.log(response.data, name: 'SEARCH SPOT API REQUEST');
         return MapModel.fromJson(response.data);
       } else {
-        Dev.log('Error ${response.statusCode}',
-            name: 'SPOT API ERROR, ${response.statusCode}');
+        Dev.log('Error ${response.statusCode}', name: 'SPOT API ERROR, ${response.statusCode}');
         throw Exception('Failed to load API data');
       }
     } on DioError catch (e) {

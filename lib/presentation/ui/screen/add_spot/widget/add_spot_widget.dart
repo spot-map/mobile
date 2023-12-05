@@ -1,17 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:location_repository/location_repository.dart';
-import 'package:ride_map/domain/bloc/spot/constants/spot_status.dart';
+import 'package:latlong2/latlong.dart';
+import 'package:ride_map/domain/bloc/spot_cubit/map_cubit.dart';
+import 'package:ride_map/presentation/ui/widget/full_screen_image/full_screen_image.dart';
+import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
+import 'package:ride_map/until/preferences/preferences.dart';
 import 'dart:io';
-import '../../../../../domain/bloc/spot/spot_bloc.dart';
-import '../../../../../until/dev.dart';
-import '../../../../../until/preferences/preferences.dart';
-import '../../../widget/full_screen_image/full_screen_image.dart';
-import '../../../widget/snack/snack_bar.dart';
 
 Widget addSpotWidget(BuildContext context,
-    {required CurrentUserLocationEntity? currentUserLocation}) {
+    {required LatLng currentUserLocation}) {
   final TextEditingController _name = TextEditingController();
   final TextEditingController _address = TextEditingController();
   final TextEditingController _description = TextEditingController();
@@ -20,12 +18,12 @@ Widget addSpotWidget(BuildContext context,
   return GestureDetector(
     onTap: () => FocusManager.instance.primaryFocus?.unfocus(),
     child: Scaffold(
-      body: BlocBuilder<SpotBloc, SpotState>(
+      body: BlocBuilder<MapCubit, MapState>(
         builder: (context, state) {
-          if (state.status == SpotStatus.added) {
-            snackBar(
-                'Спот отправлен на модерацию', context, false);
-          }
+          // if (state.status == SpotStatus.added) {
+          //   snackBar(
+          //       'Спот отправлен на модерацию', context, false);
+          // }
           return SingleChildScrollView(
             child: Container(
               padding: const EdgeInsets.only(top: 20),
@@ -125,8 +123,7 @@ Widget addSpotWidget(BuildContext context,
                       final List<XFile>? images =
                           await picker.pickMultiImage();
                       if (images != null) {
-                        BlocProvider.of<SpotBloc>(context)
-                            .add(SelectMultipleImageEvent(images));
+                        context.read<MapCubit>().onSelectMultipleImages(images);
                       }
                     },
                     child: Container(
@@ -179,7 +176,7 @@ Widget addSpotWidget(BuildContext context,
                     ),
                   ),
                   const SizedBox(height: 20),
-                 state.status == SpotStatus.loading ? CircularProgressIndicator() : MaterialButton(
+                MaterialButton(
                       minWidth: MediaQuery.of(context).size.width,
                       height: 50,
                       color: Colors.blue,
@@ -188,15 +185,11 @@ Widget addSpotWidget(BuildContext context,
                       onPressed: () {
                         if (Prefs.getString('token') != null) {
                           if (_formKey.currentState!.validate()) {
-                            Dev.log(state.status);
-                            BlocProvider.of<SpotBloc>(context)..add(
-                                AddSpotEvent(
-                                    _name.text,
-                                    _address.text,
-                                    _description.text,
-                                    currentUserLocation!.latitude,
-                                    currentUserLocation.longitude));
-                            Dev.log(state.status);
+                            context.read<MapCubit>().onAddStop( _name.text,
+                                _address.text,
+                                _description.text,
+                                currentUserLocation!.latitude,
+                                currentUserLocation.longitude);
                           }
                         } else {
                           snackBar(

@@ -3,25 +3,22 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:ride_map/data/map_page_models/map_model.dart';
-import 'package:ride_map/domain/bloc/spot/spot_bloc.dart';
+import 'package:ride_map/domain/bloc/spot_cubit/map_cubit.dart';
 import 'package:ride_map/until/theme/light/app_colors_light.dart';
 
 Widget listWidget(BuildContext context, MapModel model) {
   final TextEditingController searchController = TextEditingController();
-  Future<void> _onRefresh() async {
-    await BlocProvider<SpotBloc>(
-        create: (context) => SpotBloc(spot: model)..add(GetSpotList()));
-  }
+
 
   return LiquidPullToRefresh(
-      onRefresh: _onRefresh,
+      onRefresh: () => context.read<MapCubit>().onGetSpots(),
       child: Column(
         children: [
           CupertinoSearchTextField(
             controller: searchController,
             onChanged: (String search){
               searchController.text = search;
-              BlocProvider.of<SpotBloc>(context).add(SearchSpot(search));
+              context.read<MapCubit>().onSearchSpot(search);
             },
           ),
           const SizedBox(width: 10),
