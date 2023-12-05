@@ -16,8 +16,8 @@ void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   setup();
   await initPreferences();
-  // initDefault();
-  // initCrashlytics();
+  initDefault();
+  initCrashlytics();
   initObserver();
   runApp(const App());
 }
@@ -47,7 +47,4 @@ Future<void> initDefault() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
-  final fcm = await FirebaseMessaging.instance.getToken();
-  Prefs.setString('fcm', fcm!);
-  Dev.log('FCM $fcm', name: 'FIREBASE TOKEN');
 }
