@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:ride_map/domain/bloc/spot_cubit/map_cubit.dart';
+import 'package:ride_map/domain/bloc/spot/map_cubit.dart';
 import 'package:ride_map/presentation/ui/widget/full_screen_image/full_screen_image.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
 import 'package:ride_map/until/preferences/preferences.dart';

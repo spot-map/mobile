@@ -1,11 +1,12 @@
 import 'package:injectable/injectable.dart';
+import 'package:ride_map/internal/entity/result.dart';
 
 abstract class IAuthRepository {
   @module
-  Future<void> login(String email, String password);
+  Future<Result> login(String email, String password);
 
   @module
-  Future<void> registration(String email, String password, String name);
+  Future<Result> registration(String email, String password, String name);
 
   @module
   Future<void> logout();

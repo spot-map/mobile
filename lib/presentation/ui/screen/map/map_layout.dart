@@ -1,9 +1,8 @@
-import 'dart:developer';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/location_cubit/location_cubit.dart';
-import 'package:ride_map/domain/bloc/spot_cubit/map_cubit.dart';
+import 'package:ride_map/domain/bloc/location/location_cubit.dart';
+import 'package:ride_map/domain/bloc/spot/map_cubit.dart';
 import 'package:ride_map/presentation/ui/widget/bottom_sheet/bottom_sheet.dart';
 import 'package:ride_map/presentation/ui/widget/map/map_widget.dart';
 import 'package:ride_map/until/yandex/map_object.dart';

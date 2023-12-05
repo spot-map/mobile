@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/auth_cubit/auth_cubit.dart';
+import 'package:ride_map/domain/bloc/auth/auth_cubit.dart';
 
 class RegistrationScreen extends StatelessWidget {
   const RegistrationScreen({Key? key}) : super(key: key);

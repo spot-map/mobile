@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:ride_map/data/map_page_models/map_model.dart';
-import 'package:ride_map/domain/bloc/spot_cubit/map_cubit.dart';
+import 'package:ride_map/domain/bloc/spot/map_cubit.dart';
 import 'package:ride_map/until/theme/light/app_colors_light.dart';
 
 Widget listWidget(BuildContext context, MapModel model) {
