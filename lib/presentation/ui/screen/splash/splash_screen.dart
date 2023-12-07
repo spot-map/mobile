@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:ride_map/presentation/common/assets/app_assets.dart';
 import 'package:ride_map/presentation/common/router/routes.dart';
 
 class SplashScreen extends StatefulWidget {
@@ -24,7 +25,7 @@ class _SplashScreenState extends State<SplashScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Center(
-        child: Image.asset('assets/icon.png'),
+        child: Image.asset(AppAssets.splashIcon),
       ),
     );
   }

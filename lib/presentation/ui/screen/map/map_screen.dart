@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/domain/bloc/location/location_cubit.dart';
 import 'package:ride_map/domain/bloc/spot/map_cubit.dart';
+import 'package:ride_map/presentation/common/assets/app_assets.dart';
 import 'package:ride_map/presentation/ui/widget/bottom_sheet/bottom_sheet.dart';
 import 'package:ride_map/presentation/ui/widget/map/map_widget.dart';
 import 'package:ride_map/until/yandex/map_object.dart';
@@ -31,7 +32,7 @@ class MapScreen extends StatelessWidget {
                        longitude: element.longitude!,
                      ),
                      icon: PlacemarkIcon.single(
-                         PlacemarkIconStyle(image: BitmapDescriptor.fromAssetImage('assets/spot_location.png'), scale: 0.2))));
+                         PlacemarkIconStyle(image: BitmapDescriptor.fromAssetImage(AppAssets.spotMapIcon), scale: 0.2))));
                }
              }
 
