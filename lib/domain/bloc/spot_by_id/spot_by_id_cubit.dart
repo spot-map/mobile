@@ -2,16 +2,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
 import 'package:ride_map/domain/api/provider/map_provider.dart';
+import 'package:ride_map/domain/links/dynamic_link.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/until/api/api_constants.dart';
 import 'package:share_plus/share_plus.dart';
 
 part 'spot_by_id_state.dart';
 
 class SpotByIdCubit extends Cubit<SpotByIdState> {
-  final MapProvider _provider = getIt.get<MapProvider>();
+  final MapProvider _provider = getIt();
 
-  SpotByIdCubit({required int id, required MapByIdModel model}) : super(SpotByIdState(mapByIdModel: model)) {
+  SpotByIdCubit({required int id}) : super(const SpotByIdState()) {
     _onCreate(id);
   }
 
@@ -21,7 +21,7 @@ class SpotByIdCubit extends Cubit<SpotByIdState> {
   }
 
   void onShareSpot(int id) async {
-    await Share.share('Йоу! Зацени спот ${ApiConstants.SPOT_BY_ID}/${id}');
+    await Share.share('Йоу! Зацени спот ${createLink(id.toString())}');
   }
 
   void onSendReaction(String text, int score, int spotId) async {

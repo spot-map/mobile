@@ -1,12 +1,12 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ride_map/domain/api/provider/login_provider.dart';
+import 'package:ride_map/domain/api/provider/auth_provider.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
 part 'auth_state.dart';
 
 class AuthCubit extends Cubit<AuthState> {
-  final _provider = getIt.get<AuthProvider>();
+  final AuthProvider _provider = getIt();
 
   AuthCubit() : super(const AuthState());
 

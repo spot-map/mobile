@@ -7,11 +7,9 @@ import 'package:ride_map/internal/di/inject.dart';
 part 'favorite_state.dart';
 
 class FavoriteCubit extends Cubit<FavoriteState> {
-  final  _provider = getIt.get<FavoriteProvider>();
+  final FavoriteProvider _provider = getIt();
 
-  FavoriteCubit({
-    required FavoriteModel model,
-  }) : super(FavoriteState(favoriteModel: model)) {
+  FavoriteCubit() : super(const FavoriteState()) {
     _onCreate();
   }
 

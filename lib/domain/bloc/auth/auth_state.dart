@@ -2,13 +2,13 @@ part of 'auth_cubit.dart';
 
 class AuthState extends Equatable {
   const AuthState({
-    this.isLogin = false,
-    this.isRegistration = false,
+    this.isLogin,
+    this.isRegistration,
     String? errorMessage,
   }) : errorMessage = errorMessage ?? '';
 
-  final bool isLogin;
-  final bool isRegistration;
+  final bool? isLogin;
+  final bool? isRegistration;
   final String? errorMessage;
 
   @override
@@ -29,7 +29,3 @@ class AuthState extends Equatable {
         isRegistration: isRegistration ?? this.isRegistration);
   }
 }
-
-// class LoginState extends Equatable {
-
-// }

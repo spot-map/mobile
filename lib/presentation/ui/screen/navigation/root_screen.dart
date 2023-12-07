@@ -1,7 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ride_map/domain/bloc/auth/auth_cubit.dart';
+import 'package:ride_map/domain/bloc/favorite/favorite_cubit.dart';
 import 'package:ride_map/domain/bloc/navigation/constants/constants.dart';
 import 'package:ride_map/domain/bloc/navigation/navigation_cubit.dart';
+import 'package:ride_map/domain/bloc/spot/map_cubit.dart';
+import 'package:ride_map/internal/di/inject.dart';
+import 'package:ride_map/presentation/ui/screen/account/account_screen.dart';
 import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login_screen.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
@@ -10,7 +15,6 @@ import 'package:ride_map/until/preferences/preferences.dart';
 import 'package:ride_map/until/theme/dark/app_colors_dark.dart';
 import 'package:ride_map/until/theme/light/app_colors_light.dart';
 
-import '../account/account_screen.dart';
 
 class RootScreen extends StatelessWidget {
   const RootScreen({Key? key}) : super(key: key);
@@ -98,11 +102,12 @@ class RootScreen extends StatelessWidget {
       body: BlocBuilder<NavigationCubit, NavigationState>(
         builder: (context, state) {
           if (state.item == NavBarItem.home) {
-            return const MapScreen();
+            return BlocProvider<MapCubit>(create: (context) => getIt(), child: const MapScreen());
           } else if (state.item == NavBarItem.favorite) {
             return Prefs.getString('token') == null
-                ? const LoginScreen()
-                : const FavoriteScreen();
+                ? BlocProvider<AuthCubit>(create: (context) => getIt(), child: const LoginScreen())
+                : BlocProvider<FavoriteCubit>(
+                create: (_) => getIt(), child: const FavoriteScreen());
           } else if (state.item == NavBarItem.account) {
             return AccountScreen();
           } else if (state.item == NavBarItem.settings) {

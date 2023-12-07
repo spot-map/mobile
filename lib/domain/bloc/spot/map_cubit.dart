@@ -9,11 +9,9 @@ import 'package:ride_map/internal/di/inject.dart';
 part 'map_state.dart';
 
 class MapCubit extends Cubit<MapState> {
-  final MapProvider _provider = getIt.get<MapProvider>();
+  final MapProvider _provider = getIt();
 
-  MapCubit({
-    required MapModel model,
-  }) : super(MapState(mapModel: model)) {
+  MapCubit() : super(const MapState()) {
     _onCreate();
   }
 
@@ -23,25 +21,11 @@ class MapCubit extends Cubit<MapState> {
 
   Future<void> onGetSpots() async {
     final spots = await _provider.getSpot();
-    emit(state.copyWith(mapModel: spots,isLoading: false));
+    emit(state.copyWith(mapModel: spots, isLoading: false));
   }
 
-  void onSearchSpot(String name) async{
+  void onSearchSpot(String name) async {
     final searchedSpot = await _provider.searchSpot(name);
     emit(state.copyWith(mapModel: searchedSpot, isLoading: false));
   }
-
-  void onAddStop(String name, String address, String description, double latitude, double longitude, )async{
-    await _provider.addSpot(name, address, description, latitude, longitude, state.images);
-  }
-
-  Future<void> onSelectMultipleImages(
-      List<XFile> images) async {
-    emit(state.copyWith(images: images));
-  }
-
-  Future<void> onUnSelectMultipleImages() async {
-    emit(state.copyWith(images: []));
-  }
-
 }

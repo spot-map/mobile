@@ -1,13 +1,9 @@
-import 'package:injectable/injectable.dart';
 import 'package:ride_map/data/favorite_page_models/favorite_model.dart';
 
-abstract class IFavoriteRepository{
-  @module
+abstract class IFavoriteRepository {
   Future<void> addSpotToFavorite(int id);
 
-  @module
   Future<FavoriteModel> getFavoriteList();
 
-  @module
   Future<void> deleteSpotFromFavorite(int id);
 }

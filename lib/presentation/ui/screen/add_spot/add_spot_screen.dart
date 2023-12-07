@@ -19,6 +19,6 @@ class AddSpotScreen extends StatelessWidget {
           automaticallyImplyLeading: true,
           centerTitle: false,
         ),
-        body: addSpotWidget(context, currentUserLocation: currentUserLocation));
+        body: AddSpotWidget(currentUserLocation: currentUserLocation));
   }
 }

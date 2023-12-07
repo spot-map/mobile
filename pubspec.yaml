@@ -54,6 +54,7 @@ dependencies:
   flutter_rating_bar: ^4.0.1
   firebase_messaging: ^14.6.5
   liquid_pull_to_refresh: any
+  firebase_dynamic_links: any
   skeleton_text: any
   share_plus: ^7.1.0
   location_repository:

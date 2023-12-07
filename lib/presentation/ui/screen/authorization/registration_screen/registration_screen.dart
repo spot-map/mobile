@@ -16,8 +16,7 @@ class RegistrationScreen extends StatelessWidget {
         children: [
           SingleChildScrollView(
             child: Container(
-              padding: const EdgeInsets.only(
-                  top: 20),
+              padding: const EdgeInsets.only(top: 20),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
@@ -26,7 +25,7 @@ class RegistrationScreen extends StatelessWidget {
                     child: Column(
                       children: [
                         TextField(
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           controller: _nameCotroller,
                           decoration: InputDecoration(
                               fillColor: Colors.grey.shade100,
@@ -40,7 +39,7 @@ class RegistrationScreen extends StatelessWidget {
                           height: 30,
                         ),
                         TextField(
-                          style: TextStyle(color: Colors.black),
+                          style: const TextStyle(color: Colors.black),
                           controller: _emailCotroller,
                           decoration: InputDecoration(
                               fillColor: Colors.grey.shade100,
@@ -55,7 +54,7 @@ class RegistrationScreen extends StatelessWidget {
                         ),
                         TextField(
                           controller: _passwordCotroller,
-                          style: TextStyle(),
+                          style: const TextStyle(),
                           obscureText: true,
                           decoration: InputDecoration(
                               fillColor: Colors.grey.shade100,
@@ -73,20 +72,20 @@ class RegistrationScreen extends StatelessWidget {
                           children: [
                             const Text(
                               'Регистрация',
-                              style: TextStyle(
-                                  fontSize: 27, fontWeight: FontWeight.w700),
+                              style: TextStyle(fontSize: 27, fontWeight: FontWeight.w700),
                             ),
                             CircleAvatar(
                               radius: 30,
-                              backgroundColor: Color(0xff4c505b),
+                              backgroundColor: const Color(0xff4c505b),
                               child: IconButton(
                                   color: Colors.white,
                                   onPressed: () {
-                                    context.read<AuthCubit>().onRegistration(
-                                        _emailCotroller.text, _passwordCotroller.text, _nameCotroller.text);
+                                    context
+                                        .read<AuthCubit>()
+                                        .onRegistration(_emailCotroller.text, _passwordCotroller.text, _nameCotroller.text);
                                   },
                                   icon: const Icon(
-                                     Icons.arrow_forward,
+                                    Icons.arrow_forward,
                                   )),
                             )
                           ],

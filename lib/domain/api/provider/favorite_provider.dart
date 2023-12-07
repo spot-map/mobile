@@ -1,21 +1,24 @@
-import 'package:injectable/injectable.dart';
 import 'package:ride_map/data/favorite_page_models/favorite_model.dart';
-import 'package:ride_map/domain/api/repository/i_auth_repository.dart';
 import 'package:ride_map/domain/api/repository/i_favorite_repository.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
-@injectable
-class FavoriteProvider {
-  final _favoriteRepository = getIt.get<IFavoriteRepository>();
-  final _authRepository = getIt.get<IAuthRepository>();
+abstract class FavoriteProvider {
+  Future<void> addSpotToFavorite(int id);
 
-  Future<void> addSpotToFavorite(int id) => _favoriteRepository.addSpotToFavorite(id);
+  Future<FavoriteModel> getFavoriteList();
 
-  Future<FavoriteModel> getFavoriteList() => _favoriteRepository.getFavoriteList();
-
-  Future<void> deleteSpotFromFavorite(int id) => _favoriteRepository.deleteSpotFromFavorite(id);
-
-  Future<void> logout() => _authRepository.logout();
+  Future<void> deleteSpotFromFavorite(int id);
 }
 
-class NetworkError extends Error {}
+class FavoriteProviderImpl implements FavoriteProvider {
+  final IFavoriteRepository _favoriteRepository = getIt();
+
+  @override
+  Future<void> addSpotToFavorite(int id) => _favoriteRepository.addSpotToFavorite(id);
+
+  @override
+  Future<FavoriteModel> getFavoriteList() => _favoriteRepository.getFavoriteList();
+
+  @override
+  Future<void> deleteSpotFromFavorite(int id) => _favoriteRepository.deleteSpotFromFavorite(id);
+}

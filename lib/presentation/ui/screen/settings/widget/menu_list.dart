@@ -42,14 +42,12 @@ class MenuList extends StatelessWidget {
               onTap: () {},
               child: menuListItem(icon: Icons.email, title: 'Сообщить об ошибке'),
             ),
-            Prefs.getBool('theme') != null
-                ? GestureDetector(
-                    onTap: () => context.read<AuthCubit>().onLogout(),
-                    child: menuListItem(
-                      icon: Icons.exit_to_app,
-                      title: 'Выйти из аккаунта',
-                    ),
-                  )
+            Prefs.getString('token') != null
+                ?
+            menuListItem(
+              icon: Icons.exit_to_app,
+              title: 'Выйти из аккаунта',
+            )
                 : Container()
           ],
         );

@@ -3,14 +3,16 @@ import 'package:flutter/services.dart';
 import 'dart:io';
 
 class FullScreenPage extends StatefulWidget {
-  FullScreenPage({
+  const FullScreenPage({
     super.key,
-    required this.path,
+    required this.imagePath,
     required this.dark,
   });
 
-  final String path;
+  final String imagePath;
   final bool dark;
+
+  static const path = 'fullImage';
 
   @override
   FullScreenPageState createState() => FullScreenPageState();
@@ -62,7 +64,7 @@ class FullScreenPageState extends State<FullScreenPage> {
                   panEnabled: true,
                   minScale: 0.5,
                   maxScale: 4,
-                  child: Image.file(File(widget.path)),
+                  child: Image.file(File(widget.imagePath)),
                 ),
               ),
             ],

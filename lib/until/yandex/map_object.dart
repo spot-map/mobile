@@ -4,7 +4,7 @@ List<MapObject> mapObject = [];
 
 
 void addMapObject({required double latitude, required double longitude, required String objectId, required String icon}){
-  mapObject!.add(PlacemarkMapObject(
+  mapObject.add(PlacemarkMapObject(
       mapId:  MapObjectId(objectId),
       point: Point(
         latitude: latitude,

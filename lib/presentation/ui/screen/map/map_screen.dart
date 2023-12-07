@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/data/map_page_models/map_model.dart';
 import 'package:ride_map/domain/bloc/location/location_cubit.dart';
 import 'package:ride_map/domain/bloc/spot/map_cubit.dart';
-import 'package:ride_map/presentation/ui/screen/map/map_layout.dart';
+import 'package:ride_map/presentation/ui/widget/bottom_sheet/bottom_sheet.dart';
+import 'package:ride_map/presentation/ui/widget/map/map_widget.dart';
+import 'package:ride_map/until/yandex/map_object.dart';
+import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class MapScreen extends StatelessWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -12,9 +14,39 @@ class MapScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(providers: [
-      BlocProvider<MapCubit>(create: (BuildContext context) => MapCubit(model: const MapModel())),
-      BlocProvider<LocationCubit>(create: (BuildContext context) => LocationCubit()),
-    ], child: MapLayout());
+    return Scaffold(
+      resizeToAvoidBottomInset: false,
+      extendBodyBehindAppBar: true,
+      body: BlocBuilder<LocationCubit, LocationState>(
+        builder: (context, locationState) {
+          return BlocBuilder<MapCubit, MapState>(
+            builder: (context, mapState) {
+             if(!mapState.isLoading){
+               for (var element in mapState.mapModel!.data) {
+                 mapObject.add(PlacemarkMapObject(
+                     mapId: MapObjectId('spot ${element.id}'),
+                     onTap: (PlacemarkMapObject self, Point point) => bottomSheet(context, element.id!),
+                     point: Point(
+                       latitude: element.latitude!,
+                       longitude: element.longitude!,
+                     ),
+                     icon: PlacemarkIcon.single(
+                         PlacemarkIconStyle(image: BitmapDescriptor.fromAssetImage('assets/spot_location.png'), scale: 0.2))));
+               }
+             }
+
+              return mapState.isLoading
+                  ? const Center(
+                      child: CircularProgressIndicator(),
+                    )
+                  : MapWidget(
+                      currentUserLocation: locationState.currentPosition!,
+                      mapObjects: mapObject,
+                    );
+            },
+          );
+        },
+      ),
+    );
   }
 }

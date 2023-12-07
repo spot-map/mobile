@@ -1,8 +1,5 @@
-import 'package:injectable/injectable.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-@singleton
-@injectable
 class Prefs {
   static SharedPreferences? _prefs;
 
