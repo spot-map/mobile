@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/auth/auth_cubit.dart';
-import 'package:ride_map/domain/bloc/theme/theme_cubit.dart';
-import 'package:ride_map/internal/di/inject.dart';
+import 'package:ride_map/presentation/common/cubit/theme/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/settings/widget/menu.dart';
 import 'package:ride_map/until/preferences/preferences.dart';
 
@@ -44,11 +42,10 @@ class MenuList extends StatelessWidget {
               child: menuListItem(icon: Icons.email, title: 'Сообщить об ошибке'),
             ),
             Prefs.getString('token') != null
-                ?
-            menuListItem(
-              icon: Icons.exit_to_app,
-              title: 'Выйти из аккаунта',
-            )
+                ? menuListItem(
+                    icon: Icons.exit_to_app,
+                    title: 'Выйти из аккаунта',
+                  )
                 : Container()
           ],
         );

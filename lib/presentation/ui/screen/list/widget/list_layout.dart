@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/spot/map_cubit.dart';
+import 'package:ride_map/presentation/common/cubit/spot/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/list/widget/list_widget.dart';
 
 class ListLayout extends StatelessWidget {

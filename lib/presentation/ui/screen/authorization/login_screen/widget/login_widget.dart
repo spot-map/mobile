@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/auth/auth_cubit.dart';
+import 'package:ride_map/presentation/ui/screen/authorization/cubit.dart';
 import 'package:ride_map/until/validator/email_validator.dart';
 
 class LoginWidget extends StatelessWidget {

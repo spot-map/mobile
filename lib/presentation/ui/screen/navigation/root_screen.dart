@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/domain/bloc/auth/auth_cubit.dart';
-import 'package:ride_map/domain/bloc/favorite/favorite_cubit.dart';
-import 'package:ride_map/domain/bloc/navigation/constants/constants.dart';
-import 'package:ride_map/domain/bloc/navigation/navigation_cubit.dart';
-import 'package:ride_map/domain/bloc/spot/map_cubit.dart';
+import 'package:ride_map/presentation/common/cubit/navigation/constants/constants.dart';
+import 'package:ride_map/presentation/common/cubit/navigation/cubit.dart';
+import 'package:ride_map/presentation/common/cubit/spot/cubit.dart';
+import 'package:ride_map/presentation/ui/screen/authorization/cubit.dart';
+import 'package:ride_map/presentation/ui/screen/favorite/cubit.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/presentation/ui/screen/account/account_screen.dart';
 import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login_screen.dart';

@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/preferences/preferences.dart';
 import 'package:ride_map/until/theme/light/app_colors_light.dart';
 import 'package:ride_map/until/theme/dark/app_colors_dark.dart';
