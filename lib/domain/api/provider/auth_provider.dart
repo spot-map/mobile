@@ -1,6 +1,7 @@
-import 'package:ride_map/domain/api/repository/i_auth_repository.dart';
+import 'package:ride_map/domain/api/service/auth_repository_impl.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/internal/entity/result.dart';
+
 
 abstract class AuthProvider {
   Future<Result> login(String email, String password);
@@ -13,7 +14,7 @@ abstract class AuthProvider {
 }
 
 class AuthProviderImpl implements AuthProvider {
-  final IAuthRepository _loginService = getIt();
+  final AuthRepository _loginService = getIt();
 
   @override
   Future<Result> login(String email, String password) => _loginService.login(email, password);

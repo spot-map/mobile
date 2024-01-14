@@ -1,7 +1,7 @@
 class AppAssets{
   AppAssets._();
 
-  static const splashIcon = 'assets/icon/icon.png';
-  static const userMapIcon = 'assets/icon/user_location.png';
-  static const spotMapIcon = 'assets/icon/spot_location.png';
+  static const splashIcon = 'assets/icons/icon.png';
+  static const userMapIcon = 'assets/icons/user_location.png';
+  static const spotMapIcon = 'assets/icons/spot_location.png';
 }

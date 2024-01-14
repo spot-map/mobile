@@ -1,7 +1,7 @@
 import 'package:image_picker/image_picker.dart';
 import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
 import 'package:ride_map/data/map_page_models/map_model.dart';
-import 'package:ride_map/domain/api/repository/i_map_repository.dart';
+import 'package:ride_map/domain/api/service/map_repository_impl.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/internal/entity/result.dart';
 
@@ -19,7 +19,7 @@ abstract class MapProvider {
 }
 
 class MapProviderImpl implements MapProvider {
-  final IMapRepository _mapRepository = getIt();
+  final MapRepository _mapRepository = getIt();
 
   @override
   Future<MapModel> getSpot() => _mapRepository.getSpot();

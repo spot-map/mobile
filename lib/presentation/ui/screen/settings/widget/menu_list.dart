@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/domain/bloc/auth/auth_cubit.dart';
 import 'package:ride_map/domain/bloc/theme/theme_cubit.dart';
+import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/presentation/ui/screen/settings/widget/menu.dart';
 import 'package:ride_map/until/preferences/preferences.dart';
 

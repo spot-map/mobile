@@ -3,12 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:ride_map/domain/bloc/add_spot/add_spot_cubit.dart';
-import 'package:ride_map/domain/bloc/spot/map_cubit.dart';
+import 'package:ride_map/domain/bloc/spot_by_id/spot_by_id_cubit.dart';
+
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/presentation/common/router/routes.dart';
 import 'package:ride_map/presentation/ui/screen/add_spot/add_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/navigation/root_screen.dart';
 import 'package:ride_map/presentation/ui/screen/splash/splash_screen.dart';
+import 'package:ride_map/presentation/ui/widget/bottom_sheet/bottom_sheet.dart';
 import 'package:ride_map/presentation/ui/widget/full_screen_image/full_screen_image.dart';
 import 'package:ride_map/until/preferences/preferences.dart';
 
@@ -22,6 +24,15 @@ final appRouter = GoRouter(navigatorKey: _navigatorKey, initialLocation: AppRout
       builder: (context, state) {
         final location = state.extra! as LatLng;
         return BlocProvider<AddSpotCubit>(create: (_) => getIt(), child: AddSpotScreen(currentUserLocation: location));
+      }),
+  GoRoute(
+      path: AppRoutes.spotById,
+      builder: (context, state) {
+        final id = state.extra! as int;
+        return BlocProvider<SpotByIdCubit>(
+          create: (_) => getIt(param1: id),
+          child: const SpotByIdModal(),
+        );
       }),
   GoRoute(
       path: AppRoutes.fullImageScreen,

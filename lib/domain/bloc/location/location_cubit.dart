@@ -18,10 +18,6 @@ class LocationCubit extends Cubit<LocationState> {
   }
 
   void onGetLocation() {
-    Geolocator.checkPermission();
-    if(Geolocator.checkPermission() == LocationPermission.denied){
-      Geolocator.requestPermission();
-    }
     _positionStream = Geolocator.getPositionStream().listen((event) {
       currentPosition = LatLng(event.latitude, event.longitude);
       addMapObject(latitude: event.latitude, longitude: event.longitude, objectId: 'user location', icon: AppAssets.userMapIcon);

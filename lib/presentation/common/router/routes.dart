@@ -6,6 +6,7 @@ import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
 import 'package:ride_map/presentation/ui/screen/navigation/root_screen.dart';
 import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
 import 'package:ride_map/presentation/ui/screen/splash/splash_screen.dart';
+import 'package:ride_map/presentation/ui/widget/bottom_sheet/bottom_sheet.dart';
 import 'package:ride_map/presentation/ui/widget/full_screen_image/full_screen_image.dart';
 
 class AppRoutes{
@@ -19,4 +20,5 @@ class AppRoutes{
   static const settings = '/${SettingsScreen.path}';
   static const bottomNavigationHome = '/${RootScreen.path}';
   static const fullImageScreen = '/${FullScreenPage.path}';
+  static const spotById = '/${SpotByIdModal.path}';
 }

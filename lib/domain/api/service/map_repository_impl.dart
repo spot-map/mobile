@@ -3,23 +3,35 @@ import 'package:image_picker/image_picker.dart';
 import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
 import 'package:ride_map/data/map_page_models/map_model.dart';
 import 'package:ride_map/domain/api/provider/auth_provider.dart';
-import 'package:ride_map/domain/api/repository/i_map_repository.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/internal/entity/result.dart';
 import 'package:ride_map/until/api/api_constants.dart';
 import 'package:ride_map/until/dev.dart';
-import 'package:ride_map/until/dio/dio_client.dart';
 import 'package:ride_map/until/preferences/preferences.dart';
 
+abstract class MapRepository {
+  Future<MapModel> getSpot();
 
-class MapService implements IMapRepository {
-  final _dioClient = getIt.get<DioClient>();
+  Future<Result<bool>> addSpot(String name, String address, String description, double latitude, double longitude, List<XFile>? images);
+
+  Future<MapByIdModel> getSpotById(int id);
+
+  Future<void> addReactions(String text, int score, int spotId);
+
+  Future<void> addImage(int id, List<XFile>? images);
+
+  Future<MapModel> searchSpot(String name);
+}
+
+
+class MapRepositoryImpl implements MapRepository {
+  final Dio _client = getIt();
   final AuthProvider _provider = getIt();
 
   @override
   Future<MapModel> getSpot() async {
     try {
-      Response response = await _dioClient.dio.get(ApiConstants.SPOT_LIST);
+      Response response = await _client.get(ApiConstants.SPOT_LIST);
 
       if (response.statusCode == 200) {
         Dev.log('SPOTS ${response.data}', name: 'GET SPOTS API REQUEST');
@@ -37,7 +49,7 @@ class MapService implements IMapRepository {
   Future<MapByIdModel> getSpotById(int id) async {
     try {
       Dev.log('GET SPOT BY ID $id', name: 'GET SPOT BY ID');
-      Response response = await _dioClient.dio.get('${ApiConstants.SPOT_BY_ID}/$id');
+      Response response = await _client.get('${ApiConstants.SPOT_BY_ID}/$id');
       if (response.statusCode == 200) {
         Dev.log('SPOT ${response.data}', name: 'GET SPOT BY ID');
         return MapByIdModel.fromJson(response.data);
@@ -55,13 +67,13 @@ class MapService implements IMapRepository {
     var reactionsObject = {"text": text, "score": score, "spot_id": spotId};
     Dev.log('Object $reactionsObject', name: 'Reactions Object');
     try {
-      _dioClient.dio.options.headers = {
+      _client.options.headers = {
         'Authorization': 'Bearer ${Prefs.getString('token')}',
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       };
       Dev.log('${Prefs.getString('token')}', name: 'TOKEN');
-      Response response = await _dioClient.dio.post(
+      Response response = await _client.post(
         ApiConstants.REACTIONS,
         data: reactionsObject,
         options: Options(
@@ -85,12 +97,12 @@ class MapService implements IMapRepository {
   Future<Result<bool>> addSpot(
       String name, String address, String description, double latitude, double longitude, List<XFile>? images) async {
     try {
-      _dioClient.dio.options.headers = {
+      _client.options.headers = {
         'Authorization': 'Bearer ${Prefs.getString('token')}',
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       };
-      Response response = await _dioClient.dio.post(ApiConstants.ADD_SPOT,
+      Response response = await _client.post(ApiConstants.ADD_SPOT,
           data: {
             "name": name,
             "address": address,
@@ -119,7 +131,7 @@ class MapService implements IMapRepository {
 
   @override
   Future<Result<bool>> addImage(int id, List<XFile>? images) async {
-    _dioClient.dio.options.headers = {
+    _client.options.headers = {
       'Authorization': 'Bearer ${Prefs.getString('token')}',
       'Content-Type': 'application/json',
       'Accept': 'application/json'
@@ -134,7 +146,7 @@ class MapService implements IMapRepository {
         formData.files.addAll([MapEntry("files[]", await MultipartFile.fromFile(image.path))]);
       }
 
-      Response response = await _dioClient.dio.post('${ApiConstants.ADD_IMAGE_TO_SPOT}/$id',
+      Response response = await _client.post('${ApiConstants.ADD_IMAGE_TO_SPOT}/$id',
           data: formData, options: Options(followRedirects: false, validateStatus: (status) => status! < 500));
 
       if (response.statusCode == 200) {
@@ -152,7 +164,7 @@ class MapService implements IMapRepository {
   @override
   Future<MapModel> searchSpot(String name) async {
     try {
-      Response response = await _dioClient.dio.get('${ApiConstants.SEARCH_SPOT}/$name');
+      Response response = await _client.get('${ApiConstants.SEARCH_SPOT}/$name');
 
       if (response.statusCode == 200) {
         Dev.log(response.data, name: 'SEARCH SPOT API REQUEST');

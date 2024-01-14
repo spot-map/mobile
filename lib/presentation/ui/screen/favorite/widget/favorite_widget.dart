@@ -54,7 +54,7 @@ class FavoriteWidget extends StatelessWidget {
                         borderRadius: BorderRadius.circular(15),
                       ),
                       child: ListTile(
-                          onTap: () => bottomSheet(context, state.favoriteModel!.data[index].spot!.id!),
+                          // onTap: () => bottomSheet(context, state.favoriteModel!.data[index].spot!.id!),
                           // leading:  CircleAvatar(
                           //     backgroundImage: NetworkImage(
                           //         state.favoriteModel!.data[index].spot!.images![index].path!)),
