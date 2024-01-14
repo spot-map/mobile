@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:ride_map/domain/entity/result.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/internal/entity/result.dart';
 import 'package:ride_map/until/api/api_constants.dart';
 import 'package:ride_map/until/dev.dart';
 import 'package:ride_map/until/preferences/preferences.dart';

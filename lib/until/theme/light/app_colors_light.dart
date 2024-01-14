@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:ride_map/until/theme/base/i_app_color.dart';
+import 'package:ride_map/until/theme/base/app_color.dart';
 import 'package:ride_map/until/theme/light/constants/string_colors.dart';
 import 'package:ride_map/until/theme/to_hex.dart';
 
-class AppColorLight implements IAppColor {
+class AppColorLight implements AppColor {
   static AppColorLight? _instance;
 
   factory AppColorLight() => _instance ??= AppColorLight._();

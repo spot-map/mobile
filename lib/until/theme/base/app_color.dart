@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-class IAppColor {
+class AppColor {
   final Color textColor;
   final Color selectedItemColor;
   final Color unselectedItemColor;
@@ -11,7 +11,7 @@ class IAppColor {
   final Color textFieldColor;
   final ThemeData themeData;
 
-  IAppColor(
+  AppColor(
       this.textColor,
       this.selectedItemColor,
       this.unselectedItemColor,

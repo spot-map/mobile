@@ -1,6 +1,6 @@
-import 'package:ride_map/domain/api/service/auth_api.dart';
+import 'package:ride_map/domain/api/auth_api.dart';
+import 'package:ride_map/domain/entity/result.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/internal/entity/result.dart';
 
 abstract class AuthUseCase {
   Future<Result> login(String email, String password);

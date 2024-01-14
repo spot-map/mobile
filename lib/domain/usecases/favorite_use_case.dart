@@ -1,5 +1,5 @@
 import 'package:ride_map/data/favorite_page_models/favorite_model.dart';
-import 'package:ride_map/domain/api/service/favorite_api.dart';
+import 'package:ride_map/domain/api/favorite_api.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
 

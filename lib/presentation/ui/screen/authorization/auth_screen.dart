@@ -3,15 +3,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/authorization/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/cubit.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/presentation/ui/screen/authorization/login_screen/widget/login_widget.dart';
+import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login_widget.dart';
 import 'package:ride_map/presentation/ui/screen/authorization/registration_screen/registration_screen.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/page/common_scaffold.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
 
-class LoginLayout extends StatelessWidget {
-  const LoginLayout({Key? key}) : super(key: key);
+class AuthScreen extends StatelessWidget {
+  const AuthScreen({Key? key}) : super(key: key);
+  static const path = 'auth';
 
   @override
   Widget build(BuildContext context) {

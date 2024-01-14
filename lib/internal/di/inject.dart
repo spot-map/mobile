@@ -1,11 +1,11 @@
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
-import 'package:ride_map/domain/api/service/auth_api.dart';
-import 'package:ride_map/domain/api/service/favorite_api.dart';
-import 'package:ride_map/domain/api/service/map_api.dart';
-import 'package:ride_map/domain/api/usecases/auth_uses_case.dart';
-import 'package:ride_map/domain/api/usecases/favorite_uses_case.dart';
-import 'package:ride_map/domain/api/usecases/map_uses_case.dart';
+import 'package:ride_map/domain/api/auth_api.dart';
+import 'package:ride_map/domain/api/favorite_api.dart';
+import 'package:ride_map/domain/api/map_api.dart';
+import 'package:ride_map/domain/usecases/auth_use_case.dart';
+import 'package:ride_map/domain/usecases/favorite_use_case.dart';
+import 'package:ride_map/domain/usecases/map_use_case.dart';
 import 'package:ride_map/presentation/common/cubit/location/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/navigation/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/spot/cubit.dart';

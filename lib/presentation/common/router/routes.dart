@@ -1,5 +1,5 @@
 import 'package:ride_map/presentation/ui/screen/add_spot/add_spot_screen.dart';
-import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login_screen.dart';
+import 'package:ride_map/presentation/ui/screen/authorization/auth_screen.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/screen/list/list_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
@@ -15,7 +15,7 @@ class AppRoutes{
   static const map = '/${MapScreen.path}';
   static const favorite = '/${FavoriteScreen.path}';
   static const mapList = '/${ListSpotScreen.path}';
-  static const auth = '/${LoginScreen.path}';
+  static const auth = '/${AuthScreen.path}';
   static const addSpot = '/${AddSpotScreen.path}';
   static const settings = '/${SettingsScreen.path}';
   static const bottomNavigationHome = '/${RootScreen.path}';

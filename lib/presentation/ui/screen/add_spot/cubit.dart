@@ -3,7 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ride_map/domain/api/usecases/map_uses_case.dart';
+import 'package:ride_map/domain/usecases/map_use_case.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/preferences/preferences.dart';
 

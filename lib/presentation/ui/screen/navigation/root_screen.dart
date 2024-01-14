@@ -7,7 +7,7 @@ import 'package:ride_map/presentation/ui/screen/authorization/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/cubit.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/presentation/ui/screen/account/account_screen.dart';
-import 'package:ride_map/presentation/ui/screen/authorization/login_screen/login_screen.dart';
+import 'package:ride_map/presentation/ui/screen/authorization/auth_screen.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
 import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
@@ -105,7 +105,7 @@ class RootScreen extends StatelessWidget {
             return BlocProvider<MapCubit>(create: (context) => getIt(), child: const MapScreen());
           } else if (state.item == NavBarItem.favorite) {
             return Prefs.getString('token') == null
-                ? BlocProvider<AuthCubit>(create: (context) => getIt(), child: const LoginScreen())
+                ? BlocProvider<AuthCubit>(create: (context) => getIt(), child: const AuthScreen())
                 : BlocProvider<FavoriteCubit>(
                 create: (_) => getIt(), child: const FavoriteScreen());
           } else if (state.item == NavBarItem.account) {
