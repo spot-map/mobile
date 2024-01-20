@@ -23,12 +23,21 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Get Today Date
-        id: date
-        run: echo ::set-output name=date::$(date +*%Y-%m-%d')"
-
       - name: Install dependencies
         run: flutter pub get
 
-      # - name: Run tests
-      #   run: dart test
+  build_apk:
+     name: Build Flutter (Android)
+     needs: []
+     runs-on: ubuntu-latest
+     steps:
+       - uses: action/checkout@v2
+       - uses: action/setup-java@v1
+         with:
+           java-version: "12.x"
+       - uses: subosito/flutter-action@v1
+         with:
+           channel: 'stable'
+       - run: flutter pub get
+       - run: flutter clean
+       - run: flutter build apk
