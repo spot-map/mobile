@@ -26,18 +26,5 @@ jobs:
       - name: Install dependencies
         run: flutter pub get
 
-  build_apk:
-     name: Build Flutter (Android)
-     needs: []
-     runs-on: ubuntu-latest
-     steps:
-       - uses: action/checkout@v2
-       - uses: action/setup-java@v1
-         with:
-           java-version: "12.x"
-       - uses: subosito/flutter-action@v1
-         with:
-           channel: 'stable'
-       - run: flutter pub get
-       - run: flutter clean
-       - run: flutter build apk
+      - name: Build Apk
+        run: flutter build apk
