@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:ride_map/presentation/ui/screen/list/widget/list_layout.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ride_map/presentation/common/cubit/spot/cubit.dart';
+import 'package:ride_map/presentation/ui/screen/list/widget/list_widget.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 
 class ListSpotScreen extends StatelessWidget {
@@ -8,14 +10,23 @@ class ListSpotScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar:  MyAppBar(
+    return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: const MyAppBar(
         automaticallyImplyLeading: true,
         centerTitle: false,
         size: 50,
         title: 'Список спотов',
       ),
-      body: ListLayout(),
+      body: BlocBuilder<MapCubit, MapState>(
+        builder: (context, state) {
+          return state.isLoading
+              ? const Center(
+                  child: CircularProgressIndicator(),
+                )
+              : SpotList(model: state.mapModel!);
+        },
+      ),
     );
   }
 }

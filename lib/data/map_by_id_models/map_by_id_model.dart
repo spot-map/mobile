@@ -1,7 +1,7 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:ride_map/data/image_models/images_model.dart';
+import 'package:ride_map/data/reactions_models/reactions_model.dart';
 
-import '../image_models/images_model.dart';
-import '../reactions_models/reactions_model.dart';
 
 part 'map_by_id_model.freezed.dart';
 
@@ -27,8 +27,8 @@ class Spot with _$Spot {
       double? latitude,
       double? longitude,
       bool? isInFavorite,
-      @Default([]) List<Images>? images,
-      @Default([]) List<Reactions>? reactions}) = _Spot;
+      @Default([]) List<ImagesModel>? images,
+      @Default([]) List<ReactionsModel>? reactions}) = _Spot;
 
   factory Spot.fromJson(Map<String, Object?> json) => _$SpotFromJson(json);
 }

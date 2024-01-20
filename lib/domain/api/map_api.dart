@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ride_map/data/map_by_id_page_models/map_by_id_model.dart';
-import 'package:ride_map/data/map_page_models/map_model.dart';
+import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
+import 'package:ride_map/data/map_models/map_model.dart';
 import 'package:ride_map/domain/entity/result.dart';
 import 'package:ride_map/domain/usecases/auth_use_case.dart';
 import 'package:ride_map/internal/di/inject.dart';

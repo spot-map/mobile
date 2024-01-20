@@ -6,19 +6,20 @@ part of 'map_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_MapModel _$$_MapModelFromJson(Map<String, dynamic> json) => _$_MapModel(
+_$MapModelImpl _$$MapModelImplFromJson(Map<String, dynamic> json) =>
+    _$MapModelImpl(
       data: (json['data'] as List<dynamic>?)
               ?.map((e) => Spots.fromJson(e as Map<String, dynamic>))
               .toList() ??
           const [],
     );
 
-Map<String, dynamic> _$$_MapModelToJson(_$_MapModel instance) =>
+Map<String, dynamic> _$$MapModelImplToJson(_$MapModelImpl instance) =>
     <String, dynamic>{
       'data': instance.data,
     };
 
-_$_Spots _$$_SpotsFromJson(Map<String, dynamic> json) => _$_Spots(
+_$SpotsImpl _$$SpotsImplFromJson(Map<String, dynamic> json) => _$SpotsImpl(
       id: json['id'] as int?,
       name: json['name'] as String?,
       address: json['address'] as String?,
@@ -28,7 +29,8 @@ _$_Spots _$$_SpotsFromJson(Map<String, dynamic> json) => _$_Spots(
       isInFavorite: json['isInFavorite'] as bool?,
     );
 
-Map<String, dynamic> _$$_SpotsToJson(_$_Spots instance) => <String, dynamic>{
+Map<String, dynamic> _$$SpotsImplToJson(_$SpotsImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'address': instance.address,

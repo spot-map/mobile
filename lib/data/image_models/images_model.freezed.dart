@@ -14,12 +14,12 @@ T _$identity<T>(T value) => value;
 final _privateConstructorUsedError = UnsupportedError(
     'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#custom-getters-and-methods');
 
-Images _$ImagesFromJson(Map<String, dynamic> json) {
-  return _Images.fromJson(json);
+ImagesModel _$ImagesModelFromJson(Map<String, dynamic> json) {
+  return _ImagesModel.fromJson(json);
 }
 
 /// @nodoc
-mixin _$Images {
+mixin _$ImagesModel {
   int? get id => throw _privateConstructorUsedError;
   String? get title => throw _privateConstructorUsedError;
   String? get description => throw _privateConstructorUsedError;
@@ -27,21 +27,23 @@ mixin _$Images {
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
   @JsonKey(ignore: true)
-  $ImagesCopyWith<Images> get copyWith => throw _privateConstructorUsedError;
+  $ImagesModelCopyWith<ImagesModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
-abstract class $ImagesCopyWith<$Res> {
-  factory $ImagesCopyWith(Images value, $Res Function(Images) then) =
-      _$ImagesCopyWithImpl<$Res, Images>;
+abstract class $ImagesModelCopyWith<$Res> {
+  factory $ImagesModelCopyWith(
+          ImagesModel value, $Res Function(ImagesModel) then) =
+      _$ImagesModelCopyWithImpl<$Res, ImagesModel>;
   @useResult
   $Res call({int? id, String? title, String? description, String? path});
 }
 
 /// @nodoc
-class _$ImagesCopyWithImpl<$Res, $Val extends Images>
-    implements $ImagesCopyWith<$Res> {
-  _$ImagesCopyWithImpl(this._value, this._then);
+class _$ImagesModelCopyWithImpl<$Res, $Val extends ImagesModel>
+    implements $ImagesModelCopyWith<$Res> {
+  _$ImagesModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
@@ -78,19 +80,22 @@ class _$ImagesCopyWithImpl<$Res, $Val extends Images>
 }
 
 /// @nodoc
-abstract class _$$_ImagesCopyWith<$Res> implements $ImagesCopyWith<$Res> {
-  factory _$$_ImagesCopyWith(_$_Images value, $Res Function(_$_Images) then) =
-      __$$_ImagesCopyWithImpl<$Res>;
+abstract class _$$ImagesModelImplCopyWith<$Res>
+    implements $ImagesModelCopyWith<$Res> {
+  factory _$$ImagesModelImplCopyWith(
+          _$ImagesModelImpl value, $Res Function(_$ImagesModelImpl) then) =
+      __$$ImagesModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({int? id, String? title, String? description, String? path});
 }
 
 /// @nodoc
-class __$$_ImagesCopyWithImpl<$Res>
-    extends _$ImagesCopyWithImpl<$Res, _$_Images>
-    implements _$$_ImagesCopyWith<$Res> {
-  __$$_ImagesCopyWithImpl(_$_Images _value, $Res Function(_$_Images) _then)
+class __$$ImagesModelImplCopyWithImpl<$Res>
+    extends _$ImagesModelCopyWithImpl<$Res, _$ImagesModelImpl>
+    implements _$$ImagesModelImplCopyWith<$Res> {
+  __$$ImagesModelImplCopyWithImpl(
+      _$ImagesModelImpl _value, $Res Function(_$ImagesModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -101,7 +106,7 @@ class __$$_ImagesCopyWithImpl<$Res>
     Object? description = freezed,
     Object? path = freezed,
   }) {
-    return _then(_$_Images(
+    return _then(_$ImagesModelImpl(
       id: freezed == id
           ? _value.id
           : id // ignore: cast_nullable_to_non_nullable
@@ -124,11 +129,11 @@ class __$$_ImagesCopyWithImpl<$Res>
 
 /// @nodoc
 @JsonSerializable()
-class _$_Images implements _Images {
-  const _$_Images({this.id, this.title, this.description, this.path});
+class _$ImagesModelImpl implements _ImagesModel {
+  const _$ImagesModelImpl({this.id, this.title, this.description, this.path});
 
-  factory _$_Images.fromJson(Map<String, dynamic> json) =>
-      _$$_ImagesFromJson(json);
+  factory _$ImagesModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$ImagesModelImplFromJson(json);
 
   @override
   final int? id;
@@ -141,14 +146,14 @@ class _$_Images implements _Images {
 
   @override
   String toString() {
-    return 'Images(id: $id, title: $title, description: $description, path: $path)';
+    return 'ImagesModel(id: $id, title: $title, description: $description, path: $path)';
   }
 
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$_Images &&
+            other is _$ImagesModelImpl &&
             (identical(other.id, id) || other.id == id) &&
             (identical(other.title, title) || other.title == title) &&
             (identical(other.description, description) ||
@@ -163,25 +168,26 @@ class _$_Images implements _Images {
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$_ImagesCopyWith<_$_Images> get copyWith =>
-      __$$_ImagesCopyWithImpl<_$_Images>(this, _$identity);
+  _$$ImagesModelImplCopyWith<_$ImagesModelImpl> get copyWith =>
+      __$$ImagesModelImplCopyWithImpl<_$ImagesModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
-    return _$$_ImagesToJson(
+    return _$$ImagesModelImplToJson(
       this,
     );
   }
 }
 
-abstract class _Images implements Images {
-  const factory _Images(
+abstract class _ImagesModel implements ImagesModel {
+  const factory _ImagesModel(
       {final int? id,
       final String? title,
       final String? description,
-      final String? path}) = _$_Images;
+      final String? path}) = _$ImagesModelImpl;
 
-  factory _Images.fromJson(Map<String, dynamic> json) = _$_Images.fromJson;
+  factory _ImagesModel.fromJson(Map<String, dynamic> json) =
+      _$ImagesModelImpl.fromJson;
 
   @override
   int? get id;
@@ -193,6 +199,6 @@ abstract class _Images implements Images {
   String? get path;
   @override
   @JsonKey(ignore: true)
-  _$$_ImagesCopyWith<_$_Images> get copyWith =>
+  _$$ImagesModelImplCopyWith<_$ImagesModelImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

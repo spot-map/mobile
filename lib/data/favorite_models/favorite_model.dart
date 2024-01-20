@@ -1,6 +1,6 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
+import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
 
-import '../map_by_id_page_models/map_by_id_model.dart';
 
 part 'favorite_model.freezed.dart';
 

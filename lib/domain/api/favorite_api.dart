@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:dio/dio.dart';
-import 'package:ride_map/data/favorite_page_models/favorite_model.dart';
+import 'package:ride_map/data/favorite_models/favorite_model.dart';
 import 'package:ride_map/domain/usecases/auth_use_case.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/api/api_constants.dart';

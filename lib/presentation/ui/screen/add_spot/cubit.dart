@@ -25,7 +25,7 @@ class AddSpotCubit extends Cubit<AddSpotState> {
     double longitude,
   ) async {
     emit(state.copyWith(isLoading: true));
-    if(Prefs.getString('token') != null){
+    if (Prefs.getString('token') != null) {
       final result = await _mapUseCase.addSpot(name, address, description, latitude, longitude, state.images);
       if (result.isSuccess) {
         _messageController.add(AddSpotState.showSuccessMessage);
@@ -33,7 +33,7 @@ class AddSpotCubit extends Cubit<AddSpotState> {
         _messageController.add(AddSpotState.showErrorMessage);
       }
       emit(state.copyWith(onAdded: result.value, isLoading: false, images: []));
-    }else{
+    } else {
       _messageController.add(AddSpotState.notAuthorized);
     }
     emit(state.copyWith(onAdded: false, isLoading: false, images: []));

@@ -4,16 +4,15 @@ part 'images_model.freezed.dart';
 
 part 'images_model.g.dart';
 
-// flutter pub run build_runner build --delete-conflicting-outputs
 
 @freezed
-class Images with _$Images {
-  const factory Images({
+class ImagesModel with _$ImagesModel {
+  const factory ImagesModel({
     int? id,
     String? title,
     String? description,
     String? path,
-  }) = _Images;
+  }) = _ImagesModel;
 
-  factory Images.fromJson(Map<String, Object?> json) => _$ImagesFromJson(json);
+  factory ImagesModel.fromJson(Map<String, Object?> json) => _$ImagesModelFromJson(json);
 }

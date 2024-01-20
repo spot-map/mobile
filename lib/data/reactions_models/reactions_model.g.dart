@@ -6,7 +6,8 @@ part of 'reactions_model.dart';
 // JsonSerializableGenerator
 // **************************************************************************
 
-_$_Reactions _$$_ReactionsFromJson(Map<String, dynamic> json) => _$_Reactions(
+_$ReactionsModelImpl _$$ReactionsModelImplFromJson(Map<String, dynamic> json) =>
+    _$ReactionsModelImpl(
       id: json['id'] as int?,
       text: json['text'] as String?,
       score: json['score'] as int?,
@@ -15,7 +16,8 @@ _$_Reactions _$$_ReactionsFromJson(Map<String, dynamic> json) => _$_Reactions(
           : User.fromJson(json['user'] as Map<String, dynamic>),
     );
 
-Map<String, dynamic> _$$_ReactionsToJson(_$_Reactions instance) =>
+Map<String, dynamic> _$$ReactionsModelImplToJson(
+        _$ReactionsModelImpl instance) =>
     <String, dynamic>{
       'id': instance.id,
       'text': instance.text,

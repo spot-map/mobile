@@ -1,6 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ride_map/data/map_page_models/map_model.dart';
+import 'package:ride_map/data/map_models/map_model.dart';
 import 'package:ride_map/domain/usecases/map_use_case.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
