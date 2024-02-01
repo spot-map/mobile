@@ -20,12 +20,12 @@ import 'package:ride_map/until/preferences/preferences.dart';
 final getIt = GetIt.instance;
 
 Future registerGetIt() async {
-  ///Provider
+  ///Use cases
   getIt.registerLazySingleton<AuthUseCase>(() => AuthUseCaseImpl());
   getIt.registerLazySingleton<MapUseCase>(() => MapUseCaseImpl());
   getIt.registerLazySingleton<FavoriteUseCase>(() => FavoriteUseCaseImpl());
 
-  ///Repository
+  ///Api
   getIt.registerLazySingleton<AuthApi>(() => AuthApiImpl());
   getIt.registerLazySingleton<MapApi>(() => MapApiImpl());
   getIt.registerLazySingleton<FavoriteApi>(() => FavoriteApiImpl());
@@ -47,7 +47,6 @@ Future registerGetIt() async {
   getIt.registerFactory(() => MapCubit());
   getIt.registerFactory(() => ThemeCubit(isDark: Prefs.getBool('theme')!));
 
-  await initPreferences();
 }
 
 Future<void> initPreferences() async {

@@ -5,7 +5,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:ride_map/until/bloc/bloc_observable.dart';
-import 'package:ride_map/until/preferences/preferences.dart';
 import 'firebase_options.dart';
 import 'internal/app.dart';
 import 'internal/di/inject.dart';
@@ -13,18 +12,18 @@ import 'internal/di/inject.dart';
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await registerGetIt();
+  await initPreferences();
   initDefault();
   initCrashlytics();
   initObserver();
   Geolocator.requestPermission();
 
-  if(Geolocator.checkPermission() == LocationPermission.denied){
-  }
+  if (Geolocator.checkPermission() == LocationPermission.denied) return;
 
   runApp(const App());
 }
 
-void initObserver(){
+void initObserver() {
   Bloc.observer = AppBlocObservable();
 }
 
@@ -37,8 +36,6 @@ void initCrashlytics() {
     return true;
   };
 }
-
-
 
 Future<void> initDefault() async {
   await Firebase.initializeApp(
