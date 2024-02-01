@@ -6,7 +6,6 @@ part 'favorite_model.freezed.dart';
 
 part 'favorite_model.g.dart';
 
-// flutter pub run build_runner build --delete-conflicting-outputs
 
 @freezed
 class FavoriteModel with _$FavoriteModel {
