@@ -6,7 +6,7 @@ name: ci_cd
 
 on:
   push:
-    branches: [ "dev" ]
+    branches: [ "dev", "master" ]
   pull_request:
     branches: [ "master" ]
 
