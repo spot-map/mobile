@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:ride_map/untils/bloc/bloc_inital.dart';
-import 'package:ride_map/untils/config/app_router.dart';
-import '../presentation/ui/screen/navigation/root_screen.dart';
+import 'package:ride_map/internal/di/inject.dart';
+import 'package:ride_map/presentation/common/cubit/location/cubit.dart';
+import 'package:ride_map/presentation/common/cubit/navigation/cubit.dart';
+import 'package:ride_map/presentation/common/cubit/theme/cubit.dart';
+import 'package:ride_map/presentation/common/router/router.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -10,24 +12,20 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-        providers: BlocInitial.bloc,
-        child: MaterialApp(
-          navigatorKey: AppRouter.key,
-          onGenerateRoute: (settings) {
-            final builder = AppRouter.routes[settings.name];
-            if (builder != null) {
-              return MaterialPageRoute(
-                  settings: settings,
-                  builder: (context) => builder(context, settings.arguments));
-            }
-            return null;
-          },
-          debugShowCheckedModeBanner: false,
-          theme: ThemeData(
-            primarySwatch: Colors.blue,
-          ),
-          //theme: state.theme.themeData,
-          home: const RootScreen(),
-        ));
+      providers:[
+        BlocProvider<NavigationCubit>(create: (_) => getIt()),
+        BlocProvider<LocationCubit>(create: (_) => getIt()),
+        BlocProvider<ThemeCubit>(create: (_) => getIt())
+      ],
+      child: BlocBuilder<ThemeCubit, ThemeState>(
+        builder: (context, state) {
+          return MaterialApp.router(
+            routerConfig: appRouter,
+            debugShowCheckedModeBanner: false,
+            theme: state.theme.themeData,
+          );
+        },
+      ),
+    );
   }
 }

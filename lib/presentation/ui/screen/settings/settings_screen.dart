@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:ride_map/presentation/ui/screen/settings/widget/menu_list.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/page/material_page_without_border.dart';
-import 'package:ride_map/untils/theme/appColors.dart';
-import 'package:ride_map/untils/theme/style/text/text_style.dart';
+import 'package:ride_map/until/theme/light/app_colors_light.dart';
+import 'package:ride_map/until/theme/style/text/text_style.dart';
 
 class SettingsScreen extends StatelessWidget {
-  static const id = '/settings';
+  static const path = 'settings';
 
   const SettingsScreen({Key? key}) : super(key: key);
 
@@ -25,7 +25,7 @@ class _SettingsScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: const MyAppBar( size: 50, title: 'Настройки', automaticallyImplyLeading: true,
+        appBar:  const MyAppBar( size: 50, title: 'Настройки', automaticallyImplyLeading: true,
           centerTitle: false,
         ),
         body: Column(
@@ -54,7 +54,7 @@ _columnWithInfoText({required BuildContext context}) {
             "Удалить аккаунт",
             style: myTextStyleFontUbuntu(
               fontSize: 14,
-              textColor: AppColor().deleteColor,
+              textColor: AppColorLight().deleteColor,
               newFontWeight: FontWeight.w300,
               context: context,
             ).copyWith(

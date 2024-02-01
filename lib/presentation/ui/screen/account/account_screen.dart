@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 
 class AccountScreen extends StatelessWidget {
-  const AccountScreen({Key? key}) : super(key: key);
-
+  AccountScreen({Key? key}) : super(key: key);
+  final TextEditingController test = TextEditingController();
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
+    return Scaffold(
       body: Center(
-        child: Text('SettingsScreen'),
+        child: TextField(
+          controller: test,
+        ),
       ),
     );
   }

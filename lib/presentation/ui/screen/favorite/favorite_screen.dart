@@ -1,30 +1,32 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ride_map/presentation/ui/screen/favorite/widget/favorite_widget.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
-import 'package:ride_map/untils/preferences/preferences.dart';
-import 'package:ride_map/untils/theme/appColors.dart';
+import 'package:ride_map/presentation/ui/widget/loading/skeleton_loading.dart';
+
+import 'cubit.dart';
 
 class FavoriteScreen extends StatelessWidget {
   const FavoriteScreen({Key? key}) : super(key: key);
+  static const path = 'favorite';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: Preferences().getToken != null
-          ? MyAppBar(
-              title: 'Избранное',
-              size: 50,
+      appBar: const MyAppBar(
+        title: 'Избранное',
+        size: 50,
         centerTitle: false,
-              automaticallyImplyLeading: false,
-              widgetRight: [
-                GestureDetector(
-                  child: Icon(Icons.exit_to_app,
-                      color: AppColor().backButtonColor),
-                )
-              ],
-            )
-          : MyAppBar(title: '', size: 50, automaticallyImplyLeading: false,),
-      body: Center(
-        child: Text('FavoriteScreen'),
+        automaticallyImplyLeading: false,
+      ),
+      body: BlocBuilder<FavoriteCubit, FavoriteState>(
+        builder: (context, state) {
+          return state.isLoading
+              ? Center(
+            child: buildSkeleton(context),
+          )
+              : FavoriteWidget(state: state!);
+        },
       ),
     );
   }
