@@ -1,8 +1,8 @@
 import 'package:image_picker/image_picker.dart';
 import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
 import 'package:ride_map/data/map_models/map_model.dart';
+import 'package:ride_map/data/result_model/result.dart';
 import 'package:ride_map/domain/api/map_api.dart';
-import 'package:ride_map/domain/entity/result.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
 abstract class MapUseCase {

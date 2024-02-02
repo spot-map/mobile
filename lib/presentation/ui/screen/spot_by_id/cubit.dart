@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
-import 'package:ride_map/domain/usecases/map_use_case.dart';
+import 'package:ride_map/domain/usecases/api_usecases/map_usecase.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:share_plus/share_plus.dart';
 

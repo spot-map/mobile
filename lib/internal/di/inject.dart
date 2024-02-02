@@ -3,11 +3,16 @@ import 'package:get_it/get_it.dart';
 import 'package:ride_map/domain/api/auth_api.dart';
 import 'package:ride_map/domain/api/favorite_api.dart';
 import 'package:ride_map/domain/api/map_api.dart';
-import 'package:ride_map/domain/usecases/auth_use_case.dart';
-import 'package:ride_map/domain/usecases/favorite_use_case.dart';
-import 'package:ride_map/domain/usecases/map_use_case.dart';
+import 'package:ride_map/domain/connection/vpn_checker.dart';
+import 'package:ride_map/domain/storage/token_storage.dart';
+import 'package:ride_map/domain/usecases/api_usecases/auth_usecase.dart';
+import 'package:ride_map/domain/usecases/api_usecases/favorite_usecase.dart';
+import 'package:ride_map/domain/usecases/api_usecases/map_usecase.dart';
+import 'package:ride_map/domain/usecases/connection_usecases/vpn_checker_usecase.dart';
+import 'package:ride_map/domain/usecases/storage_usecases/storage_usecase.dart';
 import 'package:ride_map/presentation/common/cubit/location/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/navigation/cubit.dart';
+import 'package:ride_map/presentation/common/cubit/network/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/spot/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/theme/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/add_spot/cubit.dart';
@@ -24,11 +29,19 @@ Future registerGetIt() async {
   getIt.registerLazySingleton<AuthUseCase>(() => AuthUseCaseImpl());
   getIt.registerLazySingleton<MapUseCase>(() => MapUseCaseImpl());
   getIt.registerLazySingleton<FavoriteUseCase>(() => FavoriteUseCaseImpl());
+  getIt.registerLazySingleton<VpnCheckerUseCase>(() => VpnCheckerUseCaseImpl());
+  getIt.registerLazySingleton<TokenStorageUseCase>(() => TokenStorageUseCaseImpl());
+
 
   ///Api
   getIt.registerLazySingleton<AuthApi>(() => AuthApiImpl());
   getIt.registerLazySingleton<MapApi>(() => MapApiImpl());
   getIt.registerLazySingleton<FavoriteApi>(() => FavoriteApiImpl());
+
+  getIt.registerLazySingleton<VpnChecker>(() => VpnCheckerImpl());
+
+  getIt.registerLazySingleton<TokenStorage>(() => TokenStorageImpl());
+
 
   ///Api Client
   getIt.registerLazySingleton<Client>(() => Client());
@@ -45,6 +58,7 @@ Future registerGetIt() async {
   getIt.registerFactory(() => LocationCubit());
   getIt.registerFactory(() => AddSpotCubit());
   getIt.registerFactory(() => MapCubit());
+  getIt.registerFactory(() => NetworkCubit());
   getIt.registerFactory(() => ThemeCubit(isDark: Prefs.getBool('theme')!));
 
 }

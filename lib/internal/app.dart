@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/presentation/common/cubit/location/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/navigation/cubit.dart';
+import 'package:ride_map/presentation/common/cubit/network/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/theme/cubit.dart';
 import 'package:ride_map/presentation/common/router/router.dart';
 
@@ -15,7 +16,8 @@ class App extends StatelessWidget {
       providers:[
         BlocProvider<NavigationCubit>(create: (_) => getIt()),
         BlocProvider<LocationCubit>(create: (_) => getIt()),
-        BlocProvider<ThemeCubit>(create: (_) => getIt())
+        BlocProvider<ThemeCubit>(create: (_) => getIt()),
+        BlocProvider<NetworkCubit>(create: (_) => getIt())
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, state) {

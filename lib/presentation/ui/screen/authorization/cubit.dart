@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ride_map/domain/usecases/auth_use_case.dart';
+import 'package:ride_map/domain/usecases/api_usecases/auth_usecase.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
 part 'state.dart';
