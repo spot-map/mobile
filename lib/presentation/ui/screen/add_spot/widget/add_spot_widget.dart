@@ -5,7 +5,7 @@ import 'package:image_picker/image_picker.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/presentation/common/router/routes.dart';
-import 'package:ride_map/until/preferences/preferences.dart';
+import 'package:ride_map/until/theme/base/app_color.dart';
 import 'dart:io';
 
 import '../cubit.dart';
@@ -179,7 +179,7 @@ class AddSpotWidget extends StatelessWidget {
                             ? const CircularProgressIndicator()
                             : Text(
                                 'Добавить',
-                                style: TextStyle(color: Prefs.getBool('theme')! ? Colors.black : Colors.white),
+                                style: TextStyle(color: context.colors.textColor),
                               ))
                   ],
                 ),

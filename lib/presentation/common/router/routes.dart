@@ -1,15 +1,15 @@
 import 'package:ride_map/presentation/ui/screen/add_spot/add_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/authorization/auth_screen.dart';
+import 'package:ride_map/presentation/ui/screen/bottom_navigation/root_screen.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
 import 'package:ride_map/presentation/ui/screen/list/list_spot_screen.dart';
 import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
-import 'package:ride_map/presentation/ui/screen/navigation/root_screen.dart';
 import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
 import 'package:ride_map/presentation/ui/screen/splash/splash_screen.dart';
 import 'package:ride_map/presentation/ui/screen/spot_by_id/spot_by_id.dart';
 import 'package:ride_map/presentation/ui/widget/full_screen_image/full_screen_image.dart';
 
-class AppRoutes{
+class AppRoutes {
   static const splash = '/${SplashScreen.path}';
 
   static const map = '/${MapScreen.path}';

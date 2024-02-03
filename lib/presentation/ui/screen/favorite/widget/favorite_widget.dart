@@ -2,9 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/cubit.dart';
-import 'package:ride_map/presentation/ui/screen/spot_by_id/spot_by_id.dart';
-import 'package:ride_map/until/theme/light/app_colors_light.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:ride_map/until/theme/base/app_color.dart';
 
 class FavoriteWidget extends StatelessWidget {
   const FavoriteWidget({super.key, required this.state});
@@ -49,7 +48,7 @@ class FavoriteWidget extends StatelessWidget {
                   padding: const EdgeInsets.only(left: 5, right: 5),
                   child: Card(
                       elevation: 15,
-                      shadowColor: AppColorLight().backButtonColor,
+                      shadowColor: context.colors.backButtonColor,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(15),
                       ),

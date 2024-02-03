@@ -23,8 +23,8 @@ class FavoriteScreen extends StatelessWidget {
         builder: (context, state) {
           return state.isLoading
               ? Center(
-            child: buildSkeleton(context),
-          )
+                  child: buildSkeleton(context),
+                )
               : FavoriteWidget(state: state!);
         },
       ),

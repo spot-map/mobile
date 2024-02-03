@@ -21,21 +21,24 @@ ReactionsModel _$ReactionsModelFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$ReactionsModel {
   int? get id => throw _privateConstructorUsedError;
+
   String? get text => throw _privateConstructorUsedError;
+
   int? get score => throw _privateConstructorUsedError;
+
   User? get user => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $ReactionsModelCopyWith<ReactionsModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $ReactionsModelCopyWith<ReactionsModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $ReactionsModelCopyWith<$Res> {
-  factory $ReactionsModelCopyWith(
-          ReactionsModel value, $Res Function(ReactionsModel) then) =
+  factory $ReactionsModelCopyWith(ReactionsModel value, $Res Function(ReactionsModel) then) =
       _$ReactionsModelCopyWithImpl<$Res, ReactionsModel>;
+
   @useResult
   $Res call({int? id, String? text, int? score, User? user});
 
@@ -43,12 +46,12 @@ abstract class $ReactionsModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ReactionsModelCopyWithImpl<$Res, $Val extends ReactionsModel>
-    implements $ReactionsModelCopyWith<$Res> {
+class _$ReactionsModelCopyWithImpl<$Res, $Val extends ReactionsModel> implements $ReactionsModelCopyWith<$Res> {
   _$ReactionsModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -94,11 +97,10 @@ class _$ReactionsModelCopyWithImpl<$Res, $Val extends ReactionsModel>
 }
 
 /// @nodoc
-abstract class _$$ReactionsModelImplCopyWith<$Res>
-    implements $ReactionsModelCopyWith<$Res> {
-  factory _$$ReactionsModelImplCopyWith(_$ReactionsModelImpl value,
-          $Res Function(_$ReactionsModelImpl) then) =
+abstract class _$$ReactionsModelImplCopyWith<$Res> implements $ReactionsModelCopyWith<$Res> {
+  factory _$$ReactionsModelImplCopyWith(_$ReactionsModelImpl value, $Res Function(_$ReactionsModelImpl) then) =
       __$$ReactionsModelImplCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call({int? id, String? text, int? score, User? user});
@@ -108,11 +110,9 @@ abstract class _$$ReactionsModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$ReactionsModelImplCopyWithImpl<$Res>
-    extends _$ReactionsModelCopyWithImpl<$Res, _$ReactionsModelImpl>
+class __$$ReactionsModelImplCopyWithImpl<$Res> extends _$ReactionsModelCopyWithImpl<$Res, _$ReactionsModelImpl>
     implements _$$ReactionsModelImplCopyWith<$Res> {
-  __$$ReactionsModelImplCopyWithImpl(
-      _$ReactionsModelImpl _value, $Res Function(_$ReactionsModelImpl) _then)
+  __$$ReactionsModelImplCopyWithImpl(_$ReactionsModelImpl _value, $Res Function(_$ReactionsModelImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
@@ -149,8 +149,7 @@ class __$$ReactionsModelImplCopyWithImpl<$Res>
 class _$ReactionsModelImpl implements _ReactionsModel {
   const _$ReactionsModelImpl({this.id, this.text, this.score, this.user});
 
-  factory _$ReactionsModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$ReactionsModelImplFromJson(json);
+  factory _$ReactionsModelImpl.fromJson(Map<String, dynamic> json) => _$$ReactionsModelImplFromJson(json);
 
   @override
   final int? id;
@@ -185,8 +184,7 @@ class _$ReactionsModelImpl implements _ReactionsModel {
   @override
   @pragma('vm:prefer-inline')
   _$$ReactionsModelImplCopyWith<_$ReactionsModelImpl> get copyWith =>
-      __$$ReactionsModelImplCopyWithImpl<_$ReactionsModelImpl>(
-          this, _$identity);
+      __$$ReactionsModelImplCopyWithImpl<_$ReactionsModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -197,25 +195,23 @@ class _$ReactionsModelImpl implements _ReactionsModel {
 }
 
 abstract class _ReactionsModel implements ReactionsModel {
-  const factory _ReactionsModel(
-      {final int? id,
-      final String? text,
-      final int? score,
-      final User? user}) = _$ReactionsModelImpl;
+  const factory _ReactionsModel({final int? id, final String? text, final int? score, final User? user}) = _$ReactionsModelImpl;
 
-  factory _ReactionsModel.fromJson(Map<String, dynamic> json) =
-      _$ReactionsModelImpl.fromJson;
+  factory _ReactionsModel.fromJson(Map<String, dynamic> json) = _$ReactionsModelImpl.fromJson;
 
   @override
   int? get id;
+
   @override
   String? get text;
+
   @override
   int? get score;
+
   @override
   User? get user;
+
   @override
   @JsonKey(ignore: true)
-  _$$ReactionsModelImplCopyWith<_$ReactionsModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$ReactionsModelImplCopyWith<_$ReactionsModelImpl> get copyWith => throw _privateConstructorUsedError;
 }

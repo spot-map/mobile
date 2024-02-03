@@ -29,7 +29,6 @@ class AuthState extends Equatable {
         isRegistration: isRegistration ?? this.isRegistration);
   }
 
-
   static const String successLogin = 'successLogin';
   static const String failureLogin = 'failureLogin';
   static const String successRegistration = 'successRegistration';

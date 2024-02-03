@@ -1,11 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ride_map/domain/storage/theme.dart';
+import 'package:ride_map/domain/storage/token.dart';
+import 'package:ride_map/domain/usecases/storage/theme/theme.dart';
+import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/presentation/common/cubit/theme/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/settings/widget/menu.dart';
-import 'package:ride_map/until/preferences/preferences.dart';
 
 class MenuList extends StatelessWidget {
-  const MenuList({Key? key}) : super(key: key);
+  MenuList({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,7 +22,7 @@ class MenuList extends StatelessWidget {
               title: 'Тема',
               action: FittedBox(
                 child: Switch(
-                  value: Prefs.getBool('theme') ?? context.read<ThemeCubit>().state.isDark,
+                  value: getIt<ThemeStorage>().theme ?? context.read<ThemeCubit>().state.isDark,
                   onChanged: (value) {
                     context.read<ThemeCubit>().onThemeChanged(value);
                   },
@@ -41,7 +44,7 @@ class MenuList extends StatelessWidget {
               onTap: () {},
               child: menuListItem(icon: Icons.email, title: 'Сообщить об ошибке'),
             ),
-            Prefs.getString('token') != null
+            getIt<TokenStorage>().accessToken != null
                 ? menuListItem(
                     icon: Icons.exit_to_app,
                     title: 'Выйти из аккаунта',

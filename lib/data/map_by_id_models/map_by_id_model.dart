@@ -2,18 +2,15 @@ import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:ride_map/data/image_models/images_model.dart';
 import 'package:ride_map/data/reactions_models/reactions_model.dart';
 
-
 part 'map_by_id_model.freezed.dart';
 
 part 'map_by_id_model.g.dart';
-
 
 @freezed
 class MapByIdModel with _$MapByIdModel {
   const factory MapByIdModel({Spot? data}) = _MapByIdModel;
 
-  factory MapByIdModel.fromJson(Map<String, Object?> json) =>
-      _$MapByIdModelFromJson(json);
+  factory MapByIdModel.fromJson(Map<String, Object?> json) => _$MapByIdModelFromJson(json);
 }
 
 @freezed

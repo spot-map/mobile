@@ -14,11 +14,15 @@ class SpotByIdState extends Equatable {
   @override
   List<Object?> get props => [isLoading, errorMessage, mapByIdModel];
 
-  SpotByIdState copyWith({MapByIdModel? mapByIdModel, bool? isLoading, String? errorMessage,}) {
+  SpotByIdState copyWith({
+    MapByIdModel? mapByIdModel,
+    bool? isLoading,
+    String? errorMessage,
+  }) {
     return SpotByIdState(
-        errorMessage: errorMessage ?? this.errorMessage,
+      errorMessage: errorMessage ?? this.errorMessage,
       mapByIdModel: mapByIdModel ?? this.mapByIdModel,
-        isLoading: isLoading ?? this.isLoading,
+      isLoading: isLoading ?? this.isLoading,
     );
   }
 }

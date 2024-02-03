@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ride_map/until/preferences/preferences.dart';
-import 'package:ride_map/until/theme/light/app_colors_light.dart';
-import 'package:ride_map/until/theme/dark/app_colors_dark.dart';
+import 'package:ride_map/until/theme/base/app_color.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar(
@@ -27,7 +25,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   Widget build(BuildContext context) {
     return AppBar(
       iconTheme: IconThemeData(
-        color: Prefs.getBool('theme')! ? AppColorDark().backButtonColor : AppColorLight().backButtonColor,
+        color: context.colors.backButtonColor,
       ),
       automaticallyImplyLeading: automaticallyImplyLeading,
       centerTitle: centerTitle,
@@ -35,7 +33,7 @@ class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
       backgroundColor: Colors.transparent,
       elevation: 0.0,
       actions: widgetRight,
-      title: Text(title, style: TextStyle(color: Prefs.getBool('theme')! ? AppColorDark().textColor : AppColorLight().textColor)),
+      title: Text(title, style: TextStyle(color: context.colors.textColor)),
     );
   }
 }

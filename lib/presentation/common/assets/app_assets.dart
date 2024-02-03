@@ -1,4 +1,4 @@
-class AppAssets{
+class AppAssets {
   AppAssets._();
 
   static const splashIcon = 'assets/icons/icon.png';
