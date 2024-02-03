@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import 'package:ride_map/data/result_model/result.dart';
-import 'package:ride_map/domain/usecases/storage_usecases/storage_usecase.dart';
+import 'package:ride_map/domain/storage/token.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/api/api_constants.dart';
 import 'package:ride_map/until/dev.dart';
@@ -17,7 +17,7 @@ abstract class AuthApi {
 
 class AuthApiImpl implements AuthApi {
   final Dio _client = getIt();
-  final TokenStorageUseCase _tokenStorage = getIt();
+  final TokenStorage _tokenStorage = getIt();
 
   @override
   Future<Result> login(String email, String password) async {
@@ -32,8 +32,8 @@ class AuthApiImpl implements AuthApi {
           throw Exception('Ошибка авторизации');
         } else {
           Dev.log('AUTH ${response.data}', name: 'USER AUTH');
-          _tokenStorage.saveToken('token', response.data['data']['token']);
-          Dev.log('SAVED ${_tokenStorage.readToken('token')}', name: 'PREFS');
+          _tokenStorage.accessToken = response.data['data']['token'];
+          Dev.log('SAVED ${_tokenStorage.accessToken}', name: 'TOKEN');
           return Result.success(true);
         }
       }
@@ -53,7 +53,7 @@ class AuthApiImpl implements AuthApi {
     Dev.log('REGISTRATION CODE ${response.statusCode}', name: 'USER REGISTRATION');
     if (response.statusCode == 200) {
       Dev.log('REGISTRATION ${response.data}', name: 'USER REGISTRATION SUCCESS');
-      _tokenStorage.saveToken('token', response.data['data']['token']);
+      _tokenStorage.accessToken = response.data['data']['token'];
       return Result.success(true);
     }
     return Result.failure('');
@@ -62,28 +62,28 @@ class AuthApiImpl implements AuthApi {
   @override
   Future<void> logout() async {
     _client.options.headers = {
-      'Authorization': 'Bearer ${_tokenStorage.readToken('token')}',
+      'Authorization': 'Bearer ${_tokenStorage.accessToken}',
     };
 
     Response response = await _client.post(ApiConstants.LOGOUT);
     Dev.log('LOGOUT ${response.statusCode}', name: 'USER LOGOUT');
     if (response.statusCode == 200) {
-      _tokenStorage.deleteToken('token');
+      _tokenStorage.deleteTokens();
     }
   }
 
   @override
   Future<void> refreshToken() async {
     _client.options.headers = {
-      'Authorization': 'Bearer ${_tokenStorage.readToken('token')}',
+      'Authorization': 'Bearer ${_tokenStorage.accessToken}',
     };
 
     Response response = await _client.post(ApiConstants.REFRESH);
     Dev.log('REFRESH ${response.statusCode}', name: 'USER REFRESH');
     if (response.statusCode == 200) {
       Dev.log('REFRESH ${response.data}', name: '${response.statusCode} REFRESH');
-      _tokenStorage.saveToken('token', response.data['data']['token']);
-      Dev.log('PREFS ${_tokenStorage.readToken('token')}', name: 'REFRESH PREFS');
+      _tokenStorage.accessToken = response.data['data']['token'];
+      Dev.log('TOKEN ${_tokenStorage.accessToken}', name: 'REFRESH TOKEN');
     }
   }
 }

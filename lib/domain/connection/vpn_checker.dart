@@ -1,9 +1,8 @@
 import 'dart:io';
 
-abstract class VpnChecker{
+abstract class VpnChecker {
   Future<bool> isVpnActive();
 }
-
 
 class VpnCheckerImpl implements VpnChecker {
   @override

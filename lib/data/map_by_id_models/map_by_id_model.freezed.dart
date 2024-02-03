@@ -23,16 +23,16 @@ mixin _$MapByIdModel {
   Spot? get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
-  $MapByIdModelCopyWith<MapByIdModel> get copyWith =>
-      throw _privateConstructorUsedError;
+  $MapByIdModelCopyWith<MapByIdModel> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MapByIdModelCopyWith<$Res> {
-  factory $MapByIdModelCopyWith(
-          MapByIdModel value, $Res Function(MapByIdModel) then) =
+  factory $MapByIdModelCopyWith(MapByIdModel value, $Res Function(MapByIdModel) then) =
       _$MapByIdModelCopyWithImpl<$Res, MapByIdModel>;
+
   @useResult
   $Res call({Spot? data});
 
@@ -40,12 +40,12 @@ abstract class $MapByIdModelCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$MapByIdModelCopyWithImpl<$Res, $Val extends MapByIdModel>
-    implements $MapByIdModelCopyWith<$Res> {
+class _$MapByIdModelCopyWithImpl<$Res, $Val extends MapByIdModel> implements $MapByIdModelCopyWith<$Res> {
   _$MapByIdModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -76,11 +76,10 @@ class _$MapByIdModelCopyWithImpl<$Res, $Val extends MapByIdModel>
 }
 
 /// @nodoc
-abstract class _$$MapByIdModelImplCopyWith<$Res>
-    implements $MapByIdModelCopyWith<$Res> {
-  factory _$$MapByIdModelImplCopyWith(
-          _$MapByIdModelImpl value, $Res Function(_$MapByIdModelImpl) then) =
+abstract class _$$MapByIdModelImplCopyWith<$Res> implements $MapByIdModelCopyWith<$Res> {
+  factory _$$MapByIdModelImplCopyWith(_$MapByIdModelImpl value, $Res Function(_$MapByIdModelImpl) then) =
       __$$MapByIdModelImplCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call({Spot? data});
@@ -90,12 +89,9 @@ abstract class _$$MapByIdModelImplCopyWith<$Res>
 }
 
 /// @nodoc
-class __$$MapByIdModelImplCopyWithImpl<$Res>
-    extends _$MapByIdModelCopyWithImpl<$Res, _$MapByIdModelImpl>
+class __$$MapByIdModelImplCopyWithImpl<$Res> extends _$MapByIdModelCopyWithImpl<$Res, _$MapByIdModelImpl>
     implements _$$MapByIdModelImplCopyWith<$Res> {
-  __$$MapByIdModelImplCopyWithImpl(
-      _$MapByIdModelImpl _value, $Res Function(_$MapByIdModelImpl) _then)
-      : super(_value, _then);
+  __$$MapByIdModelImplCopyWithImpl(_$MapByIdModelImpl _value, $Res Function(_$MapByIdModelImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -116,8 +112,7 @@ class __$$MapByIdModelImplCopyWithImpl<$Res>
 class _$MapByIdModelImpl implements _MapByIdModel {
   const _$MapByIdModelImpl({this.data});
 
-  factory _$MapByIdModelImpl.fromJson(Map<String, dynamic> json) =>
-      _$$MapByIdModelImplFromJson(json);
+  factory _$MapByIdModelImpl.fromJson(Map<String, dynamic> json) => _$$MapByIdModelImplFromJson(json);
 
   @override
   final Spot? data;
@@ -130,9 +125,7 @@ class _$MapByIdModelImpl implements _MapByIdModel {
   @override
   bool operator ==(dynamic other) {
     return identical(this, other) ||
-        (other.runtimeType == runtimeType &&
-            other is _$MapByIdModelImpl &&
-            (identical(other.data, data) || other.data == data));
+        (other.runtimeType == runtimeType && other is _$MapByIdModelImpl && (identical(other.data, data) || other.data == data));
   }
 
   @JsonKey(ignore: true)
@@ -156,15 +149,14 @@ class _$MapByIdModelImpl implements _MapByIdModel {
 abstract class _MapByIdModel implements MapByIdModel {
   const factory _MapByIdModel({final Spot? data}) = _$MapByIdModelImpl;
 
-  factory _MapByIdModel.fromJson(Map<String, dynamic> json) =
-      _$MapByIdModelImpl.fromJson;
+  factory _MapByIdModel.fromJson(Map<String, dynamic> json) = _$MapByIdModelImpl.fromJson;
 
   @override
   Spot? get data;
+
   @override
   @JsonKey(ignore: true)
-  _$$MapByIdModelImplCopyWith<_$MapByIdModelImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$MapByIdModelImplCopyWith<_$MapByIdModelImpl> get copyWith => throw _privateConstructorUsedError;
 }
 
 Spot _$SpotFromJson(Map<String, dynamic> json) {
@@ -174,24 +166,33 @@ Spot _$SpotFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Spot {
   int? get id => throw _privateConstructorUsedError;
+
   String? get name => throw _privateConstructorUsedError;
+
   String? get address => throw _privateConstructorUsedError;
+
   String? get description => throw _privateConstructorUsedError;
+
   double? get latitude => throw _privateConstructorUsedError;
+
   double? get longitude => throw _privateConstructorUsedError;
+
   bool? get isInFavorite => throw _privateConstructorUsedError;
+
   List<ImagesModel>? get images => throw _privateConstructorUsedError;
+
   List<ReactionsModel>? get reactions => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
+
   @JsonKey(ignore: true)
   $SpotCopyWith<Spot> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SpotCopyWith<$Res> {
-  factory $SpotCopyWith(Spot value, $Res Function(Spot) then) =
-      _$SpotCopyWithImpl<$Res, Spot>;
+  factory $SpotCopyWith(Spot value, $Res Function(Spot) then) = _$SpotCopyWithImpl<$Res, Spot>;
+
   @useResult
   $Res call(
       {int? id,
@@ -206,12 +207,12 @@ abstract class $SpotCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$SpotCopyWithImpl<$Res, $Val extends Spot>
-    implements $SpotCopyWith<$Res> {
+class _$SpotCopyWithImpl<$Res, $Val extends Spot> implements $SpotCopyWith<$Res> {
   _$SpotCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
+
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -271,9 +272,8 @@ class _$SpotCopyWithImpl<$Res, $Val extends Spot>
 
 /// @nodoc
 abstract class _$$SpotImplCopyWith<$Res> implements $SpotCopyWith<$Res> {
-  factory _$$SpotImplCopyWith(
-          _$SpotImpl value, $Res Function(_$SpotImpl) then) =
-      __$$SpotImplCopyWithImpl<$Res>;
+  factory _$$SpotImplCopyWith(_$SpotImpl value, $Res Function(_$SpotImpl) then) = __$$SpotImplCopyWithImpl<$Res>;
+
   @override
   @useResult
   $Res call(
@@ -289,11 +289,8 @@ abstract class _$$SpotImplCopyWith<$Res> implements $SpotCopyWith<$Res> {
 }
 
 /// @nodoc
-class __$$SpotImplCopyWithImpl<$Res>
-    extends _$SpotCopyWithImpl<$Res, _$SpotImpl>
-    implements _$$SpotImplCopyWith<$Res> {
-  __$$SpotImplCopyWithImpl(_$SpotImpl _value, $Res Function(_$SpotImpl) _then)
-      : super(_value, _then);
+class __$$SpotImplCopyWithImpl<$Res> extends _$SpotCopyWithImpl<$Res, _$SpotImpl> implements _$$SpotImplCopyWith<$Res> {
+  __$$SpotImplCopyWithImpl(_$SpotImpl _value, $Res Function(_$SpotImpl) _then) : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -365,8 +362,7 @@ class _$SpotImpl implements _Spot {
       : _images = images,
         _reactions = reactions;
 
-  factory _$SpotImpl.fromJson(Map<String, dynamic> json) =>
-      _$$SpotImplFromJson(json);
+  factory _$SpotImpl.fromJson(Map<String, dynamic> json) => _$$SpotImplFromJson(json);
 
   @override
   final int? id;
@@ -383,6 +379,7 @@ class _$SpotImpl implements _Spot {
   @override
   final bool? isInFavorite;
   final List<ImagesModel>? _images;
+
   @override
   @JsonKey()
   List<ImagesModel>? get images {
@@ -394,6 +391,7 @@ class _$SpotImpl implements _Spot {
   }
 
   final List<ReactionsModel>? _reactions;
+
   @override
   @JsonKey()
   List<ReactionsModel>? get reactions {
@@ -417,38 +415,23 @@ class _$SpotImpl implements _Spot {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.address, address) || other.address == address) &&
-            (identical(other.description, description) ||
-                other.description == description) &&
-            (identical(other.latitude, latitude) ||
-                other.latitude == latitude) &&
-            (identical(other.longitude, longitude) ||
-                other.longitude == longitude) &&
-            (identical(other.isInFavorite, isInFavorite) ||
-                other.isInFavorite == isInFavorite) &&
+            (identical(other.description, description) || other.description == description) &&
+            (identical(other.latitude, latitude) || other.latitude == latitude) &&
+            (identical(other.longitude, longitude) || other.longitude == longitude) &&
+            (identical(other.isInFavorite, isInFavorite) || other.isInFavorite == isInFavorite) &&
             const DeepCollectionEquality().equals(other._images, _images) &&
-            const DeepCollectionEquality()
-                .equals(other._reactions, _reactions));
+            const DeepCollectionEquality().equals(other._reactions, _reactions));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(
-      runtimeType,
-      id,
-      name,
-      address,
-      description,
-      latitude,
-      longitude,
-      isInFavorite,
-      const DeepCollectionEquality().hash(_images),
-      const DeepCollectionEquality().hash(_reactions));
+  int get hashCode => Object.hash(runtimeType, id, name, address, description, latitude, longitude, isInFavorite,
+      const DeepCollectionEquality().hash(_images), const DeepCollectionEquality().hash(_reactions));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SpotImplCopyWith<_$SpotImpl> get copyWith =>
-      __$$SpotImplCopyWithImpl<_$SpotImpl>(this, _$identity);
+  _$$SpotImplCopyWith<_$SpotImpl> get copyWith => __$$SpotImplCopyWithImpl<_$SpotImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -474,24 +457,32 @@ abstract class _Spot implements Spot {
 
   @override
   int? get id;
+
   @override
   String? get name;
+
   @override
   String? get address;
+
   @override
   String? get description;
+
   @override
   double? get latitude;
+
   @override
   double? get longitude;
+
   @override
   bool? get isInFavorite;
+
   @override
   List<ImagesModel>? get images;
+
   @override
   List<ReactionsModel>? get reactions;
+
   @override
   @JsonKey(ignore: true)
-  _$$SpotImplCopyWith<_$SpotImpl> get copyWith =>
-      throw _privateConstructorUsedError;
+  _$$SpotImplCopyWith<_$SpotImpl> get copyWith => throw _privateConstructorUsedError;
 }

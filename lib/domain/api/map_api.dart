@@ -3,16 +3,17 @@ import 'package:image_picker/image_picker.dart';
 import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
 import 'package:ride_map/data/map_models/map_model.dart';
 import 'package:ride_map/data/result_model/result.dart';
-import 'package:ride_map/domain/usecases/api_usecases/auth_usecase.dart';
+import 'package:ride_map/domain/storage/token.dart';
+import 'package:ride_map/domain/usecases/api/auth.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/api/api_constants.dart';
 import 'package:ride_map/until/dev.dart';
-import 'package:ride_map/until/preferences/preferences.dart';
 
 abstract class MapApi {
   Future<MapModel> getSpot();
 
-  Future<Result<bool>> addSpot(String name, String address, String description, double latitude, double longitude, List<XFile>? images);
+  Future<Result<bool>> addSpot(
+      String name, String address, String description, double latitude, double longitude, List<XFile>? images);
 
   Future<MapByIdModel> getSpotById(int id);
 
@@ -23,10 +24,10 @@ abstract class MapApi {
   Future<MapModel> searchSpot(String name);
 }
 
-
 class MapApiImpl implements MapApi {
   final Dio _client = getIt();
-  final AuthUseCase _provider = getIt();
+  final AuthUseCase _auth = getIt();
+  final TokenStorage _tokenStorage = getIt();
 
   @override
   Future<MapModel> getSpot() async {
@@ -68,11 +69,11 @@ class MapApiImpl implements MapApi {
     Dev.log('Object $reactionsObject', name: 'Reactions Object');
     try {
       _client.options.headers = {
-        'Authorization': 'Bearer ${Prefs.getString('token')}',
+        'Authorization': 'Bearer ${_tokenStorage.accessToken}',
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       };
-      Dev.log('${Prefs.getString('token')}', name: 'TOKEN');
+      Dev.log('${_tokenStorage.accessToken}', name: 'TOKEN');
       Response response = await _client.post(
         ApiConstants.REACTIONS,
         data: reactionsObject,
@@ -98,7 +99,7 @@ class MapApiImpl implements MapApi {
       String name, String address, String description, double latitude, double longitude, List<XFile>? images) async {
     try {
       _client.options.headers = {
-        'Authorization': 'Bearer ${Prefs.getString('token')}',
+        'Authorization': 'Bearer ${_tokenStorage.accessToken}',
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       };
@@ -118,7 +119,7 @@ class MapApiImpl implements MapApi {
         await addImage(response.data['data']['id'], images);
         return Result.success(true);
       } else if (response.statusCode == 401 || response.statusCode == 500) {
-        await _provider.refreshToken();
+        await _auth.refreshToken();
         return addSpot(name, address, description, latitude, longitude, images);
       } else {
         Dev.log('Error ${response.statusCode}', name: 'ADD SPOT, ${response.statusCode}');
@@ -132,7 +133,7 @@ class MapApiImpl implements MapApi {
   @override
   Future<Result<bool>> addImage(int id, List<XFile>? images) async {
     _client.options.headers = {
-      'Authorization': 'Bearer ${Prefs.getString('token')}',
+      'Authorization': 'Bearer ${_tokenStorage.accessToken}',
       'Content-Type': 'application/json',
       'Accept': 'application/json'
     };

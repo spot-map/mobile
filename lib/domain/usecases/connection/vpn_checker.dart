@@ -1,12 +1,11 @@
-
 import 'package:ride_map/domain/connection/vpn_checker.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
-abstract class VpnCheckerUseCase{
+abstract class VpnCheckerUseCase {
   Future<bool> isVpnActive();
 }
 
-class VpnCheckerUseCaseImpl implements VpnCheckerUseCase{
+class VpnCheckerUseCaseImpl implements VpnCheckerUseCase {
   final VpnChecker _vpnChecker = getIt();
 
   @override

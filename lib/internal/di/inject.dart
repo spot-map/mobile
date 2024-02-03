@@ -4,12 +4,14 @@ import 'package:ride_map/domain/api/auth_api.dart';
 import 'package:ride_map/domain/api/favorite_api.dart';
 import 'package:ride_map/domain/api/map_api.dart';
 import 'package:ride_map/domain/connection/vpn_checker.dart';
-import 'package:ride_map/domain/storage/token_storage.dart';
-import 'package:ride_map/domain/usecases/api_usecases/auth_usecase.dart';
-import 'package:ride_map/domain/usecases/api_usecases/favorite_usecase.dart';
-import 'package:ride_map/domain/usecases/api_usecases/map_usecase.dart';
-import 'package:ride_map/domain/usecases/connection_usecases/vpn_checker_usecase.dart';
-import 'package:ride_map/domain/usecases/storage_usecases/storage_usecase.dart';
+import 'package:ride_map/domain/storage/theme.dart';
+import 'package:ride_map/domain/storage/token.dart';
+import 'package:ride_map/domain/usecases/api/auth.dart';
+import 'package:ride_map/domain/usecases/api/favorite.dart';
+import 'package:ride_map/domain/usecases/api/map.dart';
+import 'package:ride_map/domain/usecases/connection/vpn_checker.dart';
+import 'package:ride_map/domain/usecases/storage/theme/theme.dart';
+import 'package:ride_map/domain/usecases/storage/token/tokent.dart';
 import 'package:ride_map/presentation/common/cubit/location/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/navigation/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/network/cubit.dart';
@@ -20,7 +22,6 @@ import 'package:ride_map/presentation/ui/screen/authorization/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/spot_by_id/cubit.dart';
 import 'package:ride_map/until/dio/dio_client.dart';
-import 'package:ride_map/until/preferences/preferences.dart';
 
 final getIt = GetIt.instance;
 
@@ -30,25 +31,22 @@ Future registerGetIt() async {
   getIt.registerLazySingleton<MapUseCase>(() => MapUseCaseImpl());
   getIt.registerLazySingleton<FavoriteUseCase>(() => FavoriteUseCaseImpl());
   getIt.registerLazySingleton<VpnCheckerUseCase>(() => VpnCheckerUseCaseImpl());
-  getIt.registerLazySingleton<TokenStorageUseCase>(() => TokenStorageUseCaseImpl());
-
 
   ///Api
   getIt.registerLazySingleton<AuthApi>(() => AuthApiImpl());
   getIt.registerLazySingleton<MapApi>(() => MapApiImpl());
   getIt.registerLazySingleton<FavoriteApi>(() => FavoriteApiImpl());
 
+  ///Checker
   getIt.registerLazySingleton<VpnChecker>(() => VpnCheckerImpl());
 
-  getIt.registerLazySingleton<TokenStorage>(() => TokenStorageImpl());
-
+  ///Storage
+  getIt.registerLazySingleton<TokenStorage>(() => TokenStorageUseCaseImpl());
+  getIt.registerLazySingleton<ThemeStorage>(() => ThemeStorageUseCaseImpl());
 
   ///Api Client
   getIt.registerLazySingleton<Client>(() => Client());
   getIt.registerLazySingleton<Dio>(() => getIt<Client>().create());
-
-  ///Preferences
-  getIt.registerLazySingleton(() => Prefs());
 
   ///Cubits
   getIt.registerFactoryParam((int id, _) => SpotByIdCubit(id: id));
@@ -59,13 +57,5 @@ Future registerGetIt() async {
   getIt.registerFactory(() => AddSpotCubit());
   getIt.registerFactory(() => MapCubit());
   getIt.registerFactory(() => NetworkCubit());
-  getIt.registerFactory(() => ThemeCubit(isDark: Prefs.getBool('theme')!));
-
-}
-
-Future<void> initPreferences() async {
-  await Prefs.init();
-  if (Prefs.getBool('theme') == null) {
-    Prefs.setBool('theme', false);
-  }
+  getIt.registerFactory(() => ThemeCubit(isDark: getIt<ThemeStorage>().theme ?? false));
 }

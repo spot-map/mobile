@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:ride_map/until/theme/base/app_color.dart';
 import 'package:ride_map/until/theme/dark/constants/string_colors.dart';
-import 'package:ride_map/until/theme/to_hex.dart';
+import 'package:ride_map/until/theme/hex.dart';
 
 class AppColorDark implements AppColor {
   static AppColorDark? _instance;
@@ -11,12 +11,10 @@ class AppColorDark implements AppColor {
   AppColorDark._();
 
   @override
-  final Color selectedItemColor =
-  HexColor.fromHex(StringDarkColors.selectedItemColor);
+  final Color selectedItemColor = HexColor.fromHex(StringDarkColors.selectedItemColor);
 
   @override
-  Color get unselectedItemColor =>
-      HexColor.fromHex(StringDarkColors.unselectedItemColor);
+  Color get unselectedItemColor => HexColor.fromHex(StringDarkColors.unselectedItemColor);
 
   @override
   Color get textColor => HexColor.fromHex(StringDarkColors.textColor);
@@ -28,8 +26,7 @@ class AppColorDark implements AppColor {
   Color get containerColor => HexColor.fromHex(StringDarkColors.containerColor);
 
   @override
-  Color get favoriteButtonColor =>
-      HexColor.fromHex(StringDarkColors.favoriteButtonColor);
+  Color get favoriteButtonColor => HexColor.fromHex(StringDarkColors.favoriteButtonColor);
 
   @override
   Color get deleteColor => HexColor.fromHex(StringDarkColors.deleteColor);
@@ -38,8 +35,6 @@ class AppColorDark implements AppColor {
   Color get textFieldColor => HexColor.fromHex(StringDarkColors.textFieldColor);
 
   @override
-  final ThemeData themeData = ThemeData(
-      brightness: Brightness.dark,
-      backgroundColor: HexColor.fromHex(StringDarkColors.textColor)
-  );
+  final ThemeData themeData =
+      ThemeData(brightness: Brightness.dark, backgroundColor: HexColor.fromHex(StringDarkColors.textColor));
 }

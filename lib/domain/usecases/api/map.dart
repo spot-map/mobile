@@ -28,9 +28,9 @@ class MapUseCaseImpl implements MapUseCase {
   Future<Result<bool>> addSpot(
       String name, String address, String description, double latitude, double longitude, List<XFile>? images) async {
     final result = await _mapApi.addSpot(name, address, description, latitude, longitude, images);
-   if(result.isSuccess){
-     return Result.success(true);
-   }
+    if (result.isSuccess) {
+      return Result.success(true);
+    }
     return Result.success(false);
   }
 

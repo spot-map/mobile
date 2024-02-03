@@ -19,7 +19,7 @@ class CustomContainer extends StatelessWidget {
         vertical: 30.0,
       ),
       decoration: const BoxDecoration(
-        borderRadius:  BorderRadius.only(
+        borderRadius: BorderRadius.only(
           topLeft: Radius.circular(50.0),
           topRight: Radius.circular(50.0),
         ),

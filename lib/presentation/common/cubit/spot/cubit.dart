@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ride_map/data/map_models/map_model.dart';
-import 'package:ride_map/domain/usecases/api_usecases/map_usecase.dart';
+import 'package:ride_map/domain/usecases/api/map.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
 part 'state.dart';

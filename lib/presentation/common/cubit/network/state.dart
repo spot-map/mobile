@@ -6,7 +6,6 @@ class NetworkState extends Equatable {
   @override
   List<Object> get props => [];
 
-
   static const String isVPN = 'isVPN';
   static const String noConnection = 'noConnection';
   static const String isConnected = 'notAuthorized';

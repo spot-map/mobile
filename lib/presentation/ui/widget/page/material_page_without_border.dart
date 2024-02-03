@@ -1,7 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:ride_map/presentation/common/cubit/navigation/constants/constants.dart';
-import 'package:ride_map/until/theme/style/consts.dart';
 
 class MyMaterialNewPageWithoutBorder extends StatelessWidget {
   const MyMaterialNewPageWithoutBorder({
@@ -60,24 +59,19 @@ class MyMaterialNewPageWithoutBorder extends StatelessWidget {
             child: Column(
               children: [
                 if (myNewMaterialAppBar != null) myNewMaterialAppBar!,
-                if (callbackTopRefreshIndicator != null)
-                  CupertinoSliverRefreshControl(
-                      onRefresh: callbackTopRefreshIndicator!),
+                if (callbackTopRefreshIndicator != null) CupertinoSliverRefreshControl(onRefresh: callbackTopRefreshIndicator!),
                 Expanded(
                   child: Column(
                     children: [
                       Expanded(
                         child: Padding(
-                          padding: EdgeInsets.symmetric(
-                              horizontal: paddingHorizontalContent ??
-                                  myHorizontalPaddingForContainer),
+                          padding: EdgeInsets.symmetric(horizontal: paddingHorizontalContent ?? 9),
                           child: widgetBody,
                         ),
                       ),
                       if (widgetAfterBody != null)
                         Padding(
-                          padding: const EdgeInsets.only(
-                              bottom: myTopPaddingForContent),
+                          padding: const EdgeInsets.only(bottom: 15),
                           child: widgetAfterBody!,
                         )
                     ],

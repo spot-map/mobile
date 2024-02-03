@@ -9,7 +9,7 @@ import 'package:ride_map/presentation/ui/screen/splash/splash_screen.dart';
 import 'package:ride_map/presentation/ui/screen/spot_by_id/spot_by_id.dart';
 import 'package:ride_map/presentation/ui/widget/full_screen_image/full_screen_image.dart';
 
-class AppRoutes{
+class AppRoutes {
   static const splash = '/${SplashScreen.path}';
 
   static const map = '/${MapScreen.path}';

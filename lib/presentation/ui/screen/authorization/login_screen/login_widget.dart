@@ -29,9 +29,7 @@ class LoginWidget extends StatelessWidget {
                         children: [
                           TextFormField(
                             key: const Key('login'),
-                            validator: (input) => input!.isValidEmail()
-                                ? null
-                                : "Укажите корректный email",
+                            validator: (input) => input!.isValidEmail() ? null : "Укажите корректный email",
                             style: const TextStyle(color: Colors.black),
                             controller: _emailCotroller,
                             decoration: InputDecoration(
@@ -72,8 +70,7 @@ class LoginWidget extends StatelessWidget {
                             children: [
                               const Text(
                                 'Вход',
-                                style: TextStyle(
-                                    fontSize: 27, fontWeight: FontWeight.w700),
+                                style: TextStyle(fontSize: 27, fontWeight: FontWeight.w700),
                               ),
                               CircleAvatar(
                                 radius: 30,
@@ -82,8 +79,7 @@ class LoginWidget extends StatelessWidget {
                                     color: Colors.white,
                                     onPressed: () {
                                       if (_loginKey.currentState!.validate()) {
-                                        context.read<AuthCubit>().onLogin(_emailCotroller.text,
-                                            _passwordCotroller.text);
+                                        context.read<AuthCubit>().onLogin(_emailCotroller.text, _passwordCotroller.text);
                                       }
                                     },
                                     icon: const Icon(

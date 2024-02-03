@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:ride_map/presentation/ui/screen/settings/widget/menu_list.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/page/material_page_without_border.dart';
-import 'package:ride_map/until/theme/light/app_colors_light.dart';
+import 'package:ride_map/until/theme/base/app_color.dart';
 import 'package:ride_map/until/theme/style/text/text_style.dart';
 
 class SettingsScreen extends StatelessWidget {
@@ -25,15 +25,14 @@ class _SettingsScreenBody extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar:  const MyAppBar( size: 50, title: 'Настройки', automaticallyImplyLeading: true,
+        appBar: const MyAppBar(
+          size: 50,
+          title: 'Настройки',
+          automaticallyImplyLeading: true,
           centerTitle: false,
         ),
         body: Column(
-          children: [
-            const Expanded(child: MenuList()),
-            _columnWithInfoText(context: context),
-            const SizedBox(height: 13)
-          ],
+          children: [Expanded(child: MenuList()), _columnWithInfoText(context: context), const SizedBox(height: 13)],
         ));
   }
 }
@@ -54,7 +53,7 @@ _columnWithInfoText({required BuildContext context}) {
             "Удалить аккаунт",
             style: myTextStyleFontUbuntu(
               fontSize: 14,
-              textColor: AppColorLight().deleteColor,
+              textColor: context.colors.deleteColor,
               newFontWeight: FontWeight.w300,
               context: context,
             ).copyWith(

@@ -5,8 +5,8 @@ import 'package:ride_map/presentation/ui/screen/spot_by_id/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/spot_by_id/widget/reactions/reactions_bottom.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
+import 'package:ride_map/presentation/ui/widget/page/common_scaffold.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
-import 'package:ride_map/until/preferences/preferences.dart';
 
 class SpotByIdModal extends StatelessWidget {
   const SpotByIdModal({super.key});
@@ -24,8 +24,15 @@ class SpotByIdModal extends StatelessWidget {
             : SafeArea(
                 top: false,
                 bottom: false,
-                child: Scaffold(
+                child: CommonScaffold(
                   resizeToAvoidBottomInset: false,
+                  message: context.read<FavoriteCubit>().messageStream,
+                  extendBodyBehindAppBar: true,
+                  onMessage: (String message) {
+                    if (message == FavoriteState.notAuthorized) {
+                      snackBar(message: 'Выполните авторизацию', context: context, isError: true);
+                    }
+                  },
                   appBar: MyAppBar(
                     title: state.mapByIdModel!.data!.name!,
                     size: 50,
@@ -34,11 +41,7 @@ class SpotByIdModal extends StatelessWidget {
                     widgetRight: [
                       IconButton(
                           onPressed: () {
-                            if (Prefs.getString('token') == null) {
-                              snackBar(message: 'Выполните авторизацию', context: context, isError: true);
-                            } else {
-                              context.read<FavoriteCubit>().onAddSpotToFavorite(state.mapByIdModel!.data!.id!);
-                            }
+                            context.read<FavoriteCubit>().onAddSpotToFavorite(state.mapByIdModel!.data!.id!);
                           },
                           icon: Icon(Icons.favorite, color: state.mapByIdModel!.data!.isInFavorite! ? Colors.red : Colors.grey)),
                       IconButton(
@@ -53,7 +56,7 @@ class SpotByIdModal extends StatelessWidget {
                           icon: const Icon(Icons.ios_share))
                     ],
                   ),
-                  body: Column(
+                  child: Column(
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       ListTile(

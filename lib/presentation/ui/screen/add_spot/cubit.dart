@@ -3,14 +3,15 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ride_map/domain/usecases/api_usecases/map_usecase.dart';
+import 'package:ride_map/domain/storage/token.dart';
+import 'package:ride_map/domain/usecases/api/map.dart';
 import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/until/preferences/preferences.dart';
 
 part 'state.dart';
 
 class AddSpotCubit extends Cubit<AddSpotState> {
   final MapUseCase _mapUseCase = getIt();
+  final TokenStorage _tokenStorage = getIt();
 
   Stream<String> get messageStream => _messageController.stream;
   final _messageController = StreamController<String>();
@@ -25,7 +26,7 @@ class AddSpotCubit extends Cubit<AddSpotState> {
     double longitude,
   ) async {
     emit(state.copyWith(isLoading: true));
-    if (Prefs.getString('token') != null) {
+    if (_tokenStorage.accessToken != null) {
       final result = await _mapUseCase.addSpot(name, address, description, latitude, longitude, state.images);
       if (result.isSuccess) {
         _messageController.add(AddSpotState.showSuccessMessage);

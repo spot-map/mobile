@@ -1,12 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
-import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/presentation/common/router/routes.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
-import 'package:ride_map/until/preferences/preferences.dart';
-import 'package:ride_map/until/theme/dark/app_colors_dark.dart';
-import 'package:ride_map/until/theme/light/app_colors_light.dart';
+import 'package:ride_map/until/theme/base/app_color.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class MapWidget extends StatefulWidget {
@@ -51,8 +48,7 @@ class _MapWidgetState extends State<MapWidget> {
                 onTap: () {
                   context.push(AppRoutes.addSpot, extra: widget.currentUserLocation);
                 },
-                child: Icon(Icons.add,
-                    size: 20, color: Prefs.getBool('theme')! ? AppColorDark().backButtonColor : AppColorLight().backButtonColor),
+                child: Icon(Icons.add, size: 20, color: context.colors.backButtonColor),
               ),
             ),
           ],
@@ -67,7 +63,6 @@ class _MapWidgetState extends State<MapWidget> {
           key: mapKey,
           mapType: MapType.map,
           mapObjects: widget.mapObjects,
-          nightModeEnabled: Prefs.getBool('theme')!,
           onMapCreated: _onMapCreated,
           zoomGesturesEnabled: true,
           tiltGesturesEnabled: true,
