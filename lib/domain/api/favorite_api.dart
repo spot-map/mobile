@@ -5,7 +5,6 @@ import 'package:ride_map/domain/storage/token.dart';
 import 'package:ride_map/domain/usecases/api/auth.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/api/api_constants.dart';
-import 'package:ride_map/until/dev.dart';
 
 abstract class FavoriteApi {
   Future<void> addSpotToFavorite(int id);
@@ -23,7 +22,6 @@ class FavoriteApiImpl implements FavoriteApi {
   @override
   Future<void> addSpotToFavorite(int id) async {
     try {
-      Dev.log('TOKEN ${_tokenStorage.accessToken}', name: 'TOKEN');
       var spotObject = {'spot_id': id};
 
       _client.options.headers = {
@@ -39,13 +37,11 @@ class FavoriteApiImpl implements FavoriteApi {
       );
 
       if (response.statusCode == 201) {
-        Dev.log('SPOT ${response.data}', name: 'ADD SPOT TO FAVORITE');
         return response.data;
       } else if (response.statusCode == 401) {
         await _auth.refreshToken();
         return addSpotToFavorite(id);
       } else {
-        Dev.log('Error ${response.statusCode}', name: 'ADD SPOT TO FAVORITE, ${response.statusCode}');
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
@@ -59,7 +55,6 @@ class FavoriteApiImpl implements FavoriteApi {
       _client.options.headers = {
         'Authorization': 'Bearer ${_tokenStorage.accessToken}',
       };
-      Dev.log('${_tokenStorage.accessToken}', name: 'TOKEN');
       Response response = await _client.get(
         ApiConstants.FAVORITE,
         options: Options(
@@ -68,13 +63,11 @@ class FavoriteApiImpl implements FavoriteApi {
         ),
       );
       if (response.statusCode == 200) {
-        Dev.log('FAVORITE ${response.data}', name: 'FAVORITE LIST');
         return FavoriteModel.fromJson(response.data);
       } else if (response.statusCode == 401 || response.statusCode == 500) {
         await _auth.refreshToken();
         return getFavoriteList();
       } else {
-        Dev.log('Error ${response.statusCode}', name: 'FAVORITE LIST API ERROR, ${response.statusCode}');
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
@@ -90,7 +83,6 @@ class FavoriteApiImpl implements FavoriteApi {
       _client.options.headers = {
         'Authorization': 'Bearer ${_tokenStorage.accessToken}',
       };
-      Dev.log('${_tokenStorage.accessToken}', name: 'TOKEN');
       Response response = await _client.delete(
         '${ApiConstants.FAVORITE}/$id',
         options: Options(
@@ -99,11 +91,7 @@ class FavoriteApiImpl implements FavoriteApi {
         ),
       );
       if (response.statusCode == 200) {
-        Dev.log('FAVORITE DELETED ${response.data}', name: 'FAVORITE DELETED');
         return response.data;
-      } else {
-        Dev.log('Error ${response.statusCode}', name: 'FAVORITE DELETED ERROR, ${response.statusCode}');
-        throw Exception('${response.data}');
       }
     } on DioError catch (e) {
       throw Exception(e.toString());

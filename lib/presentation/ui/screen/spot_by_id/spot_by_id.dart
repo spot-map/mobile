@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/presentation/ui/screen/spot_by_id/cubit.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/cubit.dart';
-import 'package:ride_map/presentation/ui/screen/spot_by_id/widget/reactions/reactions_bottom.dart';
+import 'package:ride_map/presentation/ui/screen/spot_by_id/widget/reactions/reactions_modal.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/page/common_scaffold.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
@@ -64,7 +64,7 @@ class SpotByIdModal extends StatelessWidget {
                       ),
                       Expanded(
                           child: state.mapByIdModel!.data!.images!.isEmpty
-                              ? Text('Изображение не добавлено')
+                              ? const Text('Изображение не добавлено')
                               : CarouselSlider(
                                   items: state.mapByIdModel!.data!.images!.map((i) {
                                     int index = state.mapByIdModel!.data!.images!.indexOf(i);

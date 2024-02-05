@@ -3,7 +3,6 @@ import 'package:ride_map/data/result_model/result.dart';
 import 'package:ride_map/domain/storage/token.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/api/api_constants.dart';
-import 'package:ride_map/until/dev.dart';
 
 abstract class AuthApi {
   Future<Result> login(String email, String password);
@@ -24,22 +23,17 @@ class AuthApiImpl implements AuthApi {
     var authObject = {"email": email, "password": password};
     try {
       Response response = await _client.post(ApiConstants.LOGIN, data: authObject);
-      Dev.log('AUTH CODE ${response.statusCode}', name: 'USER AUTH');
-      Dev.log('AUTH OBJECT $authObject', name: 'USER AUTH');
-
       if (response.statusCode == 200) {
         if (response.data['data']['success'] == false) {
           throw Exception('Ошибка авторизации');
         } else {
-          Dev.log('AUTH ${response.data}', name: 'USER AUTH');
           _tokenStorage.accessToken = response.data['data']['token'];
-          Dev.log('SAVED ${_tokenStorage.accessToken}', name: 'TOKEN');
           return Result.success(true);
         }
       }
       return Result.failure('');
     } on DioError catch (e) {
-      return Result.failure(e.message);
+      return Result.failure(e.message ?? '');
     }
   }
 
@@ -50,9 +44,7 @@ class AuthApiImpl implements AuthApi {
       "email": email,
       "password": password,
     });
-    Dev.log('REGISTRATION CODE ${response.statusCode}', name: 'USER REGISTRATION');
     if (response.statusCode == 200) {
-      Dev.log('REGISTRATION ${response.data}', name: 'USER REGISTRATION SUCCESS');
       _tokenStorage.accessToken = response.data['data']['token'];
       return Result.success(true);
     }
@@ -66,10 +58,7 @@ class AuthApiImpl implements AuthApi {
     };
 
     Response response = await _client.post(ApiConstants.LOGOUT);
-    Dev.log('LOGOUT ${response.statusCode}', name: 'USER LOGOUT');
-    if (response.statusCode == 200) {
-      _tokenStorage.deleteTokens();
-    }
+    if (response.statusCode == 200) _tokenStorage.deleteTokens();
   }
 
   @override
@@ -79,11 +68,6 @@ class AuthApiImpl implements AuthApi {
     };
 
     Response response = await _client.post(ApiConstants.REFRESH);
-    Dev.log('REFRESH ${response.statusCode}', name: 'USER REFRESH');
-    if (response.statusCode == 200) {
-      Dev.log('REFRESH ${response.data}', name: '${response.statusCode} REFRESH');
-      _tokenStorage.accessToken = response.data['data']['token'];
-      Dev.log('TOKEN ${_tokenStorage.accessToken}', name: 'REFRESH TOKEN');
-    }
+    if (response.statusCode == 200) _tokenStorage.accessToken = response.data['data']['token'];
   }
 }

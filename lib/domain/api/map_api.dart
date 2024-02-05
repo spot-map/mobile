@@ -7,7 +7,6 @@ import 'package:ride_map/domain/storage/token.dart';
 import 'package:ride_map/domain/usecases/api/auth.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/api/api_constants.dart';
-import 'package:ride_map/until/dev.dart';
 
 abstract class MapApi {
   Future<MapModel> getSpot();
@@ -35,10 +34,8 @@ class MapApiImpl implements MapApi {
       Response response = await _client.get(ApiConstants.SPOT_LIST);
 
       if (response.statusCode == 200) {
-        Dev.log('SPOTS ${response.data}', name: 'GET SPOTS API REQUEST');
         return MapModel.fromJson(response.data);
       } else {
-        Dev.log('Error ${response.statusCode}', name: 'SPOT API ERROR, ${response.statusCode}');
         throw Exception('Failed to load API data');
       }
     } on DioError catch (e) {
@@ -49,13 +46,10 @@ class MapApiImpl implements MapApi {
   @override
   Future<MapByIdModel> getSpotById(int id) async {
     try {
-      Dev.log('GET SPOT BY ID $id', name: 'GET SPOT BY ID');
       Response response = await _client.get('${ApiConstants.SPOT_BY_ID}/$id');
       if (response.statusCode == 200) {
-        Dev.log('SPOT ${response.data}', name: 'GET SPOT BY ID');
         return MapByIdModel.fromJson(response.data);
       } else {
-        Dev.log('Error ${response.statusCode}', name: 'SPOT BY ID API ERROR, ${response.statusCode}');
         throw Exception('Failed to load API data');
       }
     } on DioError catch (e) {
@@ -66,14 +60,12 @@ class MapApiImpl implements MapApi {
   @override
   Future<void> addReactions(String text, int score, int spotId) async {
     var reactionsObject = {"text": text, "score": score, "spot_id": spotId};
-    Dev.log('Object $reactionsObject', name: 'Reactions Object');
     try {
       _client.options.headers = {
         'Authorization': 'Bearer ${_tokenStorage.accessToken}',
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       };
-      Dev.log('${_tokenStorage.accessToken}', name: 'TOKEN');
       Response response = await _client.post(
         ApiConstants.REACTIONS,
         data: reactionsObject,
@@ -83,10 +75,8 @@ class MapApiImpl implements MapApi {
         ),
       );
       if (response.statusCode == 200) {
-        Dev.log('ADD REACTIONS ${response.data}', name: 'REACTIONS');
         return response.data;
       } else {
-        Dev.log('Error ${response.statusCode}', name: 'ADD REACTIONS, ${response.statusCode}');
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
@@ -114,15 +104,12 @@ class MapApiImpl implements MapApi {
           options: Options(followRedirects: false, validateStatus: (status) => status! < 500));
 
       if (response.statusCode == 201) {
-        Dev.log('ADD SPOT ${response.data}', name: 'SPOT');
-        Dev.log('ID ${response.data['data']['id']}', name: 'SPOT ID');
         await addImage(response.data['data']['id'], images);
         return Result.success(true);
       } else if (response.statusCode == 401 || response.statusCode == 500) {
         await _auth.refreshToken();
         return addSpot(name, address, description, latitude, longitude, images);
       } else {
-        Dev.log('Error ${response.statusCode}', name: 'ADD SPOT, ${response.statusCode}');
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
@@ -151,10 +138,8 @@ class MapApiImpl implements MapApi {
           data: formData, options: Options(followRedirects: false, validateStatus: (status) => status! < 500));
 
       if (response.statusCode == 200) {
-        Dev.log('ADD IMAGE ${response.data}', name: 'SPOT IMAGE');
         return Result.success(true);
       } else {
-        Dev.log('Error ${response.statusCode}', name: 'ADD IMAGE, ${response.statusCode}');
         throw Exception('${response.data}');
       }
     } on DioError catch (e) {
@@ -168,10 +153,8 @@ class MapApiImpl implements MapApi {
       Response response = await _client.get('${ApiConstants.SEARCH_SPOT}/$name');
 
       if (response.statusCode == 200) {
-        Dev.log(response.data, name: 'SEARCH SPOT API REQUEST');
         return MapModel.fromJson(response.data);
       } else {
-        Dev.log('Error ${response.statusCode}', name: 'SPOT API ERROR, ${response.statusCode}');
         throw Exception('Failed to load API data');
       }
     } on DioError catch (e) {
