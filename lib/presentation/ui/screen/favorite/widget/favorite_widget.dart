@@ -1,14 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
+import 'package:ride_map/data/favorite_models/favorite_model.dart';
 import 'package:ride_map/presentation/ui/screen/favorite/cubit.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
 import 'package:ride_map/until/theme/base/app_color.dart';
 
 class FavoriteWidget extends StatelessWidget {
-  const FavoriteWidget({super.key, required this.state});
+  const FavoriteWidget({super.key, required this.favoriteModel});
 
-  final FavoriteState state;
+  final FavoriteModel favoriteModel;
 
   @override
   Widget build(BuildContext context) {
@@ -17,20 +18,20 @@ class FavoriteWidget extends StatelessWidget {
       child: SlidableAutoCloseBehavior(
         closeWhenOpened: true,
         child: ListView.builder(
-            itemCount: state.favoriteModel!.data.length,
+            itemCount: favoriteModel.data.length,
             itemBuilder: (context, index) {
               return Slidable(
-                key: Key(state.favoriteModel!.data[index].spot!.name!),
+                key: Key(favoriteModel.data[index].spot!.name!),
                 closeOnScroll: true,
                 endActionPane: ActionPane(
                   motion: const BehindMotion(),
                   dismissible: DismissiblePane(
                       onDismissed: () =>
-                          context.read<FavoriteCubit>().onDeleteSpotFromFavorite(state.favoriteModel!.data[index].id!)),
+                          context.read<FavoriteCubit>().onDeleteSpotFromFavorite(favoriteModel.data[index].id!)),
                   children: [
                     Expanded(
                       child: InkWell(
-                        onTap: () => context.read<FavoriteCubit>().onAddSpotToFavorite(state.favoriteModel!.data[index].id!),
+                        onTap: () => context.read<FavoriteCubit>().onAddSpotToFavorite(favoriteModel.data[index].id!),
                         borderRadius: BorderRadius.circular(16),
                         child: Container(
                             alignment: Alignment.center,
@@ -57,8 +58,8 @@ class FavoriteWidget extends StatelessWidget {
                           // leading:  CircleAvatar(
                           //     backgroundImage: NetworkImage(
                           //         state.favoriteModel!.data[index].spot!.images![index].path!)),
-                          title: Text(state.favoriteModel!.data[index].spot!.name!),
-                          subtitle: Text(state.favoriteModel!.data[index].spot!.description!))),
+                          title: Text(favoriteModel.data[index].spot!.name!),
+                          subtitle: Text(favoriteModel.data[index].spot!.description!))),
                 ),
               );
             }),

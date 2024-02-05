@@ -25,7 +25,7 @@ class FavoriteScreen extends StatelessWidget {
               ? Center(
                   child: buildSkeleton(context),
                 )
-              : FavoriteWidget(state: state!);
+              : FavoriteWidget(favoriteModel: state.favoriteModel!);
         },
       ),
     );
