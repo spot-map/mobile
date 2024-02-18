@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 class AppColor {
@@ -10,10 +11,12 @@ class AppColor {
   final Color favoriteButtonColor;
   final Color deleteColor;
   final Color textFieldColor;
+  final SystemUiOverlayStyle systemUiOverlayStyle;
+  final Color hintColor;
   final ThemeData themeData;
 
   AppColor(this.textColor, this.selectedItemColor, this.unselectedItemColor, this.backButtonColor, this.containerColor,
-      this.favoriteButtonColor, this.deleteColor, this.textFieldColor, this.themeData);
+      this.favoriteButtonColor, this.deleteColor, this.textFieldColor, this.themeData, this.systemUiOverlayStyle, this.hintColor);
 }
 
 extension AppColorExt on BuildContext {

@@ -16,4 +16,5 @@ class StringDarkColors {
   static const String deleteColor = "#FF0000";
 
   static const String textFieldColor = "#F1F4FA";
+
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:ride_map/until/theme/base/app_color.dart';
 import 'package:ride_map/until/theme/dark/constants/string_colors.dart';
 import 'package:ride_map/until/theme/hex.dart';
@@ -33,6 +34,13 @@ class AppColorDark implements AppColor {
 
   @override
   Color get textFieldColor => HexColor.fromHex(StringDarkColors.textFieldColor);
+
+  @override
+  SystemUiOverlayStyle get systemUiOverlayStyle => SystemUiOverlayStyle.light;
+
+
+  @override
+  Color get hintColor =>  HexColor.fromHex(StringDarkColors.textColor);
 
   @override
   final ThemeData themeData =

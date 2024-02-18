@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/src/services/system_chrome.dart';
 import 'package:ride_map/until/theme/base/app_color.dart';
 import 'package:ride_map/until/theme/light/constants/string_colors.dart';
 import 'package:ride_map/until/theme/hex.dart';
@@ -36,4 +37,10 @@ class AppColorLight implements AppColor {
 
   @override
   final ThemeData themeData = ThemeData(brightness: Brightness.light, backgroundColor: Colors.white);
+
+  @override
+  Color get hintColor =>  HexColor.fromHex(StringLightColors.hintColor);
+
+  @override
+  SystemUiOverlayStyle get systemUiOverlayStyle => SystemUiOverlayStyle.dark;
 }

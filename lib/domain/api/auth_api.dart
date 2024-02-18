@@ -1,5 +1,5 @@
 import 'package:dio/dio.dart';
-import 'package:ride_map/data/result_model/result.dart';
+import 'package:ride_map/data/result_entity/result.dart';
 import 'package:ride_map/domain/storage/token.dart';
 import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/api/api_constants.dart';
@@ -25,7 +25,7 @@ class AuthApiImpl implements AuthApi {
       Response response = await _client.post(ApiConstants.LOGIN, data: authObject);
       if (response.statusCode == 200) {
         if (response.data['data']['success'] == false) {
-          throw Exception('Ошибка авторизации');
+          return Result.failure('${response.data['data']['message']}');
         } else {
           _tokenStorage.accessToken = response.data['data']['token'];
           return Result.success(true);

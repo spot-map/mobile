@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:ride_map/presentation/common/cubit/navigation/constants/constants.dart';
+import 'package:ride_map/until/constants/navigation_constants.dart';
 
 class MyMaterialNewPageWithoutBorder extends StatelessWidget {
   const MyMaterialNewPageWithoutBorder({

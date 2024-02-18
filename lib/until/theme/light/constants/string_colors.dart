@@ -16,4 +16,6 @@ class StringLightColors {
   static const String deleteColor = "#FF0000";
 
   static const String textFieldColor = "#F1F4FA";
+
+  static const String hintColor = "#F5F5F5";
 }

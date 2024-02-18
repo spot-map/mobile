@@ -1,12 +1,11 @@
-import 'package:ride_map/presentation/ui/screen/add_spot/add_spot_screen.dart';
-import 'package:ride_map/presentation/ui/screen/authorization/auth_screen.dart';
-import 'package:ride_map/presentation/ui/screen/bottom_navigation/root_screen.dart';
-import 'package:ride_map/presentation/ui/screen/favorite/favorite_screen.dart';
-import 'package:ride_map/presentation/ui/screen/list/list_spot_screen.dart';
-import 'package:ride_map/presentation/ui/screen/map/map_screen.dart';
-import 'package:ride_map/presentation/ui/screen/settings/settings_screen.dart';
-import 'package:ride_map/presentation/ui/screen/splash/splash_screen.dart';
-import 'package:ride_map/presentation/ui/screen/spot_by_id/spot_by_id.dart';
+import 'package:ride_map/presentation/ui/screens/add_spot/screen.dart';
+import 'package:ride_map/presentation/ui/screens/authorization/screen.dart';
+import 'package:ride_map/presentation/ui/screens/bottom_navigation/screen.dart';
+import 'package:ride_map/presentation/ui/screens/favorite/screen.dart';
+import 'package:ride_map/presentation/ui/screens/map/screen.dart';
+import 'package:ride_map/presentation/ui/screens/settings/screen.dart';
+import 'package:ride_map/presentation/ui/screens/splash/screen.dart';
+import 'package:ride_map/presentation/ui/screens/spot_by_id/screen.dart';
 import 'package:ride_map/presentation/ui/widget/full_screen_image/full_screen_image.dart';
 
 class AppRoutes {
@@ -14,7 +13,6 @@ class AppRoutes {
 
   static const map = '/${MapScreen.path}';
   static const favorite = '/${FavoriteScreen.path}';
-  static const mapList = '/${ListSpotScreen.path}';
   static const auth = '/${AuthScreen.path}';
   static const addSpot = '/${AddSpotScreen.path}';
   static const settings = '/${SettingsScreen.path}';

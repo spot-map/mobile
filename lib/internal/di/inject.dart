@@ -13,15 +13,16 @@ import 'package:ride_map/domain/usecases/connection/vpn_checker.dart';
 import 'package:ride_map/domain/usecases/storage/theme/theme.dart';
 import 'package:ride_map/domain/usecases/storage/token/tokent.dart';
 import 'package:ride_map/presentation/common/cubit/location/cubit.dart';
-import 'package:ride_map/presentation/common/cubit/navigation/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/network/cubit.dart';
-import 'package:ride_map/presentation/common/cubit/spot/cubit.dart';
 import 'package:ride_map/presentation/common/cubit/theme/cubit.dart';
-import 'package:ride_map/presentation/ui/screen/add_spot/cubit.dart';
-import 'package:ride_map/presentation/ui/screen/authorization/cubit.dart';
-import 'package:ride_map/presentation/ui/screen/favorite/cubit.dart';
-import 'package:ride_map/presentation/ui/screen/spot_by_id/cubit.dart';
+import 'package:ride_map/presentation/ui/screens/add_spot/cubit.dart';
+import 'package:ride_map/presentation/ui/screens/authorization/cubit.dart';
+import 'package:ride_map/presentation/ui/screens/bottom_navigation/cubit.dart';
+import 'package:ride_map/presentation/ui/screens/favorite/cubit.dart';
+import 'package:ride_map/presentation/ui/screens/map/cubit.dart';
+import 'package:ride_map/presentation/ui/screens/spot_by_id/cubit.dart';
 import 'package:ride_map/until/dio/dio_client.dart';
+import 'package:ride_map/until/dio/interceptors/token_interceptor.dart';
 
 final getIt = GetIt.instance;
 
@@ -47,6 +48,7 @@ Future registerGetIt() async {
   ///Api Client
   getIt.registerLazySingleton<Client>(() => Client());
   getIt.registerLazySingleton<Dio>(() => getIt<Client>().create());
+  getIt.registerLazySingleton<TokenInterceptor>(() => TokenInterceptor());
 
   ///Cubits
   getIt.registerFactoryParam((int id, _) => SpotByIdCubit(id: id));

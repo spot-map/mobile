@@ -1,8 +1,10 @@
+import 'dart:developer';
+
 import 'package:dio/dio.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
 import 'package:ride_map/data/map_models/map_model.dart';
-import 'package:ride_map/data/result_model/result.dart';
+import 'package:ride_map/data/result_entity/result.dart';
 import 'package:ride_map/domain/storage/token.dart';
 import 'package:ride_map/domain/usecases/api/auth.dart';
 import 'package:ride_map/internal/di/inject.dart';
@@ -31,7 +33,9 @@ class MapApiImpl implements MapApi {
   @override
   Future<MapModel> getSpot() async {
     try {
-      Response response = await _client.get(ApiConstants.SPOT_LIST);
+      Response response = await _client.get(ApiConstants.MAP);
+      log('${response.statusCode}', name: 'CODE');
+      log('${response.data}', name: 'RESPONSE');
 
       if (response.statusCode == 200) {
         return MapModel.fromJson(response.data);

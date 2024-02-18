@@ -1,6 +1,7 @@
 import 'dart:ui';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:ride_map/internal/init_async_service.dart';
@@ -14,6 +15,9 @@ void main() async {
   await initAsyncService();
   initCrashlytics();
   initObserver();
+  await SystemChrome.setPreferredOrientations(
+    [DeviceOrientation.portraitUp],
+  );
   Geolocator.requestPermission();
 
   if (Geolocator.checkPermission() == LocationPermission.denied) return;

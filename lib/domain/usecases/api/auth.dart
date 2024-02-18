@@ -1,4 +1,4 @@
-import 'package:ride_map/data/result_model/result.dart';
+import 'package:ride_map/data/result_entity/result.dart';
 import 'package:ride_map/domain/api/auth_api.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
