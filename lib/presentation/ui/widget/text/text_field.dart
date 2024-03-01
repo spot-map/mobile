@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:ride_map/until/theme/base/app_color.dart';
 
-class AuthTextField extends StatelessWidget {
-  const AuthTextField(
+class DefaultTextFiled extends StatelessWidget {
+  const DefaultTextFiled(
       {super.key,
       required this.hinText,
       required this.controller,

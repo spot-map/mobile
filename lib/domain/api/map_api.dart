@@ -13,14 +13,14 @@ import 'package:ride_map/until/api/api_constants.dart';
 abstract class MapApi {
   Future<MapModel> getSpot();
 
-  Future<Result<bool>> addSpot(
+  Future<Result> addSpot(
       String name, String address, String description, double latitude, double longitude, List<XFile>? images);
 
   Future<MapByIdModel> getSpotById(int id);
 
   Future<void> addReactions(String text, int score, int spotId);
 
-  Future<void> addImage(int id, List<XFile>? images);
+  Future<Result> addImage(int id, List<XFile>? images);
 
   Future<MapModel> searchSpot(String name);
 }
@@ -29,7 +29,6 @@ class MapApiImpl implements MapApi {
   final Dio _client = getIt();
   final AuthUseCase _auth = getIt();
   final TokenStorage _tokenStorage = getIt();
-
   @override
   Future<MapModel> getSpot() async {
     try {
@@ -89,7 +88,7 @@ class MapApiImpl implements MapApi {
   }
 
   @override
-  Future<Result<bool>> addSpot(
+  Future<Result> addSpot(
       String name, String address, String description, double latitude, double longitude, List<XFile>? images) async {
     try {
       _client.options.headers = {
@@ -108,8 +107,12 @@ class MapApiImpl implements MapApi {
           options: Options(followRedirects: false, validateStatus: (status) => status! < 500));
 
       if (response.statusCode == 201) {
-        await addImage(response.data['data']['id'], images);
-        return Result.success(true);
+        final addImageResult = await addImage(response.data['data']['id'], images);
+        if(addImageResult.isSuccess){
+          return Result.success(true);
+        }else{
+          return Result.failure('');
+        }
       } else if (response.statusCode == 401 || response.statusCode == 500) {
         await _auth.refreshToken();
         return addSpot(name, address, description, latitude, longitude, images);
@@ -122,7 +125,7 @@ class MapApiImpl implements MapApi {
   }
 
   @override
-  Future<Result<bool>> addImage(int id, List<XFile>? images) async {
+  Future<Result> addImage(int id, List<XFile>? images) async {
     _client.options.headers = {
       'Authorization': 'Bearer ${_tokenStorage.accessToken}',
       'Content-Type': 'application/json',

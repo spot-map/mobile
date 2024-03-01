@@ -50,9 +50,9 @@ class AuthState extends Equatable {
       String? emailError,
       String? passwordError,
       String? nameError,
+      String? name,
       String? email,
       String? password,
-      String? name,
       String? emailRegistrationError,
       String? passwordRegistrationError,
       String? passwordRegistration,
@@ -68,8 +68,10 @@ class AuthState extends Equatable {
         isRegistration: isRegistration ?? this.isRegistration,
         passwordRegistration: passwordRegistration ?? this.passwordRegistration,
         emailRegistration: emailRegistration ?? this.emailRegistration,
-        emailRegistrationError: emailRegistrationError ?? this.emailRegistrationError,
-        passwordRegistrationError: passwordRegistrationError ?? this.passwordRegistrationError);
+        emailRegistrationError:
+            emailRegistrationError ?? this.emailRegistrationError,
+        passwordRegistrationError:
+            passwordRegistrationError ?? this.passwordRegistrationError);
   }
 
   static const String successLogin = 'successLogin';

@@ -47,9 +47,13 @@ class MapScreen extends StatelessWidget {
                         minChildSize: 0.13,
                         expand: false,
                         snap: true,
-                        snapAnimationDuration: const Duration(milliseconds: 150),
+                        snapAnimationDuration:
+                            const Duration(milliseconds: 150),
                         builder: (context, scrollController) =>
-                            SingleChildScrollView(controller: scrollController, child: SpotList(model: mapState.mapModel!))),
+                            SingleChildScrollView(
+                                controller: scrollController,
+                                child: SpotList(
+                                    model: mapState.mapModel!))),
                   );
           },
         );

@@ -14,6 +14,24 @@ abstract class TextValidators {
     if(name.isEmpty) return 'Заполните поле';
     return null;
   }
+
+  static String? spotName(String name){
+    if(name.isEmpty) return 'Заполните поле';
+    if(name.length < 10) return 'Название слишком короткое';
+    return null;
+  }
+
+  static String? description(String name){
+    if(name.isEmpty) return 'Заполните поле';
+    if(name.length < 10) return 'Описание слишком короткое';
+    return null;
+  }
+
+  static String? address(String name){
+    if(name.isEmpty) return 'Заполните поле';
+    if(name.length < 10) return 'Описание слишком короткое';
+    return null;
+  }
 }
 
 abstract class _Reg {

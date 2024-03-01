@@ -23,26 +23,26 @@ mixin _$MapModel {
   List<Spots> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
-  $MapModelCopyWith<MapModel> get copyWith => throw _privateConstructorUsedError;
+  $MapModelCopyWith<MapModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $MapModelCopyWith<$Res> {
-  factory $MapModelCopyWith(MapModel value, $Res Function(MapModel) then) = _$MapModelCopyWithImpl<$Res, MapModel>;
-
+  factory $MapModelCopyWith(MapModel value, $Res Function(MapModel) then) =
+      _$MapModelCopyWithImpl<$Res, MapModel>;
   @useResult
   $Res call({List<Spots> data});
 }
 
 /// @nodoc
-class _$MapModelCopyWithImpl<$Res, $Val extends MapModel> implements $MapModelCopyWith<$Res> {
+class _$MapModelCopyWithImpl<$Res, $Val extends MapModel>
+    implements $MapModelCopyWith<$Res> {
   _$MapModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -61,18 +61,23 @@ class _$MapModelCopyWithImpl<$Res, $Val extends MapModel> implements $MapModelCo
 }
 
 /// @nodoc
-abstract class _$$MapModelImplCopyWith<$Res> implements $MapModelCopyWith<$Res> {
-  factory _$$MapModelImplCopyWith(_$MapModelImpl value, $Res Function(_$MapModelImpl) then) = __$$MapModelImplCopyWithImpl<$Res>;
-
+abstract class _$$MapModelImplCopyWith<$Res>
+    implements $MapModelCopyWith<$Res> {
+  factory _$$MapModelImplCopyWith(
+          _$MapModelImpl value, $Res Function(_$MapModelImpl) then) =
+      __$$MapModelImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call({List<Spots> data});
 }
 
 /// @nodoc
-class __$$MapModelImplCopyWithImpl<$Res> extends _$MapModelCopyWithImpl<$Res, _$MapModelImpl>
+class __$$MapModelImplCopyWithImpl<$Res>
+    extends _$MapModelCopyWithImpl<$Res, _$MapModelImpl>
     implements _$$MapModelImplCopyWith<$Res> {
-  __$$MapModelImplCopyWithImpl(_$MapModelImpl _value, $Res Function(_$MapModelImpl) _then) : super(_value, _then);
+  __$$MapModelImplCopyWithImpl(
+      _$MapModelImpl _value, $Res Function(_$MapModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -93,10 +98,10 @@ class __$$MapModelImplCopyWithImpl<$Res> extends _$MapModelCopyWithImpl<$Res, _$
 class _$MapModelImpl implements _MapModel {
   const _$MapModelImpl({final List<Spots> data = const []}) : _data = data;
 
-  factory _$MapModelImpl.fromJson(Map<String, dynamic> json) => _$$MapModelImplFromJson(json);
+  factory _$MapModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$MapModelImplFromJson(json);
 
   final List<Spots> _data;
-
   @override
   @JsonKey()
   List<Spots> get data {
@@ -120,12 +125,14 @@ class _$MapModelImpl implements _MapModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$MapModelImplCopyWith<_$MapModelImpl> get copyWith => __$$MapModelImplCopyWithImpl<_$MapModelImpl>(this, _$identity);
+  _$$MapModelImplCopyWith<_$MapModelImpl> get copyWith =>
+      __$$MapModelImplCopyWithImpl<_$MapModelImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -138,14 +145,15 @@ class _$MapModelImpl implements _MapModel {
 abstract class _MapModel implements MapModel {
   const factory _MapModel({final List<Spots> data}) = _$MapModelImpl;
 
-  factory _MapModel.fromJson(Map<String, dynamic> json) = _$MapModelImpl.fromJson;
+  factory _MapModel.fromJson(Map<String, dynamic> json) =
+      _$MapModelImpl.fromJson;
 
   @override
   List<Spots> get data;
-
   @override
   @JsonKey(ignore: true)
-  _$$MapModelImplCopyWith<_$MapModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$MapModelImplCopyWith<_$MapModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 Spots _$SpotsFromJson(Map<String, dynamic> json) {
@@ -155,41 +163,40 @@ Spots _$SpotsFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$Spots {
   int? get id => throw _privateConstructorUsedError;
-
   String? get name => throw _privateConstructorUsedError;
-
   String? get address => throw _privateConstructorUsedError;
-
   String? get description => throw _privateConstructorUsedError;
-
   double? get latitude => throw _privateConstructorUsedError;
-
   double? get longitude => throw _privateConstructorUsedError;
-
   bool? get isInFavorite => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
   $SpotsCopyWith<Spots> get copyWith => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $SpotsCopyWith<$Res> {
-  factory $SpotsCopyWith(Spots value, $Res Function(Spots) then) = _$SpotsCopyWithImpl<$Res, Spots>;
-
+  factory $SpotsCopyWith(Spots value, $Res Function(Spots) then) =
+      _$SpotsCopyWithImpl<$Res, Spots>;
   @useResult
   $Res call(
-      {int? id, String? name, String? address, String? description, double? latitude, double? longitude, bool? isInFavorite});
+      {int? id,
+      String? name,
+      String? address,
+      String? description,
+      double? latitude,
+      double? longitude,
+      bool? isInFavorite});
 }
 
 /// @nodoc
-class _$SpotsCopyWithImpl<$Res, $Val extends Spots> implements $SpotsCopyWith<$Res> {
+class _$SpotsCopyWithImpl<$Res, $Val extends Spots>
+    implements $SpotsCopyWith<$Res> {
   _$SpotsCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -239,17 +246,28 @@ class _$SpotsCopyWithImpl<$Res, $Val extends Spots> implements $SpotsCopyWith<$R
 
 /// @nodoc
 abstract class _$$SpotsImplCopyWith<$Res> implements $SpotsCopyWith<$Res> {
-  factory _$$SpotsImplCopyWith(_$SpotsImpl value, $Res Function(_$SpotsImpl) then) = __$$SpotsImplCopyWithImpl<$Res>;
-
+  factory _$$SpotsImplCopyWith(
+          _$SpotsImpl value, $Res Function(_$SpotsImpl) then) =
+      __$$SpotsImplCopyWithImpl<$Res>;
   @override
   @useResult
   $Res call(
-      {int? id, String? name, String? address, String? description, double? latitude, double? longitude, bool? isInFavorite});
+      {int? id,
+      String? name,
+      String? address,
+      String? description,
+      double? latitude,
+      double? longitude,
+      bool? isInFavorite});
 }
 
 /// @nodoc
-class __$$SpotsImplCopyWithImpl<$Res> extends _$SpotsCopyWithImpl<$Res, _$SpotsImpl> implements _$$SpotsImplCopyWith<$Res> {
-  __$$SpotsImplCopyWithImpl(_$SpotsImpl _value, $Res Function(_$SpotsImpl) _then) : super(_value, _then);
+class __$$SpotsImplCopyWithImpl<$Res>
+    extends _$SpotsCopyWithImpl<$Res, _$SpotsImpl>
+    implements _$$SpotsImplCopyWith<$Res> {
+  __$$SpotsImplCopyWithImpl(
+      _$SpotsImpl _value, $Res Function(_$SpotsImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -298,9 +316,17 @@ class __$$SpotsImplCopyWithImpl<$Res> extends _$SpotsCopyWithImpl<$Res, _$SpotsI
 /// @nodoc
 @JsonSerializable()
 class _$SpotsImpl implements _Spots {
-  const _$SpotsImpl({this.id, this.name, this.address, this.description, this.latitude, this.longitude, this.isInFavorite});
+  const _$SpotsImpl(
+      {this.id,
+      this.name,
+      this.address,
+      this.description,
+      this.latitude,
+      this.longitude,
+      this.isInFavorite});
 
-  factory _$SpotsImpl.fromJson(Map<String, dynamic> json) => _$$SpotsImplFromJson(json);
+  factory _$SpotsImpl.fromJson(Map<String, dynamic> json) =>
+      _$$SpotsImplFromJson(json);
 
   @override
   final int? id;
@@ -330,20 +356,26 @@ class _$SpotsImpl implements _Spots {
             (identical(other.id, id) || other.id == id) &&
             (identical(other.name, name) || other.name == name) &&
             (identical(other.address, address) || other.address == address) &&
-            (identical(other.description, description) || other.description == description) &&
-            (identical(other.latitude, latitude) || other.latitude == latitude) &&
-            (identical(other.longitude, longitude) || other.longitude == longitude) &&
-            (identical(other.isInFavorite, isInFavorite) || other.isInFavorite == isInFavorite));
+            (identical(other.description, description) ||
+                other.description == description) &&
+            (identical(other.latitude, latitude) ||
+                other.latitude == latitude) &&
+            (identical(other.longitude, longitude) ||
+                other.longitude == longitude) &&
+            (identical(other.isInFavorite, isInFavorite) ||
+                other.isInFavorite == isInFavorite));
   }
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, id, name, address, description, latitude, longitude, isInFavorite);
+  int get hashCode => Object.hash(runtimeType, id, name, address, description,
+      latitude, longitude, isInFavorite);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$SpotsImplCopyWith<_$SpotsImpl> get copyWith => __$$SpotsImplCopyWithImpl<_$SpotsImpl>(this, _$identity);
+  _$$SpotsImplCopyWith<_$SpotsImpl> get copyWith =>
+      __$$SpotsImplCopyWithImpl<_$SpotsImpl>(this, _$identity);
 
   @override
   Map<String, dynamic> toJson() {
@@ -367,26 +399,20 @@ abstract class _Spots implements Spots {
 
   @override
   int? get id;
-
   @override
   String? get name;
-
   @override
   String? get address;
-
   @override
   String? get description;
-
   @override
   double? get latitude;
-
   @override
   double? get longitude;
-
   @override
   bool? get isInFavorite;
-
   @override
   @JsonKey(ignore: true)
-  _$$SpotsImplCopyWith<_$SpotsImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$SpotsImplCopyWith<_$SpotsImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/presentation/ui/screens/authorization/cubit.dart';
-import 'package:ride_map/presentation/ui/screens/authorization/widget/auth_text_field.dart';
+import 'package:ride_map/presentation/ui/widget/text/text_field.dart';
 
 class LoginWidget extends StatelessWidget {
   const LoginWidget({Key? key, required this.state}) : super(key: key);
@@ -24,7 +24,7 @@ class LoginWidget extends StatelessWidget {
                     margin: const EdgeInsets.only(left: 35, right: 35),
                     child: Column(
                       children: [
-                        AuthTextField(
+                        DefaultTextFiled(
                             hinText: 'Email',
                             controller: context.read<AuthCubit>().emailController,
                             isObscureText: false,
@@ -34,7 +34,7 @@ class LoginWidget extends StatelessWidget {
                         const SizedBox(
                           height: 30,
                         ),
-                        AuthTextField(
+                        DefaultTextFiled(
                             hinText: 'Пароль',
                             controller: context.read<AuthCubit>().passwordController,
                             isObscureText: true,

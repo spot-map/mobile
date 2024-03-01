@@ -9,7 +9,8 @@ import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
 import 'cubit.dart';
 
 class AddSpotScreen extends StatelessWidget {
-  const AddSpotScreen({Key? key, required this.currentUserLocation}) : super(key: key);
+  const AddSpotScreen({Key? key, required this.currentUserLocation})
+      : super(key: key);
 
   final LatLng currentUserLocation;
   static const path = 'addSpot';
@@ -26,16 +27,27 @@ class AddSpotScreen extends StatelessWidget {
       message: context.read<AddSpotCubit>().messageStream,
       onMessage: (message) {
         if (message == AddSpotState.showSuccessMessage) {
-          snackBar(message: 'Спот отправлен на модерацию', context: context, isError: false);
+          snackBar(
+              message: 'Спот отправлен на модерацию',
+              context: context,
+              isError: false);
         } else if (message == AddSpotState.showErrorMessage) {
-          snackBar(message: 'Ошибка добавления спота', context: context, isError: false);
+          snackBar(
+              message: 'Ошибка добавления спота',
+              context: context,
+              isError: false);
         } else if (message == AddSpotState.notAuthorized) {
-          snackBar(message: 'Необходимо авторизироваться', context: context, isError: true);
+          snackBar(
+              message: 'Необходимо авторизироваться',
+              context: context,
+              isError: true);
         }
       },
       resizeToAvoidBottomInset: true,
       extendBodyBehindAppBar: false,
-      child: AddSpotWidget(currentUserLocation: currentUserLocation),
+      child: AddSpotWidget(
+        currentUserLocation: currentUserLocation,
+      ),
     );
   }
 }

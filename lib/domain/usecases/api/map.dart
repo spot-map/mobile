@@ -8,7 +8,7 @@ import 'package:ride_map/internal/di/inject.dart';
 abstract class MapUseCase {
   Future<MapModel> getSpot();
 
-  Future<Result<bool>> addSpot(
+  Future<Result> addSpot(
       String name, String address, String description, double latitude, double longitude, List<XFile>? images);
 
   Future<MapByIdModel> getSpotById(int id);
@@ -25,7 +25,7 @@ class MapUseCaseImpl implements MapUseCase {
   Future<MapModel> getSpot() => _mapApi.getSpot();
 
   @override
-  Future<Result<bool>> addSpot(
+  Future<Result> addSpot(
       String name, String address, String description, double latitude, double longitude, List<XFile>? images) async {
     final result = await _mapApi.addSpot(name, address, description, latitude, longitude, images);
     if (result.isSuccess) {

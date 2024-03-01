@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ride_map/data/map_models/map_model.dart';
@@ -8,6 +9,7 @@ part 'state.dart';
 
 class MapCubit extends Cubit<MapState> {
   final MapUseCase _mapUseCase = getIt();
+  final TextEditingController searchController = TextEditingController();
 
   MapCubit() : super(const MapState()) {
     _onCreate();
@@ -22,8 +24,14 @@ class MapCubit extends Cubit<MapState> {
     emit(state.copyWith(mapModel: spots, isLoading: false));
   }
 
-  void onSearchSpot(String name) async {
-    final searchedSpot = await _mapUseCase.searchSpot(name);
+  void onSearchSpot() async {
+    final searchedSpot = await _mapUseCase.searchSpot(searchController.text);
     emit(state.copyWith(mapModel: searchedSpot, isLoading: false));
+  }
+
+  @override
+  Future<void> close() {
+    searchController.dispose();
+    return super.close();
   }
 }

@@ -7,11 +7,9 @@ import 'package:ride_map/presentation/ui/screens/map/cubit.dart';
 import 'package:ride_map/until/theme/light/app_colors_light.dart';
 
 class SpotList extends StatelessWidget {
-  SpotList({super.key, required this.model});
+  const SpotList({super.key, required this.model});
 
   final MapModel model;
-
-  final TextEditingController searchController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -20,11 +18,8 @@ class SpotList extends StatelessWidget {
         child: Column(
           children: [
             CupertinoSearchTextField(
-              controller: searchController,
-              onChanged: (String search) {
-                searchController.text = search;
-                context.read<MapCubit>().onSearchSpot(search);
-              },
+              controller: context.read<MapCubit>().searchController,
+              onChanged: (value) => context.read<MapCubit>().onSearchSpot,
             ),
             const SizedBox(width: 10),
             Expanded(
@@ -41,8 +36,8 @@ class SpotList extends StatelessWidget {
                             // leading: CircleAvatar(
                             //     backgroundImage: NetworkImage(
                             //         model.data[index].)),
-                            title: Text(model.data[index].name!),
-                            subtitle: Text(model.data[index].description!)));
+                            title: Text(model.data[index].name ?? ""),
+                            subtitle: Text(model.data[index].description ?? "")));
                   }),
             )
           ],

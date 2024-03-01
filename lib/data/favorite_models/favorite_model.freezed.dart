@@ -23,27 +23,27 @@ mixin _$FavoriteModel {
   List<FavoriteList> get data => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
-  $FavoriteModelCopyWith<FavoriteModel> get copyWith => throw _privateConstructorUsedError;
+  $FavoriteModelCopyWith<FavoriteModel> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FavoriteModelCopyWith<$Res> {
-  factory $FavoriteModelCopyWith(FavoriteModel value, $Res Function(FavoriteModel) then) =
+  factory $FavoriteModelCopyWith(
+          FavoriteModel value, $Res Function(FavoriteModel) then) =
       _$FavoriteModelCopyWithImpl<$Res, FavoriteModel>;
-
   @useResult
   $Res call({List<FavoriteList> data});
 }
 
 /// @nodoc
-class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel> implements $FavoriteModelCopyWith<$Res> {
+class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel>
+    implements $FavoriteModelCopyWith<$Res> {
   _$FavoriteModelCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -62,19 +62,23 @@ class _$FavoriteModelCopyWithImpl<$Res, $Val extends FavoriteModel> implements $
 }
 
 /// @nodoc
-abstract class _$$FavoriteModelImplCopyWith<$Res> implements $FavoriteModelCopyWith<$Res> {
-  factory _$$FavoriteModelImplCopyWith(_$FavoriteModelImpl value, $Res Function(_$FavoriteModelImpl) then) =
+abstract class _$$FavoriteModelImplCopyWith<$Res>
+    implements $FavoriteModelCopyWith<$Res> {
+  factory _$$FavoriteModelImplCopyWith(
+          _$FavoriteModelImpl value, $Res Function(_$FavoriteModelImpl) then) =
       __$$FavoriteModelImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({List<FavoriteList> data});
 }
 
 /// @nodoc
-class __$$FavoriteModelImplCopyWithImpl<$Res> extends _$FavoriteModelCopyWithImpl<$Res, _$FavoriteModelImpl>
+class __$$FavoriteModelImplCopyWithImpl<$Res>
+    extends _$FavoriteModelCopyWithImpl<$Res, _$FavoriteModelImpl>
     implements _$$FavoriteModelImplCopyWith<$Res> {
-  __$$FavoriteModelImplCopyWithImpl(_$FavoriteModelImpl _value, $Res Function(_$FavoriteModelImpl) _then) : super(_value, _then);
+  __$$FavoriteModelImplCopyWithImpl(
+      _$FavoriteModelImpl _value, $Res Function(_$FavoriteModelImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -93,12 +97,13 @@ class __$$FavoriteModelImplCopyWithImpl<$Res> extends _$FavoriteModelCopyWithImp
 /// @nodoc
 @JsonSerializable()
 class _$FavoriteModelImpl implements _FavoriteModel {
-  const _$FavoriteModelImpl({final List<FavoriteList> data = const []}) : _data = data;
+  const _$FavoriteModelImpl({final List<FavoriteList> data = const []})
+      : _data = data;
 
-  factory _$FavoriteModelImpl.fromJson(Map<String, dynamic> json) => _$$FavoriteModelImplFromJson(json);
+  factory _$FavoriteModelImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FavoriteModelImplFromJson(json);
 
   final List<FavoriteList> _data;
-
   @override
   @JsonKey()
   List<FavoriteList> get data {
@@ -122,7 +127,8 @@ class _$FavoriteModelImpl implements _FavoriteModel {
 
   @JsonKey(ignore: true)
   @override
-  int get hashCode => Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
+  int get hashCode =>
+      Object.hash(runtimeType, const DeepCollectionEquality().hash(_data));
 
   @JsonKey(ignore: true)
   @override
@@ -139,16 +145,18 @@ class _$FavoriteModelImpl implements _FavoriteModel {
 }
 
 abstract class _FavoriteModel implements FavoriteModel {
-  const factory _FavoriteModel({final List<FavoriteList> data}) = _$FavoriteModelImpl;
+  const factory _FavoriteModel({final List<FavoriteList> data}) =
+      _$FavoriteModelImpl;
 
-  factory _FavoriteModel.fromJson(Map<String, dynamic> json) = _$FavoriteModelImpl.fromJson;
+  factory _FavoriteModel.fromJson(Map<String, dynamic> json) =
+      _$FavoriteModelImpl.fromJson;
 
   @override
   List<FavoriteList> get data;
-
   @override
   @JsonKey(ignore: true)
-  _$$FavoriteModelImplCopyWith<_$FavoriteModelImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$FavoriteModelImplCopyWith<_$FavoriteModelImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 FavoriteList _$FavoriteListFromJson(Map<String, dynamic> json) {
@@ -158,20 +166,19 @@ FavoriteList _$FavoriteListFromJson(Map<String, dynamic> json) {
 /// @nodoc
 mixin _$FavoriteList {
   int? get id => throw _privateConstructorUsedError;
-
   Spot? get spot => throw _privateConstructorUsedError;
 
   Map<String, dynamic> toJson() => throw _privateConstructorUsedError;
-
   @JsonKey(ignore: true)
-  $FavoriteListCopyWith<FavoriteList> get copyWith => throw _privateConstructorUsedError;
+  $FavoriteListCopyWith<FavoriteList> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
 abstract class $FavoriteListCopyWith<$Res> {
-  factory $FavoriteListCopyWith(FavoriteList value, $Res Function(FavoriteList) then) =
+  factory $FavoriteListCopyWith(
+          FavoriteList value, $Res Function(FavoriteList) then) =
       _$FavoriteListCopyWithImpl<$Res, FavoriteList>;
-
   @useResult
   $Res call({int? id, Spot? spot});
 
@@ -179,12 +186,12 @@ abstract class $FavoriteListCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$FavoriteListCopyWithImpl<$Res, $Val extends FavoriteList> implements $FavoriteListCopyWith<$Res> {
+class _$FavoriteListCopyWithImpl<$Res, $Val extends FavoriteList>
+    implements $FavoriteListCopyWith<$Res> {
   _$FavoriteListCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
   final $Val _value;
-
   // ignore: unused_field
   final $Res Function($Val) _then;
 
@@ -220,10 +227,11 @@ class _$FavoriteListCopyWithImpl<$Res, $Val extends FavoriteList> implements $Fa
 }
 
 /// @nodoc
-abstract class _$$FavoriteListImplCopyWith<$Res> implements $FavoriteListCopyWith<$Res> {
-  factory _$$FavoriteListImplCopyWith(_$FavoriteListImpl value, $Res Function(_$FavoriteListImpl) then) =
+abstract class _$$FavoriteListImplCopyWith<$Res>
+    implements $FavoriteListCopyWith<$Res> {
+  factory _$$FavoriteListImplCopyWith(
+          _$FavoriteListImpl value, $Res Function(_$FavoriteListImpl) then) =
       __$$FavoriteListImplCopyWithImpl<$Res>;
-
   @override
   @useResult
   $Res call({int? id, Spot? spot});
@@ -233,9 +241,12 @@ abstract class _$$FavoriteListImplCopyWith<$Res> implements $FavoriteListCopyWit
 }
 
 /// @nodoc
-class __$$FavoriteListImplCopyWithImpl<$Res> extends _$FavoriteListCopyWithImpl<$Res, _$FavoriteListImpl>
+class __$$FavoriteListImplCopyWithImpl<$Res>
+    extends _$FavoriteListCopyWithImpl<$Res, _$FavoriteListImpl>
     implements _$$FavoriteListImplCopyWith<$Res> {
-  __$$FavoriteListImplCopyWithImpl(_$FavoriteListImpl _value, $Res Function(_$FavoriteListImpl) _then) : super(_value, _then);
+  __$$FavoriteListImplCopyWithImpl(
+      _$FavoriteListImpl _value, $Res Function(_$FavoriteListImpl) _then)
+      : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
@@ -261,7 +272,8 @@ class __$$FavoriteListImplCopyWithImpl<$Res> extends _$FavoriteListCopyWithImpl<
 class _$FavoriteListImpl implements _FavoriteList {
   const _$FavoriteListImpl({this.id, this.spot});
 
-  factory _$FavoriteListImpl.fromJson(Map<String, dynamic> json) => _$$FavoriteListImplFromJson(json);
+  factory _$FavoriteListImpl.fromJson(Map<String, dynamic> json) =>
+      _$$FavoriteListImplFromJson(json);
 
   @override
   final int? id;
@@ -301,17 +313,18 @@ class _$FavoriteListImpl implements _FavoriteList {
 }
 
 abstract class _FavoriteList implements FavoriteList {
-  const factory _FavoriteList({final int? id, final Spot? spot}) = _$FavoriteListImpl;
+  const factory _FavoriteList({final int? id, final Spot? spot}) =
+      _$FavoriteListImpl;
 
-  factory _FavoriteList.fromJson(Map<String, dynamic> json) = _$FavoriteListImpl.fromJson;
+  factory _FavoriteList.fromJson(Map<String, dynamic> json) =
+      _$FavoriteListImpl.fromJson;
 
   @override
   int? get id;
-
   @override
   Spot? get spot;
-
   @override
   @JsonKey(ignore: true)
-  _$$FavoriteListImplCopyWith<_$FavoriteListImpl> get copyWith => throw _privateConstructorUsedError;
+  _$$FavoriteListImplCopyWith<_$FavoriteListImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }

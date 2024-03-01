@@ -7,7 +7,11 @@ import 'package:ride_map/until/theme/base/app_color.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class MapWidget extends StatefulWidget {
-  const MapWidget({Key? key, required this.currentUserLocation, required this.mapObjects, required this.bottomSheet})
+  const MapWidget(
+      {Key? key,
+      required this.currentUserLocation,
+      required this.mapObjects,
+      required this.bottomSheet})
       : super(key: key);
 
   final LatLng currentUserLocation;
@@ -25,11 +29,15 @@ class _MapWidgetState extends State<MapWidget> {
   _onMapCreated(YandexMapController yandexMapController) async {
     controller = yandexMapController;
     await controller.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: Point(latitude: widget.currentUserLocation.latitude, longitude: widget.currentUserLocation.longitude),
+        target: Point(
+            latitude: widget.currentUserLocation.latitude,
+            longitude: widget.currentUserLocation.longitude),
         zoom: 14.5)));
     print('Object ${widget.mapObjects}');
     await controller.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
-        target: Point(latitude: widget.currentUserLocation.latitude, longitude: widget.currentUserLocation.longitude),
+        target: Point(
+            latitude: widget.currentUserLocation.latitude,
+            longitude: widget.currentUserLocation.longitude),
         zoom: 17)));
   }
 
@@ -50,9 +58,11 @@ class _MapWidgetState extends State<MapWidget> {
               padding: const EdgeInsets.only(right: 10.0),
               child: GestureDetector(
                 onTap: () {
-                  context.push(AppRoutes.addSpot, extra: widget.currentUserLocation);
+                  context.push(AppRoutes.addSpot,
+                      extra: widget.currentUserLocation);
                 },
-                child: Icon(Icons.add, size: 20, color: context.colors.backButtonColor),
+                child: Icon(Icons.add,
+                    size: 20, color: context.colors.backButtonColor),
               ),
             ),
           ],

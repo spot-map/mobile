@@ -12,7 +12,8 @@ _$UserImpl _$$UserImplFromJson(Map<String, dynamic> json) => _$UserImpl(
       image: json['image'] as String?,
     );
 
-Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) => <String, dynamic>{
+Map<String, dynamic> _$$UserImplToJson(_$UserImpl instance) =>
+    <String, dynamic>{
       'id': instance.id,
       'name': instance.name,
       'image': instance.image,

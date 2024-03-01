@@ -102,4 +102,15 @@ class AuthCubit extends Cubit<AuthState> {
   onLogout() async {
     await _authUseCase.logout();
   }
+
+  @override
+  Future<void> close() {
+    _messageController.close();
+    emailController.dispose();
+    passwordController.dispose();
+    nameController.dispose();
+    emailRegistrationController.dispose();
+    passwordRegistrationController.dispose();
+    return super.close();
+  }
 }

@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/presentation/ui/screens/authorization/cubit.dart';
-import 'package:ride_map/presentation/ui/screens/authorization/widget/auth_text_field.dart';
+import 'package:ride_map/presentation/ui/widget/text/text_field.dart';
 
 class RegistrationScreen extends StatelessWidget {
   const RegistrationScreen({Key? key, required this.state}) : super(key: key);
@@ -23,7 +23,7 @@ class RegistrationScreen extends StatelessWidget {
                     margin: const EdgeInsets.only(left: 35, right: 35),
                     child: Column(
                       children: [
-                        AuthTextField(
+                        DefaultTextFiled(
                             hinText: 'Имя',
                             controller: context.read<AuthCubit>().nameController,
                             isObscureText: false,
@@ -33,7 +33,7 @@ class RegistrationScreen extends StatelessWidget {
                         const SizedBox(
                           height: 30,
                         ),
-                        AuthTextField(
+                        DefaultTextFiled(
                             hinText: 'Email',
                             controller: context.read<AuthCubit>().emailRegistrationController,
                             isObscureText: false,
@@ -43,7 +43,7 @@ class RegistrationScreen extends StatelessWidget {
                         const SizedBox(
                           height: 30,
                         ),
-                        AuthTextField(
+                        DefaultTextFiled(
                             hinText: 'Пароль',
                             controller: context.read<AuthCubit>().passwordRegistrationController,
                             isObscureText: false,

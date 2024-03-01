@@ -8,5 +8,5 @@ class NetworkState extends Equatable {
 
   static const String isVPN = 'isVPN';
   static const String noConnection = 'noConnection';
-  static const String isConnected = 'notAuthorized';
+  static const String isConnected = 'connected';
 }
