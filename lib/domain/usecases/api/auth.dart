@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:dio/dio.dart';
 import 'package:ride_map/data/result_entity/result.dart';
 import 'package:ride_map/data/token_models/token_model.dart';
@@ -85,7 +84,7 @@ class AuthUseCaseImpl implements AuthUseCase {
     } on DioException catch (e) {
       late final String message;
       if (e.response?.data['data']['success'] == false) {
-        message = "Не обновить токен.";
+        message = "Не удалось обновить токен.";
       } else {
         message = "Ошибка обновления токена.";
       }
