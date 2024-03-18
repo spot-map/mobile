@@ -27,7 +27,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   Future<void> onGetFavoriteSpot() async {
-    final favorite = await _favoriteUseCase.getFavoriteList();
+    final favorite = await _favoriteUseCase.get();
     if (favorite.isSuccess) {
       emit(state.copyWith(favorite: favorite.value, isLoading: false));
     }else{
@@ -38,7 +38,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
 
   void onAddSpotToFavorite(int id) {
     if (_tokenStorage.accessToken!.isNotEmpty) {
-      _favoriteUseCase.addSpotToFavorite(id);
+      _favoriteUseCase.add(id);
       HapticFeedback.vibrate();
       emit(state.copyWith(isLoading: false));
     } else {
@@ -47,7 +47,7 @@ class FavoriteCubit extends Cubit<FavoriteState> {
   }
 
   void onDeleteSpotFromFavorite(int id) {
-    _favoriteUseCase.deleteSpotFromFavorite(id);
+    _favoriteUseCase.delete(id);
     emit(state.copyWith(isLoading: false));
   }
 }

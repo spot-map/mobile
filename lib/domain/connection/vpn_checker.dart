@@ -1,12 +1,12 @@
 import 'dart:io';
 
 abstract class VpnChecker {
-  Future<bool> isVpnActive();
+  Future<bool> isActive();
 }
 
 class VpnCheckerImpl implements VpnChecker {
   @override
-  Future<bool> isVpnActive() async {
+  Future<bool> isActive() async {
     bool isVpnActive;
     List<NetworkInterface> interfaces = await NetworkInterface.list(includeLoopback: false, type: InternetAddressType.any);
     interfaces.isNotEmpty

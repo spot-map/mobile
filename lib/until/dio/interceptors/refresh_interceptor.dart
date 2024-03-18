@@ -11,7 +11,7 @@ class RefreshInterceptor extends Interceptor {
 
   Future<RequestOptions> refreshInterceptor(DioException e, handler, Dio client) async {
     if (e.response?.statusCode == 401) {
-      await _auth.refreshToken();
+      await _auth.refresh();
       e.requestOptions.headers['Authorization'] = 'Bearer ${_tokensStorage.accessToken}';
       return handler.resolve(await client.fetch(e.requestOptions));
     }

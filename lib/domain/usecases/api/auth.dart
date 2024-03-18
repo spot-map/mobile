@@ -13,7 +13,7 @@ abstract class AuthUseCase {
 
   Future<Result<bool>> logout();
 
-  Future<Result> refreshToken();
+  Future<Result> refresh();
 }
 
 class AuthUseCaseImpl implements AuthUseCase {
@@ -77,10 +77,10 @@ class AuthUseCaseImpl implements AuthUseCase {
   }
 
   @override
-  Future<Result> refreshToken() async {
+  Future<Result> refresh() async {
     late final TokenModel token;
     try {
-      token = await _authApi.refreshToken();
+      token = await _authApi.refresh();
     } on DioException catch (e) {
       late final String message;
       if (e.response?.data['data']['success'] == false) {

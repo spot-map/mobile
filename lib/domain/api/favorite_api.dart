@@ -5,18 +5,18 @@ import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/until/api/api_constants.dart';
 
 abstract class FavoriteApi {
-  Future<bool> addSpotToFavorite(int id);
+  Future<bool> add(int id);
 
-  Future<FavoriteModel> getFavoriteList();
+  Future<FavoriteModel> get();
 
-  Future<bool> deleteSpotFromFavorite(int id);
+  Future<bool> delete(int id);
 }
 
 class FavoriteApiImpl implements FavoriteApi {
   final Dio _client = getIt();
 
   @override
-  Future<bool> addSpotToFavorite(int id) async {
+  Future<bool> add(int id) async {
     final response = await _client.post(
       ApiConstants.FAVORITE,
       data: {'spot_id': id},
@@ -25,7 +25,7 @@ class FavoriteApiImpl implements FavoriteApi {
   }
 
   @override
-  Future<FavoriteModel> getFavoriteList() async {
+  Future<FavoriteModel> get() async {
     final response = await _client.get(
       ApiConstants.FAVORITE,
     );
@@ -33,7 +33,7 @@ class FavoriteApiImpl implements FavoriteApi {
   }
 
   @override
-  Future<bool> deleteSpotFromFavorite(int id) async {
+  Future<bool> delete(int id) async {
     final response = await _client.delete(
       '${ApiConstants.FAVORITE}/$id',
     );

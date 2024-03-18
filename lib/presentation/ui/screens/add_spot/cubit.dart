@@ -31,7 +31,7 @@ class AddSpotCubit extends Cubit<AddSpotState> {
   ) async {
     emit(state.copyWith(isLoading: true));
     if (_tokenStorage.accessToken != null) {
-      final result = await _mapUseCase.addSpot(nameController.text, addressController.text,
+      final result = await _mapUseCase.create(nameController.text, addressController.text,
           descriptionController.text, latitude, longitude, state.images);
       if (result.isSuccess) {
         final addImage = await _mapUseCase.addImage(result.value.data!.id!, state.images);

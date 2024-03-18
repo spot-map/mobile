@@ -6,21 +6,21 @@ import 'package:ride_map/domain/api/favorite_api.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
 abstract class FavoriteUseCase {
-  Future<Result<bool>> addSpotToFavorite(int id);
+  Future<Result<bool>> add(int id);
 
-  Future<Result<FavoriteModel>> getFavoriteList();
+  Future<Result<FavoriteModel>> get();
 
-  Future<Result<bool>> deleteSpotFromFavorite(int id);
+  Future<Result<bool>> delete(int id);
 }
 
 class FavoriteUseCaseImpl implements FavoriteUseCase {
   final FavoriteApi _favoriteApi = getIt();
 
   @override
-  Future<Result<bool>> addSpotToFavorite(int id) async{
+  Future<Result<bool>> add(int id) async{
     late final bool added;
     try{
-      added = await _favoriteApi.addSpotToFavorite(id);
+      added = await _favoriteApi.add(id);
     }catch(e,s){
       log('$e, $s', name: "addToFavorite");
       return Result.failure("Не удалось добавить спот в избранного.");
@@ -29,10 +29,10 @@ class FavoriteUseCaseImpl implements FavoriteUseCase {
   }
 
   @override
-  Future<Result<FavoriteModel>> getFavoriteList() async {
+  Future<Result<FavoriteModel>> get() async {
     late final FavoriteModel favorite;
     try {
-      favorite = await _favoriteApi.getFavoriteList();
+      favorite = await _favoriteApi.get();
     } catch (e, s) {
       log('$e, $s', name: 'favorite');
       return Result.failure('Не удалось получить Избранное.');
@@ -41,10 +41,10 @@ class FavoriteUseCaseImpl implements FavoriteUseCase {
   }
 
   @override
-  Future<Result<bool>> deleteSpotFromFavorite(int id) async {
+  Future<Result<bool>> delete(int id) async {
     late final bool deleted;
     try {
-      deleted = await _favoriteApi.deleteSpotFromFavorite(id);
+      deleted = await _favoriteApi.delete(id);
     } catch (e, s) {
       log('$e, $s', name: "deleteFromFavorite");
       return Result.failure("Не удалось удалить спот из избранного.");

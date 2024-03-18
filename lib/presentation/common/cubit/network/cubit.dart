@@ -33,7 +33,7 @@ class NetworkCubit extends Cubit<NetworkState> {
   }
 
   _isVpn() async {
-    if (await _checkerUseCase.isVpnActive()) {
+    if (await _checkerUseCase.isActive()) {
       _messageController.add(NetworkState.isVPN);
     }
   }

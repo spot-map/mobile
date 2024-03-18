@@ -25,7 +25,7 @@ class MapCubit extends Cubit<MapState> {
   }
 
   Future<void> onGetSpots() async {
-    final spots = await _mapUseCase.getSpot();
+    final spots = await _mapUseCase.get();
     if (spots.isSuccess) {
       emit(state.copyWith(mapModel: spots.value, isLoading: false));
     } else {
@@ -35,7 +35,7 @@ class MapCubit extends Cubit<MapState> {
   }
 
   void onSearchSpot() async {
-    final searchedSpot = await _mapUseCase.searchSpot(searchController.text);
+    final searchedSpot = await _mapUseCase.search(searchController.text);
     if (searchedSpot.isSuccess) {
       emit(state.copyWith(mapModel: searchedSpot.value, isLoading: false));
     } else {

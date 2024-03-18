@@ -10,7 +10,7 @@ abstract class AuthApi {
 
   Future<bool> logout();
 
-  Future<TokenModel> refreshToken();
+  Future<TokenModel> refresh();
 }
 
 class AuthApiImpl implements AuthApi {
@@ -39,7 +39,7 @@ class AuthApiImpl implements AuthApi {
   }
 
   @override
-  Future<TokenModel> refreshToken() async {
+  Future<TokenModel> refresh() async {
     Response response = await _client.post(ApiConstants.REFRESH);
     return TokenModel.fromJson(response.data['data']['token']);
   }

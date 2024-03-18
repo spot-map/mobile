@@ -9,15 +9,15 @@ import 'package:ride_map/domain/api/map_api.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
 abstract class MapUseCase {
-  Future<Result<MapModel>> getSpot();
+  Future<Result<MapModel>> get();
 
-  Future<Result<MapByIdModel>> getSpotById(int id);
+  Future<Result<MapByIdModel>> getById(int id);
 
-  Future<Result<MapModel>> searchSpot(String name);
+  Future<Result<MapModel>> search(String name);
 
-  Future<Result<bool>> addReactions(String text, int score, int spotId);
+  Future<Result<bool>> comment(String text, int score, int spotId);
 
-  Future<Result<MapByIdModel>> addSpot(String name, String address, String description, double latitude, double longitude, List<XFile>? images);
+  Future<Result<MapByIdModel>> create(String name, String address, String description, double latitude, double longitude, List<XFile>? images);
 
   Future<Result<bool>> addImage(int id, List<XFile>? images);
 }
@@ -26,10 +26,10 @@ class MapUseCaseImpl implements MapUseCase {
   final MapApi _mapApi = getIt();
 
   @override
-  Future<Result<MapModel>> getSpot() async {
+  Future<Result<MapModel>> get() async {
     late final MapModel map;
     try {
-      map = await _mapApi.getSpot();
+      map = await _mapApi.get();
     } catch (e, s) {
       log('$e, $s', name: 'getSpot');
       return Result.failure("Не удалось получить спот.");
@@ -38,10 +38,10 @@ class MapUseCaseImpl implements MapUseCase {
   }
 
   @override
-  Future<Result<MapByIdModel>> getSpotById(int id) async {
+  Future<Result<MapByIdModel>> getById(int id) async {
     late final MapByIdModel byId;
     try {
-      byId = await _mapApi.getSpotById(id);
+      byId = await _mapApi.getById(id);
     } catch (e, s) {
       log('$e, $s', name: 'getSpotById');
       return Result.failure('Не удалость получить спот по Id.');
@@ -50,10 +50,10 @@ class MapUseCaseImpl implements MapUseCase {
   }
 
   @override
-  Future<Result<MapModel>> searchSpot(String name) async {
+  Future<Result<MapModel>> search(String name) async {
     late final MapModel map;
     try {
-      map = await _mapApi.searchSpot(name);
+      map = await _mapApi.search(name);
     } catch (e, s) {
       log('$e, $s', name: 'searchSpot');
       return Result.failure('Не удалость найти спот.');
@@ -62,10 +62,10 @@ class MapUseCaseImpl implements MapUseCase {
   }
 
   @override
-  Future<Result<MapByIdModel>> addSpot(String name, String address, String description, double latitude, double longitude, List<XFile>? images) async {
+  Future<Result<MapByIdModel>> create(String name, String address, String description, double latitude, double longitude, List<XFile>? images) async {
     late final MapByIdModel addedSpot;
     try {
-      addedSpot = await _mapApi.addSpot(name, address, description, latitude, longitude, images);
+      addedSpot = await _mapApi.create(name, address, description, latitude, longitude, images);
     } catch (e, s) {
       log('$e, $s', name: 'addSpot');
       return Result.failure('Не удалость создать спот.');
@@ -74,10 +74,10 @@ class MapUseCaseImpl implements MapUseCase {
   }
 
   @override
-  Future<Result<bool>> addReactions(String text, int score, int spotId) async{
+  Future<Result<bool>> comment(String text, int score, int spotId) async{
     late final bool isReactionAdded;
     try{
-      isReactionAdded = await _mapApi.addReactions(text, score, spotId);
+      isReactionAdded = await _mapApi.comment(text, score, spotId);
     }catch(e,s){
       log('$e, $s', name: 'addReaction');
       return Result.failure('Не отправить отправить реакцию');

@@ -20,7 +20,7 @@ class SpotByIdCubit extends Cubit<SpotByIdState> {
   }
 
   _onCreate(int id) async {
-    final spotById = await _mapUseCase.getSpotById(id);
+    final spotById = await _mapUseCase.getById(id);
     if (spotById.isSuccess) {
       emit(state.copyWith(mapByIdModel: spotById.value, isLoading: false));
     } else {
@@ -34,7 +34,7 @@ class SpotByIdCubit extends Cubit<SpotByIdState> {
   }
 
   void onSendReaction(String text, int score, int spotId) async {
-    await _mapUseCase.addReactions(text, score, spotId);
+    await _mapUseCase.comment(text, score, spotId);
   }
 
   @override
