@@ -1,24 +1,54 @@
+import 'dart:developer';
+
 import 'package:ride_map/data/favorite_models/favorite_model.dart';
+import 'package:ride_map/data/result_entity/result.dart';
 import 'package:ride_map/domain/api/favorite_api.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
 abstract class FavoriteUseCase {
-  Future<void> addSpotToFavorite(int id);
+  Future<Result<bool>> addSpotToFavorite(int id);
 
-  Future<FavoriteModel> getFavoriteList();
+  Future<Result<FavoriteModel>> getFavoriteList();
 
-  Future<void> deleteSpotFromFavorite(int id);
+  Future<Result<bool>> deleteSpotFromFavorite(int id);
 }
 
 class FavoriteUseCaseImpl implements FavoriteUseCase {
   final FavoriteApi _favoriteApi = getIt();
 
   @override
-  Future<void> addSpotToFavorite(int id) => _favoriteApi.addSpotToFavorite(id);
+  Future<Result<bool>> addSpotToFavorite(int id) async{
+    late final bool added;
+    try{
+      added = await _favoriteApi.addSpotToFavorite(id);
+    }catch(e,s){
+      log('$e, $s', name: "addToFavorite");
+      return Result.failure("Не удалось добавить спот в избранного.");
+    }
+    return Result.success(added);
+  }
 
   @override
-  Future<FavoriteModel> getFavoriteList() => _favoriteApi.getFavoriteList();
+  Future<Result<FavoriteModel>> getFavoriteList() async {
+    late final FavoriteModel favorite;
+    try {
+      favorite = await _favoriteApi.getFavoriteList();
+    } catch (e, s) {
+      log('$e, $s', name: 'favorite');
+      return Result.failure('Не удалось получить Избранное.');
+    }
+    return Result.success(favorite);
+  }
 
   @override
-  Future<void> deleteSpotFromFavorite(int id) => _favoriteApi.deleteSpotFromFavorite(id);
+  Future<Result<bool>> deleteSpotFromFavorite(int id) async {
+    late final bool deleted;
+    try {
+      deleted = await _favoriteApi.deleteSpotFromFavorite(id);
+    } catch (e, s) {
+      log('$e, $s', name: "deleteFromFavorite");
+      return Result.failure("Не удалось удалить спот из избранного.");
+    }
+    return Result.success(deleted);
+  }
 }

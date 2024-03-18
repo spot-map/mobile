@@ -41,19 +41,19 @@ class MapScreen extends StatelessWidget {
                 : MapWidget(
                     currentUserLocation: locationState.currentPosition!,
                     mapObjects: mapObject,
-                    bottomSheet: DraggableScrollableSheet(
-                        initialChildSize: 0.13,
-                        maxChildSize: 0.9,
-                        minChildSize: 0.13,
-                        expand: false,
-                        snap: true,
-                        snapAnimationDuration:
-                            const Duration(milliseconds: 150),
-                        builder: (context, scrollController) =>
-                            SingleChildScrollView(
-                                controller: scrollController,
-                                child: SpotList(
-                                    model: mapState.mapModel!))),
+                    // bottomSheet: DraggableScrollableSheet(
+                    //     initialChildSize: 0.13,
+                    //     maxChildSize: 0.9,
+                    //     minChildSize: 0.13,
+                    //     expand: false,
+                    //     snap: true,
+                    //     snapAnimationDuration:
+                    //         const Duration(milliseconds: 150),
+                    //     builder: (context, scrollController) =>
+                    //         SingleChildScrollView(
+                    //             controller: scrollController,
+                    //             child: SpotList(
+                    //                 model: mapState.mapModel!))),
                   );
           },
         );

@@ -4,7 +4,7 @@ class AddSpotState extends Equatable {
   final bool isLoading;
   final String errorMessage;
   final List<XFile>? images;
-  final bool onAdded;
+  final MapByIdModel? onAdded;
   final String? nameError;
   String name;
   final String? descriptionError;
@@ -13,7 +13,7 @@ class AddSpotState extends Equatable {
   String address;
 
   AddSpotState(
-      {this.onAdded = false,
+      {this.onAdded,
       this.images,
       this.isLoading = false,
       String? errorMessage,
@@ -40,7 +40,7 @@ class AddSpotState extends Equatable {
       ];
 
   AddSpotState copyWith(
-      {bool? onAdded,
+      {MapByIdModel? onAdded,
       bool? isLoading,
       String? errorMessage,
       List<XFile>? images,

@@ -8,6 +8,7 @@ import 'package:ride_map/presentation/common/router/routes.dart';
 import 'package:ride_map/presentation/ui/screens/add_spot/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/add_spot/screen.dart';
 import 'package:ride_map/presentation/ui/screens/bottom_navigation/screen.dart';
+import 'package:ride_map/presentation/ui/screens/favorite/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/splash/screen.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/screen.dart';
@@ -28,10 +29,11 @@ final appRouter = GoRouter(navigatorKey: _navigatorKey, initialLocation: AppRout
       path: AppRoutes.spotById,
       builder: (context, state) {
         final id = state.extra! as int;
-        return BlocProvider<SpotByIdCubit>(
-          create: (_) => getIt(param1: id),
-          child: const SpotByIdModal(),
-        );
+        return MultiBlocProvider(providers: [
+          BlocProvider<SpotByIdCubit>(create: (_) => getIt(param1: id)),
+          BlocProvider<FavoriteCubit>(create: (_) => getIt())
+        ], child: const SpotByIdScreen());
+
       }),
   GoRoute(
       path: AppRoutes.fullImageScreen,

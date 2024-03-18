@@ -4,12 +4,12 @@ import 'package:ride_map/until/theme/base/app_color.dart';
 class DefaultTextFiled extends StatelessWidget {
   const DefaultTextFiled(
       {super.key,
-      required this.hinText,
-      required this.controller,
-      required this.keyboardType,
-      required this.isObscureText,
-      required this.onChanged,
-      required this.errorText});
+        required this.hinText,
+        required this.controller,
+        required this.keyboardType,
+        required this.isObscureText,
+        required this.onChanged,
+        required this.errorText});
 
   final String hinText;
   final TextEditingController controller;

@@ -67,7 +67,7 @@ dependencies:
   get_it: 7.6.0
 
   #Network
-  dio: ^5.4.0
+  dio: ^5.4.1
 
   #Generator
   freezed: ^2.3.2

@@ -4,6 +4,6 @@ A new Flutter project.
 
 ## Getting Started
 
-For generate models and DI config: 
+Run for generate models: 
 
-- [Build Runner Package (Injectable generator)] flutter pub run build_runner build --delete-conflicting-outputs
+- [Build Runner Package] flutter pub run build_runner build --delete-conflicting-outputs

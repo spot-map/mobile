@@ -38,7 +38,6 @@ class AuthCubit extends Cubit<AuthState> {
     } else {
       _messageController.add(AuthState.failureLogin);
     }
-    emit(state.copyWith(isLogin: result.value));
   }
 
   onRegistration() async {
@@ -56,7 +55,6 @@ class AuthCubit extends Cubit<AuthState> {
     } else {
       _messageController.add(AuthState.failureRegistration);
     }
-    emit(state.copyWith(isRegistration: result.value));
   }
 
   onNameChanged(String name) {

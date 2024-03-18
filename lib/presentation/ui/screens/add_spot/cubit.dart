@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
+import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
 import 'package:ride_map/domain/storage/token.dart';
 import 'package:ride_map/domain/usecases/api/map.dart';
 import 'package:ride_map/internal/di/inject.dart';
@@ -33,7 +34,12 @@ class AddSpotCubit extends Cubit<AddSpotState> {
       final result = await _mapUseCase.addSpot(nameController.text, addressController.text,
           descriptionController.text, latitude, longitude, state.images);
       if (result.isSuccess) {
-        _messageController.add(AddSpotState.showSuccessMessage);
+        final addImage = await _mapUseCase.addImage(result.value.data!.id!, state.images);
+        if(addImage.isSuccess){
+          _messageController.add(AddSpotState.showSuccessMessage);
+        }else{
+          _messageController.add(addImage.message);
+        }
       } else {
         _messageController.add(AddSpotState.showErrorMessage);
       }
@@ -41,7 +47,6 @@ class AddSpotCubit extends Cubit<AddSpotState> {
     } else {
       _messageController.add(AddSpotState.notAuthorized);
     }
-    emit(state.copyWith(onAdded: false, isLoading: false, images: []));
   }
 
   Future<void> onSelectMultipleImages(List<XFile> images) async {

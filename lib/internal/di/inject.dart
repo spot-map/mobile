@@ -22,6 +22,7 @@ import 'package:ride_map/presentation/ui/screens/favorite/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/map/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/cubit.dart';
 import 'package:ride_map/until/dio/dio_client.dart';
+import 'package:ride_map/until/dio/interceptors/refresh_interceptor.dart';
 import 'package:ride_map/until/dio/interceptors/token_interceptor.dart';
 
 final getIt = GetIt.instance;

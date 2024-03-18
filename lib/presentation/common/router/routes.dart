@@ -18,5 +18,5 @@ class AppRoutes {
   static const settings = '/${SettingsScreen.path}';
   static const bottomNavigationHome = '/${RootScreen.path}';
   static const fullImageScreen = '/${FullScreenPage.path}';
-  static const spotById = '/${SpotByIdModal.path}';
+  static const spotById = '/${SpotByIdScreen.path}';
 }

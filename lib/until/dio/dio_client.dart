@@ -1,14 +1,13 @@
 import 'package:dio/dio.dart';
 import 'package:logger/logger.dart';
 import 'package:ride_map/internal/di/inject.dart';
-
 import 'package:ride_map/until/api/api_constants.dart';
+import 'package:ride_map/until/dio/interceptors/refresh_interceptor.dart';
 import 'package:ride_map/until/dio/interceptors/token_interceptor.dart';
 
 class Client {
   final logger = Logger();
   final TokenInterceptor _tokenInterceptor = getIt();
-
 
   Dio create() {
     final Dio client = Dio(BaseOptions(
@@ -17,7 +16,7 @@ class Client {
       connectTimeout: const Duration(seconds: 10000),
       sendTimeout: const Duration(seconds: 10000),
     ));
-
+    client.options.headers = {'Content-Type': 'application/json', 'Accept': 'application/json'};
     client.interceptors.addAll([
       InterceptorsWrapper(onRequest: (options, handler) async {
         final newOptions = await _tokenInterceptor.requestInterceptor(options, client);
