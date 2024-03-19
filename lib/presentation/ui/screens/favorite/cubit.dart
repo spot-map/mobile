@@ -1,12 +1,10 @@
 import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/services.dart';
 import 'package:ride_map/data/favorite_models/favorite_model.dart';
 import 'package:ride_map/domain/storage/token.dart';
 import 'package:ride_map/domain/usecases/api/favorite.dart';
-import 'package:ride_map/domain/usecases/storage/token/tokent.dart';
 import 'package:ride_map/internal/di/inject.dart';
 
 part 'state.dart';
