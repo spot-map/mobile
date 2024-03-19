@@ -75,27 +75,27 @@ class MapUseCaseImpl implements MapUseCase {
 
   @override
   Future<Result<bool>> comment(String text, int score, int spotId) async{
-    late final bool isReactionAdded;
+    late final bool isCommented;
     try{
-      isReactionAdded = await _mapApi.comment(text, score, spotId);
+      isCommented = await _mapApi.comment(text, score, spotId);
     }catch(e,s){
       log('$e, $s', name: 'addReaction');
       return Result.failure('Не отправить отправить реакцию');
     }
 
-    return Result.success(isReactionAdded);
+    return Result.success(isCommented);
   }
 
   @override
   Future<Result<bool>> addImage(int id, List<XFile>? images) async {
-    late final bool imageAdded;
+    late final bool isImageAdded;
     try {
-      imageAdded = await _mapApi.addImage(id, images);
+      isImageAdded = await _mapApi.addImage(id, images);
     } catch (e, s) {
       log('$e, $s', name: 'addImage');
       return Result.failure('Не удалость добавить изображение.');
     }
 
-    return Result.success(imageAdded);
+    return Result.success(isImageAdded);
   }
 }

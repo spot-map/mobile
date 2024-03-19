@@ -1,10 +1,10 @@
+// ignore_for_file: must_be_immutable
+
 part of 'cubit.dart';
 
 class AuthState extends Equatable {
   AuthState(
-      {this.isLogin,
-      this.isRegistration,
-      this.emailError,
+      {this.emailError,
       this.email = "",
       this.password = "",
       this.passwordError,
@@ -15,8 +15,6 @@ class AuthState extends Equatable {
       this.nameError,
       this.name = ""});
 
-  final bool? isLogin;
-  final bool? isRegistration;
   final String? emailError;
   final String? emailRegistrationError;
   final String? passwordError;
@@ -30,8 +28,6 @@ class AuthState extends Equatable {
 
   @override
   List<Object?> get props => [
-        isRegistration,
-        isLogin,
         emailError,
         email,
         password,
@@ -60,18 +56,14 @@ class AuthState extends Equatable {
     return AuthState(
         emailError: emailError ?? this.emailError,
         email: email ?? this.email,
-        isLogin: isLogin ?? this.isLogin,
         password: password ?? this.password,
         passwordError: passwordError ?? this.passwordError,
         name: name ?? this.name,
         nameError: nameError ?? this.nameError,
-        isRegistration: isRegistration ?? this.isRegistration,
         passwordRegistration: passwordRegistration ?? this.passwordRegistration,
         emailRegistration: emailRegistration ?? this.emailRegistration,
-        emailRegistrationError:
-            emailRegistrationError ?? this.emailRegistrationError,
-        passwordRegistrationError:
-            passwordRegistrationError ?? this.passwordRegistrationError);
+        emailRegistrationError: emailRegistrationError ?? this.emailRegistrationError,
+        passwordRegistrationError: passwordRegistrationError ?? this.passwordRegistrationError);
   }
 
   static const String successLogin = 'successLogin';
