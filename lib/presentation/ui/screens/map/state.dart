@@ -7,7 +7,6 @@ class MapState extends Equatable {
   const MapState({
     this.mapModel,
     this.isLoading = true,
-    String? errorMessage,
   });
 
   @override

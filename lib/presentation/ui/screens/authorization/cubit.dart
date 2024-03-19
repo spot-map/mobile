@@ -3,9 +3,9 @@ import 'dart:developer';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ride_map/domain/usecases/api/auth.dart';
-import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/until/validators/validator.dart';
+import 'package:ride_map/core/di/inject.dart';
+import 'package:ride_map/domain/usecases/auth/auth.dart';
+import 'package:ride_map/domain/entities/common/validator.dart';
 
 part 'state.dart';
 
@@ -45,10 +45,12 @@ class AuthCubit extends Cubit<AuthState> {
       final nameError = TextValidators.name(state.name);
       final emailError = TextValidators.email(state.emailRegistration);
       final passwordError = TextValidators.password(state.passwordRegistration);
-      emit(state.copyWith(emailRegistrationError: emailError, passwordRegistrationError: passwordError, nameError: nameError));
+      emit(state.copyWith(
+          emailRegistrationError: emailError, passwordRegistrationError: passwordError, nameError: nameError));
       return;
     }
-    if (state.nameError != null && state.emailRegistrationError != null && state.passwordRegistrationError != null) return;
+    if (state.nameError != null && state.emailRegistrationError != null && state.passwordRegistrationError != null)
+      return;
     final result = await _authUseCase.registration(state.email, state.password, state.name);
     if (result.isSuccess) {
       _messageController.add(AuthState.successRegistration);

@@ -4,10 +4,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
-import 'package:ride_map/internal/init_async_service.dart';
-import 'package:ride_map/until/bloc/bloc_observable.dart';
-import 'internal/app.dart';
-import 'internal/di/inject.dart';
+import 'package:ride_map/core/app.dart';
+import 'package:ride_map/core/di/inject.dart';
+import 'package:ride_map/core/init_async_service.dart';
+import 'package:ride_map/core/bloc_observable.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

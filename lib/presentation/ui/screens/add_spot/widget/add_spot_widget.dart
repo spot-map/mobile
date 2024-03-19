@@ -4,8 +4,8 @@ import 'package:go_router/go_router.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:ride_map/presentation/common/router/routes.dart';
+import 'package:ride_map/presentation/common/theme/base/app_color.dart';
 import 'package:ride_map/presentation/ui/widget/text/text_field.dart';
-import 'package:ride_map/until/theme/base/app_color.dart';
 import 'dart:io';
 
 import '../cubit.dart';
@@ -40,35 +40,27 @@ class AddSpotWidget extends StatelessWidget {
                                 hinText: 'Название',
                                 isObscureText: false,
                                 errorText: state.nameError,
-                                onChanged: context
-                                    .read<AddSpotCubit>()
-                                    .onSpotNameChanged,
+                                onChanged: context.read<AddSpotCubit>().onSpotNameChanged,
                                 keyboardType: TextInputType.name),
                             const SizedBox(
                               height: 30,
                             ),
                             DefaultTextFiled(
-                                controller:
-                                    context.read<AddSpotCubit>().addressController,
+                                controller: context.read<AddSpotCubit>().addressController,
                                 hinText: 'Адрес',
                                 isObscureText: false,
                                 errorText: state.addressError,
-                                onChanged: context
-                                    .read<AddSpotCubit>()
-                                    .onAddressChanged,
+                                onChanged: context.read<AddSpotCubit>().onAddressChanged,
                                 keyboardType: TextInputType.name),
                             const SizedBox(
                               height: 30,
                             ),
                             DefaultTextFiled(
-                                controller:
-                                    context.read<AddSpotCubit>().descriptionController,
+                                controller: context.read<AddSpotCubit>().descriptionController,
                                 hinText: 'Адрес',
                                 isObscureText: false,
                                 errorText: state.descriptionError,
-                                onChanged: context
-                                    .read<AddSpotCubit>()
-                                    .onDescriptionChanged,
+                                onChanged: context.read<AddSpotCubit>().onDescriptionChanged,
                                 keyboardType: TextInputType.name),
                             const SizedBox(
                               height: 30,
@@ -83,9 +75,7 @@ class AddSpotWidget extends StatelessWidget {
                       final ImagePicker picker = ImagePicker();
                       final List<XFile> images = await picker.pickMultiImage();
                       if (images != null) {
-                        context
-                            .read<AddSpotCubit>()
-                            .onSelectMultipleImages(images);
+                        context.read<AddSpotCubit>().onSelectMultipleImages(images);
                       }
                     },
                     child: Container(
@@ -111,14 +101,11 @@ class AddSpotWidget extends StatelessWidget {
                                     child: Container(
                                       height: 100,
                                       width: 120,
-                                      margin: const EdgeInsets.only(
-                                          left: 3.0, right: 3.0),
+                                      margin: const EdgeInsets.only(left: 3.0, right: 3.0),
                                       decoration: BoxDecoration(
-                                          borderRadius:
-                                              BorderRadius.circular(12.0),
+                                          borderRadius: BorderRadius.circular(12.0),
                                           image: DecorationImage(
-                                            image: FileImage(File(
-                                                state.images![index].path)),
+                                            image: FileImage(File(state.images![index].path)),
                                             fit: BoxFit.cover,
                                           )),
                                     ),
@@ -135,13 +122,12 @@ class AddSpotWidget extends StatelessWidget {
                       minWidth: MediaQuery.of(context).size.width,
                       height: 50,
                       color: Colors.blue,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(12)),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       onPressed: () {
                         if (_formKey.currentState!.validate()) {
-                          context.read<AddSpotCubit>().onAddStop(
-                              currentUserLocation.latitude,
-                              currentUserLocation.longitude);
+                          context
+                              .read<AddSpotCubit>()
+                              .onAddStop(currentUserLocation.latitude, currentUserLocation.longitude);
                         }
                       },
                       child: state.isLoading

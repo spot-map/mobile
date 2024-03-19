@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:ride_map/data/favorite_models/favorite_model.dart';
 import 'package:flutter_slidable/flutter_slidable.dart';
+import 'package:ride_map/domain/entities/favorite_models/favorite_model.dart';
+import 'package:ride_map/presentation/common/theme/base/app_color.dart';
 import 'package:ride_map/presentation/ui/screens/favorite/cubit.dart';
-import 'package:ride_map/until/theme/base/app_color.dart';
 
 class FavoriteWidget extends StatelessWidget {
   const FavoriteWidget({super.key, required this.favoriteModel});

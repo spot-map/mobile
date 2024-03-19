@@ -1,10 +1,9 @@
 import 'dart:async';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:ride_map/core/di/inject.dart';
 import 'package:ride_map/domain/usecases/connection/vpn_checker.dart';
-import 'package:ride_map/internal/di/inject.dart';
 
 part 'state.dart';
 
@@ -25,7 +24,9 @@ class NetworkCubit extends Cubit<NetworkState> {
   }
 
   _connectivityResult(ConnectivityResult result) {
-    if (result == ConnectivityResult.wifi || result == ConnectivityResult.mobile || result == ConnectivityResult.ethernet) {
+    if (result == ConnectivityResult.wifi ||
+        result == ConnectivityResult.mobile ||
+        result == ConnectivityResult.ethernet) {
       _messageController.add(NetworkState.isConnected);
     } else if (result == ConnectivityResult.none) {
       _messageController.add(NetworkState.noConnection);

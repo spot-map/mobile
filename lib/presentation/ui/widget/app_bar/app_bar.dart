@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:ride_map/presentation/common/cubit/theme/cubit.dart';
-import 'package:ride_map/until/theme/base/app_color.dart';
+import 'package:ride_map/presentation/common/theme/base/app_color.dart';
 
 class MyAppBar extends StatelessWidget implements PreferredSizeWidget {
   const MyAppBar(

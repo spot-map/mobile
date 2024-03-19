@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:ride_map/core/di/inject.dart';
 import 'package:ride_map/presentation/common/cubit/theme/cubit.dart';
-import 'package:ride_map/internal/di/inject.dart';
 import 'package:ride_map/presentation/ui/screens/authorization/login_screen/login_widget.dart';
 import 'package:ride_map/presentation/ui/screens/authorization/registration_screen/registration_screen.dart';
 import 'package:ride_map/presentation/ui/screens/favorite/cubit.dart';

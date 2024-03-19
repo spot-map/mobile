@@ -28,18 +28,8 @@ class AddSpotState extends Equatable {
       : errorMessage = errorMessage ?? '';
 
   @override
-  List<Object?> get props => [
-        onAdded,
-        images,
-        isLoading,
-        errorMessage,
-        name,
-        nameError,
-        description,
-        descriptionError,
-        address,
-        addressError
-      ];
+  List<Object?> get props =>
+      [onAdded, images, isLoading, errorMessage, name, nameError, description, descriptionError, address, addressError];
 
   AddSpotState copyWith(
       {MapByIdModel? onAdded,

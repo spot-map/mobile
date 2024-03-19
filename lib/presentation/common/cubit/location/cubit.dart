@@ -4,7 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:ride_map/presentation/common/assets/app_assets.dart';
-import 'package:ride_map/until/yandex/map_object.dart';
+import 'package:ride_map/domain/entities/common/map_object.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 part 'state.dart';
@@ -20,7 +20,8 @@ class LocationCubit extends Cubit<LocationState> {
   void onGetLocation() {
     _positionStream = Geolocator.getPositionStream().listen((event) {
       currentPosition = LatLng(event.latitude, event.longitude);
-      addMapObject(latitude: event.latitude, longitude: event.longitude, objectId: 'user location', icon: AppAssets.userMapIcon);
+      addMapObject(
+          latitude: event.latitude, longitude: event.longitude, objectId: 'user location', icon: AppAssets.userMapIcon);
       emit(state.copyWith(currentPosition: currentPosition));
     });
   }
@@ -30,7 +31,7 @@ class LocationCubit extends Cubit<LocationState> {
     return Future.wait([
       _positionStream.cancel(),
     ]).then(
-          (value) => super.close(),
+      (value) => super.close(),
     );
   }
 }

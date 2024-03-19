@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
+import 'package:ride_map/domain/entities/map_by_id_models/map_by_id_model.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/widget/reactions/widget/reactions.dart';
 
 Future reactionsBottomSheet(BuildContext context, MapByIdModel model) {

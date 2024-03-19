@@ -3,9 +3,9 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ride_map/data/map_models/map_model.dart';
-import 'package:ride_map/domain/usecases/api/map.dart';
-import 'package:ride_map/internal/di/inject.dart';
+import 'package:ride_map/core/di/inject.dart';
+import 'package:ride_map/domain/entities/map_models/map_model.dart';
+import 'package:ride_map/domain/usecases/map/map.dart';
 
 part 'state.dart';
 

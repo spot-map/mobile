@@ -28,7 +28,10 @@ class SplashScreen extends StatelessWidget {
           _goTo(context);
         } else if (message == NetworkState.isVPN) {
           snackBar(
-              isWarning: true, message: 'Включенный VPN может замедлить работу приложения', context: context, isError: false);
+              isWarning: true,
+              message: 'Включенный VPN может замедлить работу приложения',
+              context: context,
+              isError: false);
           _goTo(context);
         } else if (message == NetworkState.noConnection) {
           snackBar(message: 'Нет подключения', context: context, isError: true);

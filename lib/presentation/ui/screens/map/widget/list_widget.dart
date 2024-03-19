@@ -2,9 +2,9 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
-import 'package:ride_map/data/map_models/map_model.dart';
+import 'package:ride_map/domain/entities/map_models/map_model.dart';
+import 'package:ride_map/presentation/common/theme/base/app_color.dart';
 import 'package:ride_map/presentation/ui/screens/map/cubit.dart';
-import 'package:ride_map/until/theme/light/app_colors_light.dart';
 
 class SpotList extends StatelessWidget {
   const SpotList({super.key, required this.model});
@@ -28,7 +28,7 @@ class SpotList extends StatelessWidget {
                   itemBuilder: (context, index) {
                     return Card(
                         elevation: 15,
-                        shadowColor: AppColorLight().backButtonColor,
+                        shadowColor: context.colors.backButtonColor,
                         shape: RoundedRectangleBorder(
                           borderRadius: BorderRadius.circular(15),
                         ),

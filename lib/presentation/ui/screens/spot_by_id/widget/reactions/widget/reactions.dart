@@ -1,4 +1,4 @@
-import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
+import 'package:ride_map/domain/entities/map_by_id_models/map_by_id_model.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/widget/reactions/widget/reaction_list.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
@@ -67,12 +67,12 @@ class Reactions extends StatelessWidget {
                             FocusManager.instance.primaryFocus?.unfocus();
                             showRateDialog(
                                 context,
-                                    (rating) => {
-                                  context
-                                      .read<SpotByIdCubit>()
-                                      .onSendReaction(messageController.text, rating.toInt(), model.data!.id!),
-                                  Navigator.pop(context),
-                                });
+                                (rating) => {
+                                      context
+                                          .read<SpotByIdCubit>()
+                                          .onSendReaction(messageController.text, rating.toInt(), model.data!.id!),
+                                      Navigator.pop(context),
+                                    });
                           }
                         },
                       ),

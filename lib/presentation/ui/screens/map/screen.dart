@@ -6,7 +6,7 @@ import 'package:ride_map/presentation/common/cubit/location/cubit.dart';
 import 'package:ride_map/presentation/common/router/routes.dart';
 import 'package:ride_map/presentation/ui/screens/map/widget/list_widget.dart';
 import 'package:ride_map/presentation/ui/screens/map/widget/map_widget.dart';
-import 'package:ride_map/until/yandex/map_object.dart';
+import 'package:ride_map/domain/entities/common/map_object.dart';
 
 import 'cubit.dart';
 

@@ -3,11 +3,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:ride_map/presentation/common/router/routes.dart';
+import 'package:ride_map/presentation/common/theme/base/app_color.dart';
 import 'package:ride_map/presentation/ui/screens/map/cubit.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/page/common_scaffold.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
-import 'package:ride_map/until/theme/base/app_color.dart';
 import 'package:yandex_mapkit/yandex_mapkit.dart';
 
 class MapWidget extends StatefulWidget {
@@ -32,9 +32,13 @@ class _MapWidgetState extends State<MapWidget> {
 
   _onMapCreated(YandexMapController yandexMapController) async {
     controller = yandexMapController;
-    await controller.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(target: Point(latitude: widget.currentUserLocation.latitude, longitude: widget.currentUserLocation.longitude), zoom: 14.5)));
+    await controller.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: Point(latitude: widget.currentUserLocation.latitude, longitude: widget.currentUserLocation.longitude),
+        zoom: 14.5)));
     print('Object ${widget.mapObjects}');
-    await controller.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(target: Point(latitude: widget.currentUserLocation.latitude, longitude: widget.currentUserLocation.longitude), zoom: 17)));
+    await controller.moveCamera(CameraUpdate.newCameraPosition(CameraPosition(
+        target: Point(latitude: widget.currentUserLocation.latitude, longitude: widget.currentUserLocation.longitude),
+        zoom: 17)));
   }
 
   @override

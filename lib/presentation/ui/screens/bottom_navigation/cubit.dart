@@ -1,7 +1,6 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
-import 'package:ride_map/until/constants/navigation_constants.dart';
-
+import 'package:ride_map/data/constants/navigation_constants.dart';
 
 part 'state.dart';
 

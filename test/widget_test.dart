@@ -7,7 +7,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:ride_map/internal/app.dart';
+import 'package:ride_map/core/app.dart';
 
 
 void main() {

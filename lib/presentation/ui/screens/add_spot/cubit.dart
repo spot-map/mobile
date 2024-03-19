@@ -4,11 +4,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:image_picker/image_picker.dart';
-import 'package:ride_map/data/map_by_id_models/map_by_id_model.dart';
-import 'package:ride_map/domain/storage/token.dart';
-import 'package:ride_map/domain/usecases/api/map.dart';
-import 'package:ride_map/internal/di/inject.dart';
-import 'package:ride_map/until/validators/validator.dart';
+import 'package:ride_map/core/di/inject.dart';
+import 'package:ride_map/data/storage/token.dart';
+import 'package:ride_map/domain/entities/map_by_id_models/map_by_id_model.dart';
+import 'package:ride_map/domain/usecases/map/map.dart';
+import 'package:ride_map/domain/entities/common/validator.dart';
 
 part 'state.dart';
 
@@ -31,13 +31,13 @@ class AddSpotCubit extends Cubit<AddSpotState> {
   ) async {
     emit(state.copyWith(isLoading: true));
     if (_tokenStorage.accessToken != null) {
-      final result = await _mapUseCase.create(nameController.text, addressController.text,
-          descriptionController.text, latitude, longitude, state.images);
+      final result = await _mapUseCase.create(
+          nameController.text, addressController.text, descriptionController.text, latitude, longitude, state.images);
       if (result.isSuccess) {
         final addImage = await _mapUseCase.addImage(result.value.data!.id!, state.images);
-        if(addImage.isSuccess){
+        if (addImage.isSuccess) {
           _messageController.add(AddSpotState.showSuccessMessage);
-        }else{
+        } else {
           _messageController.add(addImage.message);
         }
       } else {

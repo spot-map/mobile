@@ -25,7 +25,7 @@ class SpotByIdScreen extends StatelessWidget {
           onMessage: (String message) {
             if (message == FavoriteState.notAuthorized) {
               snackBar(message: 'Выполните авторизацию', context: context, isError: true);
-            }else if(message.isNotEmpty){
+            } else if (message.isNotEmpty) {
               snackBar(message: message, context: context, isError: true);
             }
           },
@@ -39,7 +39,8 @@ class SpotByIdScreen extends StatelessWidget {
                   onPressed: () {
                     context.read<FavoriteCubit>().onAddSpotToFavorite(state.mapByIdModel!.data!.id!);
                   },
-                  icon: Icon(Icons.favorite, color: state.mapByIdModel!.data!.isInFavorite! ? Colors.red : Colors.grey)),
+                  icon:
+                      Icon(Icons.favorite, color: state.mapByIdModel!.data!.isInFavorite! ? Colors.red : Colors.grey)),
               IconButton(
                   onPressed: () {
                     reactionsBottomSheet(context, state.mapByIdModel!);
