@@ -4,6 +4,7 @@ import 'package:ride_map/data/api/auth.dart';
 import 'package:ride_map/data/api/favorite.dart';
 import 'package:ride_map/data/api/map.dart';
 import 'package:ride_map/data/clients/client.dart';
+import 'package:ride_map/data/clients/interceptors/refresh_interceptor.dart';
 import 'package:ride_map/data/clients/interceptors/token_interceptor.dart';
 import 'package:ride_map/data/storage/theme.dart';
 import 'package:ride_map/data/storage/token.dart';
@@ -29,11 +30,11 @@ import 'package:ride_map/presentation/ui/screens/spot_by_id/cubit.dart';
 final getIt = GetIt.instance;
 
 Future registerGetIt() async {
-  ///Use cases
-  getIt.registerLazySingleton<AuthUseCase>(() => AuthUseCaseImpl());
-  getIt.registerLazySingleton<MapUseCase>(() => MapUseCaseImpl());
-  getIt.registerLazySingleton<FavoriteUseCase>(() => FavoriteUseCaseImpl());
-  getIt.registerLazySingleton<VpnCheckerUseCase>(() => VpnCheckerUseCaseImpl());
+  ///Api Client
+  getIt.registerLazySingleton<Client>(() => Client());
+  getIt.registerLazySingleton<Dio>(() => getIt<Client>().create());
+  getIt.registerLazySingleton<TokenInterceptor>(() => TokenInterceptor());
+  getIt.registerLazySingleton<RefreshInterceptor>(() => RefreshInterceptor());
 
   ///Api
   getIt.registerLazySingleton<AuthApi>(() => AuthApiImpl());
@@ -44,10 +45,11 @@ Future registerGetIt() async {
   getIt.registerLazySingleton<TokenStorage>(() => TokenStorageUseCaseImpl());
   getIt.registerLazySingleton<ThemeStorage>(() => ThemeStorageUseCaseImpl());
 
-  ///Api Client
-  getIt.registerLazySingleton<Client>(() => Client());
-  getIt.registerLazySingleton<Dio>(() => getIt<Client>().create());
-  getIt.registerLazySingleton<TokenInterceptor>(() => TokenInterceptor());
+  ///Use cases
+  getIt.registerLazySingleton<AuthUseCase>(() => AuthUseCaseImpl());
+  getIt.registerLazySingleton<MapUseCase>(() => MapUseCaseImpl());
+  getIt.registerLazySingleton<FavoriteUseCase>(() => FavoriteUseCaseImpl());
+  getIt.registerLazySingleton<VpnCheckerUseCase>(() => VpnCheckerUseCaseImpl());
 
   ///Cubits
   getIt.registerFactoryParam((int id, _) => SpotByIdCubit(id: id));

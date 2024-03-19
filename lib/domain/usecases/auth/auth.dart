@@ -12,8 +12,6 @@ abstract class AuthUseCase {
   Future<Result> registration(String email, String password, String name);
 
   Future<Result<bool>> logout();
-
-  Future<Result> refresh();
 }
 
 class AuthUseCaseImpl implements AuthUseCase {
@@ -74,27 +72,5 @@ class AuthUseCaseImpl implements AuthUseCase {
       return Result.failure('Не удалось выйти из аккаунта;');
     }
     return Result.success(isLogout);
-  }
-
-  @override
-  Future<Result> refresh() async {
-    late final TokenModel token;
-    try {
-      token = await _authApi.refresh();
-    } on DioException catch (e) {
-      late final String message;
-      if (e.response?.data['data']['success'] == false) {
-        message = "Не удалось обновить токен.";
-      } else {
-        message = "Ошибка обновления токена.";
-      }
-      return Result.failure(message);
-    } catch (e, s) {
-      log('$e,$s', name: 'login');
-      return Result.failure('Не удалось обновить токен.');
-    }
-    _tokenStorage.accessToken = token.data!.token;
-
-    return Result.success(token);
   }
 }

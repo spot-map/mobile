@@ -29,9 +29,4 @@ class AuthApiImpl implements AuthApi {
     return response.statusCode == 200;
   }
 
-  @override
-  Future<TokenModel> refresh() async {
-    final response = await _client.post('${ApiConstants.AUTH}/refresh');
-    return TokenModel.fromJson(response.data);
-  }
 }

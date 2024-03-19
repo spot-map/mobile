@@ -7,5 +7,4 @@ abstract class AuthApi {
 
   Future<bool> logout();
 
-  Future<TokenModel> refresh();
 }
