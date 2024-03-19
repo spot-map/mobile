@@ -2,7 +2,6 @@ import 'package:dio/dio.dart';
 import 'package:ride_map/core/di/inject.dart';
 import 'package:ride_map/data/clients/url/urls.dart';
 import 'package:ride_map/data/storage/token.dart';
-import 'package:ride_map/domain/entities/token_models/token_model.dart';
 
 class RefreshInterceptor extends Interceptor {
   final TokenStorage _tokensStorage = getIt();
