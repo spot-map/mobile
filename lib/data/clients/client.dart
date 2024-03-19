@@ -18,6 +18,8 @@ class Client {
       receiveTimeout: const Duration(seconds: 10000),
       connectTimeout: const Duration(seconds: 10000),
       sendTimeout: const Duration(seconds: 10000),
+      validateStatus: (status) => true,
+      followRedirects: false,
     ));
     client.options.headers = {'Content-Type': 'application/json', 'Accept': 'application/json'};
     client.interceptors.addAll([
