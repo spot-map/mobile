@@ -24,7 +24,7 @@ class AuthApiImpl implements AuthApi {
 
   @override
   Future<TokenModel> registration(String name, String email, String password) async {
-    Response response = await _client.post(ApiConstants.REGISTRATION, data: {
+    final response = await _client.post(ApiConstants.REGISTRATION, data: {
       "name": name,
       "email": email,
       "password": password,
@@ -34,13 +34,13 @@ class AuthApiImpl implements AuthApi {
 
   @override
   Future<bool> logout() async {
-    Response response = await _client.post(ApiConstants.LOGOUT);
+    final response = await _client.post(ApiConstants.LOGOUT);
     return response.statusCode == 200;
   }
 
   @override
   Future<TokenModel> refresh() async {
-    Response response = await _client.post(ApiConstants.REFRESH);
+    final response = await _client.post(ApiConstants.REFRESH);
     return TokenModel.fromJson(response.data['data']['token']);
   }
 }

@@ -24,7 +24,7 @@ class MapApiImpl implements MapApi {
 
   @override
   Future<MapModel> get() async {
-    Response response = await _client.get(ApiConstants.MAP);
+    final response = await _client.get(ApiConstants.MAP);
     return MapModel.fromJson(response.data);
   }
 
