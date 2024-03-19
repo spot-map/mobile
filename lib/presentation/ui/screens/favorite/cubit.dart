@@ -28,16 +28,18 @@ class FavoriteCubit extends Cubit<FavoriteState> {
     final favorite = await _favoriteUseCase.get();
     if (favorite.isSuccess) {
       emit(state.copyWith(favorite: favorite.value, isLoading: false));
-    }else{
+    } else {
       _messageController.add(favorite.message);
       return;
     }
   }
 
-  void onAddSpotToFavorite(int id) {
+  void onAddSpotToFavorite(int id) async {
     if (_tokenStorage.accessToken!.isNotEmpty) {
-      _favoriteUseCase.add(id);
-      HapticFeedback.vibrate();
+      final added = await _favoriteUseCase.add(id);
+      if (added.isSuccess) {
+        HapticFeedback.vibrate();
+      }
       emit(state.copyWith(isLoading: false));
     } else {
       _messageController.add(FavoriteState.notAuthorized);
