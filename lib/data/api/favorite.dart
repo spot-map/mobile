@@ -8,26 +8,19 @@ class FavoriteApiImpl implements FavoriteApi {
 
   @override
   Future<bool> add(int id) async {
-    final response = await _client.post(
-      '/favorite',
-      data: {'spot_id': id},
-    );
+    final response = await _client.post('/favorite', data: {'spot_id': id});
     return response.data;
   }
 
   @override
   Future<FavoriteModel> get() async {
-    final response = await _client.get(
-      '/favorite',
-    );
+    final response = await _client.get('/favorite');
     return FavoriteModel.fromJson(response.data);
   }
 
   @override
   Future<bool> delete(int id) async {
-    final response = await _client.delete(
-      '/favorite/$id',
-    );
+    final response = await _client.delete('/favorite/$id');
     return response.data;
   }
 }

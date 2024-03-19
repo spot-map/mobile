@@ -23,10 +23,7 @@ class MapApiImpl implements MapApi {
 
   @override
   Future<bool> comment(String text, int score, int spotId) async {
-    final response = await _client.post(
-      '/reaction',
-      data: {"text": text, "score": score, "spot_id": spotId},
-    );
+    final response = await _client.post('/reaction', data: {"text": text, "score": score, "spot_id": spotId});
     return response.data;
   }
 
@@ -53,8 +50,7 @@ class MapApiImpl implements MapApi {
     for (final image in images!) {
       formData.files.addAll([MapEntry("files[]", await MultipartFile.fromFile(image.path))]);
     }
-    final response = await _client.post('/image/add/$id',
-        data: formData, options: Options(followRedirects: false, validateStatus: (status) => status! < 500));
+    final response = await _client.post('/image/add/$id', data: formData);
 
     return response.data;
   }
