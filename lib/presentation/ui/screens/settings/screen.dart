@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:ride_map/core/di/inject.dart';
+import 'package:ride_map/data/storage/token.dart';
 import 'package:ride_map/presentation/common/theme/base/app_color.dart';
 import 'package:ride_map/presentation/common/theme/style/text/text_style.dart';
 import 'package:ride_map/presentation/ui/screens/settings/widget/menu_list.dart';
@@ -44,21 +46,23 @@ _columnWithInfoText({required BuildContext context}) {
       mainAxisAlignment: MainAxisAlignment.center,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        TextButton(
-          onPressed: () {},
-          style: const ButtonStyle().copyWith(
-            padding: MaterialStateProperty.all(EdgeInsets.zero),
-          ),
-          child: Text("Удалить аккаунт",
-              style: context.textStyle
-                  .myTextStyleFontUbuntu(
-                      fontSize: 14, textColor: context.colors.deleteColor, newFontWeight: FontWeight.w300)
-                  .copyWith(
-                    decorationThickness: 1,
-                    decorationColor: Theme.of(context).textTheme.headline1!.color,
-                    decoration: TextDecoration.underline,
-                  )),
-        ),
+        getIt<TokenStorage>().accessToken != null
+            ? TextButton(
+                onPressed: () {},
+                style: const ButtonStyle().copyWith(
+                  padding: MaterialStateProperty.all(EdgeInsets.zero),
+                ),
+                child: Text("Удалить аккаунт",
+                    style: context.textStyle
+                        .myTextStyleFontUbuntu(
+                            fontSize: 14, textColor: context.colors.deleteColor, newFontWeight: FontWeight.w300)
+                        .copyWith(
+                          decorationThickness: 1,
+                          decorationColor: Theme.of(context).textTheme.headline1!.color,
+                          decoration: TextDecoration.underline,
+                        )),
+              )
+            : Container()
       ],
     ),
   );

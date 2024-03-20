@@ -124,11 +124,9 @@ class AddSpotWidget extends StatelessWidget {
                       color: Colors.blue,
                       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
                       onPressed: () {
-                        if (_formKey.currentState!.validate()) {
                           context
                               .read<AddSpotCubit>()
                               .onAddStop(currentUserLocation.latitude, currentUserLocation.longitude);
-                        }
                       },
                       child: state.isLoading
                           ? const CircularProgressIndicator()

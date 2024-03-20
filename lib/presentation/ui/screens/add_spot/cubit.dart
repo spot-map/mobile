@@ -29,7 +29,14 @@ class AddSpotCubit extends Cubit<AddSpotState> {
     double latitude,
     double longitude,
   ) async {
-    emit(state.copyWith(isLoading: true));
+    if (state.name.isEmpty && state.description.isEmpty && state.address.isEmpty) {
+      final nameError = TextValidators.name(state.name);
+      final descriptionError = TextValidators.description(state.description);
+      final addressError = TextValidators.address(state.address);
+      emit(state.copyWith(nameError: nameError, descriptionError: descriptionError,addressError: addressError));
+      return;
+    }
+    if (state.nameError != null && state.descriptionError != null && state.addressError != null) return;
     if (_tokenStorage.accessToken != null) {
       final result = await _mapUseCase.create(
           nameController.text, addressController.text, descriptionController.text, latitude, longitude, state.images);
@@ -37,13 +44,13 @@ class AddSpotCubit extends Cubit<AddSpotState> {
         final addImage = await _mapUseCase.addImage(result.value.data!.id!, state.images);
         if (addImage.isSuccess) {
           _messageController.add(AddSpotState.showSuccessMessage);
+          emit(state.copyWith(onAdded: result.value, isLoading: false, images: []));
         } else {
           _messageController.add(addImage.message);
         }
       } else {
         _messageController.add(AddSpotState.showErrorMessage);
       }
-      emit(state.copyWith(onAdded: result.value, isLoading: false, images: []));
     } else {
       _messageController.add(AddSpotState.notAuthorized);
     }
