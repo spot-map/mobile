@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:equatable/equatable.dart';
 import 'package:ride_map/core/di/inject.dart';
+import 'package:ride_map/data/clients/url/urls.dart';
 import 'package:ride_map/domain/entities/map_by_id_models/map_by_id_model.dart';
 import 'package:ride_map/domain/usecases/map/map.dart';
 import 'package:share_plus/share_plus.dart';
@@ -30,7 +31,7 @@ class SpotByIdCubit extends Cubit<SpotByIdState> {
   }
 
   void onShareSpot(int id) async {
-    await Share.share('Йоу! Зацени спот ');
+    await Share.share('Йоу! Зацени спот ${ApiConstants.AUTH}/spot/show/$id');
   }
 
   void onSendReaction(String text, int score, int spotId) async {
