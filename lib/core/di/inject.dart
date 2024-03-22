@@ -24,7 +24,7 @@ import 'package:ride_map/presentation/ui/screens/add_spot/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/authorization/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/bottom_navigation/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/favorite/cubit.dart';
-import 'package:ride_map/presentation/ui/screens/map/cubit.dart';
+import 'package:ride_map/presentation/common/cubit/map/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/cubit.dart';
 
 final getIt = GetIt.instance;

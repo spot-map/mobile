@@ -9,6 +9,8 @@ import 'package:ride_map/presentation/ui/screens/add_spot/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/add_spot/screen.dart';
 import 'package:ride_map/presentation/ui/screens/bottom_navigation/screen.dart';
 import 'package:ride_map/presentation/ui/screens/favorite/cubit.dart';
+import 'package:ride_map/presentation/common/cubit/map/cubit.dart';
+import 'package:ride_map/presentation/ui/screens/search_spot/screen.dart';
 import 'package:ride_map/presentation/ui/screens/splash/screen.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/screen.dart';
@@ -40,4 +42,8 @@ final appRouter = GoRouter(navigatorKey: _navigatorKey, initialLocation: AppRout
         final imagePath = state.extra! as String;
         return FullScreenPage(imagePath: imagePath, dark: getIt<ThemeStorage>().theme!);
       }),
+  GoRoute(path: AppRoutes.searchSpot,
+  builder: (context, state){
+    return BlocProvider<MapCubit>( create: (_) => getIt(), child: const SearchScreen());
+  })
 ]);

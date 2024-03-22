@@ -4,10 +4,10 @@ import 'package:flutter_stream_listener/flutter_stream_listener.dart';
 class CommonScaffold extends StatelessWidget {
   const CommonScaffold(
       {super.key,
-      required this.appBar,
       required this.message,
       required this.onMessage,
       required this.child,
+      required this.appBar,
       required this.resizeToAvoidBottomInset,
       required this.extendBodyBehindAppBar});
 

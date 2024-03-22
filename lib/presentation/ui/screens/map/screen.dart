@@ -8,7 +8,7 @@ import 'package:ride_map/presentation/ui/screens/map/widget/list_widget.dart';
 import 'package:ride_map/presentation/ui/screens/map/widget/map_widget.dart';
 import 'package:ride_map/domain/entities/common/map_object.dart';
 
-import 'cubit.dart';
+import '../../../common/cubit/map/cubit.dart';
 
 class MapScreen extends StatelessWidget {
   const MapScreen({Key? key}) : super(key: key);
@@ -41,19 +41,6 @@ class MapScreen extends StatelessWidget {
                 : MapWidget(
                     currentUserLocation: locationState.currentPosition!,
                     mapObjects: mapObject,
-                    // bottomSheet: DraggableScrollableSheet(
-                    //     initialChildSize: 0.13,
-                    //     maxChildSize: 0.9,
-                    //     minChildSize: 0.13,
-                    //     expand: false,
-                    //     snap: true,
-                    //     snapAnimationDuration:
-                    //         const Duration(milliseconds: 150),
-                    //     builder: (context, scrollController) =>
-                    //         SingleChildScrollView(
-                    //             controller: scrollController,
-                    //             child: SpotList(
-                    //                 model: mapState.mapModel!))),
                   );
           },
         );

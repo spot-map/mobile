@@ -4,7 +4,7 @@ import 'package:go_router/go_router.dart';
 import 'package:latlong2/latlong.dart';
 import 'package:ride_map/presentation/common/router/routes.dart';
 import 'package:ride_map/presentation/common/theme/base/app_color.dart';
-import 'package:ride_map/presentation/ui/screens/map/cubit.dart';
+import 'package:ride_map/presentation/common/cubit/map/cubit.dart';
 import 'package:ride_map/presentation/ui/widget/app_bar/app_bar.dart';
 import 'package:ride_map/presentation/ui/widget/page/common_scaffold.dart';
 import 'package:ride_map/presentation/ui/widget/snack/snack_bar.dart';
@@ -15,13 +15,10 @@ class MapWidget extends StatefulWidget {
     Key? key,
     required this.currentUserLocation,
     required this.mapObjects,
-    // required this.bottomSheet
   }) : super(key: key);
 
   final LatLng currentUserLocation;
   final List<MapObject> mapObjects;
-
-  // final Widget bottomSheet;
 
   @override
   State<MapWidget> createState() => _MapWidgetState();
@@ -50,7 +47,6 @@ class _MapWidgetState extends State<MapWidget> {
       },
       extendBodyBehindAppBar: true,
       resizeToAvoidBottomInset: false,
-      // bottomSheet: widget.bottomSheet,
       appBar: MyAppBar(
         automaticallyImplyLeading: false,
         centerTitle: false,
@@ -58,6 +54,13 @@ class _MapWidgetState extends State<MapWidget> {
         size: 50,
         title: 'Главная',
         widgetRight: [
+          GestureDetector(
+            onTap: () {
+              context.push(AppRoutes.searchSpot);
+            },
+            child: Icon(Icons.search_rounded, size: 20, color: context.colors.backButtonColor),
+          ),
+          const SizedBox(width: 10),
           Padding(
             padding: const EdgeInsets.only(right: 10.0),
             child: GestureDetector(

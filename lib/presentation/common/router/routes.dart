@@ -3,6 +3,7 @@ import 'package:ride_map/presentation/ui/screens/authorization/screen.dart';
 import 'package:ride_map/presentation/ui/screens/bottom_navigation/screen.dart';
 import 'package:ride_map/presentation/ui/screens/favorite/screen.dart';
 import 'package:ride_map/presentation/ui/screens/map/screen.dart';
+import 'package:ride_map/presentation/ui/screens/search_spot/screen.dart';
 import 'package:ride_map/presentation/ui/screens/settings/screen.dart';
 import 'package:ride_map/presentation/ui/screens/splash/screen.dart';
 import 'package:ride_map/presentation/ui/screens/spot_by_id/screen.dart';
@@ -19,4 +20,5 @@ class AppRoutes {
   static const bottomNavigationHome = '/${RootScreen.path}';
   static const fullImageScreen = '/${FullScreenPage.path}';
   static const spotById = '/${SpotByIdScreen.path}';
+  static const searchSpot = '/${SearchScreen.path}';
 }

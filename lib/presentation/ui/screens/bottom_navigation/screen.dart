@@ -8,7 +8,7 @@ import 'package:ride_map/presentation/ui/screens/authorization/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/authorization/screen.dart';
 import 'package:ride_map/presentation/ui/screens/favorite/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/favorite/screen.dart';
-import 'package:ride_map/presentation/ui/screens/map/cubit.dart';
+import 'package:ride_map/presentation/common/cubit/map/cubit.dart';
 import 'package:ride_map/presentation/ui/screens/map/screen.dart';
 import 'package:ride_map/presentation/ui/screens/settings/screen.dart';
 
